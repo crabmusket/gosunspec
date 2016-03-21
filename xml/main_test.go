@@ -36,7 +36,7 @@ func TestXmlParse(t *testing.T) {
 	}
 
 	if len(data) != 1 {
-		t.Error("wrong number of data packets found")
+		t.Fatal("wrong number of data packets found")
 	}
 	if data[0].Version != "1" {
 		t.Error("wrong version found")
@@ -49,5 +49,14 @@ func TestXmlParse(t *testing.T) {
 	}
 	if len(data[0].Devices[0].Models[0].Points) != 10 {
 		t.Fatal("wrong number of points found")
+	}
+	if id := data[0].Devices[0].Models[0].Points[0].Id; id != "A" {
+		t.Error("wrong id in first point:", id)
+	}
+	if value := data[0].Devices[0].Models[0].Points[0].Value; value != "30.43" {
+		t.Error("wrong value in first point:", value)
+	}
+	if units := data[0].Devices[0].Models[0].Points[2].Unit; units != "Watts" {
+		t.Error("wrong units in third point:", units)
 	}
 }
