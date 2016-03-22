@@ -1,4 +1,4 @@
-package gosunspec
+package core
 
 // Common: All SunSpec compliant devices must include this as the first model
 type Model1 struct {

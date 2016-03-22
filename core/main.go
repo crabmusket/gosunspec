@@ -1,4 +1,4 @@
-package gosunspec
+package core
 
 import ()
 

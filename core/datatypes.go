@@ -1,4 +1,4 @@
-package gosunspec
+package core
 
 type ModelId uint16
 
