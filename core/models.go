@@ -2,7 +2,6 @@ package core
 
 // Common: All SunSpec compliant devices must include this as the first model
 type Model1 struct {
-	id ModelId
 	// Well known value registered with SunSpec for compliance
 	Mn String
 	// Manufacturer specific value (32 chars)
@@ -20,12 +19,11 @@ type Model1 struct {
 }
 
 func (self Model1) GetId() ModelId {
-	return self.id
+	return 1
 }
 
 // Inverter (Single Phase): Include this model for single phase inverter monitoring
 type Model101 struct {
-	id ModelId
 	// AC Current
 	A uint16
 	// Phase A Current
@@ -115,5 +113,5 @@ type Model101 struct {
 }
 
 func (self Model101) GetId() ModelId {
-	return self.id
+	return 101
 }
