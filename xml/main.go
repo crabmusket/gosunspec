@@ -14,38 +14,38 @@ import (
 	"time"
 )
 
-type Data struct {
-	XMLName xml.Name `xml:"SunSpecData"`
-	Version string   `xml:"v,attr"`
-	Devices []Device `xml:"d"`
+type DataElement struct {
+	XMLName xml.Name        `xml:"SunSpecData"`
+	Version string          `xml:"v,attr"`
+	Devices []DeviceElement `xml:"d"`
 }
 
-type Device struct {
-	XMLName       xml.Name  `xml:"d"`
-	CorrelationId uint32    `xml:"cid,attr,omitempty"`
-	Id            string    `xml:"id,attr,omitempty"`
-	Namespace     string    `xml:"ns,attr"`
-	LoggerId      string    `xml:"lid,attr,omitempty"`
-	Manufacturer  string    `xml:"man,attr"`
-	Model         string    `xml:"mod,attr"`
-	Serial        string    `xml:"sn,attr"`
-	Timestamp     time.Time `xml:"t,attr"`
-	Models        []Model   `xml:"m"`
+type DeviceElement struct {
+	XMLName       xml.Name       `xml:"d"`
+	CorrelationId uint32         `xml:"cid,attr,omitempty"`
+	Id            string         `xml:"id,attr,omitempty"`
+	Namespace     string         `xml:"ns,attr"`
+	LoggerId      string         `xml:"lid,attr,omitempty"`
+	Manufacturer  string         `xml:"man,attr"`
+	Model         string         `xml:"mod,attr"`
+	Serial        string         `xml:"sn,attr"`
+	Timestamp     time.Time      `xml:"t,attr"`
+	Models        []ModelElement `xml:"m"`
 }
 
 // Note that we can use omitempty on Index because indices in SunSpec XML start
 // at 1. Therefore an index of 0 (unused) will not be serialised.
-type Model struct {
+type ModelElement struct {
 	XMLName   xml.Name        `xml:"m"`
 	Id        sunspec.ModelId `xml:"id,attr"`
 	Namespace string          `xml:"ns,attr,omitempty"`
 	Index     uint32          `xml:"x,attr,omitempty"`
-	Points    []Point         `xml:"p"`
+	Points    []PointElement  `xml:"p"`
 }
 
 // Note that we can use omitempty on ScaleFactor because a scale factor of 0
 // means no scaling. Therefore an sf of 0 is meaningless anyway.
-type Point struct {
+type PointElement struct {
 	XMLName     xml.Name  `xml:"p"`
 	Description string    `xml:"d,attr,omitempty"`
 	Id          string    `xml:"id,attr"`
@@ -56,8 +56,8 @@ type Point struct {
 	Value       string    `xml:",chardata"`
 }
 
-func parseXML(reader io.Reader) (data []Data, err error) {
+func parseXML(reader io.Reader) (elements []DataElement, err error) {
 	decoder := xml.NewDecoder(reader)
-	err = decoder.Decode(&data)
+	err = decoder.Decode(&elements)
 	return
 }

@@ -56,6 +56,9 @@ func TestXmlParse(t *testing.T) {
 	if value := data[0].Devices[0].Models[0].Points[0].Value; value != "30.43" {
 		t.Error("wrong value in first point:", value)
 	}
+	if scale := data[0].Devices[0].Models[0].Points[1].ScaleFactor; scale != -1 {
+		t.Error("wrong scale factor in second point:", scale)
+	}
 	if units := data[0].Devices[0].Models[0].Points[2].Unit; units != "Watts" {
 		t.Error("wrong units in third point:", units)
 	}
