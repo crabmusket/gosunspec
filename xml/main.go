@@ -9,7 +9,9 @@ package xml
 
 import (
 	"encoding/xml"
+	"strconv"
 	sunspec "github.com/eightyeight/gosunspec/core"
+	"math"
 	"io"
 	"time"
 )
@@ -43,6 +45,59 @@ type ModelElement struct {
 	Points    []PointElement  `xml:"p"`
 }
 
+func (self *ModelElement) GetPointValueString(id string) sunspec.String {
+	rawVal := ""
+	for _, point := range self.Points {
+		if point.Id == id {
+			rawVal = point.Value
+			break
+		}
+	}
+	return sunspec.String(rawVal)
+}
+
+func (self *ModelElement) GetPointValueUint16(id string) uint16 {
+	rawVal := ""
+	for _, point := range self.Points {
+		if point.Id == id {
+			rawVal = point.Value
+			break
+		}
+	}
+	if rawVal == "" {
+		return 0
+	}
+
+	val, err := strconv.Atoi(rawVal)
+	if err != nil {
+		return 0
+	} else {
+		return uint16(val)
+	}
+}
+
+func (self *ModelElement) GetPointScaleFactor(id string, sfid string) float64 {
+	generalScaleFactor := int16(0)
+	pointScaleFactor := int16(0)
+	foundPointScaleFactor := false
+	for _, point := range self.Points {
+		if point.Id == sfid {
+			generalScaleFactor = point.ScaleFactor
+		}
+		if point.Id == id {
+			pointScaleFactor = point.ScaleFactor
+			foundPointScaleFactor = true
+			break
+		}
+	}
+
+	if foundPointScaleFactor {
+		return float64(math.Pow(10, float64(pointScaleFactor)))
+	} else {
+		return float64(math.Pow(10, float64(generalScaleFactor)))
+	}
+}
+
 // Note that we can use omitempty on ScaleFactor because a scale factor of 0
 // means no scaling. Therefore an sf of 0 is meaningless anyway.
 type PointElement struct {
@@ -60,4 +115,39 @@ func parseXML(reader io.Reader) (elements []DataElement, err error) {
 	decoder := xml.NewDecoder(reader)
 	err = decoder.Decode(&elements)
 	return
+}
+
+func LoadDevices(reader io.Reader) (devices []*sunspec.Device, err error) {
+	dataElements, err := parseXML(reader)
+	if err != nil {
+		return
+	}
+
+	for _, dataElement := range dataElements {
+		for _, deviceElement := range dataElement.Devices {
+			if loaded := deviceFromElement(deviceElement); loaded != nil {
+				devices = append(devices, loaded)
+			}
+		}
+	}
+
+	return
+}
+
+func deviceFromElement(deviceElement DeviceElement) *sunspec.Device {
+	device := sunspec.Device{
+		Models: []sunspec.Model{},
+	}
+
+	for _, modelElement := range deviceElement.Models {
+		if model := modelFromElement(modelElement); model != nil {
+			device.Models = append(device.Models, model)
+		}
+	}
+
+	if len(device.Models) > 0 {
+		return &device
+	} else {
+		return nil
+	}
 }

@@ -14,8 +14,6 @@ type Model1 struct {
 	SN String
 	// Modbus device address
 	DA uint16
-	// Force even alignment
-	Pad Pad
 }
 
 func (self Model1) GetId() ModelId {
@@ -25,73 +23,73 @@ func (self Model1) GetId() ModelId {
 // Inverter (Single Phase): Include this model for single phase inverter monitoring
 type Model101 struct {
 	// AC Current
-	A uint16
+	A float64
 	// Phase A Current
-	AphA uint16
+	AphA float64
 	// Phase B Current
-	AphB uint16
+	AphB float64
 	// Phase C Current
-	AphC uint16
+	AphC float64
 	//
 	A_SF ScaleFactor
 	// Phase Voltage AB
-	PPVphAB uint16
+	PPVphAB float64
 	// Phase Voltage BC
-	PPVphBC uint16
+	PPVphBC float64
 	// Phase Voltage CA
-	PPVphCA uint16
+	PPVphCA float64
 	// Phase Voltage AN
-	PhVphA uint16
+	PhVphA float64
 	// Phase Voltage BN
-	PhVphB uint16
+	PhVphB float64
 	// Phase Voltage CN
-	PhVphC uint16
+	PhVphC float64
 	//
 	V_SF ScaleFactor
 	// AC Power
-	W int16
+	W float64
 	//
 	W_SF ScaleFactor
 	// Line Frequency
-	Hz uint16
+	Hz float64
 	//
 	Hz_SF ScaleFactor
 	// AC Apparent Power
-	VA int16
+	VA float64
 	//
 	VA_SF ScaleFactor
 	// AC Reactive Power
-	VAr int16
+	VAr float64
 	//
 	VAr_SF ScaleFactor
 	// AC Power Factor
-	PF int16
+	PF float64
 	//
 	PF_SF ScaleFactor
 	// AC Energy
-	WH Acc32
+	WH float64
 	//
 	WH_SF ScaleFactor
 	// DC Current
-	DCA uint16
+	DCA float64
 	//
 	DCA_SF ScaleFactor
 	// DC Voltage
-	DCV uint16
+	DCV float64
 	//
 	DCV_SF ScaleFactor
 	// DC Power
-	DCW int16
+	DCW float64
 	//
 	DCW_SF ScaleFactor
 	// Cabinet Temperature
-	TmpCab int16
+	TmpCab float64
 	// Heat Sink Temperature
-	TmpSnk int16
+	TmpSnk float64
 	// Transformer Temperature
-	TmpTrns int16
+	TmpTrns float64
 	// Other Temperature
-	TmpOt int16
+	TmpOt float64
 	//
 	Tmp_SF ScaleFactor
 	// Enumerated value.  Operating state

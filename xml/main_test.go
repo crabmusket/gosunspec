@@ -3,6 +3,7 @@ package xml
 import (
 	"bytes"
 	"testing"
+	sunspec "github.com/eightyeight/gosunspec/core"
 )
 
 // Examples from the SunSpec Data Exchange Specification version 1.2.
@@ -13,8 +14,9 @@ const example = `
 <SunSpecData v="1">
 	<d ns="mac" lid="11:22:33:44:55:66" man="gsc" mod="r300" sn="123456" t="2011-05-12T09:21:49Z" cid="2">
 		<m id="101" x="1">
-			<p id="A">30.43</p>
-			<p id="PhVphA" sf="-1">2216</p>
+			<p id="A" sf="-2">3043</p>
+			<p id="PhVphA">2216</p>
+			<p id="V_SF">-1</p>
 			<p id="W" u="Watts">6701.3</p>
 			<p id="Hz">60.01</p>
 			<p id="WH">126973</p>
@@ -53,7 +55,7 @@ func TestXmlParse(t *testing.T) {
 	if id := data[0].Devices[0].Models[0].Points[0].Id; id != "A" {
 		t.Error("wrong id in first point:", id)
 	}
-	if value := data[0].Devices[0].Models[0].Points[0].Value; value != "30.43" {
+	if value := data[0].Devices[0].Models[0].Points[0].Value; value != "3043" {
 		t.Error("wrong value in first point:", value)
 	}
 	if scale := data[0].Devices[0].Models[0].Points[1].ScaleFactor; scale != -1 {
@@ -61,5 +63,28 @@ func TestXmlParse(t *testing.T) {
 	}
 	if units := data[0].Devices[0].Models[0].Points[2].Unit; units != "Watts" {
 		t.Error("wrong units in third point:", units)
+	}
+}
+
+func TestLoadDevice(t *testing.T) {
+	buffer := bytes.NewBuffer([]byte(example))
+	devices, err := LoadDevices(buffer)
+	if err != nil {
+		t.Fatal("could not parse example", err.Error())
+	}
+
+	if len(devices) != 1 {
+		t.Fatal("wrong number of devices found")
+	}
+
+	inverter, ok := devices[0].Models[0].(*sunspec.Model101)
+	if !ok {
+		t.Fatal("wrong type of first model")
+	}
+	if inverter.A != 30.43 {
+		t.Error("wrong value of A", inverter.A)
+	}
+	if inverter.PhVphA != 221.6 {
+		t.Error("wrong value of PhVphA", inverter.PhVphA)
 	}
 }
