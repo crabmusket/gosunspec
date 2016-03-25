@@ -9,10 +9,10 @@ package xml
 
 import (
 	"encoding/xml"
-	"strconv"
 	sunspec "github.com/eightyeight/gosunspec/core"
-	"math"
 	"io"
+	"math"
+	"strconv"
 	"time"
 )
 
@@ -43,59 +43,6 @@ type ModelElement struct {
 	Namespace string          `xml:"ns,attr,omitempty"`
 	Index     uint32          `xml:"x,attr,omitempty"`
 	Points    []PointElement  `xml:"p"`
-}
-
-func (self *ModelElement) GetPointValueString(id string) sunspec.String {
-	rawVal := ""
-	for _, point := range self.Points {
-		if point.Id == id {
-			rawVal = point.Value
-			break
-		}
-	}
-	return sunspec.String(rawVal)
-}
-
-func (self *ModelElement) GetPointValueUint16(id string) uint16 {
-	rawVal := ""
-	for _, point := range self.Points {
-		if point.Id == id {
-			rawVal = point.Value
-			break
-		}
-	}
-	if rawVal == "" {
-		return 0
-	}
-
-	val, err := strconv.Atoi(rawVal)
-	if err != nil {
-		return 0
-	} else {
-		return uint16(val)
-	}
-}
-
-func (self *ModelElement) GetPointScaleFactor(id string, sfid string) float64 {
-	generalScaleFactor := int16(0)
-	pointScaleFactor := int16(0)
-	foundPointScaleFactor := false
-	for _, point := range self.Points {
-		if point.Id == sfid {
-			generalScaleFactor = point.ScaleFactor
-		}
-		if point.Id == id {
-			pointScaleFactor = point.ScaleFactor
-			foundPointScaleFactor = true
-			break
-		}
-	}
-
-	if foundPointScaleFactor {
-		return float64(math.Pow(10, float64(pointScaleFactor)))
-	} else {
-		return float64(math.Pow(10, float64(generalScaleFactor)))
-	}
 }
 
 // Note that we can use omitempty on ScaleFactor because a scale factor of 0
@@ -149,5 +96,58 @@ func deviceFromElement(deviceElement DeviceElement) *sunspec.Device {
 		return &device
 	} else {
 		return nil
+	}
+}
+
+func (self *ModelElement) GetPointValueString(id string) sunspec.String {
+	rawVal := ""
+	for _, point := range self.Points {
+		if point.Id == id {
+			rawVal = point.Value
+			break
+		}
+	}
+	return sunspec.String(rawVal)
+}
+
+func (self *ModelElement) GetPointValueUint16(id string) uint16 {
+	rawVal := ""
+	for _, point := range self.Points {
+		if point.Id == id {
+			rawVal = point.Value
+			break
+		}
+	}
+	if rawVal == "" {
+		return 0
+	}
+
+	val, err := strconv.Atoi(rawVal)
+	if err != nil {
+		return 0
+	} else {
+		return uint16(val)
+	}
+}
+
+func (self *ModelElement) GetPointScaleFactor(id string, sfid string) float64 {
+	generalScaleFactor := int16(0)
+	pointScaleFactor := int16(0)
+	foundPointScaleFactor := false
+	for _, point := range self.Points {
+		if point.Id == sfid {
+			generalScaleFactor = point.ScaleFactor
+		}
+		if point.Id == id {
+			pointScaleFactor = point.ScaleFactor
+			foundPointScaleFactor = true
+			break
+		}
+	}
+
+	if foundPointScaleFactor {
+		return float64(math.Pow(10, float64(pointScaleFactor)))
+	} else {
+		return float64(math.Pow(10, float64(generalScaleFactor)))
 	}
 }

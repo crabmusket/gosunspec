@@ -2,8 +2,8 @@ package xml
 
 import (
 	"bytes"
-	"testing"
 	sunspec "github.com/eightyeight/gosunspec/core"
+	"testing"
 )
 
 // Examples from the SunSpec Data Exchange Specification version 1.2.
