@@ -12,7 +12,7 @@ Subpackages implement particular use-cases that rely on this domain model:
 [SunSpec]: http://sunspec.org/
 [SMDX]: https://github.com/sunspec/models
 
-## Design
+## Generated code
 
 This package uses typesafe representations of each model type.
 To avoid excessive manual maintenance, structs for each type of model defined by SunSpec are generated from the [SMDX model files][SMDX].
