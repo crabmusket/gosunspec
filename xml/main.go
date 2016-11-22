@@ -9,7 +9,7 @@ package xml
 
 import (
 	"encoding/xml"
-	sunspec "github.com/eightyeight/gosunspec/core"
+	sunspec "github.com/crabmusket/gosunspec/core"
 	"io"
 	"math"
 	"strconv"

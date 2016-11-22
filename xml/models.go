@@ -1,7 +1,7 @@
 package xml
 
 import (
-	sunspec "github.com/eightyeight/gosunspec/core"
+	sunspec "github.com/crabmusket/gosunspec/core"
 )
 
 func modelFromElement(el ModelElement) sunspec.Model {

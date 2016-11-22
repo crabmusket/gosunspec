@@ -1,12 +1,12 @@
 package main
 
 import (
+	"github.com/crabmusket/gosunspec/smdx"
 	"io/ioutil"
 	"log"
 	"os"
 	"strings"
 	"text/template"
-	"github.com/eightyeight/gosunspec/smdx"
 )
 
 const preamble = `// NOTICE
@@ -44,7 +44,7 @@ func main() {
 
 	for _, file := range files {
 		if strings.HasPrefix(file.Name(), "smdx_") {
-			smdxFile, err := os.OpenFile(smdxDir + file.Name(), os.O_RDONLY, 0644)
+			smdxFile, err := os.OpenFile(smdxDir+file.Name(), os.O_RDONLY, 0644)
 			if err != nil {
 				log.Fatal(err)
 			}

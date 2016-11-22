@@ -2,7 +2,7 @@ package xml
 
 import (
 	"bytes"
-	sunspec "github.com/eightyeight/gosunspec/core"
+	sunspec "github.com/crabmusket/gosunspec/core"
 	"testing"
 )
 
