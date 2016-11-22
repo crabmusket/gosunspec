@@ -31,8 +31,13 @@ type BlockElement struct {
 type PointElement struct {
 	XMLName     xml.Name        `xml:"point"`
 	Id          string          `xml:"id,attr"`
+	Offset      uint16          `xml:"offset,attr"`
+	Length      uint16          `xml:"len,attr"`
 	Type        string          `xml:"type,attr"`
 	ScaleFactor string          `xml:"sf,attr"`
+	Units       string          `xml:"units,attr"`
+	Mandatory   bool            `xml:"mandatory,attr"`
+	Access      string          `xml:"access,attr"`
 	Symbols     []SymbolElement `xml:"symbol"`
 }
 
