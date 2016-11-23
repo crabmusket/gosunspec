@@ -20,9 +20,12 @@ type Acc64 uint64
 
 type Ipaddr [4]byte
 type Ipv6addr [16]byte
+type EUI48 [6]byte
 
 type String []byte
 
 type Float float32
 
 type ScaleFactor int16
+
+type Count uint16
