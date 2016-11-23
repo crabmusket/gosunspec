@@ -19,3 +19,13 @@ func RegisterModel(m *ModelElement) {
 func GetModel(id uint16) *ModelElement {
 	return modelRegistry[id]
 }
+
+// DoModels iterates over all the registered models and calls the specified function on each.
+func DoModels(f func(m *ModelElement) error) error {
+	for _, v := range modelRegistry {
+		if err := f(v); err != nil {
+			return err
+		}
+	}
+	return nil
+}
