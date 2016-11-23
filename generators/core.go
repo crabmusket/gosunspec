@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"strings"
 	"text/template"
 )
@@ -17,7 +18,29 @@ package core
 `
 
 const model = `
-type {{.Name}} struct {
+{{define "point"}}{{.Id}} {{.Type|goType}} ` + "`" + `sunspec:"offset={{.Offset}}{{if gt .Length 0}},len={{.Length}}{{end}}{{if ne .ScaleFactor ""}},sf={{.ScaleFactor}}{{end}}{{if ne .Access ""}},access={{.Access}}{{end}}"` + "`" + `{{end}}
+{{$model := .Model }}
+
+// Block{{.Model.Id}} - {{.Strings.ModelStrings.Label}} - {{.Strings.ModelStrings.Description}}
+{{range (repeatingBlocks .Model)}}
+type Block{{$model.Id}}Repeat struct {
+	{{range .Points}}{{template "point" .}}
+{{end}}
+}
+{{end}}
+
+type Block{{.Model.Id}} struct {
+{{range (fixedBlocks .Model)}}
+{{range .Points}}    {{template "point" .}}
+{{end}}
+	{{end}}
+{{range (repeatingBlocks .Model)}}
+  Repeats []Block{{$model.Id}}Repeat
+{{end}}
+}
+
+func (self *Block{{.Model.Id}}) GetId() ModelId {
+  return {{.Model.Id}}
 }
 `
 
@@ -40,7 +63,38 @@ func main() {
 		log.Fatal(err)
 	}
 
-	modelTemplate := template.Must(template.New("model").Parse(model))
+	t := template.New("model")
+	t.Funcs(map[string]interface{}{
+		"goType": func(sstype string) string {
+			switch sstype {
+			case "uint16", "uint32", "uint64", "int16", "float32", "int32", "int64":
+				return sstype
+			case "sunssf":
+				return "ScaleFactor"
+			case "eui48":
+				return strings.ToUpper(sstype)
+			default:
+				return strings.Title(sstype)
+			}
+		},
+		"repeatingBlocks": func(m smdx.ModelElement) []smdx.BlockElement {
+			if len(m.Blocks) == 1 && m.Blocks[0].Type == "repeating" {
+				return m.Blocks
+			} else if len(m.Blocks) > 1 {
+				return m.Blocks[1:]
+			} else {
+				return []smdx.BlockElement{}
+			}
+		},
+		"fixedBlocks": func(m smdx.ModelElement) []smdx.BlockElement {
+			if len(m.Blocks) > 0 && m.Blocks[0].Type != "repeating" {
+				return m.Blocks[0:1]
+			} else {
+				return []smdx.BlockElement{}
+			}
+		},
+	})
+	modelTemplate := template.Must(t.Parse(model))
 
 	for _, file := range files {
 		if strings.HasPrefix(file.Name(), "smdx_") {
@@ -61,14 +115,26 @@ func main() {
 			}
 
 			for _, model := range def.Models {
-				modelId := "Model" + model.Id
 
-				modelTemplate.Execute(outputFile, map[string]string{
-					"Name": modelId,
+				err := modelTemplate.Execute(outputFile, map[string]interface{}{
+					"Model":   model,
+					"Strings": def.Strings[0],
 				})
+				if err != nil {
+					log.Fatalf("template execution failed: %v", err)
+				}
 			}
 
 			smdxFile.Close()
 		}
+	}
+
+	outputFile.Close()
+	cmd := exec.Command("/bin/sh", "-c", "gofmt -w "+outputFilename)
+	if err := cmd.Run(); err != nil {
+		log.Fatalf("gofmt failed: %v", err)
+	}
+	if err := os.Rename("../core/models.go.tmp", "../core/models.go"); err != nil {
+		log.Fatalf("replacing models.go failed: %v", err)
 	}
 }
