@@ -23,7 +23,7 @@ type {{.Name}} struct {
 
 func main() {
 	outputFilename := "../core/models.go.tmp"
-	outputFile, err := os.OpenFile(outputFilename, os.O_WRONLY|os.O_CREATE, 0644)
+	outputFile, err := os.OpenFile(outputFilename, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
