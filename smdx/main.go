@@ -14,7 +14,7 @@ type ModelDefinitionElement struct {
 
 type ModelElement struct {
 	XMLName xml.Name       `xml:"model"`
-	Id      string         `xml:"id,attr"`
+	Id      uint16         `xml:"id,attr"`
 	Name    string         `xml:"name,attr"`
 	Length  uint16         `xml:"len,attr"`
 	Blocks  []BlockElement `xml:"block"`
