@@ -15,6 +15,10 @@ const preamble = `// NOTICE
 // You can regenerate it by running 'go generate ./core' from the directory above.
 
 package core
+
+import (
+	"github.com/crabmusket/gosunspec/smdx"
+)
 `
 
 const model = `
@@ -42,6 +46,23 @@ type Block{{.Model.Id}} struct {
 func (self *Block{{.Model.Id}}) GetId() ModelId {
   return {{.Model.Id}}
 }
+
+var model{{.Model.Id}} = smdx.ModelElement{
+	Id: {{.Model.Id}},
+	Name: "{{.Model.Name}}",
+	Length: {{.Model.Length}},
+	Blocks: []smdx.BlockElement{ {{range .Model.Blocks}}
+			smdx.BlockElement{ {{if gt (len .Name) 0 }}Name: "{{.Name}}",{{end}}
+				Length: {{.Length}},
+				{{if gt (len .Type) 0 }}Type: "{{.Type}}",{{end}}
+				Points: []smdx.PointElement{ {{range .Points}}
+					smdx.PointElement{Id: "{{.Id}}",Offset: {{.Offset}},Type: "{{.Type}}"{{optF "ScaleFactor" .ScaleFactor}}{{optF "Units" .Units}}{{optF "Access" .Access}}{{if gt (.Length) 0}},Length: {{.Length}}{{end}}{{if .Mandatory}},Mandatory: {{.Mandatory}}{{end}},}, {{end}}
+				},
+			}, {{end}}
+	},
+}
+
+func init() { smdx.RegisterModel(&model{{.Model.Id}}) }
 `
 
 func main() {
@@ -91,6 +112,13 @@ func main() {
 				return m.Blocks[0:1]
 			} else {
 				return []smdx.BlockElement{}
+			}
+		},
+		"optF": func(n, v string) string {
+			if len(v) > 0 {
+				return "," + n + ": \"" + v + "\""
+			} else {
+				return ""
 			}
 		},
 	})
