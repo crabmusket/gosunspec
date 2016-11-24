@@ -60,7 +60,7 @@ func init() {
 				Length: {{.Length}},
 				{{if gt (len .Type) 0 }}Type: "{{.Type}}",{{end}}
 				Points: []smdx.PointElement{ {{range .Points}}
-					smdx.PointElement{Id: {{.Id|title}},Offset: {{.Offset}},Type: "{{.Type}}"{{optF "ScaleFactor" .ScaleFactor}}{{optF "Units" .Units}}{{optF "Access" .Access}}{{if gt (.Length) 0}},Length: {{.Length}}{{end}}{{if .Mandatory}},Mandatory: {{.Mandatory}}{{end}},}, {{end}}
+					smdx.PointElement{Id: {{.Id|title}},Offset: {{.Offset}},Type: typelabel.{{.Type|title}}{{optF "ScaleFactor" .ScaleFactor}}{{optF "Units" .Units}}{{optF "Access" .Access}}{{if gt (.Length) 0}},Length: {{.Length}}{{end}}{{if .Mandatory}},Mandatory: {{.Mandatory}}{{end}},}, {{end}}
 				},
 			}, {{end}}
 	}})
@@ -75,6 +75,7 @@ package model{{(index .Model.Models 0).Id}}
 import (
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 )
 {{template "model" .Model}}
 `
