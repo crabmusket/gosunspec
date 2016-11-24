@@ -174,7 +174,7 @@ func init() {
 				},
 			},
 			smdx.BlockElement{Name: "string",
-				Length: 28,
+				Length: 32,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
 					smdx.PointElement{Id: StrNMod, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
