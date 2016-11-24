@@ -2,7 +2,7 @@ package xml
 
 import (
 	"bytes"
-	sunspec "github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/models/model101"
 	"testing"
 )
 
@@ -49,7 +49,7 @@ func TestXmlParse(t *testing.T) {
 	if len(data[0].Devices[0].Models) != 1 {
 		t.Fatal("wrong number of models found")
 	}
-	if len(data[0].Devices[0].Models[0].Points) != 10 {
+	if len(data[0].Devices[0].Models[0].Points) != 11 {
 		t.Fatal("wrong number of points found")
 	}
 	if id := data[0].Devices[0].Models[0].Points[0].Id; id != "A" {
@@ -58,10 +58,10 @@ func TestXmlParse(t *testing.T) {
 	if value := data[0].Devices[0].Models[0].Points[0].Value; value != "3043" {
 		t.Error("wrong value in first point:", value)
 	}
-	if scale := data[0].Devices[0].Models[0].Points[1].ScaleFactor; scale != -1 {
-		t.Error("wrong scale factor in second point:", scale)
+	if scale := data[0].Devices[0].Models[0].Points[0].ScaleFactor; scale != -2 {
+		t.Error("wrong scale factor in first point:", scale)
 	}
-	if units := data[0].Devices[0].Models[0].Points[2].Unit; units != "Watts" {
+	if units := data[0].Devices[0].Models[0].Points[3].Unit; units != "Watts" {
 		t.Error("wrong units in third point:", units)
 	}
 }
@@ -77,14 +77,14 @@ func TestLoadDevice(t *testing.T) {
 		t.Fatal("wrong number of devices found")
 	}
 
-	inverter, ok := devices[0].Models[0].(*sunspec.Model101)
+	inverter, ok := devices[0].Models[0].(*model101.Block101)
 	if !ok {
 		t.Fatal("wrong type of first model")
 	}
-	if inverter.A != 30.43 {
+	if inverter.A != 3043 {
 		t.Error("wrong value of A", inverter.A)
 	}
-	if inverter.PhVphA != 221.6 {
+	if inverter.PhVphA != 2216 {
 		t.Error("wrong value of PhVphA", inverter.PhVphA)
 	}
 }
