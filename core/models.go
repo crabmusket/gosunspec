@@ -24,28 +24,27 @@ func (self *Block1) GetId() ModelId {
 	return 1
 }
 
-var model1 = smdx.ModelElement{
-	Id:     1,
-	Name:   "common",
-	Length: 66,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 66,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     1,
+		Name:   "common",
+		Length: 66,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 66,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Mn", Offset: 0, Type: "string", Length: 16, Mandatory: true},
-				smdx.PointElement{Id: "Md", Offset: 16, Type: "string", Length: 16, Mandatory: true},
-				smdx.PointElement{Id: "Opt", Offset: 32, Type: "string", Length: 8},
-				smdx.PointElement{Id: "Vr", Offset: 40, Type: "string", Length: 8},
-				smdx.PointElement{Id: "SN", Offset: 48, Type: "string", Length: 16, Mandatory: true},
-				smdx.PointElement{Id: "DA", Offset: 64, Type: "uint16", Access: "rw"},
-				smdx.PointElement{Id: "Pad", Offset: 65, Type: "pad", Access: "r"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Mn", Offset: 0, Type: "string", Length: 16, Mandatory: true},
+					smdx.PointElement{Id: "Md", Offset: 16, Type: "string", Length: 16, Mandatory: true},
+					smdx.PointElement{Id: "Opt", Offset: 32, Type: "string", Length: 8},
+					smdx.PointElement{Id: "Vr", Offset: 40, Type: "string", Length: 8},
+					smdx.PointElement{Id: "SN", Offset: 48, Type: "string", Length: 16, Mandatory: true},
+					smdx.PointElement{Id: "DA", Offset: 64, Type: "uint16", Access: "rw"},
+					smdx.PointElement{Id: "Pad", Offset: 65, Type: "pad", Access: "r"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model1) }
 
 // Block2 - Basic Aggregator - Aggregates a collection of models for a given model id
 
@@ -66,31 +65,30 @@ func (self *Block2) GetId() ModelId {
 	return 2
 }
 
-var model2 = smdx.ModelElement{
-	Id:     2,
-	Name:   "aggregator",
-	Length: 14,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 14,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     2,
+		Name:   "aggregator",
+		Length: 14,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 14,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "AID", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 1, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "UN", Offset: 2, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "St", Offset: 3, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StVnd", Offset: 4, Type: "enum16"},
-				smdx.PointElement{Id: "Evt", Offset: 5, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd", Offset: 7, Type: "bitfield32"},
-				smdx.PointElement{Id: "Ctl", Offset: 9, Type: "enum16"},
-				smdx.PointElement{Id: "CtlVnd", Offset: 10, Type: "enum32"},
-				smdx.PointElement{Id: "CtlVl", Offset: 12, Type: "enum32"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "AID", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 1, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "UN", Offset: 2, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "St", Offset: 3, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StVnd", Offset: 4, Type: "enum16"},
+					smdx.PointElement{Id: "Evt", Offset: 5, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd", Offset: 7, Type: "bitfield32"},
+					smdx.PointElement{Id: "Ctl", Offset: 9, Type: "enum16"},
+					smdx.PointElement{Id: "CtlVnd", Offset: 10, Type: "enum32"},
+					smdx.PointElement{Id: "CtlVl", Offset: 12, Type: "enum32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model2) }
 
 // Block3 - Secure Dataset Read Request - Request a digial signature over a specifed set of data registers
 
@@ -164,85 +162,84 @@ func (self *Block3) GetId() ModelId {
 	return 3
 }
 
-var model3 = smdx.ModelElement{
-	Id:     3,
-	Name:   "",
-	Length: 59,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 58,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     3,
+		Name:   "",
+		Length: 59,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 58,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "X", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off1", Offset: 1, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off2", Offset: 2, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off3", Offset: 3, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off4", Offset: 4, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off5", Offset: 5, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off6", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off7", Offset: 7, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off8", Offset: 8, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off9", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off10", Offset: 10, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off11", Offset: 11, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off12", Offset: 12, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off13", Offset: 13, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off14", Offset: 14, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off15", Offset: 15, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off16", Offset: 16, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off17", Offset: 17, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off18", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off19", Offset: 19, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off20", Offset: 20, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off21", Offset: 21, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off22", Offset: 22, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off23", Offset: 23, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off24", Offset: 24, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off25", Offset: 25, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off26", Offset: 26, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off27", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off28", Offset: 28, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off29", Offset: 29, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off30", Offset: 30, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off31", Offset: 31, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off32", Offset: 32, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off33", Offset: 33, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off34", Offset: 34, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off35", Offset: 35, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off36", Offset: 36, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off37", Offset: 37, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off38", Offset: 38, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off39", Offset: 39, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off40", Offset: 40, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off41", Offset: 41, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off42", Offset: 42, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off43", Offset: 43, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off44", Offset: 44, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off45", Offset: 45, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off46", Offset: 46, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off47", Offset: 47, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off48", Offset: 48, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off49", Offset: 49, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off50", Offset: 50, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ts", Offset: 51, Type: "uint32", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ms", Offset: 53, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Seq", Offset: 54, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Role", Offset: 55, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Alg", Offset: 56, Type: "enum16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 57, Type: "uint16", Access: "r", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "X", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off1", Offset: 1, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off2", Offset: 2, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off3", Offset: 3, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off4", Offset: 4, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off5", Offset: 5, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off6", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off7", Offset: 7, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off8", Offset: 8, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off9", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off10", Offset: 10, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off11", Offset: 11, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off12", Offset: 12, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off13", Offset: 13, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off14", Offset: 14, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off15", Offset: 15, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off16", Offset: 16, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off17", Offset: 17, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off18", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off19", Offset: 19, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off20", Offset: 20, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off21", Offset: 21, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off22", Offset: 22, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off23", Offset: 23, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off24", Offset: 24, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off25", Offset: 25, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off26", Offset: 26, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off27", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off28", Offset: 28, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off29", Offset: 29, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off30", Offset: 30, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off31", Offset: 31, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off32", Offset: 32, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off33", Offset: 33, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off34", Offset: 34, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off35", Offset: 35, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off36", Offset: 36, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off37", Offset: 37, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off38", Offset: 38, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off39", Offset: 39, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off40", Offset: 40, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off41", Offset: 41, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off42", Offset: 42, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off43", Offset: 43, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off44", Offset: 44, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off45", Offset: 45, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off46", Offset: 46, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off47", Offset: 47, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off48", Offset: 48, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off49", Offset: 49, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off50", Offset: 50, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ts", Offset: 51, Type: "uint32", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ms", Offset: 53, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Seq", Offset: 54, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Role", Offset: 55, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Alg", Offset: 56, Type: "enum16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 57, Type: "uint16", Access: "r", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+			smdx.BlockElement{
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model3) }
 
 // Block4 - Secure Dataset Read Response - Compute a digial signature over a specifed set of data registers
 
@@ -318,87 +315,86 @@ func (self *Block4) GetId() ModelId {
 	return 4
 }
 
-var model4 = smdx.ModelElement{
-	Id:     4,
-	Name:   "",
-	Length: 61,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 60,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     4,
+		Name:   "",
+		Length: 61,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 60,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "RqSeq", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Sts", Offset: 1, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "X", Offset: 2, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val1", Offset: 3, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val2", Offset: 4, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val3", Offset: 5, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val4", Offset: 6, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val5", Offset: 7, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val6", Offset: 8, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val7", Offset: 9, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val8", Offset: 10, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val9", Offset: 11, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val10", Offset: 12, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val11", Offset: 13, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val12", Offset: 14, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val13", Offset: 15, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val14", Offset: 16, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val15", Offset: 17, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val16", Offset: 18, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val17", Offset: 19, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val18", Offset: 20, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val19", Offset: 21, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val20", Offset: 22, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val21", Offset: 23, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val22", Offset: 24, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val23", Offset: 25, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val24", Offset: 26, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val25", Offset: 27, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val26", Offset: 28, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val27", Offset: 29, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val28", Offset: 30, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val29", Offset: 31, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val30", Offset: 32, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val31", Offset: 33, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val32", Offset: 34, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val33", Offset: 35, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val34", Offset: 36, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val35", Offset: 37, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val36", Offset: 38, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val37", Offset: 39, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val38", Offset: 40, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val39", Offset: 41, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val40", Offset: 42, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val41", Offset: 43, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val42", Offset: 44, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val43", Offset: 45, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val44", Offset: 46, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val45", Offset: 47, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val46", Offset: 48, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val47", Offset: 49, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val48", Offset: 50, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val49", Offset: 51, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Val50", Offset: 52, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Ts", Offset: 53, Type: "uint32", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Ms", Offset: 55, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Seq", Offset: 56, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Alm", Offset: 57, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "Alg", Offset: 58, Type: "enum16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 59, Type: "uint16", Access: "r", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "RqSeq", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Sts", Offset: 1, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "X", Offset: 2, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val1", Offset: 3, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val2", Offset: 4, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val3", Offset: 5, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val4", Offset: 6, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val5", Offset: 7, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val6", Offset: 8, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val7", Offset: 9, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val8", Offset: 10, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val9", Offset: 11, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val10", Offset: 12, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val11", Offset: 13, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val12", Offset: 14, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val13", Offset: 15, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val14", Offset: 16, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val15", Offset: 17, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val16", Offset: 18, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val17", Offset: 19, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val18", Offset: 20, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val19", Offset: 21, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val20", Offset: 22, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val21", Offset: 23, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val22", Offset: 24, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val23", Offset: 25, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val24", Offset: 26, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val25", Offset: 27, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val26", Offset: 28, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val27", Offset: 29, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val28", Offset: 30, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val29", Offset: 31, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val30", Offset: 32, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val31", Offset: 33, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val32", Offset: 34, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val33", Offset: 35, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val34", Offset: 36, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val35", Offset: 37, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val36", Offset: 38, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val37", Offset: 39, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val38", Offset: 40, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val39", Offset: 41, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val40", Offset: 42, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val41", Offset: 43, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val42", Offset: 44, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val43", Offset: 45, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val44", Offset: 46, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val45", Offset: 47, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val46", Offset: 48, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val47", Offset: 49, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val48", Offset: 50, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val49", Offset: 51, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Val50", Offset: 52, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Ts", Offset: 53, Type: "uint32", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Ms", Offset: 55, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Seq", Offset: 56, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Alm", Offset: 57, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "Alg", Offset: 58, Type: "enum16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 59, Type: "uint16", Access: "r", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+			smdx.BlockElement{
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model4) }
 
 // Block5 - Secure Write Request - Include a digial signature along with the control data
 
@@ -502,115 +498,114 @@ func (self *Block5) GetId() ModelId {
 	return 5
 }
 
-var model5 = smdx.ModelElement{
-	Id:     5,
-	Name:   "",
-	Length: 89,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 88,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     5,
+		Name:   "",
+		Length: 89,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 88,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "X", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off1", Offset: 1, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val1", Offset: 2, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off2", Offset: 3, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val2", Offset: 4, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off3", Offset: 5, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val3", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off4", Offset: 7, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val4", Offset: 8, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off5", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val5", Offset: 10, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off6", Offset: 11, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val6", Offset: 12, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off7", Offset: 13, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val7", Offset: 14, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off8", Offset: 15, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val8", Offset: 16, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off9", Offset: 17, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val9", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off10", Offset: 19, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val10", Offset: 20, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off11", Offset: 21, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val11", Offset: 22, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off12", Offset: 23, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val12", Offset: 24, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off13", Offset: 25, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val13", Offset: 26, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off14", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val14", Offset: 28, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off15", Offset: 29, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val15", Offset: 30, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off16", Offset: 31, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val16", Offset: 32, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off17", Offset: 33, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val17", Offset: 34, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off18", Offset: 35, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val18", Offset: 36, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off19", Offset: 37, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val19", Offset: 38, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off20", Offset: 39, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val20", Offset: 40, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off21", Offset: 41, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val21", Offset: 42, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off22", Offset: 43, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val22", Offset: 44, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off23", Offset: 45, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val23", Offset: 46, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off24", Offset: 47, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val24", Offset: 48, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off25", Offset: 49, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val25", Offset: 50, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off26", Offset: 51, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val26", Offset: 52, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off27", Offset: 53, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val27", Offset: 54, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off28", Offset: 55, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val28", Offset: 56, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off29", Offset: 57, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val29", Offset: 58, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off30", Offset: 59, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val30", Offset: 60, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off31", Offset: 61, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val31", Offset: 62, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off32", Offset: 63, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val32", Offset: 64, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off33", Offset: 65, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val33", Offset: 66, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off34", Offset: 67, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val34", Offset: 68, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off35", Offset: 69, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val35", Offset: 70, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off36", Offset: 71, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val36", Offset: 72, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off37", Offset: 73, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val37", Offset: 74, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off38", Offset: 75, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val38", Offset: 76, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off39", Offset: 77, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val39", Offset: 78, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off40", Offset: 79, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val40", Offset: 80, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ts", Offset: 81, Type: "uint32", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ms", Offset: 83, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Seq", Offset: 84, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Role", Offset: 85, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Alg", Offset: 86, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 87, Type: "uint16", Access: "rw", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "X", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off1", Offset: 1, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val1", Offset: 2, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off2", Offset: 3, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val2", Offset: 4, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off3", Offset: 5, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val3", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off4", Offset: 7, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val4", Offset: 8, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off5", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val5", Offset: 10, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off6", Offset: 11, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val6", Offset: 12, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off7", Offset: 13, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val7", Offset: 14, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off8", Offset: 15, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val8", Offset: 16, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off9", Offset: 17, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val9", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off10", Offset: 19, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val10", Offset: 20, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off11", Offset: 21, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val11", Offset: 22, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off12", Offset: 23, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val12", Offset: 24, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off13", Offset: 25, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val13", Offset: 26, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off14", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val14", Offset: 28, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off15", Offset: 29, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val15", Offset: 30, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off16", Offset: 31, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val16", Offset: 32, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off17", Offset: 33, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val17", Offset: 34, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off18", Offset: 35, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val18", Offset: 36, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off19", Offset: 37, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val19", Offset: 38, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off20", Offset: 39, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val20", Offset: 40, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off21", Offset: 41, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val21", Offset: 42, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off22", Offset: 43, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val22", Offset: 44, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off23", Offset: 45, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val23", Offset: 46, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off24", Offset: 47, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val24", Offset: 48, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off25", Offset: 49, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val25", Offset: 50, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off26", Offset: 51, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val26", Offset: 52, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off27", Offset: 53, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val27", Offset: 54, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off28", Offset: 55, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val28", Offset: 56, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off29", Offset: 57, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val29", Offset: 58, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off30", Offset: 59, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val30", Offset: 60, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off31", Offset: 61, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val31", Offset: 62, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off32", Offset: 63, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val32", Offset: 64, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off33", Offset: 65, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val33", Offset: 66, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off34", Offset: 67, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val34", Offset: 68, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off35", Offset: 69, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val35", Offset: 70, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off36", Offset: 71, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val36", Offset: 72, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off37", Offset: 73, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val37", Offset: 74, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off38", Offset: 75, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val38", Offset: 76, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off39", Offset: 77, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val39", Offset: 78, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off40", Offset: 79, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val40", Offset: 80, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ts", Offset: 81, Type: "uint32", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ms", Offset: 83, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Seq", Offset: 84, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Role", Offset: 85, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Alg", Offset: 86, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 87, Type: "uint16", Access: "rw", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "rw"},
+			smdx.BlockElement{
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "rw"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model5) }
 
 // Block6 - Secure Write Sequential Request - Include a digial signature along with the control data
 
@@ -716,117 +711,116 @@ func (self *Block6) GetId() ModelId {
 	return 6
 }
 
-var model6 = smdx.ModelElement{
-	Id:     6,
-	Name:   "",
-	Length: 91,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 90,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     6,
+		Name:   "",
+		Length: 91,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 90,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "X", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Off", Offset: 1, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val1", Offset: 2, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val2", Offset: 3, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val3", Offset: 4, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val4", Offset: 5, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val5", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val6", Offset: 7, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val7", Offset: 8, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val8", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val9", Offset: 10, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val10", Offset: 11, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val11", Offset: 12, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val12", Offset: 13, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val13", Offset: 14, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val14", Offset: 15, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val15", Offset: 16, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val16", Offset: 17, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val17", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val18", Offset: 19, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val19", Offset: 20, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val20", Offset: 21, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val21", Offset: 22, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val22", Offset: 23, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val23", Offset: 24, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val24", Offset: 25, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val25", Offset: 26, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val26", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val27", Offset: 28, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val28", Offset: 29, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val29", Offset: 30, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val30", Offset: 31, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val31", Offset: 32, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val32", Offset: 33, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val33", Offset: 34, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val34", Offset: 35, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val35", Offset: 36, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val36", Offset: 37, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val37", Offset: 38, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val38", Offset: 39, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val39", Offset: 40, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val40", Offset: 41, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val41", Offset: 42, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val42", Offset: 43, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val43", Offset: 44, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val44", Offset: 45, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val45", Offset: 46, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val46", Offset: 47, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val47", Offset: 48, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val48", Offset: 49, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val49", Offset: 50, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val50", Offset: 51, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val51", Offset: 52, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val52", Offset: 53, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val53", Offset: 54, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val54", Offset: 55, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val55", Offset: 56, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val56", Offset: 57, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val57", Offset: 58, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val58", Offset: 59, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val59", Offset: 60, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val60", Offset: 61, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val61", Offset: 62, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val62", Offset: 63, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val63", Offset: 64, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val64", Offset: 65, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val65", Offset: 66, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val66", Offset: 67, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val67", Offset: 68, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val68", Offset: 69, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val69", Offset: 70, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val70", Offset: 71, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val71", Offset: 72, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val72", Offset: 73, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val73", Offset: 74, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val74", Offset: 75, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val75", Offset: 76, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val76", Offset: 77, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val77", Offset: 78, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val78", Offset: 79, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val79", Offset: 80, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Val80", Offset: 81, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ts", Offset: 82, Type: "uint32", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ms", Offset: 84, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Seq", Offset: 85, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Role", Offset: 86, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Rsrvd", Offset: 87, Type: "pad", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Alg", Offset: 88, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 89, Type: "uint16", Access: "rw", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "X", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Off", Offset: 1, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val1", Offset: 2, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val2", Offset: 3, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val3", Offset: 4, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val4", Offset: 5, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val5", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val6", Offset: 7, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val7", Offset: 8, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val8", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val9", Offset: 10, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val10", Offset: 11, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val11", Offset: 12, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val12", Offset: 13, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val13", Offset: 14, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val14", Offset: 15, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val15", Offset: 16, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val16", Offset: 17, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val17", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val18", Offset: 19, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val19", Offset: 20, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val20", Offset: 21, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val21", Offset: 22, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val22", Offset: 23, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val23", Offset: 24, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val24", Offset: 25, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val25", Offset: 26, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val26", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val27", Offset: 28, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val28", Offset: 29, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val29", Offset: 30, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val30", Offset: 31, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val31", Offset: 32, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val32", Offset: 33, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val33", Offset: 34, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val34", Offset: 35, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val35", Offset: 36, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val36", Offset: 37, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val37", Offset: 38, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val38", Offset: 39, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val39", Offset: 40, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val40", Offset: 41, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val41", Offset: 42, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val42", Offset: 43, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val43", Offset: 44, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val44", Offset: 45, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val45", Offset: 46, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val46", Offset: 47, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val47", Offset: 48, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val48", Offset: 49, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val49", Offset: 50, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val50", Offset: 51, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val51", Offset: 52, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val52", Offset: 53, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val53", Offset: 54, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val54", Offset: 55, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val55", Offset: 56, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val56", Offset: 57, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val57", Offset: 58, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val58", Offset: 59, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val59", Offset: 60, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val60", Offset: 61, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val61", Offset: 62, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val62", Offset: 63, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val63", Offset: 64, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val64", Offset: 65, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val65", Offset: 66, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val66", Offset: 67, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val67", Offset: 68, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val68", Offset: 69, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val69", Offset: 70, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val70", Offset: 71, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val71", Offset: 72, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val72", Offset: 73, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val73", Offset: 74, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val74", Offset: 75, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val75", Offset: 76, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val76", Offset: 77, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val77", Offset: 78, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val78", Offset: 79, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val79", Offset: 80, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Val80", Offset: 81, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ts", Offset: 82, Type: "uint32", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ms", Offset: 84, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Seq", Offset: 85, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Role", Offset: 86, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Rsrvd", Offset: 87, Type: "pad", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Alg", Offset: 88, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 89, Type: "uint16", Access: "rw", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "rw"},
+			smdx.BlockElement{
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "rw"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model6) }
 
 // Block7 - Secure Write Response Model (DRAFT 1) - Include a digital signature over the response
 
@@ -852,37 +846,36 @@ func (self *Block7) GetId() ModelId {
 	return 7
 }
 
-var model7 = smdx.ModelElement{
-	Id:     7,
-	Name:   "",
-	Length: 11,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     7,
+		Name:   "",
+		Length: 11,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "RqSeq", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Sts", Offset: 1, Type: "enum16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Ts", Offset: 2, Type: "uint32", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Ms", Offset: 4, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Seq", Offset: 5, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Alm", Offset: 6, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "Rsrvd", Offset: 7, Type: "pad", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Alg", Offset: 8, Type: "enum16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "RqSeq", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Sts", Offset: 1, Type: "enum16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Ts", Offset: 2, Type: "uint32", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Ms", Offset: 4, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Seq", Offset: 5, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Alm", Offset: 6, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "Rsrvd", Offset: 7, Type: "pad", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Alg", Offset: 8, Type: "enum16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "rw"},
+			smdx.BlockElement{
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "rw"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model7) }
 
 // Block8 - Get Device Security Certificate - Security model for PKI
 
@@ -901,30 +894,29 @@ func (self *Block8) GetId() ModelId {
 	return 8
 }
 
-var model8 = smdx.ModelElement{
-	Id:     8,
-	Name:   "",
-	Length: 3,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 2,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     8,
+		Name:   "",
+		Length: 3,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 2,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Fmt", Offset: 0, Type: "enum16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 1, Type: "uint16", Access: "r", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Fmt", Offset: 0, Type: "enum16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 1, Type: "uint16", Access: "r", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Cert", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+			smdx.BlockElement{
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Cert", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model8) }
 
 // Block9 - Set Operator Security Certificate - Security model for PKI
 
@@ -1032,119 +1024,118 @@ func (self *Block9) GetId() ModelId {
 	return 9
 }
 
-var model9 = smdx.ModelElement{
-	Id:     9,
-	Name:   "",
-	Length: 93,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 92,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     9,
+		Name:   "",
+		Length: 93,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 92,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "CertUID", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "CertRole", Offset: 1, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Fmt", Offset: 2, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Typ", Offset: 3, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "TotLn", Offset: 4, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "FrgLn", Offset: 5, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg1", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg2", Offset: 7, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg3", Offset: 8, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg4", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg5", Offset: 10, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg6", Offset: 11, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg7", Offset: 12, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg8", Offset: 13, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg9", Offset: 14, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg10", Offset: 15, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg11", Offset: 16, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg12", Offset: 17, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg13", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg14", Offset: 19, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg15", Offset: 20, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg16", Offset: 21, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg17", Offset: 22, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg18", Offset: 23, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg19", Offset: 24, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg20", Offset: 25, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg21", Offset: 26, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg22", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg23", Offset: 28, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg24", Offset: 29, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg25", Offset: 30, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg26", Offset: 31, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg27", Offset: 32, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg28", Offset: 33, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg29", Offset: 34, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg30", Offset: 35, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg31", Offset: 36, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg32", Offset: 37, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg33", Offset: 38, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg34", Offset: 39, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg35", Offset: 40, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg36", Offset: 41, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg37", Offset: 42, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg38", Offset: 43, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg39", Offset: 44, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg40", Offset: 45, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg41", Offset: 46, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg42", Offset: 47, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg43", Offset: 48, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg44", Offset: 49, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg45", Offset: 50, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg46", Offset: 51, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg47", Offset: 52, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg48", Offset: 53, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg49", Offset: 54, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg50", Offset: 55, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg51", Offset: 56, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg52", Offset: 57, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg53", Offset: 58, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg54", Offset: 59, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg55", Offset: 60, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg56", Offset: 61, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg57", Offset: 62, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg58", Offset: 63, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg59", Offset: 64, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg60", Offset: 65, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg61", Offset: 66, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg62", Offset: 67, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg63", Offset: 68, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg64", Offset: 69, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg65", Offset: 70, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg66", Offset: 71, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg67", Offset: 72, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg68", Offset: 73, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg69", Offset: 74, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg70", Offset: 75, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg71", Offset: 76, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg72", Offset: 77, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg73", Offset: 78, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg74", Offset: 79, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg75", Offset: 80, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg78", Offset: 81, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg79", Offset: 82, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Frg80", Offset: 83, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ts", Offset: 84, Type: "uint32", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ms", Offset: 86, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Seq", Offset: 87, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "UID", Offset: 88, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Role", Offset: 89, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Alg", Offset: 90, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 91, Type: "uint16", Access: "rw", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "CertUID", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "CertRole", Offset: 1, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Fmt", Offset: 2, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Typ", Offset: 3, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "TotLn", Offset: 4, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "FrgLn", Offset: 5, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg1", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg2", Offset: 7, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg3", Offset: 8, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg4", Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg5", Offset: 10, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg6", Offset: 11, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg7", Offset: 12, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg8", Offset: 13, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg9", Offset: 14, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg10", Offset: 15, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg11", Offset: 16, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg12", Offset: 17, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg13", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg14", Offset: 19, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg15", Offset: 20, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg16", Offset: 21, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg17", Offset: 22, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg18", Offset: 23, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg19", Offset: 24, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg20", Offset: 25, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg21", Offset: 26, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg22", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg23", Offset: 28, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg24", Offset: 29, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg25", Offset: 30, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg26", Offset: 31, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg27", Offset: 32, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg28", Offset: 33, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg29", Offset: 34, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg30", Offset: 35, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg31", Offset: 36, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg32", Offset: 37, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg33", Offset: 38, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg34", Offset: 39, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg35", Offset: 40, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg36", Offset: 41, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg37", Offset: 42, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg38", Offset: 43, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg39", Offset: 44, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg40", Offset: 45, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg41", Offset: 46, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg42", Offset: 47, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg43", Offset: 48, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg44", Offset: 49, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg45", Offset: 50, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg46", Offset: 51, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg47", Offset: 52, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg48", Offset: 53, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg49", Offset: 54, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg50", Offset: 55, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg51", Offset: 56, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg52", Offset: 57, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg53", Offset: 58, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg54", Offset: 59, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg55", Offset: 60, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg56", Offset: 61, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg57", Offset: 62, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg58", Offset: 63, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg59", Offset: 64, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg60", Offset: 65, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg61", Offset: 66, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg62", Offset: 67, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg63", Offset: 68, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg64", Offset: 69, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg65", Offset: 70, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg66", Offset: 71, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg67", Offset: 72, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg68", Offset: 73, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg69", Offset: 74, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg70", Offset: 75, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg71", Offset: 76, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg72", Offset: 77, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg73", Offset: 78, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg74", Offset: 79, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg75", Offset: 80, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg78", Offset: 81, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg79", Offset: 82, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Frg80", Offset: 83, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ts", Offset: 84, Type: "uint32", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ms", Offset: 86, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Seq", Offset: 87, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "UID", Offset: 88, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Role", Offset: 89, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Alg", Offset: 90, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 91, Type: "uint16", Access: "rw", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Cert", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
+			smdx.BlockElement{
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Cert", Offset: 0, Type: "uint16", Access: "rw", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model9) }
 
 // Block10 - Communication Interface Header - To be included first for a complete interface description
 
@@ -1159,25 +1150,24 @@ func (self *Block10) GetId() ModelId {
 	return 10
 }
 
-var model10 = smdx.ModelElement{
-	Id:     10,
-	Name:   "",
-	Length: 4,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 4,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     10,
+		Name:   "",
+		Length: 4,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 4,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "St", Offset: 0, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "Ctl", Offset: 1, Type: "uint16", Access: "rw"},
-				smdx.PointElement{Id: "Typ", Offset: 2, Type: "enum16"},
-				smdx.PointElement{Id: "Pad", Offset: 3, Type: "pad"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "St", Offset: 0, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "Ctl", Offset: 1, Type: "uint16", Access: "rw"},
+					smdx.PointElement{Id: "Typ", Offset: 2, Type: "enum16"},
+					smdx.PointElement{Id: "Pad", Offset: 3, Type: "pad"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model10) }
 
 // Block11 - Ethernet Link Layer - Include to support a wired ethernet port
 
@@ -1195,28 +1185,27 @@ func (self *Block11) GetId() ModelId {
 	return 11
 }
 
-var model11 = smdx.ModelElement{
-	Id:     11,
-	Name:   "",
-	Length: 13,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 13,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     11,
+		Name:   "",
+		Length: 13,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 13,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Spd", Offset: 0, Type: "uint16", Units: "Mbps", Mandatory: true},
-				smdx.PointElement{Id: "CfgSt", Offset: 1, Type: "bitfield16", Mandatory: true},
-				smdx.PointElement{Id: "St", Offset: 2, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "MAC", Offset: 3, Type: "eui48"},
-				smdx.PointElement{Id: "Nam", Offset: 7, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "Ctl", Offset: 11, Type: "bitfield16", Access: "rw"},
-				smdx.PointElement{Id: "FrcSpd", Offset: 12, Type: "uint16", Units: "Mbps", Access: "rw"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Spd", Offset: 0, Type: "uint16", Units: "Mbps", Mandatory: true},
+					smdx.PointElement{Id: "CfgSt", Offset: 1, Type: "bitfield16", Mandatory: true},
+					smdx.PointElement{Id: "St", Offset: 2, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "MAC", Offset: 3, Type: "eui48"},
+					smdx.PointElement{Id: "Nam", Offset: 7, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "Ctl", Offset: 11, Type: "bitfield16", Access: "rw"},
+					smdx.PointElement{Id: "FrcSpd", Offset: 12, Type: "uint16", Units: "Mbps", Access: "rw"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model11) }
 
 // Block12 - IPv4 - Include to support an IPv4 protocol stack on this interface
 
@@ -1243,37 +1232,36 @@ func (self *Block12) GetId() ModelId {
 	return 12
 }
 
-var model12 = smdx.ModelElement{
-	Id:     12,
-	Name:   "",
-	Length: 98,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 98,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     12,
+		Name:   "",
+		Length: 98,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 98,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "CfgSt", Offset: 4, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "ChgSt", Offset: 5, Type: "bitfield16", Mandatory: true},
-				smdx.PointElement{Id: "Cap", Offset: 6, Type: "bitfield16", Mandatory: true},
-				smdx.PointElement{Id: "Cfg", Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ctl", Offset: 8, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Addr", Offset: 9, Type: "string", Access: "rw", Length: 8, Mandatory: true},
-				smdx.PointElement{Id: "Msk", Offset: 17, Type: "string", Access: "rw", Length: 8, Mandatory: true},
-				smdx.PointElement{Id: "Gw", Offset: 25, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "DNS1", Offset: 33, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "DNS2", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "NTP1", Offset: 49, Type: "string", Access: "rw", Length: 12},
-				smdx.PointElement{Id: "NTP2", Offset: 61, Type: "string", Access: "rw", Length: 12},
-				smdx.PointElement{Id: "DomNam", Offset: 73, Type: "string", Access: "rw", Length: 12},
-				smdx.PointElement{Id: "HostNam", Offset: 85, Type: "string", Access: "rw", Length: 12},
-				smdx.PointElement{Id: "Pad", Offset: 97, Type: "pad"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "CfgSt", Offset: 4, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "ChgSt", Offset: 5, Type: "bitfield16", Mandatory: true},
+					smdx.PointElement{Id: "Cap", Offset: 6, Type: "bitfield16", Mandatory: true},
+					smdx.PointElement{Id: "Cfg", Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ctl", Offset: 8, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Addr", Offset: 9, Type: "string", Access: "rw", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: "Msk", Offset: 17, Type: "string", Access: "rw", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: "Gw", Offset: 25, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "DNS1", Offset: 33, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "DNS2", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "NTP1", Offset: 49, Type: "string", Access: "rw", Length: 12},
+					smdx.PointElement{Id: "NTP2", Offset: 61, Type: "string", Access: "rw", Length: 12},
+					smdx.PointElement{Id: "DomNam", Offset: 73, Type: "string", Access: "rw", Length: 12},
+					smdx.PointElement{Id: "HostNam", Offset: 85, Type: "string", Access: "rw", Length: 12},
+					smdx.PointElement{Id: "Pad", Offset: 97, Type: "pad"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model12) }
 
 // Block13 - IPv6 - Include to support an IPv6 protocol stack on this interface
 
@@ -1300,37 +1288,36 @@ func (self *Block13) GetId() ModelId {
 	return 13
 }
 
-var model13 = smdx.ModelElement{
-	Id:     13,
-	Name:   "",
-	Length: 174,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 174,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     13,
+		Name:   "",
+		Length: 174,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 174,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "CfgSt", Offset: 4, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "ChgSt", Offset: 5, Type: "bitfield16", Mandatory: true},
-				smdx.PointElement{Id: "Cap", Offset: 6, Type: "bitfield16", Mandatory: true},
-				smdx.PointElement{Id: "Cfg", Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Ctl", Offset: 8, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Addr", Offset: 9, Type: "string", Access: "rw", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "CIDR", Offset: 29, Type: "string", Access: "rw", Length: 20},
-				smdx.PointElement{Id: "Gw", Offset: 49, Type: "string", Access: "rw", Length: 20},
-				smdx.PointElement{Id: "DNS1", Offset: 69, Type: "string", Access: "rw", Length: 20},
-				smdx.PointElement{Id: "DNS2", Offset: 89, Type: "string", Access: "rw", Length: 20},
-				smdx.PointElement{Id: "NTP1", Offset: 109, Type: "string", Access: "rw", Length: 20},
-				smdx.PointElement{Id: "NTP2", Offset: 129, Type: "string", Access: "rw", Length: 20},
-				smdx.PointElement{Id: "DomNam", Offset: 149, Type: "string", Access: "rw", Length: 12},
-				smdx.PointElement{Id: "HostNam", Offset: 161, Type: "string", Access: "rw", Length: 12},
-				smdx.PointElement{Id: "Pad", Offset: 173, Type: "pad"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "CfgSt", Offset: 4, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "ChgSt", Offset: 5, Type: "bitfield16", Mandatory: true},
+					smdx.PointElement{Id: "Cap", Offset: 6, Type: "bitfield16", Mandatory: true},
+					smdx.PointElement{Id: "Cfg", Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Ctl", Offset: 8, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Addr", Offset: 9, Type: "string", Access: "rw", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "CIDR", Offset: 29, Type: "string", Access: "rw", Length: 20},
+					smdx.PointElement{Id: "Gw", Offset: 49, Type: "string", Access: "rw", Length: 20},
+					smdx.PointElement{Id: "DNS1", Offset: 69, Type: "string", Access: "rw", Length: 20},
+					smdx.PointElement{Id: "DNS2", Offset: 89, Type: "string", Access: "rw", Length: 20},
+					smdx.PointElement{Id: "NTP1", Offset: 109, Type: "string", Access: "rw", Length: 20},
+					smdx.PointElement{Id: "NTP2", Offset: 129, Type: "string", Access: "rw", Length: 20},
+					smdx.PointElement{Id: "DomNam", Offset: 149, Type: "string", Access: "rw", Length: 12},
+					smdx.PointElement{Id: "HostNam", Offset: 161, Type: "string", Access: "rw", Length: 12},
+					smdx.PointElement{Id: "Pad", Offset: 173, Type: "pad"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model13) }
 
 // Block14 - Proxy Server - Include this block to allow for a proxy server
 
@@ -1349,29 +1336,28 @@ func (self *Block14) GetId() ModelId {
 	return 14
 }
 
-var model14 = smdx.ModelElement{
-	Id:     14,
-	Name:   "",
-	Length: 52,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 52,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     14,
+		Name:   "",
+		Length: 52,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 52,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "Cap", Offset: 4, Type: "bitfield16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Cfg", Offset: 5, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Typ", Offset: 6, Type: "bitfield16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Addr", Offset: 7, Type: "string", Access: "rw", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "Port", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "User", Offset: 28, Type: "string", Access: "rw", Length: 12},
-				smdx.PointElement{Id: "Pw", Offset: 40, Type: "string", Access: "rw", Length: 12},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "Cap", Offset: 4, Type: "bitfield16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Cfg", Offset: 5, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Typ", Offset: 6, Type: "bitfield16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Addr", Offset: 7, Type: "string", Access: "rw", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "Port", Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "User", Offset: 28, Type: "string", Access: "rw", Length: 12},
+					smdx.PointElement{Id: "Pw", Offset: 40, Type: "string", Access: "rw", Length: 12},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model14) }
 
 // Block15 - Interface Counters Model - Interface counters
 
@@ -1395,34 +1381,33 @@ func (self *Block15) GetId() ModelId {
 	return 15
 }
 
-var model15 = smdx.ModelElement{
-	Id:     15,
-	Name:   "",
-	Length: 24,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 24,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     15,
+		Name:   "",
+		Length: 24,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 24,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Clr", Offset: 0, Type: "uint16", Access: "rw"},
-				smdx.PointElement{Id: "InCnt", Offset: 1, Type: "acc32"},
-				smdx.PointElement{Id: "InUcCnt", Offset: 3, Type: "acc32"},
-				smdx.PointElement{Id: "InNUcCnt", Offset: 5, Type: "acc32"},
-				smdx.PointElement{Id: "InDscCnt", Offset: 7, Type: "acc32"},
-				smdx.PointElement{Id: "InErrCnt", Offset: 9, Type: "acc32"},
-				smdx.PointElement{Id: "InUnkCnt", Offset: 11, Type: "acc32"},
-				smdx.PointElement{Id: "OutCnt", Offset: 13, Type: "acc32"},
-				smdx.PointElement{Id: "OutUcCnt", Offset: 15, Type: "acc32"},
-				smdx.PointElement{Id: "OutNUcCnt", Offset: 17, Type: "acc32"},
-				smdx.PointElement{Id: "OutDscCnt", Offset: 19, Type: "acc32"},
-				smdx.PointElement{Id: "OutErrCnt", Offset: 21, Type: "acc32"},
-				smdx.PointElement{Id: "Pad", Offset: 23, Type: "pad"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Clr", Offset: 0, Type: "uint16", Access: "rw"},
+					smdx.PointElement{Id: "InCnt", Offset: 1, Type: "acc32"},
+					smdx.PointElement{Id: "InUcCnt", Offset: 3, Type: "acc32"},
+					smdx.PointElement{Id: "InNUcCnt", Offset: 5, Type: "acc32"},
+					smdx.PointElement{Id: "InDscCnt", Offset: 7, Type: "acc32"},
+					smdx.PointElement{Id: "InErrCnt", Offset: 9, Type: "acc32"},
+					smdx.PointElement{Id: "InUnkCnt", Offset: 11, Type: "acc32"},
+					smdx.PointElement{Id: "OutCnt", Offset: 13, Type: "acc32"},
+					smdx.PointElement{Id: "OutUcCnt", Offset: 15, Type: "acc32"},
+					smdx.PointElement{Id: "OutNUcCnt", Offset: 17, Type: "acc32"},
+					smdx.PointElement{Id: "OutDscCnt", Offset: 19, Type: "acc32"},
+					smdx.PointElement{Id: "OutErrCnt", Offset: 21, Type: "acc32"},
+					smdx.PointElement{Id: "Pad", Offset: 23, Type: "pad"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model15) }
 
 // Block16 - Simple IP Network - Include this model for a simple IPv4 network stack
 
@@ -1444,32 +1429,31 @@ func (self *Block16) GetId() ModelId {
 	return 16
 }
 
-var model16 = smdx.ModelElement{
-	Id:     16,
-	Name:   "",
-	Length: 52,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 52,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     16,
+		Name:   "",
+		Length: 52,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 52,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "Cfg", Offset: 4, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "Ctl", Offset: 5, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Addr", Offset: 6, Type: "string", Access: "rw", Length: 8, Mandatory: true},
-				smdx.PointElement{Id: "Msk", Offset: 14, Type: "string", Access: "rw", Length: 8, Mandatory: true},
-				smdx.PointElement{Id: "Gw", Offset: 22, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "DNS1", Offset: 30, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "DNS2", Offset: 38, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "MAC", Offset: 46, Type: "uint64", Access: "r"},
-				smdx.PointElement{Id: "LnkCtl", Offset: 50, Type: "bitfield16", Access: "rw"},
-				smdx.PointElement{Id: "Pad", Offset: 51, Type: "pad"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "Cfg", Offset: 4, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "Ctl", Offset: 5, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Addr", Offset: 6, Type: "string", Access: "rw", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: "Msk", Offset: 14, Type: "string", Access: "rw", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: "Gw", Offset: 22, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "DNS1", Offset: 30, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "DNS2", Offset: 38, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "MAC", Offset: 46, Type: "uint64", Access: "r"},
+					smdx.PointElement{Id: "LnkCtl", Offset: 50, Type: "bitfield16", Access: "rw"},
+					smdx.PointElement{Id: "Pad", Offset: 51, Type: "pad"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model16) }
 
 // Block17 - Serial Interface - Include this model for serial interface configuration support
 
@@ -1488,29 +1472,28 @@ func (self *Block17) GetId() ModelId {
 	return 17
 }
 
-var model17 = smdx.ModelElement{
-	Id:     17,
-	Name:   "",
-	Length: 12,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 12,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     17,
+		Name:   "",
+		Length: 12,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 12,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "Rte", Offset: 4, Type: "uint32", Units: "bps", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Bits", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Pty", Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Dup", Offset: 8, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "Flw", Offset: 9, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "Typ", Offset: 10, Type: "enum16"},
-				smdx.PointElement{Id: "Pcol", Offset: 11, Type: "enum16"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "Rte", Offset: 4, Type: "uint32", Units: "bps", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Bits", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Pty", Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Dup", Offset: 8, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "Flw", Offset: 9, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "Typ", Offset: 10, Type: "enum16"},
+					smdx.PointElement{Id: "Pcol", Offset: 11, Type: "enum16"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model17) }
 
 // Block18 - Cellular Link - Include this model to support a cellular interface link
 
@@ -1526,26 +1509,25 @@ func (self *Block18) GetId() ModelId {
 	return 18
 }
 
-var model18 = smdx.ModelElement{
-	Id:     18,
-	Name:   "",
-	Length: 22,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 22,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     18,
+		Name:   "",
+		Length: 22,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 22,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "IMEI", Offset: 4, Type: "uint32", Access: "rw"},
-				smdx.PointElement{Id: "APN", Offset: 6, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "Num", Offset: 10, Type: "string", Access: "rw", Length: 6},
-				smdx.PointElement{Id: "Pin", Offset: 16, Type: "string", Access: "rw", Length: 6},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "IMEI", Offset: 4, Type: "uint32", Access: "rw"},
+					smdx.PointElement{Id: "APN", Offset: 6, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "Num", Offset: 10, Type: "string", Access: "rw", Length: 6},
+					smdx.PointElement{Id: "Pin", Offset: 16, Type: "string", Access: "rw", Length: 6},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model18) }
 
 // Block19 - PPP Link - Include this model to configure a Point-to-Point Protocol link
 
@@ -1566,31 +1548,30 @@ func (self *Block19) GetId() ModelId {
 	return 19
 }
 
-var model19 = smdx.ModelElement{
-	Id:     19,
-	Name:   "",
-	Length: 30,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 30,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     19,
+		Name:   "",
+		Length: 30,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 30,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
-				smdx.PointElement{Id: "Rte", Offset: 4, Type: "uint32", Units: "bps", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Bits", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Pty", Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Dup", Offset: 8, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "Flw", Offset: 9, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "Auth", Offset: 10, Type: "enum16"},
-				smdx.PointElement{Id: "UsrNam", Offset: 11, Type: "string", Length: 12},
-				smdx.PointElement{Id: "Pw", Offset: 23, Type: "string", Length: 6},
-				smdx.PointElement{Id: "Pad", Offset: 29, Type: "pad"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Access: "rw", Length: 4},
+					smdx.PointElement{Id: "Rte", Offset: 4, Type: "uint32", Units: "bps", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Bits", Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Pty", Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Dup", Offset: 8, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "Flw", Offset: 9, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "Auth", Offset: 10, Type: "enum16"},
+					smdx.PointElement{Id: "UsrNam", Offset: 11, Type: "string", Length: 12},
+					smdx.PointElement{Id: "Pw", Offset: 23, Type: "string", Length: 6},
+					smdx.PointElement{Id: "Pad", Offset: 29, Type: "pad"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model19) }
 
 // Block101 - Inverter (Single Phase) - Include this model for single phase inverter monitoring
 
@@ -1644,64 +1625,63 @@ func (self *Block101) GetId() ModelId {
 	return 101
 }
 
-var model101 = smdx.ModelElement{
-	Id:     101,
-	Name:   "inverter",
-	Length: 50,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 50,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     101,
+		Name:   "inverter",
+		Length: 50,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 50,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 1, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 2, Type: "uint16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "AphC", Offset: 3, Type: "uint16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "PPVphAB", Offset: 5, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphBC", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 9, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphC", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "V_SF", Offset: 11, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "W", Offset: 12, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "W_SF", Offset: 13, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 16, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VA_SF", Offset: 17, Type: "sunssf"},
-				smdx.PointElement{Id: "VAr", Offset: 18, Type: "int16", ScaleFactor: "VAr_SF", Units: "var"},
-				smdx.PointElement{Id: "VAr_SF", Offset: 19, Type: "sunssf"},
-				smdx.PointElement{Id: "PF", Offset: 20, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PF_SF", Offset: 21, Type: "sunssf"},
-				smdx.PointElement{Id: "WH", Offset: 22, Type: "acc32", ScaleFactor: "WH_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "WH_SF", Offset: 24, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DCA", Offset: 25, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A"},
-				smdx.PointElement{Id: "DCA_SF", Offset: 26, Type: "sunssf"},
-				smdx.PointElement{Id: "DCV", Offset: 27, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "DCV_SF", Offset: 28, Type: "sunssf"},
-				smdx.PointElement{Id: "DCW", Offset: 29, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
-				smdx.PointElement{Id: "DCW_SF", Offset: 30, Type: "sunssf"},
-				smdx.PointElement{Id: "TmpCab", Offset: 31, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "TmpSnk", Offset: 32, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "TmpTrns", Offset: 33, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "TmpOt", Offset: 34, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "Tmp_SF", Offset: 35, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "St", Offset: 36, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StVnd", Offset: 37, Type: "enum16"},
-				smdx.PointElement{Id: "Evt1", Offset: 38, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 40, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 42, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 44, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd3", Offset: 46, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd4", Offset: 48, Type: "bitfield32"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 1, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 2, Type: "uint16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "AphC", Offset: 3, Type: "uint16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "PPVphAB", Offset: 5, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphBC", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 9, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphC", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "V_SF", Offset: 11, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "W", Offset: 12, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "W_SF", Offset: 13, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 16, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VA_SF", Offset: 17, Type: "sunssf"},
+					smdx.PointElement{Id: "VAr", Offset: 18, Type: "int16", ScaleFactor: "VAr_SF", Units: "var"},
+					smdx.PointElement{Id: "VAr_SF", Offset: 19, Type: "sunssf"},
+					smdx.PointElement{Id: "PF", Offset: 20, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PF_SF", Offset: 21, Type: "sunssf"},
+					smdx.PointElement{Id: "WH", Offset: 22, Type: "acc32", ScaleFactor: "WH_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "WH_SF", Offset: 24, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DCA", Offset: 25, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A"},
+					smdx.PointElement{Id: "DCA_SF", Offset: 26, Type: "sunssf"},
+					smdx.PointElement{Id: "DCV", Offset: 27, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "DCV_SF", Offset: 28, Type: "sunssf"},
+					smdx.PointElement{Id: "DCW", Offset: 29, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
+					smdx.PointElement{Id: "DCW_SF", Offset: 30, Type: "sunssf"},
+					smdx.PointElement{Id: "TmpCab", Offset: 31, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "TmpSnk", Offset: 32, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "TmpTrns", Offset: 33, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "TmpOt", Offset: 34, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "Tmp_SF", Offset: 35, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "St", Offset: 36, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StVnd", Offset: 37, Type: "enum16"},
+					smdx.PointElement{Id: "Evt1", Offset: 38, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 40, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 42, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 44, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd3", Offset: 46, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd4", Offset: 48, Type: "bitfield32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model101) }
 
 // Block102 - Inverter (Split-Phase) - Include this model for split phase inverter monitoring
 
@@ -1755,64 +1735,63 @@ func (self *Block102) GetId() ModelId {
 	return 102
 }
 
-var model102 = smdx.ModelElement{
-	Id:     102,
-	Name:   "inverter",
-	Length: 50,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 50,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     102,
+		Name:   "inverter",
+		Length: 50,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 50,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 1, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 2, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 3, Type: "uint16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "PPVphAB", Offset: 5, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphBC", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 9, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphC", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "V_SF", Offset: 11, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "W", Offset: 12, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "W_SF", Offset: 13, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 16, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VA_SF", Offset: 17, Type: "sunssf"},
-				smdx.PointElement{Id: "VAr", Offset: 18, Type: "int16", ScaleFactor: "VAr_SF", Units: "var"},
-				smdx.PointElement{Id: "VAr_SF", Offset: 19, Type: "sunssf"},
-				smdx.PointElement{Id: "PF", Offset: 20, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PF_SF", Offset: 21, Type: "sunssf"},
-				smdx.PointElement{Id: "WH", Offset: 22, Type: "acc32", ScaleFactor: "WH_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "WH_SF", Offset: 24, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DCA", Offset: 25, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A"},
-				smdx.PointElement{Id: "DCA_SF", Offset: 26, Type: "sunssf"},
-				smdx.PointElement{Id: "DCV", Offset: 27, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "DCV_SF", Offset: 28, Type: "sunssf"},
-				smdx.PointElement{Id: "DCW", Offset: 29, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
-				smdx.PointElement{Id: "DCW_SF", Offset: 30, Type: "sunssf"},
-				smdx.PointElement{Id: "TmpCab", Offset: 31, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "TmpSnk", Offset: 32, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "TmpTrns", Offset: 33, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "TmpOt", Offset: 34, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "Tmp_SF", Offset: 35, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "St", Offset: 36, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StVnd", Offset: 37, Type: "enum16"},
-				smdx.PointElement{Id: "Evt1", Offset: 38, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 40, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 42, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 44, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd3", Offset: 46, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd4", Offset: 48, Type: "bitfield32"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 1, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 2, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 3, Type: "uint16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "PPVphAB", Offset: 5, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphBC", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 9, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphC", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "V_SF", Offset: 11, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "W", Offset: 12, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "W_SF", Offset: 13, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 16, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VA_SF", Offset: 17, Type: "sunssf"},
+					smdx.PointElement{Id: "VAr", Offset: 18, Type: "int16", ScaleFactor: "VAr_SF", Units: "var"},
+					smdx.PointElement{Id: "VAr_SF", Offset: 19, Type: "sunssf"},
+					smdx.PointElement{Id: "PF", Offset: 20, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PF_SF", Offset: 21, Type: "sunssf"},
+					smdx.PointElement{Id: "WH", Offset: 22, Type: "acc32", ScaleFactor: "WH_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "WH_SF", Offset: 24, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DCA", Offset: 25, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A"},
+					smdx.PointElement{Id: "DCA_SF", Offset: 26, Type: "sunssf"},
+					smdx.PointElement{Id: "DCV", Offset: 27, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "DCV_SF", Offset: 28, Type: "sunssf"},
+					smdx.PointElement{Id: "DCW", Offset: 29, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
+					smdx.PointElement{Id: "DCW_SF", Offset: 30, Type: "sunssf"},
+					smdx.PointElement{Id: "TmpCab", Offset: 31, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "TmpSnk", Offset: 32, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "TmpTrns", Offset: 33, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "TmpOt", Offset: 34, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "Tmp_SF", Offset: 35, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "St", Offset: 36, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StVnd", Offset: 37, Type: "enum16"},
+					smdx.PointElement{Id: "Evt1", Offset: 38, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 40, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 42, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 44, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd3", Offset: 46, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd4", Offset: 48, Type: "bitfield32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model102) }
 
 // Block103 - Inverter (Three Phase) - Include this model for three phase inverter monitoring
 
@@ -1866,64 +1845,63 @@ func (self *Block103) GetId() ModelId {
 	return 103
 }
 
-var model103 = smdx.ModelElement{
-	Id:     103,
-	Name:   "inverter",
-	Length: 50,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 50,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     103,
+		Name:   "inverter",
+		Length: 50,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 50,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 1, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 2, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 3, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "PPVphAB", Offset: 5, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphBC", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 9, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphC", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 11, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "W", Offset: 12, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "W_SF", Offset: 13, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 16, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VA_SF", Offset: 17, Type: "sunssf"},
-				smdx.PointElement{Id: "VAr", Offset: 18, Type: "int16", ScaleFactor: "VAr_SF", Units: "var"},
-				smdx.PointElement{Id: "VAr_SF", Offset: 19, Type: "sunssf"},
-				smdx.PointElement{Id: "PF", Offset: 20, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PF_SF", Offset: 21, Type: "sunssf"},
-				smdx.PointElement{Id: "WH", Offset: 22, Type: "acc32", ScaleFactor: "WH_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "WH_SF", Offset: 24, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DCA", Offset: 25, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A"},
-				smdx.PointElement{Id: "DCA_SF", Offset: 26, Type: "sunssf"},
-				smdx.PointElement{Id: "DCV", Offset: 27, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "DCV_SF", Offset: 28, Type: "sunssf"},
-				smdx.PointElement{Id: "DCW", Offset: 29, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
-				smdx.PointElement{Id: "DCW_SF", Offset: 30, Type: "sunssf"},
-				smdx.PointElement{Id: "TmpCab", Offset: 31, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "TmpSnk", Offset: 32, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "TmpTrns", Offset: 33, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "TmpOt", Offset: 34, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "Tmp_SF", Offset: 35, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "St", Offset: 36, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StVnd", Offset: 37, Type: "enum16"},
-				smdx.PointElement{Id: "Evt1", Offset: 38, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 40, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 42, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 44, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd3", Offset: 46, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd4", Offset: 48, Type: "bitfield32"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 1, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 2, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 3, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "PPVphAB", Offset: 5, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphBC", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 9, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphC", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 11, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "W", Offset: 12, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "W_SF", Offset: 13, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 16, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VA_SF", Offset: 17, Type: "sunssf"},
+					smdx.PointElement{Id: "VAr", Offset: 18, Type: "int16", ScaleFactor: "VAr_SF", Units: "var"},
+					smdx.PointElement{Id: "VAr_SF", Offset: 19, Type: "sunssf"},
+					smdx.PointElement{Id: "PF", Offset: 20, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PF_SF", Offset: 21, Type: "sunssf"},
+					smdx.PointElement{Id: "WH", Offset: 22, Type: "acc32", ScaleFactor: "WH_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "WH_SF", Offset: 24, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DCA", Offset: 25, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A"},
+					smdx.PointElement{Id: "DCA_SF", Offset: 26, Type: "sunssf"},
+					smdx.PointElement{Id: "DCV", Offset: 27, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "DCV_SF", Offset: 28, Type: "sunssf"},
+					smdx.PointElement{Id: "DCW", Offset: 29, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
+					smdx.PointElement{Id: "DCW_SF", Offset: 30, Type: "sunssf"},
+					smdx.PointElement{Id: "TmpCab", Offset: 31, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "TmpSnk", Offset: 32, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "TmpTrns", Offset: 33, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "TmpOt", Offset: 34, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "Tmp_SF", Offset: 35, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "St", Offset: 36, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StVnd", Offset: 37, Type: "enum16"},
+					smdx.PointElement{Id: "Evt1", Offset: 38, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 40, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 42, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 44, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd3", Offset: 46, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd4", Offset: 48, Type: "bitfield32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model103) }
 
 // Block111 - Inverter (Single Phase) FLOAT - Include this model for single phase inverter monitoring using float values
 
@@ -1965,52 +1943,51 @@ func (self *Block111) GetId() ModelId {
 	return 111
 }
 
-var model111 = smdx.ModelElement{
-	Id:     111,
-	Name:   "inverter",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 60,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     111,
+		Name:   "inverter",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 60,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "PPVphAB", Offset: 8, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphBC", Offset: 10, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 12, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 14, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 16, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphC", Offset: 18, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "W", Offset: 20, Type: "float32", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 22, Type: "float32", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 24, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAr", Offset: 26, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "PF", Offset: 28, Type: "float32", Units: "Pct"},
-				smdx.PointElement{Id: "WH", Offset: 30, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "DCA", Offset: 32, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "DCV", Offset: 34, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "DCW", Offset: 36, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "TmpCab", Offset: 38, Type: "float32", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "TmpSnk", Offset: 40, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "TmpTrns", Offset: 42, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "TmpOt", Offset: 44, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "St", Offset: 46, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StVnd", Offset: 47, Type: "enum16"},
-				smdx.PointElement{Id: "Evt1", Offset: 48, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 50, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 52, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 54, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd3", Offset: 56, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd4", Offset: 58, Type: "bitfield32"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "PPVphAB", Offset: 8, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphBC", Offset: 10, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 12, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 14, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 16, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphC", Offset: 18, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "W", Offset: 20, Type: "float32", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 22, Type: "float32", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 24, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAr", Offset: 26, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "PF", Offset: 28, Type: "float32", Units: "Pct"},
+					smdx.PointElement{Id: "WH", Offset: 30, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "DCA", Offset: 32, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "DCV", Offset: 34, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "DCW", Offset: 36, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "TmpCab", Offset: 38, Type: "float32", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "TmpSnk", Offset: 40, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "TmpTrns", Offset: 42, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "TmpOt", Offset: 44, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "St", Offset: 46, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StVnd", Offset: 47, Type: "enum16"},
+					smdx.PointElement{Id: "Evt1", Offset: 48, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 50, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 52, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 54, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd3", Offset: 56, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd4", Offset: 58, Type: "bitfield32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model111) }
 
 // Block112 - Inverter (Split Phase) FLOAT - Include this model for split phase inverter monitoring using float values
 
@@ -2052,52 +2029,51 @@ func (self *Block112) GetId() ModelId {
 	return 112
 }
 
-var model112 = smdx.ModelElement{
-	Id:     112,
-	Name:   "inverter",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 60,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     112,
+		Name:   "inverter",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 60,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "PPVphAB", Offset: 8, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphBC", Offset: 10, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 12, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 14, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphC", Offset: 18, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "W", Offset: 20, Type: "float32", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 22, Type: "float32", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 24, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAr", Offset: 26, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "PF", Offset: 28, Type: "float32", Units: "Pct"},
-				smdx.PointElement{Id: "WH", Offset: 30, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "DCA", Offset: 32, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "DCV", Offset: 34, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "DCW", Offset: 36, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "TmpCab", Offset: 38, Type: "float32", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "TmpSnk", Offset: 40, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "TmpTrns", Offset: 42, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "TmpOt", Offset: 44, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "St", Offset: 46, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StVnd", Offset: 47, Type: "enum16"},
-				smdx.PointElement{Id: "Evt1", Offset: 48, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 50, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 52, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 54, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd3", Offset: 56, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd4", Offset: 58, Type: "bitfield32"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "PPVphAB", Offset: 8, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphBC", Offset: 10, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 12, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 14, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphC", Offset: 18, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "W", Offset: 20, Type: "float32", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 22, Type: "float32", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 24, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAr", Offset: 26, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "PF", Offset: 28, Type: "float32", Units: "Pct"},
+					smdx.PointElement{Id: "WH", Offset: 30, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "DCA", Offset: 32, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "DCV", Offset: 34, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "DCW", Offset: 36, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "TmpCab", Offset: 38, Type: "float32", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "TmpSnk", Offset: 40, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "TmpTrns", Offset: 42, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "TmpOt", Offset: 44, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "St", Offset: 46, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StVnd", Offset: 47, Type: "enum16"},
+					smdx.PointElement{Id: "Evt1", Offset: 48, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 50, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 52, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 54, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd3", Offset: 56, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd4", Offset: 58, Type: "bitfield32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model112) }
 
 // Block113 - Inverter (Three Phase) FLOAT - Include this model for three phase inverter monitoring using float values
 
@@ -2139,52 +2115,51 @@ func (self *Block113) GetId() ModelId {
 	return 113
 }
 
-var model113 = smdx.ModelElement{
-	Id:     113,
-	Name:   "inverter",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 60,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     113,
+		Name:   "inverter",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 60,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "PPVphAB", Offset: 8, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphBC", Offset: 10, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 12, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 14, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphC", Offset: 18, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "W", Offset: 20, Type: "float32", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 22, Type: "float32", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 24, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAr", Offset: 26, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "PF", Offset: 28, Type: "float32", Units: "Pct"},
-				smdx.PointElement{Id: "WH", Offset: 30, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "DCA", Offset: 32, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "DCV", Offset: 34, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "DCW", Offset: 36, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "TmpCab", Offset: 38, Type: "float32", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "TmpSnk", Offset: 40, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "TmpTrns", Offset: 42, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "TmpOt", Offset: 44, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "St", Offset: 46, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StVnd", Offset: 47, Type: "enum16"},
-				smdx.PointElement{Id: "Evt1", Offset: 48, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 50, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 52, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 54, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd3", Offset: 56, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd4", Offset: 58, Type: "bitfield32"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "PPVphAB", Offset: 8, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphBC", Offset: 10, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 12, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 14, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphC", Offset: 18, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "W", Offset: 20, Type: "float32", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 22, Type: "float32", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 24, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAr", Offset: 26, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "PF", Offset: 28, Type: "float32", Units: "Pct"},
+					smdx.PointElement{Id: "WH", Offset: 30, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "DCA", Offset: 32, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "DCV", Offset: 34, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "DCW", Offset: 36, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "TmpCab", Offset: 38, Type: "float32", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "TmpSnk", Offset: 40, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "TmpTrns", Offset: 42, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "TmpOt", Offset: 44, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "St", Offset: 46, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StVnd", Offset: 47, Type: "enum16"},
+					smdx.PointElement{Id: "Evt1", Offset: 48, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 50, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 52, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 54, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd3", Offset: 56, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd4", Offset: 58, Type: "bitfield32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model113) }
 
 // Block120 - Nameplate - Inverter Controls Nameplate Ratings
 
@@ -2221,47 +2196,46 @@ func (self *Block120) GetId() ModelId {
 	return 120
 }
 
-var model120 = smdx.ModelElement{
-	Id:     120,
-	Name:   "nameplate",
-	Length: 26,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 26,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DERTyp", Offset: 0, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WRtg", Offset: 1, Type: "uint16", ScaleFactor: "WRtg_SF", Units: "W", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WRtg_SF", Offset: 2, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VARtg", Offset: 3, Type: "uint16", ScaleFactor: "VARtg_SF", Units: "VA", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VARtg_SF", Offset: 4, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VArRtgQ1", Offset: 5, Type: "int16", ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VArRtgQ2", Offset: 6, Type: "int16", ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VArRtgQ3", Offset: 7, Type: "int16", ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VArRtgQ4", Offset: 8, Type: "int16", ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VArRtg_SF", Offset: 9, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ARtg", Offset: 10, Type: "uint16", ScaleFactor: "ARtg_SF", Units: "A", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ARtg_SF", Offset: 11, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "PFRtgQ1", Offset: 12, Type: "int16", ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "PFRtgQ2", Offset: 13, Type: "int16", ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "PFRtgQ3", Offset: 14, Type: "int16", ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "PFRtgQ4", Offset: 15, Type: "int16", ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "PFRtg_SF", Offset: 16, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WHRtg", Offset: 17, Type: "uint16", ScaleFactor: "WHRtg_SF", Units: "Wh", Access: "r", Length: 1},
-				smdx.PointElement{Id: "WHRtg_SF", Offset: 18, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "AhrRtg", Offset: 19, Type: "uint16", ScaleFactor: "AhrRtg_SF", Units: "AH", Access: "r", Length: 1},
-				smdx.PointElement{Id: "AhrRtg_SF", Offset: 20, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "MaxChaRte", Offset: 21, Type: "uint16", ScaleFactor: "MaxChaRte_SF", Units: "W", Access: "r", Length: 1},
-				smdx.PointElement{Id: "MaxChaRte_SF", Offset: 22, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "MaxDisChaRte", Offset: 23, Type: "uint16", ScaleFactor: "MaxDisChaRte_SF", Units: "W", Access: "r", Length: 1},
-				smdx.PointElement{Id: "MaxDisChaRte_SF", Offset: 24, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "Pad", Offset: 25, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     120,
+		Name:   "nameplate",
+		Length: 26,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 26,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DERTyp", Offset: 0, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WRtg", Offset: 1, Type: "uint16", ScaleFactor: "WRtg_SF", Units: "W", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WRtg_SF", Offset: 2, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VARtg", Offset: 3, Type: "uint16", ScaleFactor: "VARtg_SF", Units: "VA", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VARtg_SF", Offset: 4, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VArRtgQ1", Offset: 5, Type: "int16", ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VArRtgQ2", Offset: 6, Type: "int16", ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VArRtgQ3", Offset: 7, Type: "int16", ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VArRtgQ4", Offset: 8, Type: "int16", ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VArRtg_SF", Offset: 9, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ARtg", Offset: 10, Type: "uint16", ScaleFactor: "ARtg_SF", Units: "A", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ARtg_SF", Offset: 11, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "PFRtgQ1", Offset: 12, Type: "int16", ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "PFRtgQ2", Offset: 13, Type: "int16", ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "PFRtgQ3", Offset: 14, Type: "int16", ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "PFRtgQ4", Offset: 15, Type: "int16", ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "PFRtg_SF", Offset: 16, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WHRtg", Offset: 17, Type: "uint16", ScaleFactor: "WHRtg_SF", Units: "Wh", Access: "r", Length: 1},
+					smdx.PointElement{Id: "WHRtg_SF", Offset: 18, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "AhrRtg", Offset: 19, Type: "uint16", ScaleFactor: "AhrRtg_SF", Units: "AH", Access: "r", Length: 1},
+					smdx.PointElement{Id: "AhrRtg_SF", Offset: 20, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "MaxChaRte", Offset: 21, Type: "uint16", ScaleFactor: "MaxChaRte_SF", Units: "W", Access: "r", Length: 1},
+					smdx.PointElement{Id: "MaxChaRte_SF", Offset: 22, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "MaxDisChaRte", Offset: 23, Type: "uint16", ScaleFactor: "MaxDisChaRte_SF", Units: "W", Access: "r", Length: 1},
+					smdx.PointElement{Id: "MaxDisChaRte_SF", Offset: 24, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "Pad", Offset: 25, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model120) }
 
 // Block121 - Basic Settings - Inverter Controls Basic Settings
 
@@ -2302,51 +2276,50 @@ func (self *Block121) GetId() ModelId {
 	return 121
 }
 
-var model121 = smdx.ModelElement{
-	Id:     121,
-	Name:   "settings",
-	Length: 30,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 30,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "WMax", Offset: 0, Type: "uint16", ScaleFactor: "WMax_SF", Units: "W", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VRef", Offset: 1, Type: "uint16", ScaleFactor: "VRef_SF", Units: "V", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VRefOfs", Offset: 2, Type: "int16", ScaleFactor: "VRefOfs_SF", Units: "V", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VMax", Offset: 3, Type: "uint16", ScaleFactor: "VMinMax_SF", Units: "V", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VMin", Offset: 4, Type: "uint16", ScaleFactor: "VMinMax_SF", Units: "V", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAMax", Offset: 5, Type: "uint16", ScaleFactor: "VAMax_SF", Units: "VA", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArMaxQ1", Offset: 6, Type: "int16", ScaleFactor: "VArMax_SF", Units: "var", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArMaxQ2", Offset: 7, Type: "int16", ScaleFactor: "VArMax_SF", Units: "var", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArMaxQ3", Offset: 8, Type: "int16", ScaleFactor: "VArMax_SF", Units: "var", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArMaxQ4", Offset: 9, Type: "int16", ScaleFactor: "VArMax_SF", Units: "var", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WGra", Offset: 10, Type: "uint16", ScaleFactor: "WGra_SF", Units: "% WMax/sec", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PFMinQ1", Offset: 11, Type: "int16", ScaleFactor: "PFMin_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PFMinQ2", Offset: 12, Type: "int16", ScaleFactor: "PFMin_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PFMinQ3", Offset: 13, Type: "int16", ScaleFactor: "PFMin_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PFMinQ4", Offset: 14, Type: "int16", ScaleFactor: "PFMin_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArAct", Offset: 15, Type: "enum16", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ClcTotVA", Offset: 16, Type: "enum16", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "MaxRmpRte", Offset: 17, Type: "uint16", ScaleFactor: "MaxRmpRte_SF", Units: "% WGra", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ECPNomHz", Offset: 18, Type: "uint16", ScaleFactor: "ECPNomHz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ConnPh", Offset: 19, Type: "enum16", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WMax_SF", Offset: 20, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VRef_SF", Offset: 21, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VRefOfs_SF", Offset: 22, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VMinMax_SF", Offset: 23, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "VAMax_SF", Offset: 24, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "VArMax_SF", Offset: 25, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "WGra_SF", Offset: 26, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "PFMin_SF", Offset: 27, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "MaxRmpRte_SF", Offset: 28, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "ECPNomHz_SF", Offset: 29, Type: "sunssf", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     121,
+		Name:   "settings",
+		Length: 30,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 30,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "WMax", Offset: 0, Type: "uint16", ScaleFactor: "WMax_SF", Units: "W", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VRef", Offset: 1, Type: "uint16", ScaleFactor: "VRef_SF", Units: "V", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VRefOfs", Offset: 2, Type: "int16", ScaleFactor: "VRefOfs_SF", Units: "V", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VMax", Offset: 3, Type: "uint16", ScaleFactor: "VMinMax_SF", Units: "V", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VMin", Offset: 4, Type: "uint16", ScaleFactor: "VMinMax_SF", Units: "V", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAMax", Offset: 5, Type: "uint16", ScaleFactor: "VAMax_SF", Units: "VA", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArMaxQ1", Offset: 6, Type: "int16", ScaleFactor: "VArMax_SF", Units: "var", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArMaxQ2", Offset: 7, Type: "int16", ScaleFactor: "VArMax_SF", Units: "var", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArMaxQ3", Offset: 8, Type: "int16", ScaleFactor: "VArMax_SF", Units: "var", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArMaxQ4", Offset: 9, Type: "int16", ScaleFactor: "VArMax_SF", Units: "var", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WGra", Offset: 10, Type: "uint16", ScaleFactor: "WGra_SF", Units: "% WMax/sec", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PFMinQ1", Offset: 11, Type: "int16", ScaleFactor: "PFMin_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PFMinQ2", Offset: 12, Type: "int16", ScaleFactor: "PFMin_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PFMinQ3", Offset: 13, Type: "int16", ScaleFactor: "PFMin_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PFMinQ4", Offset: 14, Type: "int16", ScaleFactor: "PFMin_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArAct", Offset: 15, Type: "enum16", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ClcTotVA", Offset: 16, Type: "enum16", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "MaxRmpRte", Offset: 17, Type: "uint16", ScaleFactor: "MaxRmpRte_SF", Units: "% WGra", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ECPNomHz", Offset: 18, Type: "uint16", ScaleFactor: "ECPNomHz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ConnPh", Offset: 19, Type: "enum16", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WMax_SF", Offset: 20, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VRef_SF", Offset: 21, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VRefOfs_SF", Offset: 22, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VMinMax_SF", Offset: 23, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "VAMax_SF", Offset: 24, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "VArMax_SF", Offset: 25, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "WGra_SF", Offset: 26, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "PFMin_SF", Offset: 27, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "MaxRmpRte_SF", Offset: 28, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "ECPNomHz_SF", Offset: 29, Type: "sunssf", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model121) }
 
 // Block122 - Measurements_Status - Inverter Controls Extended Measurements and Status
 
@@ -2377,41 +2350,40 @@ func (self *Block122) GetId() ModelId {
 	return 122
 }
 
-var model122 = smdx.ModelElement{
-	Id:     122,
-	Name:   "status",
-	Length: 44,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 44,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "PVConn", Offset: 0, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "StorConn", Offset: 1, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ECPConn", Offset: 2, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ActWh", Offset: 3, Type: "acc64", Units: "Wh", Access: "r", Length: 4},
-				smdx.PointElement{Id: "ActVAh", Offset: 7, Type: "acc64", Units: "VAh", Access: "r", Length: 4},
-				smdx.PointElement{Id: "ActVArhQ1", Offset: 11, Type: "acc64", Units: "varh", Access: "r", Length: 4},
-				smdx.PointElement{Id: "ActVArhQ2", Offset: 15, Type: "acc64", Units: "varh", Access: "r", Length: 4},
-				smdx.PointElement{Id: "ActVArhQ3", Offset: 19, Type: "acc64", Units: "varh", Access: "r", Length: 4},
-				smdx.PointElement{Id: "ActVArhQ4", Offset: 23, Type: "acc64", Units: "varh", Access: "r", Length: 4},
-				smdx.PointElement{Id: "VArAval", Offset: 27, Type: "int16", ScaleFactor: "VArAval_SF", Units: "var", Access: "r", Length: 1},
-				smdx.PointElement{Id: "VArAval_SF", Offset: 28, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "WAval", Offset: 29, Type: "uint16", ScaleFactor: "WAval_SF", Units: "var", Access: "r", Length: 1},
-				smdx.PointElement{Id: "WAval_SF", Offset: 30, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "StSetLimMsk", Offset: 31, Type: "bitfield32", Access: "r", Length: 2},
-				smdx.PointElement{Id: "StActCtl", Offset: 33, Type: "bitfield32", Access: "r", Length: 2},
-				smdx.PointElement{Id: "TmSrc", Offset: 35, Type: "string", Access: "r", Length: 4},
-				smdx.PointElement{Id: "Tms", Offset: 39, Type: "uint32", Units: "Secs", Access: "r", Length: 2},
-				smdx.PointElement{Id: "RtSt", Offset: 41, Type: "bitfield16", Access: "r", Length: 1},
-				smdx.PointElement{Id: "Ris", Offset: 42, Type: "uint16", ScaleFactor: "Ris_SF", Units: "ohms", Access: "r", Length: 1},
-				smdx.PointElement{Id: "Ris_SF", Offset: 43, Type: "sunssf", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     122,
+		Name:   "status",
+		Length: 44,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 44,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "PVConn", Offset: 0, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "StorConn", Offset: 1, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ECPConn", Offset: 2, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ActWh", Offset: 3, Type: "acc64", Units: "Wh", Access: "r", Length: 4},
+					smdx.PointElement{Id: "ActVAh", Offset: 7, Type: "acc64", Units: "VAh", Access: "r", Length: 4},
+					smdx.PointElement{Id: "ActVArhQ1", Offset: 11, Type: "acc64", Units: "varh", Access: "r", Length: 4},
+					smdx.PointElement{Id: "ActVArhQ2", Offset: 15, Type: "acc64", Units: "varh", Access: "r", Length: 4},
+					smdx.PointElement{Id: "ActVArhQ3", Offset: 19, Type: "acc64", Units: "varh", Access: "r", Length: 4},
+					smdx.PointElement{Id: "ActVArhQ4", Offset: 23, Type: "acc64", Units: "varh", Access: "r", Length: 4},
+					smdx.PointElement{Id: "VArAval", Offset: 27, Type: "int16", ScaleFactor: "VArAval_SF", Units: "var", Access: "r", Length: 1},
+					smdx.PointElement{Id: "VArAval_SF", Offset: 28, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "WAval", Offset: 29, Type: "uint16", ScaleFactor: "WAval_SF", Units: "var", Access: "r", Length: 1},
+					smdx.PointElement{Id: "WAval_SF", Offset: 30, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "StSetLimMsk", Offset: 31, Type: "bitfield32", Access: "r", Length: 2},
+					smdx.PointElement{Id: "StActCtl", Offset: 33, Type: "bitfield32", Access: "r", Length: 2},
+					smdx.PointElement{Id: "TmSrc", Offset: 35, Type: "string", Access: "r", Length: 4},
+					smdx.PointElement{Id: "Tms", Offset: 39, Type: "uint32", Units: "Secs", Access: "r", Length: 2},
+					smdx.PointElement{Id: "RtSt", Offset: 41, Type: "bitfield16", Access: "r", Length: 1},
+					smdx.PointElement{Id: "Ris", Offset: 42, Type: "uint16", ScaleFactor: "Ris_SF", Units: "ohms", Access: "r", Length: 1},
+					smdx.PointElement{Id: "Ris_SF", Offset: 43, Type: "sunssf", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model122) }
 
 // Block123 - Immediate Controls - Immediate Inverter Controls
 
@@ -2446,45 +2418,44 @@ func (self *Block123) GetId() ModelId {
 	return 123
 }
 
-var model123 = smdx.ModelElement{
-	Id:     123,
-	Name:   "controls",
-	Length: 24,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 24,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Conn_WinTms", Offset: 0, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Conn_RvrtTms", Offset: 1, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Conn", Offset: 2, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WMaxLimPct", Offset: 3, Type: "uint16", ScaleFactor: "WMaxLimPct_SF", Units: "% WMax", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WMaxLimPct_WinTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WMaxLimPct_RvrtTms", Offset: 5, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WMaxLimPct_RmpTms", Offset: 6, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WMaxLim_Ena", Offset: 7, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "OutPFSet", Offset: 8, Type: "int16", ScaleFactor: "OutPFSet_SF", Units: "cos()", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "OutPFSet_WinTms", Offset: 9, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "OutPFSet_RvrtTms", Offset: 10, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "OutPFSet_RmpTms", Offset: 11, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "OutPFSet_Ena", Offset: 12, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VArWMaxPct", Offset: 13, Type: "int16", ScaleFactor: "VArPct_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArMaxPct", Offset: 14, Type: "int16", ScaleFactor: "VArPct_SF", Units: "% VArMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArAvalPct", Offset: 15, Type: "int16", ScaleFactor: "VArPct_SF", Units: "% VArAval", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArPct_WinTms", Offset: 16, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArPct_RvrtTms", Offset: 17, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArPct_RmpTms", Offset: 18, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArPct_Mod", Offset: 19, Type: "enum16", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VArPct_Ena", Offset: 20, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WMaxLimPct_SF", Offset: 21, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "OutPFSet_SF", Offset: 22, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VArPct_SF", Offset: 23, Type: "sunssf", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     123,
+		Name:   "controls",
+		Length: 24,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 24,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Conn_WinTms", Offset: 0, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Conn_RvrtTms", Offset: 1, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Conn", Offset: 2, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WMaxLimPct", Offset: 3, Type: "uint16", ScaleFactor: "WMaxLimPct_SF", Units: "% WMax", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WMaxLimPct_WinTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WMaxLimPct_RvrtTms", Offset: 5, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WMaxLimPct_RmpTms", Offset: 6, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WMaxLim_Ena", Offset: 7, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "OutPFSet", Offset: 8, Type: "int16", ScaleFactor: "OutPFSet_SF", Units: "cos()", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "OutPFSet_WinTms", Offset: 9, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "OutPFSet_RvrtTms", Offset: 10, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "OutPFSet_RmpTms", Offset: 11, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "OutPFSet_Ena", Offset: 12, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VArWMaxPct", Offset: 13, Type: "int16", ScaleFactor: "VArPct_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArMaxPct", Offset: 14, Type: "int16", ScaleFactor: "VArPct_SF", Units: "% VArMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArAvalPct", Offset: 15, Type: "int16", ScaleFactor: "VArPct_SF", Units: "% VArAval", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArPct_WinTms", Offset: 16, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArPct_RvrtTms", Offset: 17, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArPct_RmpTms", Offset: 18, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArPct_Mod", Offset: 19, Type: "enum16", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VArPct_Ena", Offset: 20, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WMaxLimPct_SF", Offset: 21, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "OutPFSet_SF", Offset: 22, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VArPct_SF", Offset: 23, Type: "sunssf", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model123) }
 
 // Block124 - Storage - Basic Storage Controls
 
@@ -2519,45 +2490,44 @@ func (self *Block124) GetId() ModelId {
 	return 124
 }
 
-var model124 = smdx.ModelElement{
-	Id:     124,
-	Name:   "storage",
-	Length: 24,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 24,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "WChaMax", Offset: 0, Type: "uint16", ScaleFactor: "WChaMax_SF", Units: "W", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WChaGra", Offset: 1, Type: "uint16", ScaleFactor: "WChaDisChaGra_SF", Units: "% WChaMax/sec", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WDisChaGra", Offset: 2, Type: "uint16", ScaleFactor: "WChaDisChaGra_SF", Units: "% WChaMax/sec", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "StorCtl_Mod", Offset: 3, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VAChaMax", Offset: 4, Type: "uint16", ScaleFactor: "VAChaMax_SF", Units: "VA", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "MinRsvPct", Offset: 5, Type: "uint16", ScaleFactor: "MinRsvPct_SF", Units: "% WChaMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ChaState", Offset: 6, Type: "uint16", ScaleFactor: "ChaState_SF", Units: "% AhrRtg", Access: "r", Length: 1},
-				smdx.PointElement{Id: "StorAval", Offset: 7, Type: "uint16", ScaleFactor: "StorAval_SF", Units: "AH", Access: "r", Length: 1},
-				smdx.PointElement{Id: "InBatV", Offset: 8, Type: "uint16", ScaleFactor: "InBatV_SF", Units: "V", Access: "r", Length: 1},
-				smdx.PointElement{Id: "ChaSt", Offset: 9, Type: "enum16", Access: "r", Length: 1},
-				smdx.PointElement{Id: "OutWRte", Offset: 10, Type: "int16", ScaleFactor: "InOutWRte_SF", Units: "% WDisChaMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "InWRte", Offset: 11, Type: "int16", ScaleFactor: "InOutWRte_SF", Units: " % WChaMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "InOutWRte_WinTms", Offset: 12, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "InOutWRte_RvrtTms", Offset: 13, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "InOutWRte_RmpTms", Offset: 14, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ChaGriSet", Offset: 15, Type: "enum16", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WChaMax_SF", Offset: 16, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WChaDisChaGra_SF", Offset: 17, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VAChaMax_SF", Offset: 18, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "MinRsvPct_SF", Offset: 19, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "ChaState_SF", Offset: 20, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "StorAval_SF", Offset: 21, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "InBatV_SF", Offset: 22, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "InOutWRte_SF", Offset: 23, Type: "sunssf", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     124,
+		Name:   "storage",
+		Length: 24,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 24,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "WChaMax", Offset: 0, Type: "uint16", ScaleFactor: "WChaMax_SF", Units: "W", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WChaGra", Offset: 1, Type: "uint16", ScaleFactor: "WChaDisChaGra_SF", Units: "% WChaMax/sec", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WDisChaGra", Offset: 2, Type: "uint16", ScaleFactor: "WChaDisChaGra_SF", Units: "% WChaMax/sec", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "StorCtl_Mod", Offset: 3, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VAChaMax", Offset: 4, Type: "uint16", ScaleFactor: "VAChaMax_SF", Units: "VA", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "MinRsvPct", Offset: 5, Type: "uint16", ScaleFactor: "MinRsvPct_SF", Units: "% WChaMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ChaState", Offset: 6, Type: "uint16", ScaleFactor: "ChaState_SF", Units: "% AhrRtg", Access: "r", Length: 1},
+					smdx.PointElement{Id: "StorAval", Offset: 7, Type: "uint16", ScaleFactor: "StorAval_SF", Units: "AH", Access: "r", Length: 1},
+					smdx.PointElement{Id: "InBatV", Offset: 8, Type: "uint16", ScaleFactor: "InBatV_SF", Units: "V", Access: "r", Length: 1},
+					smdx.PointElement{Id: "ChaSt", Offset: 9, Type: "enum16", Access: "r", Length: 1},
+					smdx.PointElement{Id: "OutWRte", Offset: 10, Type: "int16", ScaleFactor: "InOutWRte_SF", Units: "% WDisChaMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "InWRte", Offset: 11, Type: "int16", ScaleFactor: "InOutWRte_SF", Units: " % WChaMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "InOutWRte_WinTms", Offset: 12, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "InOutWRte_RvrtTms", Offset: 13, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "InOutWRte_RmpTms", Offset: 14, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ChaGriSet", Offset: 15, Type: "enum16", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WChaMax_SF", Offset: 16, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WChaDisChaGra_SF", Offset: 17, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VAChaMax_SF", Offset: 18, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "MinRsvPct_SF", Offset: 19, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "ChaState_SF", Offset: 20, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "StorAval_SF", Offset: 21, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "InBatV_SF", Offset: 22, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "InOutWRte_SF", Offset: 23, Type: "sunssf", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model124) }
 
 // Block125 - Pricing - Pricing Signal
 
@@ -2576,29 +2546,28 @@ func (self *Block125) GetId() ModelId {
 	return 125
 }
 
-var model125 = smdx.ModelElement{
-	Id:     125,
-	Name:   "pricing",
-	Length: 8,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 8,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ModEna", Offset: 0, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "SigType", Offset: 1, Type: "enum16", ScaleFactor: " ", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Sig", Offset: 2, Type: "int16", ScaleFactor: "Sig_SF", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvtTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 5, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Sig_SF", Offset: 6, Type: "sunssf", ScaleFactor: " ", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 7, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     125,
+		Name:   "pricing",
+		Length: 8,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 8,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ModEna", Offset: 0, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "SigType", Offset: 1, Type: "enum16", ScaleFactor: " ", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Sig", Offset: 2, Type: "int16", ScaleFactor: "Sig_SF", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvtTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 5, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Sig_SF", Offset: 6, Type: "sunssf", ScaleFactor: " ", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 7, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model125) }
 
 // Block126 - Static Volt-VAR - Static Volt-VAR Arrays
 
@@ -2671,84 +2640,83 @@ func (self *Block126) GetId() ModelId {
 	return 126
 }
 
-var model126 = smdx.ModelElement{
-	Id:     126,
-	Name:   "volt_var",
-	Length: 64,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "DeptRef_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "RmpIncDec_SF", Offset: 9, Type: "sunssf", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     126,
+		Name:   "volt_var",
+		Length: 64,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "DeptRef_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "RmpIncDec_SF", Offset: 9, Type: "sunssf", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 54,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "DeptRef", Offset: 1, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VAr1", Offset: 3, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr2", Offset: 5, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr3", Offset: 7, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "Various", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr4", Offset: 9, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr5", Offset: 11, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr6", Offset: 13, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr7", Offset: 15, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr8", Offset: 17, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr9", Offset: 19, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr10", Offset: 21, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr11", Offset: 23, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr12", Offset: 25, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr13", Offset: 27, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr14", Offset: 29, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr15", Offset: 31, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr16", Offset: 33, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr17", Offset: 35, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr18", Offset: 37, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr19", Offset: 39, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "VAr20", Offset: 41, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 42, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "RmpTms", Offset: 50, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpDecTmm", Offset: 51, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% ref_value/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpIncTmm", Offset: 52, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% ref_value/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ReadOnly", Offset: 53, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 54,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "DeptRef", Offset: 1, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VAr1", Offset: 3, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr2", Offset: 5, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr3", Offset: 7, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "Various", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr4", Offset: 9, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr5", Offset: 11, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr6", Offset: 13, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr7", Offset: 15, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr8", Offset: 17, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr9", Offset: 19, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr10", Offset: 21, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr11", Offset: 23, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr12", Offset: 25, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr13", Offset: 27, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr14", Offset: 29, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr15", Offset: 31, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr16", Offset: 33, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr17", Offset: 35, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr18", Offset: 37, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr19", Offset: 39, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "VAr20", Offset: 41, Type: "int16", ScaleFactor: "DeptRef_SF", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 42, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "RmpTms", Offset: 50, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpDecTmm", Offset: 51, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% ref_value/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpIncTmm", Offset: 52, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% ref_value/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ReadOnly", Offset: 53, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model126) }
 
 // Block127 - Freq-Watt Param - Parameterized Frequency-Watt
 
@@ -2769,31 +2737,30 @@ func (self *Block127) GetId() ModelId {
 	return 127
 }
 
-var model127 = smdx.ModelElement{
-	Id:     127,
-	Name:   "freq_watt_param",
-	Length: 10,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "WGra", Offset: 0, Type: "uint16", ScaleFactor: "WGra_SF", Units: "% PM/Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "HzStr", Offset: 1, Type: "int16", ScaleFactor: "HzStrStop_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "HzStop", Offset: 2, Type: "int16", ScaleFactor: "HzStrStop_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "HysEna", Offset: 3, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 4, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "HzStopWGra", Offset: 5, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WGra_SF", Offset: 6, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "HzStrStop_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "RmpIncDec_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     127,
+		Name:   "freq_watt_param",
+		Length: 10,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "WGra", Offset: 0, Type: "uint16", ScaleFactor: "WGra_SF", Units: "% PM/Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "HzStr", Offset: 1, Type: "int16", ScaleFactor: "HzStrStop_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "HzStop", Offset: 2, Type: "int16", ScaleFactor: "HzStrStop_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "HysEna", Offset: 3, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 4, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "HzStopWGra", Offset: 5, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WGra_SF", Offset: 6, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "HzStrStop_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "RmpIncDec_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model127) }
 
 // Block128 - Dynamic Reactive Current - Dynamic Reactive Current
 
@@ -2818,35 +2785,34 @@ func (self *Block128) GetId() ModelId {
 	return 128
 }
 
-var model128 = smdx.ModelElement{
-	Id:     128,
-	Name:   "reactive_current",
-	Length: 14,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 14,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ArGraMod", Offset: 0, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ArGraSag", Offset: 1, Type: "uint16", ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ArGraSwell", Offset: 2, Type: "uint16", ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 3, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "FilTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "DbVMin", Offset: 5, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "DbVMax", Offset: 6, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "BlkZnV", Offset: 7, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "HysBlkZnV", Offset: 8, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "BlkZnTmms", Offset: 9, Type: "uint16", Units: "mSecs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "HoldTmms", Offset: 10, Type: "uint16", Units: "mSecs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ArGra_SF", Offset: 11, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "VRefPct_SF", Offset: 12, Type: "sunssf", Access: "r", Length: 1},
-				smdx.PointElement{Id: "Pad", Offset: 13, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     128,
+		Name:   "reactive_current",
+		Length: 14,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 14,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ArGraMod", Offset: 0, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ArGraSag", Offset: 1, Type: "uint16", ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ArGraSwell", Offset: 2, Type: "uint16", ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 3, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "FilTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "DbVMin", Offset: 5, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "DbVMax", Offset: 6, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "BlkZnV", Offset: 7, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "HysBlkZnV", Offset: 8, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "BlkZnTmms", Offset: 9, Type: "uint16", Units: "mSecs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "HoldTmms", Offset: 10, Type: "uint16", Units: "mSecs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ArGra_SF", Offset: 11, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "VRefPct_SF", Offset: 12, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: "Pad", Offset: 13, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model128) }
 
 // Block129 - LVRTD - LVRT Must Disconnect
 
@@ -2915,80 +2881,79 @@ func (self *Block129) GetId() ModelId {
 	return 129
 }
 
-var model129 = smdx.ModelElement{
-	Id:     129,
-	Name:   "lvrt",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     129,
+		Name:   "lvrt",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model129) }
 
 // Block130 - HVRTD - HVRT Must Disconnect
 
@@ -3057,80 +3022,79 @@ func (self *Block130) GetId() ModelId {
 	return 130
 }
 
-var model130 = smdx.ModelElement{
-	Id:     130,
-	Name:   "hvrt",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     130,
+		Name:   "hvrt",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model130) }
 
 // Block131 - Watt-PF - Watt-Power Factor
 
@@ -3203,84 +3167,83 @@ func (self *Block131) GetId() ModelId {
 	return 131
 }
 
-var model131 = smdx.ModelElement{
-	Id:     131,
-	Name:   "watt_pf",
-	Length: 64,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "W_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "PF_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "RmpIncDec_SF", Offset: 9, Type: "sunssf", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     131,
+		Name:   "watt_pf",
+		Length: 64,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "W_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "PF_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "RmpIncDec_SF", Offset: 9, Type: "sunssf", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 54,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "W1", Offset: 1, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "PF1", Offset: 2, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "W2", Offset: 3, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF2", Offset: 4, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W3", Offset: 5, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF3", Offset: 6, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W4", Offset: 7, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF4", Offset: 8, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W5", Offset: 9, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF5", Offset: 10, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W6", Offset: 11, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF6", Offset: 12, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W7", Offset: 13, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF7", Offset: 14, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W8", Offset: 15, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF8", Offset: 16, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W9", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF9", Offset: 18, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W10", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF10", Offset: 20, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W11", Offset: 21, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF11", Offset: 22, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W12", Offset: 23, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF12", Offset: 24, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W13", Offset: 25, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF13", Offset: 26, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W14", Offset: 27, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF14", Offset: 28, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W15", Offset: 29, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF15", Offset: 30, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W16", Offset: 31, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF16", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W17", Offset: 33, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF17", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W18", Offset: 35, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF18", Offset: 36, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W19", Offset: 37, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF19", Offset: 38, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W20", Offset: 39, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "PF20", Offset: 40, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "RmpPT1Tms", Offset: 49, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpDecTmm", Offset: 50, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% PF/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpIncTmm", Offset: 51, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% PF/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ReadOnly", Offset: 52, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 53, Type: "pad", Access: "r", Length: 1},
+			smdx.BlockElement{Name: "curve",
+				Length: 54,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "W1", Offset: 1, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "PF1", Offset: 2, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "W2", Offset: 3, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF2", Offset: 4, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W3", Offset: 5, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF3", Offset: 6, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W4", Offset: 7, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF4", Offset: 8, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W5", Offset: 9, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF5", Offset: 10, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W6", Offset: 11, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF6", Offset: 12, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W7", Offset: 13, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF7", Offset: 14, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W8", Offset: 15, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF8", Offset: 16, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W9", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF9", Offset: 18, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W10", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF10", Offset: 20, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W11", Offset: 21, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF11", Offset: 22, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W12", Offset: 23, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF12", Offset: 24, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W13", Offset: 25, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF13", Offset: 26, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W14", Offset: 27, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF14", Offset: 28, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W15", Offset: 29, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF15", Offset: 30, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W16", Offset: 31, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF16", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W17", Offset: 33, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF17", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W18", Offset: 35, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF18", Offset: 36, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W19", Offset: 37, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF19", Offset: 38, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W20", Offset: 39, Type: "int16", ScaleFactor: "W_SF", Units: "% WMax", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "PF20", Offset: 40, Type: "int16", ScaleFactor: "PF_SF", Units: "cos()", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "RmpPT1Tms", Offset: 49, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpDecTmm", Offset: 50, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% PF/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpIncTmm", Offset: 51, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% PF/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ReadOnly", Offset: 52, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 53, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model131) }
 
 // Block132 - Volt-Watt - Volt-Watt
 
@@ -3353,84 +3316,83 @@ func (self *Block132) GetId() ModelId {
 	return 132
 }
 
-var model132 = smdx.ModelElement{
-	Id:     132,
-	Name:   "volt_watt",
-	Length: 64,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "DeptRef_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "RmpIncDec_SF", Offset: 9, Type: "sunssf", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     132,
+		Name:   "volt_watt",
+		Length: 64,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "DeptRef_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "RmpIncDec_SF", Offset: 9, Type: "sunssf", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 54,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "DeptRef", Offset: 1, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "W1", Offset: 3, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W2", Offset: 5, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W3", Offset: 7, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W4", Offset: 9, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W5", Offset: 11, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W6", Offset: 13, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W7", Offset: 15, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W8", Offset: 17, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W9", Offset: 19, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W10", Offset: 21, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W11", Offset: 23, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W12", Offset: 25, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W13", Offset: 27, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W14", Offset: 29, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W15", Offset: 31, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W16", Offset: 33, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W17", Offset: 35, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W18", Offset: 37, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W19", Offset: 39, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W20", Offset: 41, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 42, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "RmpPt1Tms", Offset: 50, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpDecTmm", Offset: 51, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpIncTmm", Offset: 52, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ReadOnly", Offset: 53, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 54,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "DeptRef", Offset: 1, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "W1", Offset: 3, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W2", Offset: 5, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W3", Offset: 7, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W4", Offset: 9, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W5", Offset: 11, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W6", Offset: 13, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W7", Offset: 15, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W8", Offset: 17, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W9", Offset: 19, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W10", Offset: 21, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W11", Offset: 23, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W12", Offset: 25, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W13", Offset: 27, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W14", Offset: 29, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W15", Offset: 31, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W16", Offset: 33, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W17", Offset: 35, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W18", Offset: 37, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W19", Offset: 39, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W20", Offset: 41, Type: "int16", ScaleFactor: "DeptRef_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 42, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "RmpPt1Tms", Offset: 50, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpDecTmm", Offset: 51, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpIncTmm", Offset: 52, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ReadOnly", Offset: 53, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model132) }
 
 // Block133 - Basic Scheduling - Basic Scheduling
 
@@ -3483,64 +3445,63 @@ func (self *Block133) GetId() ModelId {
 	return 133
 }
 
-var model133 = smdx.ModelElement{
-	Id:     133,
-	Name:   "schedule",
-	Length: 66,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 6,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActSchd", Offset: 0, Type: "bitfield32", Access: "rw", Length: 2, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 2, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NSchd", Offset: 3, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPts", Offset: 4, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 5, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     133,
+		Name:   "schedule",
+		Length: 66,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 6,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActSchd", Offset: 0, Type: "bitfield32", Access: "rw", Length: 2, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 2, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NSchd", Offset: 3, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPts", Offset: 4, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 5, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 60,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPts", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "StrTms", Offset: 1, Type: "uint32", Units: "Secs", Access: "rw", Length: 2, Mandatory: true},
-				smdx.PointElement{Id: "RepPer", Offset: 3, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "IntvTyp", Offset: 4, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "XTyp", Offset: 5, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "X_SF", Offset: 6, Type: "sunssf", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "YTyp", Offset: 7, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Y_SF", Offset: 8, Type: "sunssf", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "X1", Offset: 9, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2, Mandatory: true},
-				smdx.PointElement{Id: "Y1", Offset: 11, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2, Mandatory: true},
-				smdx.PointElement{Id: "X2", Offset: 13, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y2", Offset: 15, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "X3", Offset: 17, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y3", Offset: 19, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "X4", Offset: 21, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y4", Offset: 23, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "X5", Offset: 25, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y5", Offset: 27, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "X6", Offset: 29, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y6", Offset: 31, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "X7", Offset: 33, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y7", Offset: 35, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "X8", Offset: 37, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y8", Offset: 39, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "X9", Offset: 41, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y9", Offset: 43, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "X10", Offset: 45, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Y10", Offset: 47, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
-				smdx.PointElement{Id: "Nam", Offset: 49, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "WinTms", Offset: 57, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 58, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ActIndx", Offset: 59, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{
+				Length: 60,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPts", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "StrTms", Offset: 1, Type: "uint32", Units: "Secs", Access: "rw", Length: 2, Mandatory: true},
+					smdx.PointElement{Id: "RepPer", Offset: 3, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "IntvTyp", Offset: 4, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "XTyp", Offset: 5, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "X_SF", Offset: 6, Type: "sunssf", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "YTyp", Offset: 7, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Y_SF", Offset: 8, Type: "sunssf", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "X1", Offset: 9, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2, Mandatory: true},
+					smdx.PointElement{Id: "Y1", Offset: 11, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2, Mandatory: true},
+					smdx.PointElement{Id: "X2", Offset: 13, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y2", Offset: 15, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "X3", Offset: 17, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y3", Offset: 19, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "X4", Offset: 21, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y4", Offset: 23, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "X5", Offset: 25, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y5", Offset: 27, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "X6", Offset: 29, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y6", Offset: 31, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "X7", Offset: 33, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y7", Offset: 35, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "X8", Offset: 37, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y8", Offset: 39, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "X9", Offset: 41, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y9", Offset: 43, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "X10", Offset: 45, Type: "int32", ScaleFactor: "X_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Y10", Offset: 47, Type: "int32", ScaleFactor: "Y_SF", Access: "rw", Length: 2},
+					smdx.PointElement{Id: "Nam", Offset: 49, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "WinTms", Offset: 57, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 58, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ActIndx", Offset: 59, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model133) }
 
 // Block134 - Freq-Watt Crv - Curve-Based Frequency-Watt
 
@@ -3617,88 +3578,87 @@ func (self *Block134) GetId() ModelId {
 	return 134
 }
 
-var model134 = smdx.ModelElement{
-	Id:     134,
-	Name:   "freq_watt",
-	Length: 68,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 7, Type: "sunssf", Units: "SF", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "W_SF", Offset: 8, Type: "sunssf", Units: "SF", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "RmpIncDec_SF", Offset: 9, Type: "sunssf", Units: "SF", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     134,
+		Name:   "freq_watt",
+		Length: 68,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 7, Type: "sunssf", Units: "SF", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "W_SF", Offset: 8, Type: "sunssf", Units: "SF", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "RmpIncDec_SF", Offset: 9, Type: "sunssf", Units: "SF", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 58,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz1", Offset: 1, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "W1", Offset: 2, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz2", Offset: 3, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W2", Offset: 4, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz3", Offset: 5, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W3", Offset: 6, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz4", Offset: 7, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W4", Offset: 8, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz5", Offset: 9, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W5", Offset: 10, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz6", Offset: 11, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W6", Offset: 12, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz7", Offset: 13, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W7", Offset: 14, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz8", Offset: 15, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W8", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz9", Offset: 17, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W9", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz10", Offset: 19, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W10", Offset: 20, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz11", Offset: 21, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W11", Offset: 22, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz12", Offset: 23, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W12", Offset: 24, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz13", Offset: 25, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W13", Offset: 26, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz14", Offset: 27, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W14", Offset: 28, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz15", Offset: 29, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W15", Offset: 30, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz16", Offset: 31, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W16", Offset: 32, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz17", Offset: 33, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W17", Offset: 34, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz18", Offset: 35, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W18", Offset: 36, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz19", Offset: 37, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W19", Offset: 38, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz20", Offset: 39, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "W20", Offset: 40, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "RmpPT1Tms", Offset: 49, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpDecTmm", Offset: 50, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpIncTmm", Offset: 51, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpRsUp", Offset: 52, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "SnptW", Offset: 53, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WRef", Offset: 54, Type: "uint16", ScaleFactor: "W_SF", Units: "W", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WRefStrHz", Offset: 55, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "WRefStopHz", Offset: 56, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ReadOnly", Offset: 57, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 58,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz1", Offset: 1, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "W1", Offset: 2, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz2", Offset: 3, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W2", Offset: 4, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz3", Offset: 5, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W3", Offset: 6, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz4", Offset: 7, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W4", Offset: 8, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz5", Offset: 9, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W5", Offset: 10, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz6", Offset: 11, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W6", Offset: 12, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz7", Offset: 13, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W7", Offset: 14, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz8", Offset: 15, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W8", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz9", Offset: 17, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W9", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz10", Offset: 19, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W10", Offset: 20, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz11", Offset: 21, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W11", Offset: 22, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz12", Offset: 23, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W12", Offset: 24, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz13", Offset: 25, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W13", Offset: 26, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz14", Offset: 27, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W14", Offset: 28, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz15", Offset: 29, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W15", Offset: 30, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz16", Offset: 31, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W16", Offset: 32, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz17", Offset: 33, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W17", Offset: 34, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz18", Offset: 35, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W18", Offset: 36, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz19", Offset: 37, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W19", Offset: 38, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz20", Offset: 39, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "W20", Offset: 40, Type: "int16", ScaleFactor: "W_SF", Units: "% WRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "RmpPT1Tms", Offset: 49, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpDecTmm", Offset: 50, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpIncTmm", Offset: 51, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpRsUp", Offset: 52, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "SnptW", Offset: 53, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WRef", Offset: 54, Type: "uint16", ScaleFactor: "W_SF", Units: "W", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WRefStrHz", Offset: 55, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "WRefStopHz", Offset: 56, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ReadOnly", Offset: 57, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model134) }
 
 // Block135 - LFRT - Low Frequency Ride-through
 
@@ -3767,80 +3727,79 @@ func (self *Block135) GetId() ModelId {
 	return 135
 }
 
-var model135 = smdx.ModelElement{
-	Id:     135,
-	Name:   "lfrt",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     135,
+		Name:   "lfrt",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model135) }
 
 // Block136 - HFRT - High Frequency Ride-through
 
@@ -3909,80 +3868,79 @@ func (self *Block136) GetId() ModelId {
 	return 136
 }
 
-var model136 = smdx.ModelElement{
-	Id:     136,
-	Name:   "hfrt",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     136,
+		Name:   "hfrt",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model136) }
 
 // Block137 - LVRTC - LVRT must remain connected
 
@@ -4051,80 +4009,79 @@ func (self *Block137) GetId() ModelId {
 	return 137
 }
 
-var model137 = smdx.ModelElement{
-	Id:     137,
-	Name:   "lvrtc",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     137,
+		Name:   "lvrtc",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model137) }
 
 // Block138 - HVRTC - HVRT must remain connected
 
@@ -4193,80 +4150,79 @@ func (self *Block138) GetId() ModelId {
 	return 138
 }
 
-var model138 = smdx.ModelElement{
-	Id:     138,
-	Name:   "hvrtc",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     138,
+		Name:   "hvrtc",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model138) }
 
 // Block139 - LVRTX - LVRT extended curve
 
@@ -4335,80 +4291,79 @@ func (self *Block139) GetId() ModelId {
 	return 139
 }
 
-var model139 = smdx.ModelElement{
-	Id:     139,
-	Name:   "lvrtx",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "CrvType", Offset: 9, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     139,
+		Name:   "lvrtx",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "CrvType", Offset: 9, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model139) }
 
 // Block140 - HVRTX - HVRT extended curve
 
@@ -4477,80 +4432,79 @@ func (self *Block140) GetId() ModelId {
 	return 140
 }
 
-var model140 = smdx.ModelElement{
-	Id:     140,
-	Name:   "hvrtx",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "CrvType", Offset: 9, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     140,
+		Name:   "hvrtx",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "CrvType", Offset: 9, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "V1", Offset: 2, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V2", Offset: 4, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V3", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V4", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V5", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V6", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V7", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V8", Offset: 16, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V9", Offset: 18, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V10", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V11", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V12", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V13", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V14", Offset: 28, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V15", Offset: 30, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V16", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V17", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V18", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V19", Offset: 38, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "V20", Offset: 40, Type: "uint16", ScaleFactor: "V_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model140) }
 
 // Block141 - LFRTC - LFRT must remain connected
 
@@ -4619,80 +4573,79 @@ func (self *Block141) GetId() ModelId {
 	return 141
 }
 
-var model141 = smdx.ModelElement{
-	Id:     141,
-	Name:   "lfrtc",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     141,
+		Name:   "lfrtc",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model141) }
 
 // Block142 - HFRTC - HFRT must remain connected
 
@@ -4761,80 +4714,79 @@ func (self *Block142) GetId() ModelId {
 	return 142
 }
 
-var model142 = smdx.ModelElement{
-	Id:     142,
-	Name:   "hfrtc",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     142,
+		Name:   "hfrtc",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Pad", Offset: 9, Type: "pad", Access: "r", Length: 1},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model142) }
 
 // Block143 - LFRTX - LFRT extended curve
 
@@ -4903,80 +4855,79 @@ func (self *Block143) GetId() ModelId {
 	return 143
 }
 
-var model143 = smdx.ModelElement{
-	Id:     143,
-	Name:   "lfrtx",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "CrvType", Offset: 9, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     143,
+		Name:   "lfrtx",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "CrvType", Offset: 9, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model143) }
 
 // Block144 - HFRTX - HFRT extended curve
 
@@ -5045,80 +4996,79 @@ func (self *Block144) GetId() ModelId {
 	return 144
 }
 
-var model144 = smdx.ModelElement{
-	Id:     144,
-	Name:   "hfrtx",
-	Length: 60,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 10,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "CrvType", Offset: 9, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     144,
+		Name:   "hfrtx",
+		Length: 60,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 10,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActCrv", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "ModEna", Offset: 1, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "WinTms", Offset: 2, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RvrtTms", Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "RmpTms", Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NCrv", Offset: 5, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "NPt", Offset: 6, Type: "uint16", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 8, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "CrvType", Offset: 9, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "curve",
-			Length: 50,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-				smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
-				smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+			smdx.BlockElement{Name: "curve",
+				Length: 50,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ActPt", Offset: 0, Type: "uint16", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms1", Offset: 1, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Hz1", Offset: 2, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: "Tms2", Offset: 3, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz2", Offset: 4, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms3", Offset: 5, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz3", Offset: 6, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms4", Offset: 7, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz4", Offset: 8, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms5", Offset: 9, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz5", Offset: 10, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms6", Offset: 11, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz6", Offset: 12, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms7", Offset: 13, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz7", Offset: 14, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms8", Offset: 15, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz8", Offset: 16, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms9", Offset: 17, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz9", Offset: 18, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms10", Offset: 19, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz10", Offset: 20, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms11", Offset: 21, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz11", Offset: 22, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms12", Offset: 23, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz12", Offset: 24, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms13", Offset: 25, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz13", Offset: 26, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms14", Offset: 27, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz14", Offset: 28, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms15", Offset: 29, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz15", Offset: 30, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms16", Offset: 31, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz16", Offset: 32, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms17", Offset: 33, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz17", Offset: 34, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms18", Offset: 35, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz18", Offset: 36, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms19", Offset: 37, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz19", Offset: 38, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Tms20", Offset: 39, Type: "uint16", ScaleFactor: "Tms_SF", Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Hz20", Offset: 40, Type: "uint16", ScaleFactor: "Hz_SF", Units: "Hz", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "CrvNam", Offset: 41, Type: "string", Access: "rw", Length: 8},
+					smdx.PointElement{Id: "ReadOnly", Offset: 49, Type: "enum16", Access: "r", Length: 1, Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model144) }
 
 // Block145 - Extended Settings - Inverter controls extended settings
 
@@ -5137,29 +5087,28 @@ func (self *Block145) GetId() ModelId {
 	return 145
 }
 
-var model145 = smdx.ModelElement{
-	Id:     145,
-	Name:   "ext_settings",
-	Length: 8,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 8,
-			Type:   "fixed",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "NomRmpUpRte", Offset: 0, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "NomRmpDnRte", Offset: 1, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "EmgRmpUpRte", Offset: 2, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "EmgRmpDnRte", Offset: 3, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ConnRmpUpRte", Offset: 4, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "ConnRmpDnRte", Offset: 5, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "AGra", Offset: 6, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-				smdx.PointElement{Id: "Rmp_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     145,
+		Name:   "ext_settings",
+		Length: 8,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 8,
+				Type:   "fixed",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "NomRmpUpRte", Offset: 0, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "NomRmpDnRte", Offset: 1, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "EmgRmpUpRte", Offset: 2, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "EmgRmpDnRte", Offset: 3, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ConnRmpUpRte", Offset: 4, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "ConnRmpDnRte", Offset: 5, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "AGra", Offset: 6, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: "Rmp_SF", Offset: 7, Type: "sunssf", Access: "r", Length: 1},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model145) }
 
 // Block160 - Multiple MPPT Inverter Extension Model -
 
@@ -5192,44 +5141,43 @@ func (self *Block160) GetId() ModelId {
 	return 160
 }
 
-var model160 = smdx.ModelElement{
-	Id:     160,
-	Name:   "mppt",
-	Length: 28,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 8,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     160,
+		Name:   "mppt",
+		Length: 28,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 8,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf"},
-				smdx.PointElement{Id: "DCV_SF", Offset: 1, Type: "sunssf"},
-				smdx.PointElement{Id: "DCW_SF", Offset: 2, Type: "sunssf"},
-				smdx.PointElement{Id: "DCWH_SF", Offset: 3, Type: "sunssf"},
-				smdx.PointElement{Id: "Evt", Offset: 4, Type: "bitfield32"},
-				smdx.PointElement{Id: "N", Offset: 6, Type: "count"},
-				smdx.PointElement{Id: "TmsPer", Offset: 7, Type: "uint16"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf"},
+					smdx.PointElement{Id: "DCV_SF", Offset: 1, Type: "sunssf"},
+					smdx.PointElement{Id: "DCW_SF", Offset: 2, Type: "sunssf"},
+					smdx.PointElement{Id: "DCWH_SF", Offset: 3, Type: "sunssf"},
+					smdx.PointElement{Id: "Evt", Offset: 4, Type: "bitfield32"},
+					smdx.PointElement{Id: "N", Offset: 6, Type: "count"},
+					smdx.PointElement{Id: "TmsPer", Offset: 7, Type: "uint16"},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "module",
-			Length: 20,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ID", Offset: 0, Type: "uint16"},
-				smdx.PointElement{Id: "IDStr", Offset: 1, Type: "string", Length: 8},
-				smdx.PointElement{Id: "DCA", Offset: 9, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A"},
-				smdx.PointElement{Id: "DCV", Offset: 10, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "DCW", Offset: 11, Type: "uint16", ScaleFactor: "DCW_SF", Units: "W"},
-				smdx.PointElement{Id: "DCWH", Offset: 12, Type: "acc32", ScaleFactor: "DCWH_SF", Units: "Wh"},
-				smdx.PointElement{Id: "Tms", Offset: 14, Type: "uint32", Units: "Secs"},
-				smdx.PointElement{Id: "Tmp", Offset: 16, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "DCSt", Offset: 17, Type: "enum16"},
-				smdx.PointElement{Id: "DCEvt", Offset: 18, Type: "bitfield32"},
+			smdx.BlockElement{Name: "module",
+				Length: 20,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ID", Offset: 0, Type: "uint16"},
+					smdx.PointElement{Id: "IDStr", Offset: 1, Type: "string", Length: 8},
+					smdx.PointElement{Id: "DCA", Offset: 9, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A"},
+					smdx.PointElement{Id: "DCV", Offset: 10, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "DCW", Offset: 11, Type: "uint16", ScaleFactor: "DCW_SF", Units: "W"},
+					smdx.PointElement{Id: "DCWH", Offset: 12, Type: "acc32", ScaleFactor: "DCWH_SF", Units: "Wh"},
+					smdx.PointElement{Id: "Tms", Offset: 14, Type: "uint32", Units: "Secs"},
+					smdx.PointElement{Id: "Tmp", Offset: 16, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "DCSt", Offset: 17, Type: "enum16"},
+					smdx.PointElement{Id: "DCEvt", Offset: 18, Type: "bitfield32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model160) }
 
 // Block201 - Meter (Single Phase)single phase (AN or AB) meter - Include this model for single phase (AN or AB) metering
 
@@ -5312,93 +5260,92 @@ func (self *Block201) GetId() ModelId {
 	return 201
 }
 
-var model201 = smdx.ModelElement{
-	Id:     201,
-	Name:   "ac_meter",
-	Length: 105,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 105,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     201,
+		Name:   "ac_meter",
+		Length: 105,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 105,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 1, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 2, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "AphC", Offset: 3, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "PhV", Offset: 5, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 6, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphB", Offset: 7, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphC", Offset: 8, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPV", Offset: 9, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphAB", Offset: 10, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphBC", Offset: 11, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 12, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "V_SF", Offset: 13, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 14, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf"},
-				smdx.PointElement{Id: "W", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WphA", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "WphB", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "WphC", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "W_SF", Offset: 20, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 21, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphA", Offset: 22, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphB", Offset: 23, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphC", Offset: 24, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VA_SF", Offset: 25, Type: "sunssf"},
-				smdx.PointElement{Id: "VAR", Offset: 26, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphA", Offset: 27, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphB", Offset: 28, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphC", Offset: 29, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VAR_SF", Offset: 30, Type: "sunssf"},
-				smdx.PointElement{Id: "PF", Offset: 31, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphA", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphB", Offset: 33, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphC", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PF_SF", Offset: 35, Type: "sunssf"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 36, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhExpPhA", Offset: 38, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhB", Offset: 40, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhC", Offset: 42, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImp", Offset: 44, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImpPhA", Offset: 46, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhB", Offset: 48, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhC", Offset: 50, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWh_SF", Offset: 52, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 53, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhA", Offset: 55, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhB", Offset: 57, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhC", Offset: 59, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 61, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhA", Offset: 63, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhB", Offset: 65, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhC", Offset: 67, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAh_SF", Offset: 69, Type: "sunssf"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 70, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhA", Offset: 72, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhB", Offset: 74, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhC", Offset: 76, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 78, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhA", Offset: 80, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhB", Offset: 82, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhC", Offset: 84, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 86, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhA", Offset: 88, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhB", Offset: 90, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhC", Offset: 92, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 94, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhA", Offset: 96, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhB", Offset: 98, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhC", Offset: 100, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArh_SF", Offset: 102, Type: "sunssf"},
-				smdx.PointElement{Id: "Evt", Offset: 103, Type: "bitfield32", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 1, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 2, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "AphC", Offset: 3, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "PhV", Offset: 5, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 6, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphB", Offset: 7, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphC", Offset: 8, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPV", Offset: 9, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphAB", Offset: 10, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphBC", Offset: 11, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 12, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "V_SF", Offset: 13, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 14, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf"},
+					smdx.PointElement{Id: "W", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WphA", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "WphB", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "WphC", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "W_SF", Offset: 20, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 21, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphA", Offset: 22, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphB", Offset: 23, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphC", Offset: 24, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VA_SF", Offset: 25, Type: "sunssf"},
+					smdx.PointElement{Id: "VAR", Offset: 26, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphA", Offset: 27, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphB", Offset: 28, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphC", Offset: 29, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VAR_SF", Offset: 30, Type: "sunssf"},
+					smdx.PointElement{Id: "PF", Offset: 31, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphA", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphB", Offset: 33, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphC", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PF_SF", Offset: 35, Type: "sunssf"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 36, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhExpPhA", Offset: 38, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhB", Offset: 40, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhC", Offset: 42, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImp", Offset: 44, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImpPhA", Offset: 46, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhB", Offset: 48, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhC", Offset: 50, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWh_SF", Offset: 52, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 53, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhA", Offset: 55, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhB", Offset: 57, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhC", Offset: 59, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 61, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhA", Offset: 63, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhB", Offset: 65, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhC", Offset: 67, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAh_SF", Offset: 69, Type: "sunssf"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 70, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhA", Offset: 72, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhB", Offset: 74, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhC", Offset: 76, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 78, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhA", Offset: 80, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhB", Offset: 82, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhC", Offset: 84, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 86, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhA", Offset: 88, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhB", Offset: 90, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhC", Offset: 92, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 94, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhA", Offset: 96, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhB", Offset: 98, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhC", Offset: 100, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArh_SF", Offset: 102, Type: "sunssf"},
+					smdx.PointElement{Id: "Evt", Offset: 103, Type: "bitfield32", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model201) }
 
 // Block202 - split single phase (ABN) meter -
 
@@ -5481,93 +5428,92 @@ func (self *Block202) GetId() ModelId {
 	return 202
 }
 
-var model202 = smdx.ModelElement{
-	Id:     202,
-	Name:   "ac_meter",
-	Length: 105,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 105,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     202,
+		Name:   "ac_meter",
+		Length: 105,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 105,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 1, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "AphB", Offset: 2, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 3, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "PhV", Offset: 5, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphA", Offset: 6, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 7, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphC", Offset: 8, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPV", Offset: 9, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphAB", Offset: 10, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphBC", Offset: 11, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphCA", Offset: 12, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "V_SF", Offset: 13, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 14, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf"},
-				smdx.PointElement{Id: "W", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WphA", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "WphB", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "WphC", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "W_SF", Offset: 20, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 21, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphA", Offset: 22, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphB", Offset: 23, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphC", Offset: 24, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VA_SF", Offset: 25, Type: "sunssf"},
-				smdx.PointElement{Id: "VAR", Offset: 26, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphA", Offset: 27, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphB", Offset: 28, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphC", Offset: 29, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VAR_SF", Offset: 30, Type: "sunssf"},
-				smdx.PointElement{Id: "PF", Offset: 31, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphA", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphB", Offset: 33, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphC", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PF_SF", Offset: 35, Type: "sunssf"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 36, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhExpPhA", Offset: 38, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhB", Offset: 40, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhC", Offset: 42, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImp", Offset: 44, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImpPhA", Offset: 46, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhB", Offset: 48, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhC", Offset: 50, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWh_SF", Offset: 52, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 53, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhA", Offset: 55, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhB", Offset: 57, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhC", Offset: 59, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 61, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhA", Offset: 63, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhB", Offset: 65, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhC", Offset: 67, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAh_SF", Offset: 69, Type: "sunssf"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 70, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhA", Offset: 72, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhB", Offset: 74, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhC", Offset: 76, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 78, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhA", Offset: 80, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhB", Offset: 82, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhC", Offset: 84, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 86, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhA", Offset: 88, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhB", Offset: 90, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhC", Offset: 92, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 94, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhA", Offset: 96, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhB", Offset: 98, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhC", Offset: 100, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArh_SF", Offset: 102, Type: "sunssf"},
-				smdx.PointElement{Id: "Evt", Offset: 103, Type: "bitfield32", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 1, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "AphB", Offset: 2, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 3, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "PhV", Offset: 5, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphA", Offset: 6, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 7, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphC", Offset: 8, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPV", Offset: 9, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphAB", Offset: 10, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphBC", Offset: 11, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphCA", Offset: 12, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "V_SF", Offset: 13, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 14, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf"},
+					smdx.PointElement{Id: "W", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WphA", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "WphB", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "WphC", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "W_SF", Offset: 20, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 21, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphA", Offset: 22, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphB", Offset: 23, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphC", Offset: 24, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VA_SF", Offset: 25, Type: "sunssf"},
+					smdx.PointElement{Id: "VAR", Offset: 26, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphA", Offset: 27, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphB", Offset: 28, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphC", Offset: 29, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VAR_SF", Offset: 30, Type: "sunssf"},
+					smdx.PointElement{Id: "PF", Offset: 31, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphA", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphB", Offset: 33, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphC", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PF_SF", Offset: 35, Type: "sunssf"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 36, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhExpPhA", Offset: 38, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhB", Offset: 40, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhC", Offset: 42, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImp", Offset: 44, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImpPhA", Offset: 46, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhB", Offset: 48, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhC", Offset: 50, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWh_SF", Offset: 52, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 53, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhA", Offset: 55, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhB", Offset: 57, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhC", Offset: 59, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 61, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhA", Offset: 63, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhB", Offset: 65, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhC", Offset: 67, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAh_SF", Offset: 69, Type: "sunssf"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 70, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhA", Offset: 72, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhB", Offset: 74, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhC", Offset: 76, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 78, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhA", Offset: 80, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhB", Offset: 82, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhC", Offset: 84, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 86, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhA", Offset: 88, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhB", Offset: 90, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhC", Offset: 92, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 94, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhA", Offset: 96, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhB", Offset: 98, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhC", Offset: 100, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArh_SF", Offset: 102, Type: "sunssf"},
+					smdx.PointElement{Id: "Evt", Offset: 103, Type: "bitfield32", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model202) }
 
 // Block203 - wye-connect three phase (abcn) meter -
 
@@ -5650,93 +5596,92 @@ func (self *Block203) GetId() ModelId {
 	return 203
 }
 
-var model203 = smdx.ModelElement{
-	Id:     203,
-	Name:   "ac_meter",
-	Length: 105,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 105,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     203,
+		Name:   "ac_meter",
+		Length: 105,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 105,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 1, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 2, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 3, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "PhV", Offset: 5, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphA", Offset: 6, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 7, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphC", Offset: 8, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPV", Offset: 9, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphAB", Offset: 10, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphBC", Offset: 11, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphCA", Offset: 12, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 13, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 14, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf"},
-				smdx.PointElement{Id: "W", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WphA", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "WphB", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "WphC", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "W_SF", Offset: 20, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 21, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphA", Offset: 22, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphB", Offset: 23, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphC", Offset: 24, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VA_SF", Offset: 25, Type: "sunssf"},
-				smdx.PointElement{Id: "VAR", Offset: 26, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphA", Offset: 27, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphB", Offset: 28, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphC", Offset: 29, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VAR_SF", Offset: 30, Type: "sunssf"},
-				smdx.PointElement{Id: "PF", Offset: 31, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphA", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphB", Offset: 33, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphC", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PF_SF", Offset: 35, Type: "sunssf"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 36, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhExpPhA", Offset: 38, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhB", Offset: 40, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhC", Offset: 42, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImp", Offset: 44, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImpPhA", Offset: 46, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhB", Offset: 48, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhC", Offset: 50, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWh_SF", Offset: 52, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 53, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhA", Offset: 55, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhB", Offset: 57, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhC", Offset: 59, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 61, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhA", Offset: 63, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhB", Offset: 65, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhC", Offset: 67, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAh_SF", Offset: 69, Type: "sunssf"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 70, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhA", Offset: 72, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhB", Offset: 74, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhC", Offset: 76, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 78, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhA", Offset: 80, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhB", Offset: 82, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhC", Offset: 84, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 86, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhA", Offset: 88, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhB", Offset: 90, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhC", Offset: 92, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 94, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhA", Offset: 96, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhB", Offset: 98, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhC", Offset: 100, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArh_SF", Offset: 102, Type: "sunssf"},
-				smdx.PointElement{Id: "Evt", Offset: 103, Type: "bitfield32", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 1, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 2, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 3, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "PhV", Offset: 5, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphA", Offset: 6, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 7, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphC", Offset: 8, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPV", Offset: 9, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphAB", Offset: 10, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphBC", Offset: 11, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphCA", Offset: 12, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 13, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 14, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf"},
+					smdx.PointElement{Id: "W", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WphA", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "WphB", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "WphC", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "W_SF", Offset: 20, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 21, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphA", Offset: 22, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphB", Offset: 23, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphC", Offset: 24, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VA_SF", Offset: 25, Type: "sunssf"},
+					smdx.PointElement{Id: "VAR", Offset: 26, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphA", Offset: 27, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphB", Offset: 28, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphC", Offset: 29, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VAR_SF", Offset: 30, Type: "sunssf"},
+					smdx.PointElement{Id: "PF", Offset: 31, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphA", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphB", Offset: 33, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphC", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PF_SF", Offset: 35, Type: "sunssf"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 36, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhExpPhA", Offset: 38, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhB", Offset: 40, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhC", Offset: 42, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImp", Offset: 44, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImpPhA", Offset: 46, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhB", Offset: 48, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhC", Offset: 50, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWh_SF", Offset: 52, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 53, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhA", Offset: 55, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhB", Offset: 57, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhC", Offset: 59, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 61, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhA", Offset: 63, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhB", Offset: 65, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhC", Offset: 67, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAh_SF", Offset: 69, Type: "sunssf"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 70, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhA", Offset: 72, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhB", Offset: 74, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhC", Offset: 76, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 78, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhA", Offset: 80, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhB", Offset: 82, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhC", Offset: 84, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 86, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhA", Offset: 88, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhB", Offset: 90, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhC", Offset: 92, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 94, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhA", Offset: 96, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhB", Offset: 98, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhC", Offset: 100, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArh_SF", Offset: 102, Type: "sunssf"},
+					smdx.PointElement{Id: "Evt", Offset: 103, Type: "bitfield32", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model203) }
 
 // Block204 - delta-connect three phase (abc) meter -
 
@@ -5819,93 +5764,92 @@ func (self *Block204) GetId() ModelId {
 	return 204
 }
 
-var model204 = smdx.ModelElement{
-	Id:     204,
-	Name:   "ac_meter",
-	Length: 105,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 105,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     204,
+		Name:   "ac_meter",
+		Length: 105,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 105,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 1, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 2, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 3, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "PhV", Offset: 5, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 6, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphB", Offset: 7, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PhVphC", Offset: 8, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "PPV", Offset: 9, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphAB", Offset: 10, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphBC", Offset: 11, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphCA", Offset: 12, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 13, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 14, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf"},
-				smdx.PointElement{Id: "W", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WphA", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "WphB", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "WphC", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "W_SF", Offset: 20, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 21, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphA", Offset: 22, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphB", Offset: 23, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VAphC", Offset: 24, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VA_SF", Offset: 25, Type: "sunssf"},
-				smdx.PointElement{Id: "VAR", Offset: 26, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphA", Offset: 27, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphB", Offset: 28, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VARphC", Offset: 29, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VAR_SF", Offset: 30, Type: "sunssf"},
-				smdx.PointElement{Id: "PF", Offset: 31, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphA", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphB", Offset: 33, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PFphC", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PF_SF", Offset: 35, Type: "sunssf"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 36, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhExpPhA", Offset: 38, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhB", Offset: 40, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhC", Offset: 42, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImp", Offset: 44, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImpPhA", Offset: 46, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhB", Offset: 48, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhC", Offset: 50, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "TotWh_SF", Offset: 52, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 53, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhA", Offset: 55, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhB", Offset: 57, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhC", Offset: 59, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 61, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhA", Offset: 63, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhB", Offset: 65, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhC", Offset: 67, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAh_SF", Offset: 69, Type: "sunssf"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 70, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhA", Offset: 72, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhB", Offset: 74, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1PhC", Offset: 76, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 78, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhA", Offset: 80, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhB", Offset: 82, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2PhC", Offset: 84, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 86, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhA", Offset: 88, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhB", Offset: 90, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3PhC", Offset: 92, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 94, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhA", Offset: 96, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhB", Offset: 98, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4PhC", Offset: 100, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArh_SF", Offset: 102, Type: "sunssf"},
-				smdx.PointElement{Id: "Evt", Offset: 103, Type: "bitfield32", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 1, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 2, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 3, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "A_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "PhV", Offset: 5, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 6, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphB", Offset: 7, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PhVphC", Offset: 8, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "PPV", Offset: 9, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphAB", Offset: 10, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphBC", Offset: 11, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphCA", Offset: 12, Type: "int16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 13, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 14, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 15, Type: "sunssf"},
+					smdx.PointElement{Id: "W", Offset: 16, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WphA", Offset: 17, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "WphB", Offset: 18, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "WphC", Offset: 19, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "W_SF", Offset: 20, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 21, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphA", Offset: 22, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphB", Offset: 23, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VAphC", Offset: 24, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VA_SF", Offset: 25, Type: "sunssf"},
+					smdx.PointElement{Id: "VAR", Offset: 26, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphA", Offset: 27, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphB", Offset: 28, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VARphC", Offset: 29, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VAR_SF", Offset: 30, Type: "sunssf"},
+					smdx.PointElement{Id: "PF", Offset: 31, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphA", Offset: 32, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphB", Offset: 33, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PFphC", Offset: 34, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PF_SF", Offset: 35, Type: "sunssf"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 36, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhExpPhA", Offset: 38, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhB", Offset: 40, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhC", Offset: 42, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImp", Offset: 44, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImpPhA", Offset: 46, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhB", Offset: 48, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhC", Offset: 50, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "TotWh_SF", Offset: 52, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 53, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhA", Offset: 55, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhB", Offset: 57, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhC", Offset: 59, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 61, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhA", Offset: 63, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhB", Offset: 65, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhC", Offset: 67, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAh_SF", Offset: 69, Type: "sunssf"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 70, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhA", Offset: 72, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhB", Offset: 74, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1PhC", Offset: 76, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 78, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhA", Offset: 80, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhB", Offset: 82, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2PhC", Offset: 84, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 86, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhA", Offset: 88, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhB", Offset: 90, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3PhC", Offset: 92, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 94, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhA", Offset: 96, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhB", Offset: 98, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4PhC", Offset: 100, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArh_SF", Offset: 102, Type: "sunssf"},
+					smdx.PointElement{Id: "Evt", Offset: 103, Type: "bitfield32", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model204) }
 
 // Block211 - single phase (AN or AB) meter -
 
@@ -5978,83 +5922,82 @@ func (self *Block211) GetId() ModelId {
 	return 211
 }
 
-var model211 = smdx.ModelElement{
-	Id:     211,
-	Name:   "ac_meter",
-	Length: 124,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 124,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     211,
+		Name:   "ac_meter",
+		Length: 124,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 124,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "PhV", Offset: 8, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 10, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphB", Offset: 12, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphC", Offset: 14, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPV", Offset: 16, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphAB", Offset: 18, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphBC", Offset: 20, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 22, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "Hz", Offset: 24, Type: "float32", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "W", Offset: 26, Type: "float32", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WphA", Offset: 28, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "WphB", Offset: 30, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "WphC", Offset: 32, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "VA", Offset: 34, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphA", Offset: 36, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphB", Offset: 38, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphC", Offset: 40, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAR", Offset: 42, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphA", Offset: 44, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphB", Offset: 46, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphC", Offset: 48, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "PF", Offset: 50, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphA", Offset: 52, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphB", Offset: 54, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphC", Offset: 56, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 58, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhExpPhA", Offset: 60, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhB", Offset: 62, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhC", Offset: 64, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImp", Offset: 66, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImpPhA", Offset: 68, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhB", Offset: 70, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhC", Offset: 72, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 74, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhA", Offset: 76, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhB", Offset: 78, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhC", Offset: 80, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 82, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhA", Offset: 84, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhB", Offset: 86, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhC", Offset: 88, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 90, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phA", Offset: 92, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phB", Offset: 94, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phC", Offset: 96, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 98, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phA", Offset: 100, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phB", Offset: 102, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phC", Offset: 104, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 106, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phA", Offset: 108, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phB", Offset: 110, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phC", Offset: 112, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 114, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phA", Offset: 116, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phB", Offset: 118, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phC", Offset: 120, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "Evt", Offset: 122, Type: "bitfield32", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "PhV", Offset: 8, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 10, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphB", Offset: 12, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphC", Offset: 14, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPV", Offset: 16, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphAB", Offset: 18, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphBC", Offset: 20, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 22, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "Hz", Offset: 24, Type: "float32", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "W", Offset: 26, Type: "float32", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WphA", Offset: 28, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "WphB", Offset: 30, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "WphC", Offset: 32, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "VA", Offset: 34, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphA", Offset: 36, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphB", Offset: 38, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphC", Offset: 40, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAR", Offset: 42, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphA", Offset: 44, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphB", Offset: 46, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphC", Offset: 48, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "PF", Offset: 50, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphA", Offset: 52, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphB", Offset: 54, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphC", Offset: 56, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 58, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhExpPhA", Offset: 60, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhB", Offset: 62, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhC", Offset: 64, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImp", Offset: 66, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImpPhA", Offset: 68, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhB", Offset: 70, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhC", Offset: 72, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 74, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhA", Offset: 76, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhB", Offset: 78, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhC", Offset: 80, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 82, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhA", Offset: 84, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhB", Offset: 86, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhC", Offset: 88, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 90, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phA", Offset: 92, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phB", Offset: 94, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phC", Offset: 96, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 98, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phA", Offset: 100, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phB", Offset: 102, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phC", Offset: 104, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 106, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phA", Offset: 108, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phB", Offset: 110, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phC", Offset: 112, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 114, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phA", Offset: 116, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phB", Offset: 118, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phC", Offset: 120, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "Evt", Offset: 122, Type: "bitfield32", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model211) }
 
 // Block212 - split single phase (ABN) meter -
 
@@ -6127,83 +6070,82 @@ func (self *Block212) GetId() ModelId {
 	return 212
 }
 
-var model212 = smdx.ModelElement{
-	Id:     212,
-	Name:   "ac_meter",
-	Length: 124,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 124,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     212,
+		Name:   "ac_meter",
+		Length: 124,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 124,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "PhV", Offset: 8, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphA", Offset: 10, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 12, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphC", Offset: 14, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPV", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPVphAB", Offset: 18, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPVphBC", Offset: 20, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPVphCA", Offset: 22, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "Hz", Offset: 24, Type: "float32", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "W", Offset: 26, Type: "float32", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WphA", Offset: 28, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "WphB", Offset: 30, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "WphC", Offset: 32, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "VA", Offset: 34, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphA", Offset: 36, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphB", Offset: 38, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphC", Offset: 40, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAR", Offset: 42, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphA", Offset: 44, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphB", Offset: 46, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphC", Offset: 48, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "PF", Offset: 50, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphA", Offset: 52, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphB", Offset: 54, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphC", Offset: 56, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 58, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhExpPhA", Offset: 60, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhB", Offset: 62, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhC", Offset: 64, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImp", Offset: 66, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImpPhA", Offset: 68, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhB", Offset: 70, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhC", Offset: 72, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 74, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhA", Offset: 76, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhB", Offset: 78, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhC", Offset: 80, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 82, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhA", Offset: 84, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhB", Offset: 86, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhC", Offset: 88, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 90, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phA", Offset: 92, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phB", Offset: 94, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phC", Offset: 96, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 98, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phA", Offset: 100, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phB", Offset: 102, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phC", Offset: 104, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 106, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phA", Offset: 108, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phB", Offset: 110, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phC", Offset: 112, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 114, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phA", Offset: 116, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phB", Offset: 118, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phC", Offset: 120, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "Evt", Offset: 122, Type: "bitfield32", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "PhV", Offset: 8, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphA", Offset: 10, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 12, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphC", Offset: 14, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPV", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPVphAB", Offset: 18, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPVphBC", Offset: 20, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPVphCA", Offset: 22, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "Hz", Offset: 24, Type: "float32", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "W", Offset: 26, Type: "float32", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WphA", Offset: 28, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "WphB", Offset: 30, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "WphC", Offset: 32, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "VA", Offset: 34, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphA", Offset: 36, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphB", Offset: 38, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphC", Offset: 40, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAR", Offset: 42, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphA", Offset: 44, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphB", Offset: 46, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphC", Offset: 48, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "PF", Offset: 50, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphA", Offset: 52, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphB", Offset: 54, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphC", Offset: 56, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 58, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhExpPhA", Offset: 60, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhB", Offset: 62, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhC", Offset: 64, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImp", Offset: 66, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImpPhA", Offset: 68, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhB", Offset: 70, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhC", Offset: 72, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 74, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhA", Offset: 76, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhB", Offset: 78, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhC", Offset: 80, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 82, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhA", Offset: 84, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhB", Offset: 86, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhC", Offset: 88, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 90, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phA", Offset: 92, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phB", Offset: 94, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phC", Offset: 96, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 98, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phA", Offset: 100, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phB", Offset: 102, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phC", Offset: 104, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 106, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phA", Offset: 108, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phB", Offset: 110, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phC", Offset: 112, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 114, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phA", Offset: 116, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phB", Offset: 118, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phC", Offset: 120, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "Evt", Offset: 122, Type: "bitfield32", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model212) }
 
 // Block213 - wye-connect three phase (abcn) meter -
 
@@ -6276,83 +6218,82 @@ func (self *Block213) GetId() ModelId {
 	return 213
 }
 
-var model213 = smdx.ModelElement{
-	Id:     213,
-	Name:   "ac_meter",
-	Length: 124,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 124,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     213,
+		Name:   "ac_meter",
+		Length: 124,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 124,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "PhV", Offset: 8, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphA", Offset: 10, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphB", Offset: 12, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PhVphC", Offset: 14, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPV", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPVphAB", Offset: 18, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPVphBC", Offset: 20, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPVphCA", Offset: 22, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 24, Type: "float32", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "W", Offset: 26, Type: "float32", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WphA", Offset: 28, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "WphB", Offset: 30, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "WphC", Offset: 32, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "VA", Offset: 34, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphA", Offset: 36, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphB", Offset: 38, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphC", Offset: 40, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAR", Offset: 42, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphA", Offset: 44, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphB", Offset: 46, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphC", Offset: 48, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "PF", Offset: 50, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphA", Offset: 52, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphB", Offset: 54, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphC", Offset: 56, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 58, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhExpPhA", Offset: 60, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhB", Offset: 62, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhC", Offset: 64, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImp", Offset: 66, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImpPhA", Offset: 68, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhB", Offset: 70, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhC", Offset: 72, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 74, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhA", Offset: 76, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhB", Offset: 78, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhC", Offset: 80, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 82, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhA", Offset: 84, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhB", Offset: 86, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhC", Offset: 88, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 90, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phA", Offset: 92, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phB", Offset: 94, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phC", Offset: 96, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 98, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phA", Offset: 100, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phB", Offset: 102, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phC", Offset: 104, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 106, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phA", Offset: 108, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phB", Offset: 110, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phC", Offset: 112, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 114, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phA", Offset: 116, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phB", Offset: 118, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phC", Offset: 120, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "Evt", Offset: 122, Type: "bitfield32", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "PhV", Offset: 8, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphA", Offset: 10, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphB", Offset: 12, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PhVphC", Offset: 14, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPV", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPVphAB", Offset: 18, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPVphBC", Offset: 20, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPVphCA", Offset: 22, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 24, Type: "float32", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "W", Offset: 26, Type: "float32", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WphA", Offset: 28, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "WphB", Offset: 30, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "WphC", Offset: 32, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "VA", Offset: 34, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphA", Offset: 36, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphB", Offset: 38, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphC", Offset: 40, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAR", Offset: 42, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphA", Offset: 44, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphB", Offset: 46, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphC", Offset: 48, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "PF", Offset: 50, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphA", Offset: 52, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphB", Offset: 54, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphC", Offset: 56, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 58, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhExpPhA", Offset: 60, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhB", Offset: 62, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhC", Offset: 64, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImp", Offset: 66, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImpPhA", Offset: 68, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhB", Offset: 70, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhC", Offset: 72, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 74, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhA", Offset: 76, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhB", Offset: 78, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhC", Offset: 80, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 82, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhA", Offset: 84, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhB", Offset: 86, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhC", Offset: 88, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 90, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phA", Offset: 92, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phB", Offset: 94, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phC", Offset: 96, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 98, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phA", Offset: 100, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phB", Offset: 102, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phC", Offset: 104, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 106, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phA", Offset: 108, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phB", Offset: 110, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phC", Offset: 112, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 114, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phA", Offset: 116, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phB", Offset: 118, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phC", Offset: 120, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "Evt", Offset: 122, Type: "bitfield32", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model213) }
 
 // Block214 - delta-connect three phase (abc) meter -
 
@@ -6425,83 +6366,82 @@ func (self *Block214) GetId() ModelId {
 	return 214
 }
 
-var model214 = smdx.ModelElement{
-	Id:     214,
-	Name:   "ac_meter",
-	Length: 124,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 124,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     214,
+		Name:   "ac_meter",
+		Length: 124,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 124,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "PhV", Offset: 8, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphA", Offset: 10, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphB", Offset: 12, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PhVphC", Offset: 14, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "PPV", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPVphAB", Offset: 18, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPVphBC", Offset: 20, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "PPVphCA", Offset: 22, Type: "float32", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 24, Type: "float32", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "W", Offset: 26, Type: "float32", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WphA", Offset: 28, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "WphB", Offset: 30, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "WphC", Offset: 32, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "VA", Offset: 34, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphA", Offset: 36, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphB", Offset: 38, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAphC", Offset: 40, Type: "float32", Units: "VA"},
-				smdx.PointElement{Id: "VAR", Offset: 42, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphA", Offset: 44, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphB", Offset: 46, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "VARphC", Offset: 48, Type: "float32", Units: "var"},
-				smdx.PointElement{Id: "PF", Offset: 50, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphA", Offset: 52, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphB", Offset: 54, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "PFphC", Offset: 56, Type: "float32", Units: "PF"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 58, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhExpPhA", Offset: 60, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhB", Offset: 62, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhExpPhC", Offset: 64, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImp", Offset: 66, Type: "float32", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImpPhA", Offset: 68, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhB", Offset: 70, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotWhImpPhC", Offset: 72, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 74, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhA", Offset: 76, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhB", Offset: 78, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhExpPhC", Offset: 80, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 82, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhA", Offset: 84, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhB", Offset: 86, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImpPhC", Offset: 88, Type: "float32", Units: "VAh"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 90, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phA", Offset: 92, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phB", Offset: 94, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ1phC", Offset: 96, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 98, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phA", Offset: 100, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phB", Offset: 102, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2phC", Offset: 104, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 106, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phA", Offset: 108, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phB", Offset: 110, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3phC", Offset: 112, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 114, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phA", Offset: 116, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phB", Offset: 118, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4phC", Offset: 120, Type: "float32", Units: "varh"},
-				smdx.PointElement{Id: "Evt", Offset: 122, Type: "bitfield32", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphA", Offset: 2, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphB", Offset: 4, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AphC", Offset: 6, Type: "float32", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "PhV", Offset: 8, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphA", Offset: 10, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphB", Offset: 12, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PhVphC", Offset: 14, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "PPV", Offset: 16, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPVphAB", Offset: 18, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPVphBC", Offset: 20, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "PPVphCA", Offset: 22, Type: "float32", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 24, Type: "float32", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "W", Offset: 26, Type: "float32", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WphA", Offset: 28, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "WphB", Offset: 30, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "WphC", Offset: 32, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "VA", Offset: 34, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphA", Offset: 36, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphB", Offset: 38, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAphC", Offset: 40, Type: "float32", Units: "VA"},
+					smdx.PointElement{Id: "VAR", Offset: 42, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphA", Offset: 44, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphB", Offset: 46, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "VARphC", Offset: 48, Type: "float32", Units: "var"},
+					smdx.PointElement{Id: "PF", Offset: 50, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphA", Offset: 52, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphB", Offset: 54, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "PFphC", Offset: 56, Type: "float32", Units: "PF"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 58, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhExpPhA", Offset: 60, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhB", Offset: 62, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhExpPhC", Offset: 64, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImp", Offset: 66, Type: "float32", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImpPhA", Offset: 68, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhB", Offset: 70, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotWhImpPhC", Offset: 72, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 74, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhA", Offset: 76, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhB", Offset: 78, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhExpPhC", Offset: 80, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 82, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhA", Offset: 84, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhB", Offset: 86, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImpPhC", Offset: 88, Type: "float32", Units: "VAh"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 90, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phA", Offset: 92, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phB", Offset: 94, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ1phC", Offset: 96, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 98, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phA", Offset: 100, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phB", Offset: 102, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2phC", Offset: 104, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 106, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phA", Offset: 108, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phB", Offset: 110, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3phC", Offset: 112, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 114, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phA", Offset: 116, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phB", Offset: 118, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4phC", Offset: 120, Type: "float32", Units: "varh"},
+					smdx.PointElement{Id: "Evt", Offset: 122, Type: "bitfield32", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model214) }
 
 // Block220 - Secure AC Meter Selected Readings - Include this model for secure metering
 
@@ -6550,60 +6490,59 @@ func (self *Block220) GetId() ModelId {
 	return 220
 }
 
-var model220 = smdx.ModelElement{
-	Id:     220,
-	Name:   "ac_meter",
-	Length: 43,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 42,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     220,
+		Name:   "ac_meter",
+		Length: 43,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 42,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "A_SF", Offset: 1, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "PhV", Offset: 2, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "V_SF", Offset: 3, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Hz", Offset: 4, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
-				smdx.PointElement{Id: "Hz_SF", Offset: 5, Type: "sunssf"},
-				smdx.PointElement{Id: "W", Offset: 6, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "W_SF", Offset: 7, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "VA", Offset: 8, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
-				smdx.PointElement{Id: "VA_SF", Offset: 9, Type: "sunssf"},
-				smdx.PointElement{Id: "VAR", Offset: 10, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
-				smdx.PointElement{Id: "VAR_SF", Offset: 11, Type: "sunssf"},
-				smdx.PointElement{Id: "PF", Offset: 12, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
-				smdx.PointElement{Id: "PF_SF", Offset: 13, Type: "sunssf"},
-				smdx.PointElement{Id: "TotWhExp", Offset: 14, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWhImp", Offset: 16, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "TotWh_SF", Offset: 18, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "TotVAhExp", Offset: 19, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAhImp", Offset: 21, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
-				smdx.PointElement{Id: "TotVAh_SF", Offset: 23, Type: "sunssf"},
-				smdx.PointElement{Id: "TotVArhImpQ1", Offset: 24, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhImpQ2", Offset: 26, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ3", Offset: 28, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArhExpQ4", Offset: 30, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
-				smdx.PointElement{Id: "TotVArh_SF", Offset: 32, Type: "sunssf"},
-				smdx.PointElement{Id: "Evt", Offset: 33, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Rsrvd", Offset: 35, Type: "pad", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Ts", Offset: 36, Type: "uint32", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Ms", Offset: 38, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Seq", Offset: 39, Type: "uint16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "Alg", Offset: 40, Type: "enum16", Access: "r", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 41, Type: "uint16", Access: "r", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A", Offset: 0, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "A_SF", Offset: 1, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "PhV", Offset: 2, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "V_SF", Offset: 3, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Hz", Offset: 4, Type: "int16", ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: "Hz_SF", Offset: 5, Type: "sunssf"},
+					smdx.PointElement{Id: "W", Offset: 6, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "W_SF", Offset: 7, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "VA", Offset: 8, Type: "int16", ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: "VA_SF", Offset: 9, Type: "sunssf"},
+					smdx.PointElement{Id: "VAR", Offset: 10, Type: "int16", ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: "VAR_SF", Offset: 11, Type: "sunssf"},
+					smdx.PointElement{Id: "PF", Offset: 12, Type: "int16", ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: "PF_SF", Offset: 13, Type: "sunssf"},
+					smdx.PointElement{Id: "TotWhExp", Offset: 14, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWhImp", Offset: 16, Type: "acc32", ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "TotWh_SF", Offset: 18, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "TotVAhExp", Offset: 19, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAhImp", Offset: 21, Type: "acc32", ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: "TotVAh_SF", Offset: 23, Type: "sunssf"},
+					smdx.PointElement{Id: "TotVArhImpQ1", Offset: 24, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhImpQ2", Offset: 26, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ3", Offset: 28, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArhExpQ4", Offset: 30, Type: "acc32", ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: "TotVArh_SF", Offset: 32, Type: "sunssf"},
+					smdx.PointElement{Id: "Evt", Offset: 33, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Rsrvd", Offset: 35, Type: "pad", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Ts", Offset: 36, Type: "uint32", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Ms", Offset: 38, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Seq", Offset: 39, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "Alg", Offset: 40, Type: "enum16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 41, Type: "uint16", Access: "r", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+			smdx.BlockElement{
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DS", Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model220) }
 
 // Block302 - Irradiance Model - Include to support various irradiance measurements
 
@@ -6619,26 +6558,25 @@ func (self *Block302) GetId() ModelId {
 	return 302
 }
 
-var model302 = smdx.ModelElement{
-	Id:     302,
-	Name:   "irradiance",
-	Length: 5,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 5,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     302,
+		Name:   "irradiance",
+		Length: 5,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 5,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "GHI", Offset: 0, Type: "uint16", Units: "W/m2"},
-				smdx.PointElement{Id: "POAI", Offset: 1, Type: "uint16", Units: "W/m2"},
-				smdx.PointElement{Id: "DFI", Offset: 2, Type: "uint16", Units: "W/m2"},
-				smdx.PointElement{Id: "DNI", Offset: 3, Type: "uint16", Units: "W/m2"},
-				smdx.PointElement{Id: "OTI", Offset: 4, Type: "uint16", Units: "W/m2"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "GHI", Offset: 0, Type: "uint16", Units: "W/m2"},
+					smdx.PointElement{Id: "POAI", Offset: 1, Type: "uint16", Units: "W/m2"},
+					smdx.PointElement{Id: "DFI", Offset: 2, Type: "uint16", Units: "W/m2"},
+					smdx.PointElement{Id: "DNI", Offset: 3, Type: "uint16", Units: "W/m2"},
+					smdx.PointElement{Id: "OTI", Offset: 4, Type: "uint16", Units: "W/m2"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model302) }
 
 // Block303 - Back of Module Temperature Model - Include to support variable number of  back of module temperature measurements
 
@@ -6654,22 +6592,21 @@ func (self *Block303) GetId() ModelId {
 	return 303
 }
 
-var model303 = smdx.ModelElement{
-	Id:     303,
-	Name:   "bom_temp",
-	Length: 2,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{Name: "temp",
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "TmpBOM", Offset: 0, Type: "int16", ScaleFactor: "-1", Units: "C", Mandatory: true},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     303,
+		Name:   "bom_temp",
+		Length: 2,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{Name: "temp",
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "TmpBOM", Offset: 0, Type: "int16", ScaleFactor: "-1", Units: "C", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model303) }
 
 // Block304 - Inclinometer Model - Include to support orienation measurements
 
@@ -6687,24 +6624,23 @@ func (self *Block304) GetId() ModelId {
 	return 304
 }
 
-var model304 = smdx.ModelElement{
-	Id:     304,
-	Name:   "inclinometer",
-	Length: 6,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{Name: "incl",
-			Length: 6,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Inclx", Offset: 0, Type: "int32", ScaleFactor: "-2", Units: "Degrees", Mandatory: true},
-				smdx.PointElement{Id: "Incly", Offset: 2, Type: "int32", ScaleFactor: "-2", Units: "Degrees"},
-				smdx.PointElement{Id: "Inclz", Offset: 4, Type: "int32", ScaleFactor: "-2", Units: "Degrees"},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     304,
+		Name:   "inclinometer",
+		Length: 6,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{Name: "incl",
+				Length: 6,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Inclx", Offset: 0, Type: "int32", ScaleFactor: "-2", Units: "Degrees", Mandatory: true},
+					smdx.PointElement{Id: "Incly", Offset: 2, Type: "int32", ScaleFactor: "-2", Units: "Degrees"},
+					smdx.PointElement{Id: "Inclz", Offset: 4, Type: "int32", ScaleFactor: "-2", Units: "Degrees"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model304) }
 
 // Block305 - GPS - Include to support location measurements
 
@@ -6721,27 +6657,26 @@ func (self *Block305) GetId() ModelId {
 	return 305
 }
 
-var model305 = smdx.ModelElement{
-	Id:     305,
-	Name:   "location",
-	Length: 36,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 36,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     305,
+		Name:   "location",
+		Length: 36,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 36,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Tm", Offset: 0, Type: "string", Units: "hhmmss.sssZ", Length: 6},
-				smdx.PointElement{Id: "Date", Offset: 6, Type: "string", Units: "YYYYMMDD", Length: 4},
-				smdx.PointElement{Id: "Loc", Offset: 10, Type: "string", Units: "text", Length: 20},
-				smdx.PointElement{Id: "Lat", Offset: 30, Type: "int32", ScaleFactor: "-7", Units: "Degrees"},
-				smdx.PointElement{Id: "Long", Offset: 32, Type: "int32", ScaleFactor: "-7", Units: "Degrees"},
-				smdx.PointElement{Id: "Alt", Offset: 34, Type: "int32", Units: "meters"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Tm", Offset: 0, Type: "string", Units: "hhmmss.sssZ", Length: 6},
+					smdx.PointElement{Id: "Date", Offset: 6, Type: "string", Units: "YYYYMMDD", Length: 4},
+					smdx.PointElement{Id: "Loc", Offset: 10, Type: "string", Units: "text", Length: 20},
+					smdx.PointElement{Id: "Lat", Offset: 30, Type: "int32", ScaleFactor: "-7", Units: "Degrees"},
+					smdx.PointElement{Id: "Long", Offset: 32, Type: "int32", ScaleFactor: "-7", Units: "Degrees"},
+					smdx.PointElement{Id: "Alt", Offset: 34, Type: "int32", Units: "meters"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model305) }
 
 // Block306 - Reference Point Model - Include to support a standard reference point
 
@@ -6756,25 +6691,24 @@ func (self *Block306) GetId() ModelId {
 	return 306
 }
 
-var model306 = smdx.ModelElement{
-	Id:     306,
-	Name:   "ref_point",
-	Length: 4,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 4,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     306,
+		Name:   "ref_point",
+		Length: 4,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 4,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "GHI", Offset: 0, Type: "uint16", Units: "W/m2"},
-				smdx.PointElement{Id: "A", Offset: 1, Type: "uint16", Units: "W/m2"},
-				smdx.PointElement{Id: "V", Offset: 2, Type: "uint16", Units: "W/m2"},
-				smdx.PointElement{Id: "Tmp", Offset: 3, Type: "uint16", Units: "W/m2"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "GHI", Offset: 0, Type: "uint16", Units: "W/m2"},
+					smdx.PointElement{Id: "A", Offset: 1, Type: "uint16", Units: "W/m2"},
+					smdx.PointElement{Id: "V", Offset: 2, Type: "uint16", Units: "W/m2"},
+					smdx.PointElement{Id: "Tmp", Offset: 3, Type: "uint16", Units: "W/m2"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model306) }
 
 // Block307 - Base Met - Base Meteorolgical Model
 
@@ -6796,32 +6730,31 @@ func (self *Block307) GetId() ModelId {
 	return 307
 }
 
-var model307 = smdx.ModelElement{
-	Id:     307,
-	Name:   "base_met",
-	Length: 11,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 11,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     307,
+		Name:   "base_met",
+		Length: 11,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 11,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "TmpAmb", Offset: 0, Type: "int16", ScaleFactor: "-1", Units: "C"},
-				smdx.PointElement{Id: "RH", Offset: 1, Type: "int16", Units: "Pct"},
-				smdx.PointElement{Id: "Pres", Offset: 2, Type: "int16", Units: "HPa"},
-				smdx.PointElement{Id: "WndSpd", Offset: 3, Type: "int16", Units: "mps"},
-				smdx.PointElement{Id: "WndDir", Offset: 4, Type: "int16", Units: "deg"},
-				smdx.PointElement{Id: "Rain", Offset: 5, Type: "int16", Units: "mm"},
-				smdx.PointElement{Id: "Snw", Offset: 6, Type: "int16", Units: "mm"},
-				smdx.PointElement{Id: "PPT", Offset: 7, Type: "int16"},
-				smdx.PointElement{Id: "ElecFld", Offset: 8, Type: "int16", Units: "Vm"},
-				smdx.PointElement{Id: "SurWet", Offset: 9, Type: "int16", Units: "kO"},
-				smdx.PointElement{Id: "SoilWet", Offset: 10, Type: "int16", Units: "Pct"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "TmpAmb", Offset: 0, Type: "int16", ScaleFactor: "-1", Units: "C"},
+					smdx.PointElement{Id: "RH", Offset: 1, Type: "int16", Units: "Pct"},
+					smdx.PointElement{Id: "Pres", Offset: 2, Type: "int16", Units: "HPa"},
+					smdx.PointElement{Id: "WndSpd", Offset: 3, Type: "int16", Units: "mps"},
+					smdx.PointElement{Id: "WndDir", Offset: 4, Type: "int16", Units: "deg"},
+					smdx.PointElement{Id: "Rain", Offset: 5, Type: "int16", Units: "mm"},
+					smdx.PointElement{Id: "Snw", Offset: 6, Type: "int16", Units: "mm"},
+					smdx.PointElement{Id: "PPT", Offset: 7, Type: "int16"},
+					smdx.PointElement{Id: "ElecFld", Offset: 8, Type: "int16", Units: "Vm"},
+					smdx.PointElement{Id: "SurWet", Offset: 9, Type: "int16", Units: "kO"},
+					smdx.PointElement{Id: "SoilWet", Offset: 10, Type: "int16", Units: "Pct"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model307) }
 
 // Block308 - Mini Met Model - Include to support a few basic measurements
 
@@ -6836,25 +6769,24 @@ func (self *Block308) GetId() ModelId {
 	return 308
 }
 
-var model308 = smdx.ModelElement{
-	Id:     308,
-	Name:   "mini_met",
-	Length: 4,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 4,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     308,
+		Name:   "mini_met",
+		Length: 4,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 4,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "GHI", Offset: 0, Type: "uint16", Units: "W/m2"},
-				smdx.PointElement{Id: "TmpBOM", Offset: 1, Type: "int16", ScaleFactor: "-1", Units: "C"},
-				smdx.PointElement{Id: "TmpAmb", Offset: 2, Type: "int16", ScaleFactor: "-1", Units: "C"},
-				smdx.PointElement{Id: "WndSpd", Offset: 3, Type: "uint16", Units: "m/s"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "GHI", Offset: 0, Type: "uint16", Units: "W/m2"},
+					smdx.PointElement{Id: "TmpBOM", Offset: 1, Type: "int16", ScaleFactor: "-1", Units: "C"},
+					smdx.PointElement{Id: "TmpAmb", Offset: 2, Type: "int16", ScaleFactor: "-1", Units: "C"},
+					smdx.PointElement{Id: "WndSpd", Offset: 3, Type: "uint16", Units: "m/s"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model308) }
 
 // Block401 - String Combiner (Current) - A basic string combiner
 
@@ -6886,43 +6818,42 @@ func (self *Block401) GetId() ModelId {
 	return 401
 }
 
-var model401 = smdx.ModelElement{
-	Id:     401,
-	Name:   "string_combiner",
-	Length: 22,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 14,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     401,
+		Name:   "string_combiner",
+		Length: 22,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 14,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DCAhr_SF", Offset: 1, Type: "sunssf"},
-				smdx.PointElement{Id: "DCV_SF", Offset: 2, Type: "sunssf"},
-				smdx.PointElement{Id: "DCAMax", Offset: 3, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 4, Type: "count", Mandatory: true},
-				smdx.PointElement{Id: "Evt", Offset: 5, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd", Offset: 7, Type: "bitfield32"},
-				smdx.PointElement{Id: "DCA", Offset: 9, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "DCAhr", Offset: 10, Type: "uint32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
-				smdx.PointElement{Id: "DCV", Offset: 12, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "Tmp", Offset: 13, Type: "int16", Units: "C"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DCAhr_SF", Offset: 1, Type: "sunssf"},
+					smdx.PointElement{Id: "DCV_SF", Offset: 2, Type: "sunssf"},
+					smdx.PointElement{Id: "DCAMax", Offset: 3, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 4, Type: "count", Mandatory: true},
+					smdx.PointElement{Id: "Evt", Offset: 5, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd", Offset: 7, Type: "bitfield32"},
+					smdx.PointElement{Id: "DCA", Offset: 9, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "DCAhr", Offset: 10, Type: "uint32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
+					smdx.PointElement{Id: "DCV", Offset: 12, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "Tmp", Offset: 13, Type: "int16", Units: "C"},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "string",
-			Length: 8,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "InID", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "InEvt", Offset: 1, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "InEvtVnd", Offset: 3, Type: "bitfield32"},
-				smdx.PointElement{Id: "InDCA", Offset: 5, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "InDCAhr", Offset: 6, Type: "uint32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
+			smdx.BlockElement{Name: "string",
+				Length: 8,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "InID", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "InEvt", Offset: 1, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "InEvtVnd", Offset: 3, Type: "bitfield32"},
+					smdx.PointElement{Id: "InDCA", Offset: 5, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "InDCAhr", Offset: 6, Type: "uint32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model401) }
 
 // Block402 - String Combiner (Advanced) - An advanced string combiner
 
@@ -6964,53 +6895,52 @@ func (self *Block402) GetId() ModelId {
 	return 402
 }
 
-var model402 = smdx.ModelElement{
-	Id:     402,
-	Name:   "string_combiner",
-	Length: 33,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 20,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     402,
+		Name:   "string_combiner",
+		Length: 33,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 20,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DCAhr_SF", Offset: 1, Type: "sunssf"},
-				smdx.PointElement{Id: "DCV_SF", Offset: 2, Type: "sunssf"},
-				smdx.PointElement{Id: "DCW_SF", Offset: 3, Type: "sunssf"},
-				smdx.PointElement{Id: "DCWh_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DCAMax", Offset: 5, Type: "uint16", Units: "A"},
-				smdx.PointElement{Id: "N", Offset: 6, Type: "count"},
-				smdx.PointElement{Id: "Evt", Offset: 7, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd", Offset: 9, Type: "bitfield32"},
-				smdx.PointElement{Id: "DCA", Offset: 11, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "DCAhr", Offset: 12, Type: "uint32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
-				smdx.PointElement{Id: "DCV", Offset: 14, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "Tmp", Offset: 15, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "DCW", Offset: 16, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
-				smdx.PointElement{Id: "DCPR", Offset: 17, Type: "uint16", Units: "Pct"},
-				smdx.PointElement{Id: "DCWh", Offset: 18, Type: "uint32", ScaleFactor: "DCWh_SF", Units: "Wh", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DCAhr_SF", Offset: 1, Type: "sunssf"},
+					smdx.PointElement{Id: "DCV_SF", Offset: 2, Type: "sunssf"},
+					smdx.PointElement{Id: "DCW_SF", Offset: 3, Type: "sunssf"},
+					smdx.PointElement{Id: "DCWh_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DCAMax", Offset: 5, Type: "uint16", Units: "A"},
+					smdx.PointElement{Id: "N", Offset: 6, Type: "count"},
+					smdx.PointElement{Id: "Evt", Offset: 7, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd", Offset: 9, Type: "bitfield32"},
+					smdx.PointElement{Id: "DCA", Offset: 11, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "DCAhr", Offset: 12, Type: "uint32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
+					smdx.PointElement{Id: "DCV", Offset: 14, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "Tmp", Offset: 15, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "DCW", Offset: 16, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
+					smdx.PointElement{Id: "DCPR", Offset: 17, Type: "uint16", Units: "Pct"},
+					smdx.PointElement{Id: "DCWh", Offset: 18, Type: "uint32", ScaleFactor: "DCWh_SF", Units: "Wh", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "string",
-			Length: 14,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "InID", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "InEvt", Offset: 1, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd", Offset: 3, Type: "bitfield32"},
-				smdx.PointElement{Id: "InDCA", Offset: 5, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "InDCAhr", Offset: 6, Type: "uint32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
-				smdx.PointElement{Id: "InDCV", Offset: 8, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "InDCW", Offset: 9, Type: "int16", ScaleFactor: "DCWh_SF", Units: "W"},
-				smdx.PointElement{Id: "InDCWh", Offset: 10, Type: "uint32", Units: "Wh"},
-				smdx.PointElement{Id: "InDCPR", Offset: 12, Type: "uint16", Units: "Pct"},
-				smdx.PointElement{Id: "InN", Offset: 13, Type: "uint16"},
+			smdx.BlockElement{Name: "string",
+				Length: 14,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "InID", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "InEvt", Offset: 1, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd", Offset: 3, Type: "bitfield32"},
+					smdx.PointElement{Id: "InDCA", Offset: 5, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "InDCAhr", Offset: 6, Type: "uint32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
+					smdx.PointElement{Id: "InDCV", Offset: 8, Type: "uint16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "InDCW", Offset: 9, Type: "int16", ScaleFactor: "DCWh_SF", Units: "W"},
+					smdx.PointElement{Id: "InDCWh", Offset: 10, Type: "uint32", Units: "Wh"},
+					smdx.PointElement{Id: "InDCPR", Offset: 12, Type: "uint16", Units: "Pct"},
+					smdx.PointElement{Id: "InN", Offset: 13, Type: "uint16"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model402) }
 
 // Block403 - String Combiner (Current) - A basic string combiner model
 
@@ -7044,45 +6974,44 @@ func (self *Block403) GetId() ModelId {
 	return 403
 }
 
-var model403 = smdx.ModelElement{
-	Id:     403,
-	Name:   "string_combiner",
-	Length: 24,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 16,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     403,
+		Name:   "string_combiner",
+		Length: 24,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 16,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DCAhr_SF", Offset: 1, Type: "sunssf"},
-				smdx.PointElement{Id: "DCV_SF", Offset: 2, Type: "sunssf"},
-				smdx.PointElement{Id: "DCAMax", Offset: 3, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 4, Type: "count", Mandatory: true},
-				smdx.PointElement{Id: "Evt", Offset: 5, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd", Offset: 7, Type: "bitfield32"},
-				smdx.PointElement{Id: "DCA", Offset: 9, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "DCAhr", Offset: 10, Type: "acc32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
-				smdx.PointElement{Id: "DCV", Offset: 12, Type: "int16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "Tmp", Offset: 13, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "InDCA_SF", Offset: 14, Type: "sunssf"},
-				smdx.PointElement{Id: "InDCAhr_SF", Offset: 15, Type: "sunssf"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DCAhr_SF", Offset: 1, Type: "sunssf"},
+					smdx.PointElement{Id: "DCV_SF", Offset: 2, Type: "sunssf"},
+					smdx.PointElement{Id: "DCAMax", Offset: 3, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 4, Type: "count", Mandatory: true},
+					smdx.PointElement{Id: "Evt", Offset: 5, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd", Offset: 7, Type: "bitfield32"},
+					smdx.PointElement{Id: "DCA", Offset: 9, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "DCAhr", Offset: 10, Type: "acc32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
+					smdx.PointElement{Id: "DCV", Offset: 12, Type: "int16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "Tmp", Offset: 13, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "InDCA_SF", Offset: 14, Type: "sunssf"},
+					smdx.PointElement{Id: "InDCAhr_SF", Offset: 15, Type: "sunssf"},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "string",
-			Length: 8,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "InID", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "InEvt", Offset: 1, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "InEvtVnd", Offset: 3, Type: "bitfield32"},
-				smdx.PointElement{Id: "InDCA", Offset: 5, Type: "int16", ScaleFactor: "InDCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "InDCAhr", Offset: 6, Type: "acc32", ScaleFactor: "InDCAhr_SF", Units: "Ah"},
+			smdx.BlockElement{Name: "string",
+				Length: 8,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "InID", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "InEvt", Offset: 1, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "InEvtVnd", Offset: 3, Type: "bitfield32"},
+					smdx.PointElement{Id: "InDCA", Offset: 5, Type: "int16", ScaleFactor: "InDCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "InDCAhr", Offset: 6, Type: "acc32", ScaleFactor: "InDCAhr_SF", Units: "Ah"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model403) }
 
 // Block404 - String Combiner (Advanced) - An advanced string combiner including voltage and energy measurements
 
@@ -7129,58 +7058,57 @@ func (self *Block404) GetId() ModelId {
 	return 404
 }
 
-var model404 = smdx.ModelElement{
-	Id:     404,
-	Name:   "string_combiner",
-	Length: 39,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 25,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     404,
+		Name:   "string_combiner",
+		Length: 39,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 25,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DCAhr_SF", Offset: 1, Type: "sunssf"},
-				smdx.PointElement{Id: "DCV_SF", Offset: 2, Type: "sunssf"},
-				smdx.PointElement{Id: "DCW_SF", Offset: 3, Type: "sunssf"},
-				smdx.PointElement{Id: "DCWh_SF", Offset: 4, Type: "sunssf"},
-				smdx.PointElement{Id: "DCAMax", Offset: 5, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 6, Type: "count", Mandatory: true},
-				smdx.PointElement{Id: "Evt", Offset: 7, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd", Offset: 9, Type: "bitfield32"},
-				smdx.PointElement{Id: "DCA", Offset: 11, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "DCAhr", Offset: 12, Type: "acc32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
-				smdx.PointElement{Id: "DCV", Offset: 14, Type: "int16", ScaleFactor: "DCV_SF", Units: "V"},
-				smdx.PointElement{Id: "Tmp", Offset: 15, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "DCW", Offset: 16, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
-				smdx.PointElement{Id: "DCPR", Offset: 17, Type: "int16", Units: "Pct"},
-				smdx.PointElement{Id: "DCWh", Offset: 18, Type: "acc32", ScaleFactor: "DCWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "InDCA_SF", Offset: 20, Type: "sunssf"},
-				smdx.PointElement{Id: "InDCAhr_SF", Offset: 21, Type: "sunssf"},
-				smdx.PointElement{Id: "InDCV_SF", Offset: 22, Type: "sunssf"},
-				smdx.PointElement{Id: "InDCW_SF", Offset: 23, Type: "sunssf"},
-				smdx.PointElement{Id: "InDCWh_SF", Offset: 24, Type: "sunssf"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DCA_SF", Offset: 0, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DCAhr_SF", Offset: 1, Type: "sunssf"},
+					smdx.PointElement{Id: "DCV_SF", Offset: 2, Type: "sunssf"},
+					smdx.PointElement{Id: "DCW_SF", Offset: 3, Type: "sunssf"},
+					smdx.PointElement{Id: "DCWh_SF", Offset: 4, Type: "sunssf"},
+					smdx.PointElement{Id: "DCAMax", Offset: 5, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 6, Type: "count", Mandatory: true},
+					smdx.PointElement{Id: "Evt", Offset: 7, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd", Offset: 9, Type: "bitfield32"},
+					smdx.PointElement{Id: "DCA", Offset: 11, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "DCAhr", Offset: 12, Type: "acc32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
+					smdx.PointElement{Id: "DCV", Offset: 14, Type: "int16", ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: "Tmp", Offset: 15, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "DCW", Offset: 16, Type: "int16", ScaleFactor: "DCW_SF", Units: "W"},
+					smdx.PointElement{Id: "DCPR", Offset: 17, Type: "int16", Units: "Pct"},
+					smdx.PointElement{Id: "DCWh", Offset: 18, Type: "acc32", ScaleFactor: "DCWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "InDCA_SF", Offset: 20, Type: "sunssf"},
+					smdx.PointElement{Id: "InDCAhr_SF", Offset: 21, Type: "sunssf"},
+					smdx.PointElement{Id: "InDCV_SF", Offset: 22, Type: "sunssf"},
+					smdx.PointElement{Id: "InDCW_SF", Offset: 23, Type: "sunssf"},
+					smdx.PointElement{Id: "InDCWh_SF", Offset: 24, Type: "sunssf"},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "string",
-			Length: 14,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "InID", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "InEvt", Offset: 1, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "InEvtVnd", Offset: 3, Type: "bitfield32"},
-				smdx.PointElement{Id: "InDCA", Offset: 5, Type: "int16", ScaleFactor: "InDCA_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "InDCAhr", Offset: 6, Type: "acc32", ScaleFactor: "InDCAhr_SF", Units: "Ah"},
-				smdx.PointElement{Id: "InDCV", Offset: 8, Type: "int16", ScaleFactor: "InDCV_SF", Units: "V"},
-				smdx.PointElement{Id: "InDCW", Offset: 9, Type: "int16", ScaleFactor: "InDCW_SF", Units: "W"},
-				smdx.PointElement{Id: "InDCWh", Offset: 10, Type: "acc32", ScaleFactor: "InDCWh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "InDCPR", Offset: 12, Type: "uint16", Units: "Pct"},
-				smdx.PointElement{Id: "InN", Offset: 13, Type: "uint16"},
+			smdx.BlockElement{Name: "string",
+				Length: 14,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "InID", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "InEvt", Offset: 1, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "InEvtVnd", Offset: 3, Type: "bitfield32"},
+					smdx.PointElement{Id: "InDCA", Offset: 5, Type: "int16", ScaleFactor: "InDCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "InDCAhr", Offset: 6, Type: "acc32", ScaleFactor: "InDCAhr_SF", Units: "Ah"},
+					smdx.PointElement{Id: "InDCV", Offset: 8, Type: "int16", ScaleFactor: "InDCV_SF", Units: "V"},
+					smdx.PointElement{Id: "InDCW", Offset: 9, Type: "int16", ScaleFactor: "InDCW_SF", Units: "W"},
+					smdx.PointElement{Id: "InDCWh", Offset: 10, Type: "acc32", ScaleFactor: "InDCWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "InDCPR", Offset: 12, Type: "uint16", Units: "Pct"},
+					smdx.PointElement{Id: "InN", Offset: 13, Type: "uint16"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model404) }
 
 // Block501 - Solar Module - A solar module model supporing DC-DC converter
 
@@ -7208,38 +7136,37 @@ func (self *Block501) GetId() ModelId {
 	return 501
 }
 
-var model501 = smdx.ModelElement{
-	Id:     501,
-	Name:   "solar_module",
-	Length: 31,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 31,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     501,
+		Name:   "solar_module",
+		Length: 31,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 31,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Stat", Offset: 0, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StatVend", Offset: 1, Type: "enum16"},
-				smdx.PointElement{Id: "Evt", Offset: 2, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVend", Offset: 4, Type: "bitfield32"},
-				smdx.PointElement{Id: "Ctl", Offset: 6, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "CtlVend", Offset: 7, Type: "enum32", Access: "rw"},
-				smdx.PointElement{Id: "CtlVal", Offset: 9, Type: "int32", Access: "rw"},
-				smdx.PointElement{Id: "Tms", Offset: 11, Type: "uint32", Units: "Secs"},
-				smdx.PointElement{Id: "OutA", Offset: 13, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "OutV", Offset: 15, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "OutWh", Offset: 17, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "OutW", Offset: 19, Type: "float32", Units: "W"},
-				smdx.PointElement{Id: "Tmp", Offset: 21, Type: "float32", Units: "C"},
-				smdx.PointElement{Id: "InA", Offset: 23, Type: "float32", Units: "A"},
-				smdx.PointElement{Id: "InV", Offset: 25, Type: "float32", Units: "V"},
-				smdx.PointElement{Id: "InWh", Offset: 27, Type: "float32", Units: "Wh"},
-				smdx.PointElement{Id: "InW", Offset: 29, Type: "float32", Units: "W"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Stat", Offset: 0, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StatVend", Offset: 1, Type: "enum16"},
+					smdx.PointElement{Id: "Evt", Offset: 2, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVend", Offset: 4, Type: "bitfield32"},
+					smdx.PointElement{Id: "Ctl", Offset: 6, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "CtlVend", Offset: 7, Type: "enum32", Access: "rw"},
+					smdx.PointElement{Id: "CtlVal", Offset: 9, Type: "int32", Access: "rw"},
+					smdx.PointElement{Id: "Tms", Offset: 11, Type: "uint32", Units: "Secs"},
+					smdx.PointElement{Id: "OutA", Offset: 13, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "OutV", Offset: 15, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "OutWh", Offset: 17, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "OutW", Offset: 19, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: "Tmp", Offset: 21, Type: "float32", Units: "C"},
+					smdx.PointElement{Id: "InA", Offset: 23, Type: "float32", Units: "A"},
+					smdx.PointElement{Id: "InV", Offset: 25, Type: "float32", Units: "V"},
+					smdx.PointElement{Id: "InWh", Offset: 27, Type: "float32", Units: "Wh"},
+					smdx.PointElement{Id: "InW", Offset: 29, Type: "float32", Units: "W"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model501) }
 
 // Block502 - Solar Module - A solar module model supporing DC-DC converter
 
@@ -7271,42 +7198,41 @@ func (self *Block502) GetId() ModelId {
 	return 502
 }
 
-var model502 = smdx.ModelElement{
-	Id:     502,
-	Name:   "solar_module",
-	Length: 28,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 28,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     502,
+		Name:   "solar_module",
+		Length: 28,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 28,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "A_SF", Offset: 0, Type: "sunssf"},
-				smdx.PointElement{Id: "V_SF", Offset: 1, Type: "sunssf"},
-				smdx.PointElement{Id: "W_SF", Offset: 2, Type: "sunssf"},
-				smdx.PointElement{Id: "Wh_SF", Offset: 3, Type: "sunssf"},
-				smdx.PointElement{Id: "Stat", Offset: 4, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "StatVend", Offset: 5, Type: "enum16"},
-				smdx.PointElement{Id: "Evt", Offset: 6, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVend", Offset: 8, Type: "bitfield32"},
-				smdx.PointElement{Id: "Ctl", Offset: 10, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "CtlVend", Offset: 11, Type: "enum32", Access: "rw"},
-				smdx.PointElement{Id: "CtlVal", Offset: 13, Type: "int32", Access: "rw"},
-				smdx.PointElement{Id: "Tms", Offset: 15, Type: "uint32", Units: "Secs"},
-				smdx.PointElement{Id: "OutA", Offset: 17, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "OutV", Offset: 18, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "OutWh", Offset: 19, Type: "acc32", ScaleFactor: "Wh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "OutPw", Offset: 21, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "Tmp", Offset: 22, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "InA", Offset: 23, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "InV", Offset: 24, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "InWh", Offset: 25, Type: "acc32", ScaleFactor: "Wh_SF", Units: "Wh"},
-				smdx.PointElement{Id: "InW", Offset: 27, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "A_SF", Offset: 0, Type: "sunssf"},
+					smdx.PointElement{Id: "V_SF", Offset: 1, Type: "sunssf"},
+					smdx.PointElement{Id: "W_SF", Offset: 2, Type: "sunssf"},
+					smdx.PointElement{Id: "Wh_SF", Offset: 3, Type: "sunssf"},
+					smdx.PointElement{Id: "Stat", Offset: 4, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "StatVend", Offset: 5, Type: "enum16"},
+					smdx.PointElement{Id: "Evt", Offset: 6, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVend", Offset: 8, Type: "bitfield32"},
+					smdx.PointElement{Id: "Ctl", Offset: 10, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "CtlVend", Offset: 11, Type: "enum32", Access: "rw"},
+					smdx.PointElement{Id: "CtlVal", Offset: 13, Type: "int32", Access: "rw"},
+					smdx.PointElement{Id: "Tms", Offset: 15, Type: "uint32", Units: "Secs"},
+					smdx.PointElement{Id: "OutA", Offset: 17, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "OutV", Offset: 18, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "OutWh", Offset: 19, Type: "acc32", ScaleFactor: "Wh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "OutPw", Offset: 21, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "Tmp", Offset: 22, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "InA", Offset: 23, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "InV", Offset: 24, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "InWh", Offset: 25, Type: "acc32", ScaleFactor: "Wh_SF", Units: "Wh"},
+					smdx.PointElement{Id: "InW", Offset: 27, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model502) }
 
 // Block601 - Tracker Controller DRAFT 2 - Monitors and controls multiple trackers
 
@@ -7342,47 +7268,46 @@ func (self *Block601) GetId() ModelId {
 	return 601
 }
 
-var model601 = smdx.ModelElement{
-	Id:     601,
-	Name:   "tracker_controller",
-	Length: 48,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 26,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     601,
+		Name:   "tracker_controller",
+		Length: 48,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 26,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Length: 8},
-				smdx.PointElement{Id: "Typ", Offset: 8, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "DtLoc", Offset: 9, Type: "string", Units: "YYYYMMDD", Length: 5},
-				smdx.PointElement{Id: "TmLoc", Offset: 14, Type: "string", Units: "hhmmss", Length: 3},
-				smdx.PointElement{Id: "Day", Offset: 17, Type: "uint16"},
-				smdx.PointElement{Id: "GlblElCtl", Offset: 18, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-				smdx.PointElement{Id: "GlblAzCtl", Offset: 20, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-				smdx.PointElement{Id: "GlblCtl", Offset: 22, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "GlblAlm", Offset: 23, Type: "bitfield16"},
-				smdx.PointElement{Id: "Dgr_SF", Offset: 24, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "N", Offset: 25, Type: "uint16", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Nam", Offset: 0, Type: "string", Length: 8},
+					smdx.PointElement{Id: "Typ", Offset: 8, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "DtLoc", Offset: 9, Type: "string", Units: "YYYYMMDD", Length: 5},
+					smdx.PointElement{Id: "TmLoc", Offset: 14, Type: "string", Units: "hhmmss", Length: 3},
+					smdx.PointElement{Id: "Day", Offset: 17, Type: "uint16"},
+					smdx.PointElement{Id: "GlblElCtl", Offset: 18, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
+					smdx.PointElement{Id: "GlblAzCtl", Offset: 20, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
+					smdx.PointElement{Id: "GlblCtl", Offset: 22, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "GlblAlm", Offset: 23, Type: "bitfield16"},
+					smdx.PointElement{Id: "Dgr_SF", Offset: 24, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "N", Offset: 25, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "tracker",
-			Length: 22,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Id", Offset: 0, Type: "string", Length: 8},
-				smdx.PointElement{Id: "ElTrgt", Offset: 8, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
-				smdx.PointElement{Id: "AzTrgt", Offset: 10, Type: "int32", ScaleFactor: "SF", Units: "Degrees"},
-				smdx.PointElement{Id: "ElPos", Offset: 12, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
-				smdx.PointElement{Id: "AzPos", Offset: 14, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
-				smdx.PointElement{Id: "ElCtl", Offset: 16, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-				smdx.PointElement{Id: "AzCtl", Offset: 18, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-				smdx.PointElement{Id: "Ctl", Offset: 20, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "Alm", Offset: 21, Type: "bitfield16"},
+			smdx.BlockElement{Name: "tracker",
+				Length: 22,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Id", Offset: 0, Type: "string", Length: 8},
+					smdx.PointElement{Id: "ElTrgt", Offset: 8, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
+					smdx.PointElement{Id: "AzTrgt", Offset: 10, Type: "int32", ScaleFactor: "SF", Units: "Degrees"},
+					smdx.PointElement{Id: "ElPos", Offset: 12, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
+					smdx.PointElement{Id: "AzPos", Offset: 14, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
+					smdx.PointElement{Id: "ElCtl", Offset: 16, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
+					smdx.PointElement{Id: "AzCtl", Offset: 18, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
+					smdx.PointElement{Id: "Ctl", Offset: 20, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "Alm", Offset: 21, Type: "bitfield16"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model601) }
 
 // Block801 - Energy Storage Base Model (DEPRECATED) - This model has been deprecated.
 
@@ -7394,22 +7319,21 @@ func (self *Block801) GetId() ModelId {
 	return 801
 }
 
-var model801 = smdx.ModelElement{
-	Id:     801,
-	Name:   "storage",
-	Length: 1,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 1,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     801,
+		Name:   "storage",
+		Length: 1,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 1,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "DEPRECATED", Offset: 0, Type: "enum16", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "DEPRECATED", Offset: 0, Type: "enum16", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model801) }
 
 // Block802 - Battery Base Model -
 
@@ -7476,77 +7400,76 @@ func (self *Block802) GetId() ModelId {
 	return 802
 }
 
-var model802 = smdx.ModelElement{
-	Id:     802,
-	Name:   "battery",
-	Length: 54,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 62,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     802,
+		Name:   "battery",
+		Length: 54,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 62,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "AHRtg", Offset: 0, Type: "uint16", ScaleFactor: "AHRtg_SF", Units: "Ah", Mandatory: true},
-				smdx.PointElement{Id: "WHRtg", Offset: 1, Type: "uint16", ScaleFactor: "WHRtg_SF", Units: "Wh", Mandatory: true},
-				smdx.PointElement{Id: "WChaRteMax", Offset: 2, Type: "uint16", ScaleFactor: "WChaDisChaMax_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "WDisChaRteMax", Offset: 3, Type: "uint16", ScaleFactor: "WChaDisChaMax_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "DisChaRte", Offset: 4, Type: "uint16", ScaleFactor: "DisChaRte_SF", Units: "%WHRtg"},
-				smdx.PointElement{Id: "SoCMax", Offset: 5, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg"},
-				smdx.PointElement{Id: "SoCMin", Offset: 6, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg"},
-				smdx.PointElement{Id: "SocRsvMax", Offset: 7, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg", Access: "rw"},
-				smdx.PointElement{Id: "SoCRsvMin", Offset: 8, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg", Access: "rw"},
-				smdx.PointElement{Id: "SoC", Offset: 9, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg", Mandatory: true},
-				smdx.PointElement{Id: "DoD", Offset: 10, Type: "uint16", ScaleFactor: "DoD_SF", Units: "%"},
-				smdx.PointElement{Id: "SoH", Offset: 11, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
-				smdx.PointElement{Id: "NCyc", Offset: 12, Type: "uint32"},
-				smdx.PointElement{Id: "ChaSt", Offset: 14, Type: "enum16"},
-				smdx.PointElement{Id: "LocRemCtl", Offset: 15, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "Hb", Offset: 16, Type: "uint16"},
-				smdx.PointElement{Id: "CtrlHb", Offset: 17, Type: "uint16", Access: "rw"},
-				smdx.PointElement{Id: "AlmRst", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "Typ", Offset: 19, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "State", Offset: 20, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "Pad1", Offset: 21, Type: "pad", Mandatory: true},
-				smdx.PointElement{Id: "WarrDt", Offset: 22, Type: "uint32"},
-				smdx.PointElement{Id: "Evt1", Offset: 24, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 26, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 28, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 30, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "V", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "VMax", Offset: 33, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "VMin", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "CellVMax", Offset: 35, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V"},
-				smdx.PointElement{Id: "CellVMaxStr", Offset: 36, Type: "uint16"},
-				smdx.PointElement{Id: "CellVMaxMod", Offset: 37, Type: "uint16"},
-				smdx.PointElement{Id: "CellVMin", Offset: 38, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V"},
-				smdx.PointElement{Id: "CellVMinStr", Offset: 39, Type: "uint16"},
-				smdx.PointElement{Id: "CellVMinMod", Offset: 40, Type: "uint16"},
-				smdx.PointElement{Id: "CellVAvg", Offset: 41, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V"},
-				smdx.PointElement{Id: "A", Offset: 42, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "AChaMax", Offset: 43, Type: "uint16", ScaleFactor: "AMax_SF", Units: "A"},
-				smdx.PointElement{Id: "ADisChaMax", Offset: 44, Type: "uint16", ScaleFactor: "AMax_SF", Units: "A"},
-				smdx.PointElement{Id: "W", Offset: 45, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "ReqInvState", Offset: 46, Type: "enum16"},
-				smdx.PointElement{Id: "ReqW", Offset: 47, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-				smdx.PointElement{Id: "SetOp", Offset: 48, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "SetInvState", Offset: 49, Type: "enum16", Access: "rw", Mandatory: true},
-				smdx.PointElement{Id: "AHRtg_SF", Offset: 50, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "WHRtg_SF", Offset: 51, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "WChaDisChaMax_SF", Offset: 52, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DisChaRte_SF", Offset: 53, Type: "sunssf"},
-				smdx.PointElement{Id: "SoC_SF", Offset: 54, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "DoD_SF", Offset: 55, Type: "sunssf"},
-				smdx.PointElement{Id: "SoH_SF", Offset: 56, Type: "sunssf"},
-				smdx.PointElement{Id: "V_SF", Offset: 57, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "CellV_SF", Offset: 58, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "A_SF", Offset: 59, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "AMax_SF", Offset: 60, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "W_SF", Offset: 61, Type: "sunssf"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "AHRtg", Offset: 0, Type: "uint16", ScaleFactor: "AHRtg_SF", Units: "Ah", Mandatory: true},
+					smdx.PointElement{Id: "WHRtg", Offset: 1, Type: "uint16", ScaleFactor: "WHRtg_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: "WChaRteMax", Offset: 2, Type: "uint16", ScaleFactor: "WChaDisChaMax_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "WDisChaRteMax", Offset: 3, Type: "uint16", ScaleFactor: "WChaDisChaMax_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "DisChaRte", Offset: 4, Type: "uint16", ScaleFactor: "DisChaRte_SF", Units: "%WHRtg"},
+					smdx.PointElement{Id: "SoCMax", Offset: 5, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg"},
+					smdx.PointElement{Id: "SoCMin", Offset: 6, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg"},
+					smdx.PointElement{Id: "SocRsvMax", Offset: 7, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg", Access: "rw"},
+					smdx.PointElement{Id: "SoCRsvMin", Offset: 8, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg", Access: "rw"},
+					smdx.PointElement{Id: "SoC", Offset: 9, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%WHRtg", Mandatory: true},
+					smdx.PointElement{Id: "DoD", Offset: 10, Type: "uint16", ScaleFactor: "DoD_SF", Units: "%"},
+					smdx.PointElement{Id: "SoH", Offset: 11, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
+					smdx.PointElement{Id: "NCyc", Offset: 12, Type: "uint32"},
+					smdx.PointElement{Id: "ChaSt", Offset: 14, Type: "enum16"},
+					smdx.PointElement{Id: "LocRemCtl", Offset: 15, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "Hb", Offset: 16, Type: "uint16"},
+					smdx.PointElement{Id: "CtrlHb", Offset: 17, Type: "uint16", Access: "rw"},
+					smdx.PointElement{Id: "AlmRst", Offset: 18, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "Typ", Offset: 19, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "State", Offset: 20, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "Pad1", Offset: 21, Type: "pad", Mandatory: true},
+					smdx.PointElement{Id: "WarrDt", Offset: 22, Type: "uint32"},
+					smdx.PointElement{Id: "Evt1", Offset: 24, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 26, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 28, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 30, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "V", Offset: 32, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "VMax", Offset: 33, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "VMin", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "CellVMax", Offset: 35, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V"},
+					smdx.PointElement{Id: "CellVMaxStr", Offset: 36, Type: "uint16"},
+					smdx.PointElement{Id: "CellVMaxMod", Offset: 37, Type: "uint16"},
+					smdx.PointElement{Id: "CellVMin", Offset: 38, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V"},
+					smdx.PointElement{Id: "CellVMinStr", Offset: 39, Type: "uint16"},
+					smdx.PointElement{Id: "CellVMinMod", Offset: 40, Type: "uint16"},
+					smdx.PointElement{Id: "CellVAvg", Offset: 41, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V"},
+					smdx.PointElement{Id: "A", Offset: 42, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "AChaMax", Offset: 43, Type: "uint16", ScaleFactor: "AMax_SF", Units: "A"},
+					smdx.PointElement{Id: "ADisChaMax", Offset: 44, Type: "uint16", ScaleFactor: "AMax_SF", Units: "A"},
+					smdx.PointElement{Id: "W", Offset: 45, Type: "int16", ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "ReqInvState", Offset: 46, Type: "enum16"},
+					smdx.PointElement{Id: "ReqW", Offset: 47, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: "SetOp", Offset: 48, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "SetInvState", Offset: 49, Type: "enum16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: "AHRtg_SF", Offset: 50, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "WHRtg_SF", Offset: 51, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "WChaDisChaMax_SF", Offset: 52, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DisChaRte_SF", Offset: 53, Type: "sunssf"},
+					smdx.PointElement{Id: "SoC_SF", Offset: 54, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "DoD_SF", Offset: 55, Type: "sunssf"},
+					smdx.PointElement{Id: "SoH_SF", Offset: 56, Type: "sunssf"},
+					smdx.PointElement{Id: "V_SF", Offset: 57, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "CellV_SF", Offset: 58, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "A_SF", Offset: 59, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "AMax_SF", Offset: 60, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "W_SF", Offset: 61, Type: "sunssf"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model802) }
 
 // Block803 - Lithium-Ion Battery Bank Model -
 
@@ -7614,79 +7537,78 @@ func (self *Block803) GetId() ModelId {
 	return 803
 }
 
-var model803 = smdx.ModelElement{
-	Id:     803,
-	Name:   "lithium_ion_bank",
-	Length: 33,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 26,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     803,
+		Name:   "lithium_ion_bank",
+		Length: 33,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 26,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "NStr", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "NStrCon", Offset: 1, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "ModTmpMax", Offset: 2, Type: "int16", ScaleFactor: "ModTmp_SF", Mandatory: true},
-				smdx.PointElement{Id: "ModTmpMaxStr", Offset: 3, Type: "uint16"},
-				smdx.PointElement{Id: "ModTmpMaxMod", Offset: 4, Type: "uint16"},
-				smdx.PointElement{Id: "ModTmpMin", Offset: 5, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "ModTmpMinStr", Offset: 6, Type: "uint16"},
-				smdx.PointElement{Id: "ModTmpMinMod", Offset: 7, Type: "uint16"},
-				smdx.PointElement{Id: "ModTmpAvg", Offset: 8, Type: "uint16"},
-				smdx.PointElement{Id: "StrVMax", Offset: 9, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "StrVMaxStr", Offset: 10, Type: "uint16"},
-				smdx.PointElement{Id: "StrVMin", Offset: 11, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "StrVMinStr", Offset: 12, Type: "uint16"},
-				smdx.PointElement{Id: "StrVAvg", Offset: 13, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "StrAMax", Offset: 14, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "StrAMaxStr", Offset: 15, Type: "uint16"},
-				smdx.PointElement{Id: "StrAMin", Offset: 16, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "StrAMinStr", Offset: 17, Type: "uint16"},
-				smdx.PointElement{Id: "StrAAvg", Offset: 18, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-				smdx.PointElement{Id: "NCellBal", Offset: 19, Type: "uint16"},
-				smdx.PointElement{Id: "CellV_SF", Offset: 20, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "ModTmp_SF", Offset: 21, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "A_SF", Offset: 22, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "SoH_SF", Offset: 23, Type: "sunssf"},
-				smdx.PointElement{Id: "Pad1", Offset: 24, Type: "pad", Mandatory: true},
-				smdx.PointElement{Id: "Pad2", Offset: 25, Type: "pad", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "NStr", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "NStrCon", Offset: 1, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "ModTmpMax", Offset: 2, Type: "int16", ScaleFactor: "ModTmp_SF", Mandatory: true},
+					smdx.PointElement{Id: "ModTmpMaxStr", Offset: 3, Type: "uint16"},
+					smdx.PointElement{Id: "ModTmpMaxMod", Offset: 4, Type: "uint16"},
+					smdx.PointElement{Id: "ModTmpMin", Offset: 5, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "ModTmpMinStr", Offset: 6, Type: "uint16"},
+					smdx.PointElement{Id: "ModTmpMinMod", Offset: 7, Type: "uint16"},
+					smdx.PointElement{Id: "ModTmpAvg", Offset: 8, Type: "uint16"},
+					smdx.PointElement{Id: "StrVMax", Offset: 9, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "StrVMaxStr", Offset: 10, Type: "uint16"},
+					smdx.PointElement{Id: "StrVMin", Offset: 11, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "StrVMinStr", Offset: 12, Type: "uint16"},
+					smdx.PointElement{Id: "StrVAvg", Offset: 13, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "StrAMax", Offset: 14, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "StrAMaxStr", Offset: 15, Type: "uint16"},
+					smdx.PointElement{Id: "StrAMin", Offset: 16, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "StrAMinStr", Offset: 17, Type: "uint16"},
+					smdx.PointElement{Id: "StrAAvg", Offset: 18, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: "NCellBal", Offset: 19, Type: "uint16"},
+					smdx.PointElement{Id: "CellV_SF", Offset: 20, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "ModTmp_SF", Offset: 21, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "A_SF", Offset: 22, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "SoH_SF", Offset: 23, Type: "sunssf"},
+					smdx.PointElement{Id: "Pad1", Offset: 24, Type: "pad", Mandatory: true},
+					smdx.PointElement{Id: "Pad2", Offset: 25, Type: "pad", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "string",
-			Length: 28,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "StrNMod", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "StrSt", Offset: 1, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "StrConFail", Offset: 3, Type: "enum16"},
-				smdx.PointElement{Id: "StrSoC", Offset: 4, Type: "uint16", Units: "%", Mandatory: true},
-				smdx.PointElement{Id: "StrSoH", Offset: 5, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
-				smdx.PointElement{Id: "StrA", Offset: 6, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "StrCellVMax", Offset: 7, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "StrCellVMaxMod", Offset: 8, Type: "uint16"},
-				smdx.PointElement{Id: "StrCellVMin", Offset: 9, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "StrCellVMinMod", Offset: 10, Type: "uint16"},
-				smdx.PointElement{Id: "StrCellVAvg", Offset: 11, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "StrModTmpMax", Offset: 12, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "StrModTmpMaxMod", Offset: 13, Type: "uint16"},
-				smdx.PointElement{Id: "StrModTmpMin", Offset: 14, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "StrModTmpMinMod", Offset: 15, Type: "uint16"},
-				smdx.PointElement{Id: "StrModTmpAvg", Offset: 16, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "Pad3", Offset: 17, Type: "pad", Mandatory: true},
-				smdx.PointElement{Id: "StrConSt", Offset: 18, Type: "bitfield32"},
-				smdx.PointElement{Id: "StrEvt1", Offset: 20, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "StrEvt2", Offset: 22, Type: "bitfield32"},
-				smdx.PointElement{Id: "StrEvtVnd1", Offset: 24, Type: "bitfield32"},
-				smdx.PointElement{Id: "StrEvtVnd2", Offset: 26, Type: "bitfield32"},
-				smdx.PointElement{Id: "StrSetEna", Offset: 28, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "StrSetCon", Offset: 29, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "Pad4", Offset: 30, Type: "pad", Mandatory: true},
-				smdx.PointElement{Id: "Pad5", Offset: 31, Type: "pad", Mandatory: true},
+			smdx.BlockElement{Name: "string",
+				Length: 28,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "StrNMod", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "StrSt", Offset: 1, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "StrConFail", Offset: 3, Type: "enum16"},
+					smdx.PointElement{Id: "StrSoC", Offset: 4, Type: "uint16", Units: "%", Mandatory: true},
+					smdx.PointElement{Id: "StrSoH", Offset: 5, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
+					smdx.PointElement{Id: "StrA", Offset: 6, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "StrCellVMax", Offset: 7, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "StrCellVMaxMod", Offset: 8, Type: "uint16"},
+					smdx.PointElement{Id: "StrCellVMin", Offset: 9, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "StrCellVMinMod", Offset: 10, Type: "uint16"},
+					smdx.PointElement{Id: "StrCellVAvg", Offset: 11, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "StrModTmpMax", Offset: 12, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "StrModTmpMaxMod", Offset: 13, Type: "uint16"},
+					smdx.PointElement{Id: "StrModTmpMin", Offset: 14, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "StrModTmpMinMod", Offset: 15, Type: "uint16"},
+					smdx.PointElement{Id: "StrModTmpAvg", Offset: 16, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "Pad3", Offset: 17, Type: "pad", Mandatory: true},
+					smdx.PointElement{Id: "StrConSt", Offset: 18, Type: "bitfield32"},
+					smdx.PointElement{Id: "StrEvt1", Offset: 20, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "StrEvt2", Offset: 22, Type: "bitfield32"},
+					smdx.PointElement{Id: "StrEvtVnd1", Offset: 24, Type: "bitfield32"},
+					smdx.PointElement{Id: "StrEvtVnd2", Offset: 26, Type: "bitfield32"},
+					smdx.PointElement{Id: "StrSetEna", Offset: 28, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "StrSetCon", Offset: 29, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "Pad4", Offset: 30, Type: "pad", Mandatory: true},
+					smdx.PointElement{Id: "Pad5", Offset: 31, Type: "pad", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model803) }
 
 // Block804 - Lithium-Ion String Model -
 
@@ -7752,77 +7674,76 @@ func (self *Block804) GetId() ModelId {
 	return 804
 }
 
-var model804 = smdx.ModelElement{
-	Id:     804,
-	Name:   "lithium_ion_string",
-	Length: 56,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 38,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     804,
+		Name:   "lithium_ion_string",
+		Length: 56,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 38,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Idx", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "NMod", Offset: 1, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "St", Offset: 2, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "ConFail", Offset: 4, Type: "enum16"},
-				smdx.PointElement{Id: "NCellBal", Offset: 5, Type: "uint16"},
-				smdx.PointElement{Id: "SoC", Offset: 6, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%", Mandatory: true},
-				smdx.PointElement{Id: "DoD", Offset: 7, Type: "uint16", ScaleFactor: "StrDoC_SF", Units: "%"},
-				smdx.PointElement{Id: "NCyc", Offset: 8, Type: "uint32"},
-				smdx.PointElement{Id: "SoH", Offset: 9, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
-				smdx.PointElement{Id: "A", Offset: 10, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "V", Offset: 11, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
-				smdx.PointElement{Id: "CellVMax", Offset: 12, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellVMaxMod", Offset: 13, Type: "uint16"},
-				smdx.PointElement{Id: "CellVMin", Offset: 14, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellVMinMod", Offset: 15, Type: "uint16"},
-				smdx.PointElement{Id: "CellVAvg", Offset: 16, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModTmpMax", Offset: 17, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "ModTmpMaxMod", Offset: 18, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "ModTmpMin", Offset: 19, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "ModTmpMinMod", Offset: 20, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "ModTmpAvg", Offset: 21, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "Evt1", Offset: 22, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 24, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 26, Type: "bitfield32"},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 28, Type: "bitfield32"},
-				smdx.PointElement{Id: "SetEna", Offset: 29, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "SetCon", Offset: 30, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "SoC_SF", Offset: 31, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "SoH_SF", Offset: 32, Type: "sunssf"},
-				smdx.PointElement{Id: "DoD_SF", Offset: 33, Type: "sunssf"},
-				smdx.PointElement{Id: "A_SF", Offset: 34, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 35, Type: "sunssf"},
-				smdx.PointElement{Id: "CellV_SF", Offset: 36, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "ModTmp_SF", Offset: 37, Type: "sunssf", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Idx", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "NMod", Offset: 1, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "St", Offset: 2, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "ConFail", Offset: 4, Type: "enum16"},
+					smdx.PointElement{Id: "NCellBal", Offset: 5, Type: "uint16"},
+					smdx.PointElement{Id: "SoC", Offset: 6, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%", Mandatory: true},
+					smdx.PointElement{Id: "DoD", Offset: 7, Type: "uint16", ScaleFactor: "StrDoC_SF", Units: "%"},
+					smdx.PointElement{Id: "NCyc", Offset: 8, Type: "uint32"},
+					smdx.PointElement{Id: "SoH", Offset: 9, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
+					smdx.PointElement{Id: "A", Offset: 10, Type: "int16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "V", Offset: 11, Type: "uint16", ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: "CellVMax", Offset: 12, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellVMaxMod", Offset: 13, Type: "uint16"},
+					smdx.PointElement{Id: "CellVMin", Offset: 14, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellVMinMod", Offset: 15, Type: "uint16"},
+					smdx.PointElement{Id: "CellVAvg", Offset: 16, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModTmpMax", Offset: 17, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "ModTmpMaxMod", Offset: 18, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "ModTmpMin", Offset: 19, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "ModTmpMinMod", Offset: 20, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "ModTmpAvg", Offset: 21, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "Evt1", Offset: 22, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 24, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 26, Type: "bitfield32"},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 28, Type: "bitfield32"},
+					smdx.PointElement{Id: "SetEna", Offset: 29, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "SetCon", Offset: 30, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "SoC_SF", Offset: 31, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "SoH_SF", Offset: 32, Type: "sunssf"},
+					smdx.PointElement{Id: "DoD_SF", Offset: 33, Type: "sunssf"},
+					smdx.PointElement{Id: "A_SF", Offset: 34, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 35, Type: "sunssf"},
+					smdx.PointElement{Id: "CellV_SF", Offset: 36, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "ModTmp_SF", Offset: 37, Type: "sunssf", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "lithium_ion_string_module",
-			Length: 16,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ModNCell", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "ModSoC", Offset: 1, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%"},
-				smdx.PointElement{Id: "ModSoH", Offset: 2, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
-				smdx.PointElement{Id: "ModCellVMax", Offset: 3, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModCellVMaxCell", Offset: 4, Type: "uint16"},
-				smdx.PointElement{Id: "ModCellVMin", Offset: 5, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModCellVMinCell", Offset: 6, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModCellVAvg", Offset: 7, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModCellTmpMax", Offset: 8, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "ModCellTmpMaxCell", Offset: 9, Type: "uint16"},
-				smdx.PointElement{Id: "ModCellTmpMin", Offset: 10, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "ModCellTmpMinCell", Offset: 11, Type: "uint16"},
-				smdx.PointElement{Id: "ModCellTmpAvg", Offset: 12, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "Pad2", Offset: 13, Type: "pad", Mandatory: true},
-				smdx.PointElement{Id: "Pad3", Offset: 14, Type: "pad", Mandatory: true},
-				smdx.PointElement{Id: "Pad4", Offset: 15, Type: "pad", Mandatory: true},
+			smdx.BlockElement{Name: "lithium_ion_string_module",
+				Length: 16,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ModNCell", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "ModSoC", Offset: 1, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%"},
+					smdx.PointElement{Id: "ModSoH", Offset: 2, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
+					smdx.PointElement{Id: "ModCellVMax", Offset: 3, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModCellVMaxCell", Offset: 4, Type: "uint16"},
+					smdx.PointElement{Id: "ModCellVMin", Offset: 5, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModCellVMinCell", Offset: 6, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModCellVAvg", Offset: 7, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModCellTmpMax", Offset: 8, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "ModCellTmpMaxCell", Offset: 9, Type: "uint16"},
+					smdx.PointElement{Id: "ModCellTmpMin", Offset: 10, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "ModCellTmpMinCell", Offset: 11, Type: "uint16"},
+					smdx.PointElement{Id: "ModCellTmpAvg", Offset: 12, Type: "int16", ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "Pad2", Offset: 13, Type: "pad", Mandatory: true},
+					smdx.PointElement{Id: "Pad3", Offset: 14, Type: "pad", Mandatory: true},
+					smdx.PointElement{Id: "Pad4", Offset: 15, Type: "pad", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model804) }
 
 // Block805 - Lithium-Ion Module Model -
 
@@ -7867,56 +7788,55 @@ func (self *Block805) GetId() ModelId {
 	return 805
 }
 
-var model805 = smdx.ModelElement{
-	Id:     805,
-	Name:   "lithium-ion-module",
-	Length: 2,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 42,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     805,
+		Name:   "lithium-ion-module",
+		Length: 2,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 42,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Idx", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "NCell", Offset: 1, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "SoC", Offset: 2, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%"},
-				smdx.PointElement{Id: "DoD", Offset: 3, Type: "uint16", ScaleFactor: "DoD_SF", Units: "%"},
-				smdx.PointElement{Id: "NCyc", Offset: 4, Type: "uint32"},
-				smdx.PointElement{Id: "SoH", Offset: 6, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
-				smdx.PointElement{Id: "V", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellVMax", Offset: 8, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellVMaxCell", Offset: 9, Type: "uint16"},
-				smdx.PointElement{Id: "CellVMin", Offset: 10, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellVMinCell", Offset: 11, Type: "uint16"},
-				smdx.PointElement{Id: "CellVAvg", Offset: 12, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellTmpMax", Offset: 13, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "CellTmpMaxCell", Offset: 14, Type: "uint16"},
-				smdx.PointElement{Id: "CellTmpMin", Offset: 15, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "CellTmpMinCell", Offset: 16, Type: "uint16"},
-				smdx.PointElement{Id: "CellTmpAvg", Offset: 17, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "SN", Offset: 18, Type: "string", Length: 16},
-				smdx.PointElement{Id: "NCellBal", Offset: 34, Type: "uint16"},
-				smdx.PointElement{Id: "SoC_SF", Offset: 35, Type: "sunssf"},
-				smdx.PointElement{Id: "SoH_SF", Offset: 36, Type: "sunssf"},
-				smdx.PointElement{Id: "DoD_SF", Offset: 37, Type: "sunssf"},
-				smdx.PointElement{Id: "V_SF", Offset: 38, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "CellV_SF", Offset: 39, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Tmp_SF", Offset: 40, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Pad1", Offset: 41, Type: "pad", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Idx", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "NCell", Offset: 1, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "SoC", Offset: 2, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%"},
+					smdx.PointElement{Id: "DoD", Offset: 3, Type: "uint16", ScaleFactor: "DoD_SF", Units: "%"},
+					smdx.PointElement{Id: "NCyc", Offset: 4, Type: "uint32"},
+					smdx.PointElement{Id: "SoH", Offset: 6, Type: "uint16", ScaleFactor: "SoH_SF", Units: "%"},
+					smdx.PointElement{Id: "V", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellVMax", Offset: 8, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellVMaxCell", Offset: 9, Type: "uint16"},
+					smdx.PointElement{Id: "CellVMin", Offset: 10, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellVMinCell", Offset: 11, Type: "uint16"},
+					smdx.PointElement{Id: "CellVAvg", Offset: 12, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellTmpMax", Offset: 13, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "CellTmpMaxCell", Offset: 14, Type: "uint16"},
+					smdx.PointElement{Id: "CellTmpMin", Offset: 15, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "CellTmpMinCell", Offset: 16, Type: "uint16"},
+					smdx.PointElement{Id: "CellTmpAvg", Offset: 17, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "SN", Offset: 18, Type: "string", Length: 16},
+					smdx.PointElement{Id: "NCellBal", Offset: 34, Type: "uint16"},
+					smdx.PointElement{Id: "SoC_SF", Offset: 35, Type: "sunssf"},
+					smdx.PointElement{Id: "SoH_SF", Offset: 36, Type: "sunssf"},
+					smdx.PointElement{Id: "DoD_SF", Offset: 37, Type: "sunssf"},
+					smdx.PointElement{Id: "V_SF", Offset: 38, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "CellV_SF", Offset: 39, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Tmp_SF", Offset: 40, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Pad1", Offset: 41, Type: "pad", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "lithium-ion-module-cell",
-			Length: 4,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "CellV", Offset: 0, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellTmp", Offset: 1, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "CellSt", Offset: 2, Type: "bitfield32"},
+			smdx.BlockElement{Name: "lithium-ion-module-cell",
+				Length: 4,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "CellV", Offset: 0, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellTmp", Offset: 1, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "CellSt", Offset: 2, Type: "bitfield32"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model805) }
 
 // Block806 - Flow Battery Model -
 
@@ -7934,29 +7854,28 @@ func (self *Block806) GetId() ModelId {
 	return 806
 }
 
-var model806 = smdx.ModelElement{
-	Id:     806,
-	Name:   "flow_battery",
-	Length: 2,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 1,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     806,
+		Name:   "flow_battery",
+		Length: 2,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 1,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "BatTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "BatTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "battery_string",
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "BatStTBD", Offset: 0, Type: "uint16", Mandatory: true},
+			smdx.BlockElement{Name: "battery_string",
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "BatStTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model806) }
 
 // Block807 - Flow Battery String Model -
 
@@ -8022,77 +7941,76 @@ func (self *Block807) GetId() ModelId {
 	return 807
 }
 
-var model807 = smdx.ModelElement{
-	Id:     807,
-	Name:   "flow_battery_string",
-	Length: 36,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 34,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     807,
+		Name:   "flow_battery_string",
+		Length: 36,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 34,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Idx", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "NMod", Offset: 1, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "NModCon", Offset: 2, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "ModVMax", Offset: 3, Type: "uint16", ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModVMaxMod", Offset: 4, Type: "uint16"},
-				smdx.PointElement{Id: "ModVMin", Offset: 5, Type: "uint16", ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModVMinMod", Offset: 6, Type: "uint16"},
-				smdx.PointElement{Id: "ModVAvg", Offset: 7, Type: "uint16", ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellVMax", Offset: 8, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellVMaxMod", Offset: 9, Type: "uint16"},
-				smdx.PointElement{Id: "CellVMaxStk", Offset: 10, Type: "uint16"},
-				smdx.PointElement{Id: "CellVMin", Offset: 11, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CellVMinMod", Offset: 12, Type: "uint16"},
-				smdx.PointElement{Id: "CellVMinStk", Offset: 13, Type: "uint16"},
-				smdx.PointElement{Id: "CellVAvg", Offset: 14, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "TmpMax", Offset: 15, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "TmpMaxMod", Offset: 16, Type: "uint16"},
-				smdx.PointElement{Id: "TmpMin", Offset: 17, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "TmpMinMod", Offset: 18, Type: "uint16"},
-				smdx.PointElement{Id: "TmpAvg", Offset: 19, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "Evt1", Offset: 20, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "Evt2", Offset: 22, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd1", Offset: 24, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "EvtVnd2", Offset: 26, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "ModV_SF", Offset: 28, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "CellV_SF", Offset: 29, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Tmp_SF", Offset: 30, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "SoC_SF", Offset: 31, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "OCV_SF", Offset: 32, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Pad1", Offset: 33, Type: "pad", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Idx", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "NMod", Offset: 1, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "NModCon", Offset: 2, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "ModVMax", Offset: 3, Type: "uint16", ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModVMaxMod", Offset: 4, Type: "uint16"},
+					smdx.PointElement{Id: "ModVMin", Offset: 5, Type: "uint16", ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModVMinMod", Offset: 6, Type: "uint16"},
+					smdx.PointElement{Id: "ModVAvg", Offset: 7, Type: "uint16", ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellVMax", Offset: 8, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellVMaxMod", Offset: 9, Type: "uint16"},
+					smdx.PointElement{Id: "CellVMaxStk", Offset: 10, Type: "uint16"},
+					smdx.PointElement{Id: "CellVMin", Offset: 11, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CellVMinMod", Offset: 12, Type: "uint16"},
+					smdx.PointElement{Id: "CellVMinStk", Offset: 13, Type: "uint16"},
+					smdx.PointElement{Id: "CellVAvg", Offset: 14, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "TmpMax", Offset: 15, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "TmpMaxMod", Offset: 16, Type: "uint16"},
+					smdx.PointElement{Id: "TmpMin", Offset: 17, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "TmpMinMod", Offset: 18, Type: "uint16"},
+					smdx.PointElement{Id: "TmpAvg", Offset: 19, Type: "int16", ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "Evt1", Offset: 20, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "Evt2", Offset: 22, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd1", Offset: 24, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "EvtVnd2", Offset: 26, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "ModV_SF", Offset: 28, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "CellV_SF", Offset: 29, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Tmp_SF", Offset: 30, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "SoC_SF", Offset: 31, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "OCV_SF", Offset: 32, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Pad1", Offset: 33, Type: "pad", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "module",
-			Length: 24,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ModIdx", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "ModNStk", Offset: 1, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "ModSt", Offset: 2, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "ModSoC", Offset: 4, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%", Mandatory: true},
-				smdx.PointElement{Id: "ModOCV", Offset: 5, Type: "uint16", ScaleFactor: "OCV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModV", Offset: 6, Type: "uint16", ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModCellVMax", Offset: 7, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModCellVMaxCell", Offset: 8, Type: "uint16"},
-				smdx.PointElement{Id: "ModCellVMin", Offset: 9, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModCellVMinCell", Offset: 10, Type: "uint16"},
-				smdx.PointElement{Id: "ModCellVAvg", Offset: 11, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ModAnoTmp", Offset: 12, Type: "uint16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "ModCatTmp", Offset: 13, Type: "uint16", ScaleFactor: "Tmp_SF", Units: "C"},
-				smdx.PointElement{Id: "ModConSt", Offset: 14, Type: "bitfield32"},
-				smdx.PointElement{Id: "ModEvt1", Offset: 16, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "ModEvt2", Offset: 18, Type: "bitfield32", Mandatory: true},
-				smdx.PointElement{Id: "ModConFail", Offset: 20, Type: "enum16"},
-				smdx.PointElement{Id: "ModSetEna", Offset: 21, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "ModSetCon", Offset: 22, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "Pad4", Offset: 23, Type: "pad", Mandatory: true},
+			smdx.BlockElement{Name: "module",
+				Length: 24,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ModIdx", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "ModNStk", Offset: 1, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "ModSt", Offset: 2, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "ModSoC", Offset: 4, Type: "uint16", ScaleFactor: "SoC_SF", Units: "%", Mandatory: true},
+					smdx.PointElement{Id: "ModOCV", Offset: 5, Type: "uint16", ScaleFactor: "OCV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModV", Offset: 6, Type: "uint16", ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModCellVMax", Offset: 7, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModCellVMaxCell", Offset: 8, Type: "uint16"},
+					smdx.PointElement{Id: "ModCellVMin", Offset: 9, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModCellVMinCell", Offset: 10, Type: "uint16"},
+					smdx.PointElement{Id: "ModCellVAvg", Offset: 11, Type: "uint16", ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ModAnoTmp", Offset: 12, Type: "uint16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "ModCatTmp", Offset: 13, Type: "uint16", ScaleFactor: "Tmp_SF", Units: "C"},
+					smdx.PointElement{Id: "ModConSt", Offset: 14, Type: "bitfield32"},
+					smdx.PointElement{Id: "ModEvt1", Offset: 16, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "ModEvt2", Offset: 18, Type: "bitfield32", Mandatory: true},
+					smdx.PointElement{Id: "ModConFail", Offset: 20, Type: "enum16"},
+					smdx.PointElement{Id: "ModSetEna", Offset: 21, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "ModSetCon", Offset: 22, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "Pad4", Offset: 23, Type: "pad", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model807) }
 
 // Block808 - Flow Battery Module Model -
 
@@ -8110,29 +8028,28 @@ func (self *Block808) GetId() ModelId {
 	return 808
 }
 
-var model808 = smdx.ModelElement{
-	Id:     808,
-	Name:   "flow_battery_module",
-	Length: 2,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 1,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     808,
+		Name:   "flow_battery_module",
+		Length: 2,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 1,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "ModuleTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "ModuleTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "stack",
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "StackTBD", Offset: 0, Type: "uint16", Mandatory: true},
+			smdx.BlockElement{Name: "stack",
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "StackTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model808) }
 
 // Block809 - Flow Battery Stack Model -
 
@@ -8150,29 +8067,28 @@ func (self *Block809) GetId() ModelId {
 	return 809
 }
 
-var model809 = smdx.ModelElement{
-	Id:     809,
-	Name:   "flow_battery_stack",
-	Length: 2,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 1,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     809,
+		Name:   "flow_battery_stack",
+		Length: 2,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 1,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "StackTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "StackTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-		smdx.BlockElement{Name: "cell",
-			Length: 1,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "CellTBD", Offset: 0, Type: "uint16", Mandatory: true},
+			smdx.BlockElement{Name: "cell",
+				Length: 1,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "CellTBD", Offset: 0, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model809) }
 
 // Block63001 - SunSpec Test Model 1 -
 
@@ -8258,97 +8174,96 @@ func (self *Block63001) GetId() ModelId {
 	return 63001
 }
 
-var model63001 = smdx.ModelElement{
-	Id:     63001,
-	Name:   "",
-	Length: 152,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 134,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     63001,
+		Name:   "",
+		Length: 152,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 134,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "sunssf_1", Offset: 0, Type: "sunssf"},
-				smdx.PointElement{Id: "sunssf_2", Offset: 1, Type: "sunssf"},
-				smdx.PointElement{Id: "sunssf_3", Offset: 2, Type: "sunssf"},
-				smdx.PointElement{Id: "sunssf_4", Offset: 3, Type: "sunssf"},
-				smdx.PointElement{Id: "int16_1", Offset: 4, Type: "int16", ScaleFactor: "sunssf_1"},
-				smdx.PointElement{Id: "int16_2", Offset: 5, Type: "int16", ScaleFactor: "sunssf_2"},
-				smdx.PointElement{Id: "int16_3", Offset: 6, Type: "int16", ScaleFactor: "sunssf_3"},
-				smdx.PointElement{Id: "int16_4", Offset: 7, Type: "int16", ScaleFactor: "sunssf_4", Access: "rw"},
-				smdx.PointElement{Id: "int16_5", Offset: 8, Type: "int16"},
-				smdx.PointElement{Id: "int16_u", Offset: 9, Type: "int16"},
-				smdx.PointElement{Id: "uint16_1", Offset: 10, Type: "uint16", ScaleFactor: "sunssf_1"},
-				smdx.PointElement{Id: "uint16_2", Offset: 11, Type: "uint16", ScaleFactor: "sunssf_2"},
-				smdx.PointElement{Id: "uint16_3", Offset: 12, Type: "uint16", ScaleFactor: "sunssf_3"},
-				smdx.PointElement{Id: "uint16_4", Offset: 13, Type: "uint16", ScaleFactor: "sunssf_4", Access: "rw"},
-				smdx.PointElement{Id: "uint16_5", Offset: 14, Type: "uint16"},
-				smdx.PointElement{Id: "uint16_u", Offset: 15, Type: "uint16"},
-				smdx.PointElement{Id: "acc16", Offset: 16, Type: "acc16"},
-				smdx.PointElement{Id: "acc16_u", Offset: 17, Type: "acc16"},
-				smdx.PointElement{Id: "enum16", Offset: 18, Type: "enum16"},
-				smdx.PointElement{Id: "enum16_u", Offset: 19, Type: "enum16"},
-				smdx.PointElement{Id: "bitfield16", Offset: 20, Type: "bitfield16"},
-				smdx.PointElement{Id: "bitfield16_u", Offset: 21, Type: "bitfield16"},
-				smdx.PointElement{Id: "int32_1", Offset: 22, Type: "int32", ScaleFactor: "sunssf_5"},
-				smdx.PointElement{Id: "int32_2", Offset: 24, Type: "int32", ScaleFactor: "sunssf_6"},
-				smdx.PointElement{Id: "int32_3", Offset: 26, Type: "int32", ScaleFactor: "sunssf_7", Access: "rw"},
-				smdx.PointElement{Id: "int32_4", Offset: 28, Type: "int32"},
-				smdx.PointElement{Id: "int32_5", Offset: 30, Type: "int32"},
-				smdx.PointElement{Id: "int32_u", Offset: 32, Type: "int32"},
-				smdx.PointElement{Id: "uint32_1", Offset: 34, Type: "uint32", ScaleFactor: "sunssf_5"},
-				smdx.PointElement{Id: "uint32_2", Offset: 36, Type: "uint32", ScaleFactor: "sunssf_6"},
-				smdx.PointElement{Id: "uint32_3", Offset: 38, Type: "uint32", ScaleFactor: "sunssf_7", Access: "rw"},
-				smdx.PointElement{Id: "uint32_4", Offset: 40, Type: "uint32", ScaleFactor: "1"},
-				smdx.PointElement{Id: "uint32_5", Offset: 42, Type: "uint32"},
-				smdx.PointElement{Id: "uint32_u", Offset: 44, Type: "uint32"},
-				smdx.PointElement{Id: "acc32", Offset: 46, Type: "acc32"},
-				smdx.PointElement{Id: "acc32_u", Offset: 48, Type: "acc32"},
-				smdx.PointElement{Id: "enum32", Offset: 50, Type: "enum32"},
-				smdx.PointElement{Id: "enum32_u", Offset: 52, Type: "enum32"},
-				smdx.PointElement{Id: "bitfield32", Offset: 54, Type: "bitfield32"},
-				smdx.PointElement{Id: "bitfield32_u", Offset: 56, Type: "bitfield32"},
-				smdx.PointElement{Id: "ipaddr", Offset: 58, Type: "ipaddr", Access: "rw"},
-				smdx.PointElement{Id: "ipaddr_u", Offset: 60, Type: "ipaddr"},
-				smdx.PointElement{Id: "int64", Offset: 62, Type: "int64", Access: "rw"},
-				smdx.PointElement{Id: "int64_u", Offset: 66, Type: "int64"},
-				smdx.PointElement{Id: "acc64", Offset: 70, Type: "acc64"},
-				smdx.PointElement{Id: "acc64_u", Offset: 74, Type: "acc64"},
-				smdx.PointElement{Id: "ipv6addr", Offset: 78, Type: "ipv6addr"},
-				smdx.PointElement{Id: "ipv6addr_u", Offset: 86, Type: "ipv6addr"},
-				smdx.PointElement{Id: "float32", Offset: 94, Type: "float32", Access: "rw"},
-				smdx.PointElement{Id: "float32_u", Offset: 96, Type: "float32"},
-				smdx.PointElement{Id: "string", Offset: 98, Type: "string", Access: "rw", Length: 16},
-				smdx.PointElement{Id: "string_u", Offset: 114, Type: "string", Length: 16},
-				smdx.PointElement{Id: "sunssf_5", Offset: 130, Type: "sunssf"},
-				smdx.PointElement{Id: "sunssf_6", Offset: 131, Type: "sunssf"},
-				smdx.PointElement{Id: "sunssf_7", Offset: 132, Type: "sunssf"},
-				smdx.PointElement{Id: "pad_1", Offset: 133, Type: "pad"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "sunssf_1", Offset: 0, Type: "sunssf"},
+					smdx.PointElement{Id: "sunssf_2", Offset: 1, Type: "sunssf"},
+					smdx.PointElement{Id: "sunssf_3", Offset: 2, Type: "sunssf"},
+					smdx.PointElement{Id: "sunssf_4", Offset: 3, Type: "sunssf"},
+					smdx.PointElement{Id: "int16_1", Offset: 4, Type: "int16", ScaleFactor: "sunssf_1"},
+					smdx.PointElement{Id: "int16_2", Offset: 5, Type: "int16", ScaleFactor: "sunssf_2"},
+					smdx.PointElement{Id: "int16_3", Offset: 6, Type: "int16", ScaleFactor: "sunssf_3"},
+					smdx.PointElement{Id: "int16_4", Offset: 7, Type: "int16", ScaleFactor: "sunssf_4", Access: "rw"},
+					smdx.PointElement{Id: "int16_5", Offset: 8, Type: "int16"},
+					smdx.PointElement{Id: "int16_u", Offset: 9, Type: "int16"},
+					smdx.PointElement{Id: "uint16_1", Offset: 10, Type: "uint16", ScaleFactor: "sunssf_1"},
+					smdx.PointElement{Id: "uint16_2", Offset: 11, Type: "uint16", ScaleFactor: "sunssf_2"},
+					smdx.PointElement{Id: "uint16_3", Offset: 12, Type: "uint16", ScaleFactor: "sunssf_3"},
+					smdx.PointElement{Id: "uint16_4", Offset: 13, Type: "uint16", ScaleFactor: "sunssf_4", Access: "rw"},
+					smdx.PointElement{Id: "uint16_5", Offset: 14, Type: "uint16"},
+					smdx.PointElement{Id: "uint16_u", Offset: 15, Type: "uint16"},
+					smdx.PointElement{Id: "acc16", Offset: 16, Type: "acc16"},
+					smdx.PointElement{Id: "acc16_u", Offset: 17, Type: "acc16"},
+					smdx.PointElement{Id: "enum16", Offset: 18, Type: "enum16"},
+					smdx.PointElement{Id: "enum16_u", Offset: 19, Type: "enum16"},
+					smdx.PointElement{Id: "bitfield16", Offset: 20, Type: "bitfield16"},
+					smdx.PointElement{Id: "bitfield16_u", Offset: 21, Type: "bitfield16"},
+					smdx.PointElement{Id: "int32_1", Offset: 22, Type: "int32", ScaleFactor: "sunssf_5"},
+					smdx.PointElement{Id: "int32_2", Offset: 24, Type: "int32", ScaleFactor: "sunssf_6"},
+					smdx.PointElement{Id: "int32_3", Offset: 26, Type: "int32", ScaleFactor: "sunssf_7", Access: "rw"},
+					smdx.PointElement{Id: "int32_4", Offset: 28, Type: "int32"},
+					smdx.PointElement{Id: "int32_5", Offset: 30, Type: "int32"},
+					smdx.PointElement{Id: "int32_u", Offset: 32, Type: "int32"},
+					smdx.PointElement{Id: "uint32_1", Offset: 34, Type: "uint32", ScaleFactor: "sunssf_5"},
+					smdx.PointElement{Id: "uint32_2", Offset: 36, Type: "uint32", ScaleFactor: "sunssf_6"},
+					smdx.PointElement{Id: "uint32_3", Offset: 38, Type: "uint32", ScaleFactor: "sunssf_7", Access: "rw"},
+					smdx.PointElement{Id: "uint32_4", Offset: 40, Type: "uint32", ScaleFactor: "1"},
+					smdx.PointElement{Id: "uint32_5", Offset: 42, Type: "uint32"},
+					smdx.PointElement{Id: "uint32_u", Offset: 44, Type: "uint32"},
+					smdx.PointElement{Id: "acc32", Offset: 46, Type: "acc32"},
+					smdx.PointElement{Id: "acc32_u", Offset: 48, Type: "acc32"},
+					smdx.PointElement{Id: "enum32", Offset: 50, Type: "enum32"},
+					smdx.PointElement{Id: "enum32_u", Offset: 52, Type: "enum32"},
+					smdx.PointElement{Id: "bitfield32", Offset: 54, Type: "bitfield32"},
+					smdx.PointElement{Id: "bitfield32_u", Offset: 56, Type: "bitfield32"},
+					smdx.PointElement{Id: "ipaddr", Offset: 58, Type: "ipaddr", Access: "rw"},
+					smdx.PointElement{Id: "ipaddr_u", Offset: 60, Type: "ipaddr"},
+					smdx.PointElement{Id: "int64", Offset: 62, Type: "int64", Access: "rw"},
+					smdx.PointElement{Id: "int64_u", Offset: 66, Type: "int64"},
+					smdx.PointElement{Id: "acc64", Offset: 70, Type: "acc64"},
+					smdx.PointElement{Id: "acc64_u", Offset: 74, Type: "acc64"},
+					smdx.PointElement{Id: "ipv6addr", Offset: 78, Type: "ipv6addr"},
+					smdx.PointElement{Id: "ipv6addr_u", Offset: 86, Type: "ipv6addr"},
+					smdx.PointElement{Id: "float32", Offset: 94, Type: "float32", Access: "rw"},
+					smdx.PointElement{Id: "float32_u", Offset: 96, Type: "float32"},
+					smdx.PointElement{Id: "string", Offset: 98, Type: "string", Access: "rw", Length: 16},
+					smdx.PointElement{Id: "string_u", Offset: 114, Type: "string", Length: 16},
+					smdx.PointElement{Id: "sunssf_5", Offset: 130, Type: "sunssf"},
+					smdx.PointElement{Id: "sunssf_6", Offset: 131, Type: "sunssf"},
+					smdx.PointElement{Id: "sunssf_7", Offset: 132, Type: "sunssf"},
+					smdx.PointElement{Id: "pad_1", Offset: 133, Type: "pad"},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 18,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "sunssf_8", Offset: 0, Type: "sunssf"},
-				smdx.PointElement{Id: "int16_11", Offset: 1, Type: "int16", ScaleFactor: "sunssf_8", Access: "rw"},
-				smdx.PointElement{Id: "int16_12", Offset: 2, Type: "int16", ScaleFactor: "sunssf_9"},
-				smdx.PointElement{Id: "int16_u", Offset: 3, Type: "int16"},
-				smdx.PointElement{Id: "uint16_11", Offset: 4, Type: "uint16", ScaleFactor: "sunssf_8", Access: "rw"},
-				smdx.PointElement{Id: "uint16_12", Offset: 5, Type: "uint16", ScaleFactor: "sunssf_9"},
-				smdx.PointElement{Id: "uint16_13", Offset: 6, Type: "uint16"},
-				smdx.PointElement{Id: "uint16_u", Offset: 7, Type: "uint16"},
-				smdx.PointElement{Id: "int32", Offset: 8, Type: "int32", ScaleFactor: "sunssf_1", Access: "rw"},
-				smdx.PointElement{Id: "int32_u", Offset: 10, Type: "int32"},
-				smdx.PointElement{Id: "uint32", Offset: 12, Type: "uint32", ScaleFactor: "sunssf_9", Access: "rw"},
-				smdx.PointElement{Id: "uint32_u", Offset: 14, Type: "uint32"},
-				smdx.PointElement{Id: "sunssf_9", Offset: 16, Type: "sunssf"},
-				smdx.PointElement{Id: "pad_2", Offset: 17, Type: "pad"},
+			smdx.BlockElement{
+				Length: 18,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "sunssf_8", Offset: 0, Type: "sunssf"},
+					smdx.PointElement{Id: "int16_11", Offset: 1, Type: "int16", ScaleFactor: "sunssf_8", Access: "rw"},
+					smdx.PointElement{Id: "int16_12", Offset: 2, Type: "int16", ScaleFactor: "sunssf_9"},
+					smdx.PointElement{Id: "int16_u", Offset: 3, Type: "int16"},
+					smdx.PointElement{Id: "uint16_11", Offset: 4, Type: "uint16", ScaleFactor: "sunssf_8", Access: "rw"},
+					smdx.PointElement{Id: "uint16_12", Offset: 5, Type: "uint16", ScaleFactor: "sunssf_9"},
+					smdx.PointElement{Id: "uint16_13", Offset: 6, Type: "uint16"},
+					smdx.PointElement{Id: "uint16_u", Offset: 7, Type: "uint16"},
+					smdx.PointElement{Id: "int32", Offset: 8, Type: "int32", ScaleFactor: "sunssf_1", Access: "rw"},
+					smdx.PointElement{Id: "int32_u", Offset: 10, Type: "int32"},
+					smdx.PointElement{Id: "uint32", Offset: 12, Type: "uint32", ScaleFactor: "sunssf_9", Access: "rw"},
+					smdx.PointElement{Id: "uint32_u", Offset: 14, Type: "uint32"},
+					smdx.PointElement{Id: "sunssf_9", Offset: 16, Type: "sunssf"},
+					smdx.PointElement{Id: "pad_2", Offset: 17, Type: "pad"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model63001) }
 
 // Block63002 - SunSpec Test Model 2 -
 
@@ -8367,25 +8282,24 @@ func (self *Block63002) GetId() ModelId {
 	return 63002
 }
 
-var model63002 = smdx.ModelElement{
-	Id:     63002,
-	Name:   "",
-	Length: 8,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 4,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "sunssf_1", Offset: 0, Type: "sunssf"},
-				smdx.PointElement{Id: "int16_1", Offset: 1, Type: "int16", ScaleFactor: "sunssf_1", Access: "rw"},
-				smdx.PointElement{Id: "int16_2", Offset: 2, Type: "int16", ScaleFactor: "sunssf_2"},
-				smdx.PointElement{Id: "sunssf_2", Offset: 3, Type: "sunssf"},
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     63002,
+		Name:   "",
+		Length: 8,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 4,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "sunssf_1", Offset: 0, Type: "sunssf"},
+					smdx.PointElement{Id: "int16_1", Offset: 1, Type: "int16", ScaleFactor: "sunssf_1", Access: "rw"},
+					smdx.PointElement{Id: "int16_2", Offset: 2, Type: "int16", ScaleFactor: "sunssf_2"},
+					smdx.PointElement{Id: "sunssf_2", Offset: 3, Type: "sunssf"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model63002) }
 
 // Block64001 - Veris Status and Configuration -
 
@@ -8431,56 +8345,55 @@ func (self *Block64001) GetId() ModelId {
 	return 64001
 }
 
-var model64001 = smdx.ModelElement{
-	Id:     64001,
-	Name:   "",
-	Length: 71,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 71,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     64001,
+		Name:   "",
+		Length: 71,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 71,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Cmd", Offset: 0, Type: "enum16", Access: "rw"},
-				smdx.PointElement{Id: "HWRev", Offset: 1, Type: "uint16"},
-				smdx.PointElement{Id: "RSFWRev", Offset: 2, Type: "uint16"},
-				smdx.PointElement{Id: "OSFWRev", Offset: 3, Type: "uint16"},
-				smdx.PointElement{Id: "ProdRev", Offset: 4, Type: "string", Length: 2},
-				smdx.PointElement{Id: "Boots", Offset: 6, Type: "uint16"},
-				smdx.PointElement{Id: "Switch", Offset: 7, Type: "bitfield16"},
-				smdx.PointElement{Id: "Sensors", Offset: 8, Type: "uint16"},
-				smdx.PointElement{Id: "Talking", Offset: 9, Type: "uint16"},
-				smdx.PointElement{Id: "Status", Offset: 10, Type: "bitfield16"},
-				smdx.PointElement{Id: "Config", Offset: 11, Type: "bitfield16"},
-				smdx.PointElement{Id: "LEDblink", Offset: 12, Type: "uint16", Units: "Pct"},
-				smdx.PointElement{Id: "LEDon", Offset: 13, Type: "uint16", Units: "Pct"},
-				smdx.PointElement{Id: "Reserved", Offset: 14, Type: "uint16"},
-				smdx.PointElement{Id: "Loc", Offset: 15, Type: "string", Length: 16},
-				smdx.PointElement{Id: "S1ID", Offset: 31, Type: "enum16"},
-				smdx.PointElement{Id: "S1Addr", Offset: 32, Type: "uint16"},
-				smdx.PointElement{Id: "S1OSVer", Offset: 33, Type: "uint16"},
-				smdx.PointElement{Id: "S1Ver", Offset: 34, Type: "string", Length: 2},
-				smdx.PointElement{Id: "S1Serial", Offset: 36, Type: "string", Length: 5},
-				smdx.PointElement{Id: "S2ID", Offset: 41, Type: "enum16"},
-				smdx.PointElement{Id: "S2Addr", Offset: 42, Type: "uint16"},
-				smdx.PointElement{Id: "S2OSVer", Offset: 43, Type: "uint16"},
-				smdx.PointElement{Id: "S2Ver", Offset: 44, Type: "string", Length: 2},
-				smdx.PointElement{Id: "S2Serial", Offset: 46, Type: "string", Length: 5},
-				smdx.PointElement{Id: "S3ID", Offset: 51, Type: "enum16"},
-				smdx.PointElement{Id: "S3Addr", Offset: 52, Type: "uint16"},
-				smdx.PointElement{Id: "S3OSVer", Offset: 53, Type: "uint16"},
-				smdx.PointElement{Id: "S3Ver", Offset: 54, Type: "string", Length: 2},
-				smdx.PointElement{Id: "S3Serial", Offset: 56, Type: "string", Length: 5},
-				smdx.PointElement{Id: "S4ID", Offset: 61, Type: "enum16"},
-				smdx.PointElement{Id: "S4Addr", Offset: 62, Type: "uint16"},
-				smdx.PointElement{Id: "S4OSVer", Offset: 63, Type: "uint16"},
-				smdx.PointElement{Id: "S4Ver", Offset: 64, Type: "string", Length: 2},
-				smdx.PointElement{Id: "S4Serial", Offset: 66, Type: "string", Length: 5},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Cmd", Offset: 0, Type: "enum16", Access: "rw"},
+					smdx.PointElement{Id: "HWRev", Offset: 1, Type: "uint16"},
+					smdx.PointElement{Id: "RSFWRev", Offset: 2, Type: "uint16"},
+					smdx.PointElement{Id: "OSFWRev", Offset: 3, Type: "uint16"},
+					smdx.PointElement{Id: "ProdRev", Offset: 4, Type: "string", Length: 2},
+					smdx.PointElement{Id: "Boots", Offset: 6, Type: "uint16"},
+					smdx.PointElement{Id: "Switch", Offset: 7, Type: "bitfield16"},
+					smdx.PointElement{Id: "Sensors", Offset: 8, Type: "uint16"},
+					smdx.PointElement{Id: "Talking", Offset: 9, Type: "uint16"},
+					smdx.PointElement{Id: "Status", Offset: 10, Type: "bitfield16"},
+					smdx.PointElement{Id: "Config", Offset: 11, Type: "bitfield16"},
+					smdx.PointElement{Id: "LEDblink", Offset: 12, Type: "uint16", Units: "Pct"},
+					smdx.PointElement{Id: "LEDon", Offset: 13, Type: "uint16", Units: "Pct"},
+					smdx.PointElement{Id: "Reserved", Offset: 14, Type: "uint16"},
+					smdx.PointElement{Id: "Loc", Offset: 15, Type: "string", Length: 16},
+					smdx.PointElement{Id: "S1ID", Offset: 31, Type: "enum16"},
+					smdx.PointElement{Id: "S1Addr", Offset: 32, Type: "uint16"},
+					smdx.PointElement{Id: "S1OSVer", Offset: 33, Type: "uint16"},
+					smdx.PointElement{Id: "S1Ver", Offset: 34, Type: "string", Length: 2},
+					smdx.PointElement{Id: "S1Serial", Offset: 36, Type: "string", Length: 5},
+					smdx.PointElement{Id: "S2ID", Offset: 41, Type: "enum16"},
+					smdx.PointElement{Id: "S2Addr", Offset: 42, Type: "uint16"},
+					smdx.PointElement{Id: "S2OSVer", Offset: 43, Type: "uint16"},
+					smdx.PointElement{Id: "S2Ver", Offset: 44, Type: "string", Length: 2},
+					smdx.PointElement{Id: "S2Serial", Offset: 46, Type: "string", Length: 5},
+					smdx.PointElement{Id: "S3ID", Offset: 51, Type: "enum16"},
+					smdx.PointElement{Id: "S3Addr", Offset: 52, Type: "uint16"},
+					smdx.PointElement{Id: "S3OSVer", Offset: 53, Type: "uint16"},
+					smdx.PointElement{Id: "S3Ver", Offset: 54, Type: "string", Length: 2},
+					smdx.PointElement{Id: "S3Serial", Offset: 56, Type: "string", Length: 5},
+					smdx.PointElement{Id: "S4ID", Offset: 61, Type: "enum16"},
+					smdx.PointElement{Id: "S4Addr", Offset: 62, Type: "uint16"},
+					smdx.PointElement{Id: "S4OSVer", Offset: 63, Type: "uint16"},
+					smdx.PointElement{Id: "S4Ver", Offset: 64, Type: "string", Length: 2},
+					smdx.PointElement{Id: "S4Serial", Offset: 66, Type: "string", Length: 5},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model64001) }
 
 // Block64020 - Mersen GreenString -
 
@@ -8529,60 +8442,59 @@ func (self *Block64020) GetId() ModelId {
 	return 64020
 }
 
-var model64020 = smdx.ModelElement{
-	Id:     64020,
-	Name:   "",
-	Length: 46,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 30,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     64020,
+		Name:   "",
+		Length: 46,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 30,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Aux0Tmp", Offset: 0, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "Aux1Tmp", Offset: 1, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "Aux2Tmp", Offset: 2, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "Aux3Tmp", Offset: 3, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "Aux4Tmp", Offset: 4, Type: "int16", Units: "C"},
-				smdx.PointElement{Id: "ProbeTmp", Offset: 6, Type: "int16", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "MainTmp", Offset: 5, Type: "int16", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "SensorV_SF", Offset: 7, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "SensorA_SF", Offset: 8, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "SensorHz_SF", Offset: 9, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "Sensor1Voltage", Offset: 10, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
-				smdx.PointElement{Id: "Sensor2Voltage", Offset: 11, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
-				smdx.PointElement{Id: "Sensor3Voltage", Offset: 12, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
-				smdx.PointElement{Id: "Sensor4Voltage", Offset: 13, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
-				smdx.PointElement{Id: "Sensor5Voltage", Offset: 14, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
-				smdx.PointElement{Id: "Sensor6Voltage", Offset: 15, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
-				smdx.PointElement{Id: "Sensor7Voltage", Offset: 16, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
-				smdx.PointElement{Id: "Sensor1Current", Offset: 17, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
-				smdx.PointElement{Id: "Sensor2Current", Offset: 18, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
-				smdx.PointElement{Id: "Sensor3Current", Offset: 19, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
-				smdx.PointElement{Id: "Sensor4Current", Offset: 20, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
-				smdx.PointElement{Id: "Sensor5Current", Offset: 21, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
-				smdx.PointElement{Id: "Sensor6Current", Offset: 22, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
-				smdx.PointElement{Id: "Sensor7Current", Offset: 23, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
-				smdx.PointElement{Id: "Sensor8", Offset: 24, Type: "uint16", ScaleFactor: "SensorHz_SF", Units: "Hz"},
-				smdx.PointElement{Id: "Relay1", Offset: 25, Type: "uint16"},
-				smdx.PointElement{Id: "Relay2", Offset: 26, Type: "uint16"},
-				smdx.PointElement{Id: "Relay3", Offset: 27, Type: "uint16"},
-				smdx.PointElement{Id: "ResetAccumulators", Offset: 28, Type: "uint16"},
-				smdx.PointElement{Id: "Reset", Offset: 29, Type: "uint16"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Aux0Tmp", Offset: 0, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "Aux1Tmp", Offset: 1, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "Aux2Tmp", Offset: 2, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "Aux3Tmp", Offset: 3, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "Aux4Tmp", Offset: 4, Type: "int16", Units: "C"},
+					smdx.PointElement{Id: "ProbeTmp", Offset: 6, Type: "int16", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "MainTmp", Offset: 5, Type: "int16", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "SensorV_SF", Offset: 7, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "SensorA_SF", Offset: 8, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "SensorHz_SF", Offset: 9, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "Sensor1Voltage", Offset: 10, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
+					smdx.PointElement{Id: "Sensor2Voltage", Offset: 11, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
+					smdx.PointElement{Id: "Sensor3Voltage", Offset: 12, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
+					smdx.PointElement{Id: "Sensor4Voltage", Offset: 13, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
+					smdx.PointElement{Id: "Sensor5Voltage", Offset: 14, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
+					smdx.PointElement{Id: "Sensor6Voltage", Offset: 15, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
+					smdx.PointElement{Id: "Sensor7Voltage", Offset: 16, Type: "int16", ScaleFactor: "SensorV_SF", Units: "V"},
+					smdx.PointElement{Id: "Sensor1Current", Offset: 17, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
+					smdx.PointElement{Id: "Sensor2Current", Offset: 18, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
+					smdx.PointElement{Id: "Sensor3Current", Offset: 19, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
+					smdx.PointElement{Id: "Sensor4Current", Offset: 20, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
+					smdx.PointElement{Id: "Sensor5Current", Offset: 21, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
+					smdx.PointElement{Id: "Sensor6Current", Offset: 22, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
+					smdx.PointElement{Id: "Sensor7Current", Offset: 23, Type: "int16", ScaleFactor: "SensorA_SF", Units: "A"},
+					smdx.PointElement{Id: "Sensor8", Offset: 24, Type: "uint16", ScaleFactor: "SensorHz_SF", Units: "Hz"},
+					smdx.PointElement{Id: "Relay1", Offset: 25, Type: "uint16"},
+					smdx.PointElement{Id: "Relay2", Offset: 26, Type: "uint16"},
+					smdx.PointElement{Id: "Relay3", Offset: 27, Type: "uint16"},
+					smdx.PointElement{Id: "ResetAccumulators", Offset: 28, Type: "uint16"},
+					smdx.PointElement{Id: "Reset", Offset: 29, Type: "uint16"},
+				},
 			},
-		},
-		smdx.BlockElement{
-			Length: 16,
-			Type:   "repeating",
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "SerialNumber", Offset: 0, Type: "string", Length: 9, Mandatory: true},
-				smdx.PointElement{Id: "Firmware", Offset: 9, Type: "string", Length: 6, Mandatory: true},
-				smdx.PointElement{Id: "Hardware", Offset: 15, Type: "uint16", Mandatory: true},
+			smdx.BlockElement{
+				Length: 16,
+				Type:   "repeating",
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "SerialNumber", Offset: 0, Type: "string", Length: 9, Mandatory: true},
+					smdx.PointElement{Id: "Firmware", Offset: 9, Type: "string", Length: 6, Mandatory: true},
+					smdx.PointElement{Id: "Hardware", Offset: 15, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model64020) }
 
 // Block64101 - Eltek Inverter Extension -
 
@@ -8600,28 +8512,27 @@ func (self *Block64101) GetId() ModelId {
 	return 64101
 }
 
-var model64101 = smdx.ModelElement{
-	Id:     64101,
-	Name:   "",
-	Length: 7,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 7,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     64101,
+		Name:   "",
+		Length: 7,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 7,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Eltek_Country_Code", Offset: 0, Type: "uint16"},
-				smdx.PointElement{Id: "Eltek_Feeding_Phase", Offset: 1, Type: "uint16"},
-				smdx.PointElement{Id: "Eltek_APD_Method", Offset: 2, Type: "uint16"},
-				smdx.PointElement{Id: "Eltek_APD_Power_Ref", Offset: 3, Type: "uint16"},
-				smdx.PointElement{Id: "Eltek_RPS_Method", Offset: 4, Type: "uint16"},
-				smdx.PointElement{Id: "Eltek_RPS_Q_Ref", Offset: 5, Type: "uint16"},
-				smdx.PointElement{Id: "Eltek_RPS_CosPhi_Ref", Offset: 6, Type: "int16"},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Eltek_Country_Code", Offset: 0, Type: "uint16"},
+					smdx.PointElement{Id: "Eltek_Feeding_Phase", Offset: 1, Type: "uint16"},
+					smdx.PointElement{Id: "Eltek_APD_Method", Offset: 2, Type: "uint16"},
+					smdx.PointElement{Id: "Eltek_APD_Power_Ref", Offset: 3, Type: "uint16"},
+					smdx.PointElement{Id: "Eltek_RPS_Method", Offset: 4, Type: "uint16"},
+					smdx.PointElement{Id: "Eltek_RPS_Q_Ref", Offset: 5, Type: "uint16"},
+					smdx.PointElement{Id: "Eltek_RPS_CosPhi_Ref", Offset: 6, Type: "int16"},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model64101) }
 
 // Block64110 - OutBack AXS device -
 
@@ -8679,68 +8590,67 @@ func (self *Block64110) GetId() ModelId {
 	return 64110
 }
 
-var model64110 = smdx.ModelElement{
-	Id:     64110,
-	Name:   "",
-	Length: 282,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 282,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     64110,
+		Name:   "",
+		Length: 282,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 282,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "MajorFWRev", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "MidFWRev", Offset: 1, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "MinorFWRev", Offset: 2, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "EncrypKey", Offset: 3, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "MAC_Address", Offset: 4, Type: "string", Length: 7, Mandatory: true},
-				smdx.PointElement{Id: "WritePassword", Offset: 11, Type: "string", Length: 8, Mandatory: true},
-				smdx.PointElement{Id: "EnableDHCP", Offset: 19, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "TCPIP_address", Offset: 20, Type: "ipaddr", Mandatory: true},
-				smdx.PointElement{Id: "Gateway_address", Offset: 22, Type: "ipaddr", Mandatory: true},
-				smdx.PointElement{Id: "TCPIP_Netmask", Offset: 24, Type: "ipaddr", Mandatory: true},
-				smdx.PointElement{Id: "DNS1_address", Offset: 26, Type: "ipaddr", Mandatory: true},
-				smdx.PointElement{Id: "DNS2_address", Offset: 28, Type: "ipaddr", Mandatory: true},
-				smdx.PointElement{Id: "Modbus_port", Offset: 30, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "SMTP_server_nm", Offset: 31, Type: "string", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "SMTP_account_nm", Offset: 51, Type: "string", Length: 16, Mandatory: true},
-				smdx.PointElement{Id: "SMTP_enable_SSL", Offset: 67, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "SMTP_password", Offset: 68, Type: "string", Length: 8, Mandatory: true},
-				smdx.PointElement{Id: "SMTP_user_nm", Offset: 76, Type: "string", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "Stat_email_int", Offset: 96, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "Stat_start_HR", Offset: 97, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "Stat_email_sub", Offset: 98, Type: "string", Length: 25, Mandatory: true},
-				smdx.PointElement{Id: "Stat_email_addr1", Offset: 123, Type: "string", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "Stat_email_addr2", Offset: 143, Type: "string", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "Alarm_email_en", Offset: 163, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "Alarm_email_sub", Offset: 164, Type: "string", Length: 25, Mandatory: true},
-				smdx.PointElement{Id: "Alarm_email_addr1", Offset: 189, Type: "string", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "Alarm_email_addr2", Offset: 209, Type: "string", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "FTP_password", Offset: 229, Type: "string", Length: 8, Mandatory: true},
-				smdx.PointElement{Id: "TELNET_password", Offset: 237, Type: "string", Length: 8, Mandatory: true},
-				smdx.PointElement{Id: "Log_write_int", Offset: 245, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "Log_retain", Offset: 246, Type: "uint16", Units: "Tmd", Mandatory: true},
-				smdx.PointElement{Id: "Log_mode", Offset: 247, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "NTP_server_nm", Offset: 248, Type: "string", Length: 20, Mandatory: true},
-				smdx.PointElement{Id: "NTP_enable", Offset: 268, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "TimeZone", Offset: 269, Type: "int16", Units: "Tmh", Mandatory: true},
-				smdx.PointElement{Id: "Date_year", Offset: 270, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "Date_month", Offset: 271, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "Date_Day", Offset: 272, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "Time_hour", Offset: 273, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "Time_minute", Offset: 274, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "Time_second", Offset: 275, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "Battery_temp", Offset: 276, Type: "int16", ScaleFactor: "Temp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "Ambient_temp", Offset: 277, Type: "int16", ScaleFactor: "Temp_SF", Units: "C", Mandatory: true},
-				smdx.PointElement{Id: "Temp_SF", Offset: 278, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "AXS_Error", Offset: 279, Type: "bitfield16", Mandatory: true},
-				smdx.PointElement{Id: "AXS_Status", Offset: 280, Type: "bitfield16", Mandatory: true},
-				smdx.PointElement{Id: "AXS_Spare", Offset: 281, Type: "uint16", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "MajorFWRev", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "MidFWRev", Offset: 1, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "MinorFWRev", Offset: 2, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "EncrypKey", Offset: 3, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "MAC_Address", Offset: 4, Type: "string", Length: 7, Mandatory: true},
+					smdx.PointElement{Id: "WritePassword", Offset: 11, Type: "string", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: "EnableDHCP", Offset: 19, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "TCPIP_address", Offset: 20, Type: "ipaddr", Mandatory: true},
+					smdx.PointElement{Id: "Gateway_address", Offset: 22, Type: "ipaddr", Mandatory: true},
+					smdx.PointElement{Id: "TCPIP_Netmask", Offset: 24, Type: "ipaddr", Mandatory: true},
+					smdx.PointElement{Id: "DNS1_address", Offset: 26, Type: "ipaddr", Mandatory: true},
+					smdx.PointElement{Id: "DNS2_address", Offset: 28, Type: "ipaddr", Mandatory: true},
+					smdx.PointElement{Id: "Modbus_port", Offset: 30, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "SMTP_server_nm", Offset: 31, Type: "string", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "SMTP_account_nm", Offset: 51, Type: "string", Length: 16, Mandatory: true},
+					smdx.PointElement{Id: "SMTP_enable_SSL", Offset: 67, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "SMTP_password", Offset: 68, Type: "string", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: "SMTP_user_nm", Offset: 76, Type: "string", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "Stat_email_int", Offset: 96, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "Stat_start_HR", Offset: 97, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "Stat_email_sub", Offset: 98, Type: "string", Length: 25, Mandatory: true},
+					smdx.PointElement{Id: "Stat_email_addr1", Offset: 123, Type: "string", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "Stat_email_addr2", Offset: 143, Type: "string", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "Alarm_email_en", Offset: 163, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "Alarm_email_sub", Offset: 164, Type: "string", Length: 25, Mandatory: true},
+					smdx.PointElement{Id: "Alarm_email_addr1", Offset: 189, Type: "string", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "Alarm_email_addr2", Offset: 209, Type: "string", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "FTP_password", Offset: 229, Type: "string", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: "TELNET_password", Offset: 237, Type: "string", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: "Log_write_int", Offset: 245, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "Log_retain", Offset: 246, Type: "uint16", Units: "Tmd", Mandatory: true},
+					smdx.PointElement{Id: "Log_mode", Offset: 247, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "NTP_server_nm", Offset: 248, Type: "string", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: "NTP_enable", Offset: 268, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "TimeZone", Offset: 269, Type: "int16", Units: "Tmh", Mandatory: true},
+					smdx.PointElement{Id: "Date_year", Offset: 270, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "Date_month", Offset: 271, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "Date_Day", Offset: 272, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "Time_hour", Offset: 273, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "Time_minute", Offset: 274, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "Time_second", Offset: 275, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "Battery_temp", Offset: 276, Type: "int16", ScaleFactor: "Temp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "Ambient_temp", Offset: 277, Type: "int16", ScaleFactor: "Temp_SF", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: "Temp_SF", Offset: 278, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "AXS_Error", Offset: 279, Type: "bitfield16", Mandatory: true},
+					smdx.PointElement{Id: "AXS_Status", Offset: 280, Type: "bitfield16", Mandatory: true},
+					smdx.PointElement{Id: "AXS_Spare", Offset: 281, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model64110) }
 
 // Block64111 - Basic Charge Controller -
 
@@ -8774,44 +8684,43 @@ func (self *Block64111) GetId() ModelId {
 	return 64111
 }
 
-var model64111 = smdx.ModelElement{
-	Id:     64111,
-	Name:   "",
-	Length: 23,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 23,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     64111,
+		Name:   "",
+		Length: 23,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 23,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Port", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 1, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "A_SF", Offset: 2, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "P_SF", Offset: 3, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "AH_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "KWH_SF", Offset: 5, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "BattV", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "ArrayV", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "OutputA", Offset: 8, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "InputA", Offset: 9, Type: "uint16", ScaleFactor: "P_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "ChargerSt", Offset: 10, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "OutputW", Offset: 11, Type: "uint16", ScaleFactor: "P_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "TodayMinBatV", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "TodayMaxBatV", Offset: 13, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "VOCV", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "TodayMaxVOC", Offset: 15, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "TodaykWhOutput", Offset: 16, Type: "uint16", ScaleFactor: "KWH_SF", Units: "kWh", Mandatory: true},
-				smdx.PointElement{Id: "TodayAHOutput", Offset: 17, Type: "uint16", ScaleFactor: "AH_SF", Units: "AH", Mandatory: true},
-				smdx.PointElement{Id: "LifeTimeKWHOut", Offset: 18, Type: "uint16", ScaleFactor: "P_SF", Units: "kWh", Mandatory: true},
-				smdx.PointElement{Id: "LifeTimeAHOut", Offset: 19, Type: "uint16", ScaleFactor: "KWH_SF", Units: "kAH", Mandatory: true},
-				smdx.PointElement{Id: "LifeTimeMaxOut", Offset: 20, Type: "uint16", ScaleFactor: "P_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "LifeTimeMaxBatt", Offset: 21, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "LifeTimeMaxVOC", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Port", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 1, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "A_SF", Offset: 2, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "P_SF", Offset: 3, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "AH_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "KWH_SF", Offset: 5, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "BattV", Offset: 6, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "ArrayV", Offset: 7, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "OutputA", Offset: 8, Type: "uint16", ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "InputA", Offset: 9, Type: "uint16", ScaleFactor: "P_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "ChargerSt", Offset: 10, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "OutputW", Offset: 11, Type: "uint16", ScaleFactor: "P_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "TodayMinBatV", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "TodayMaxBatV", Offset: 13, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "VOCV", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "TodayMaxVOC", Offset: 15, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "TodaykWhOutput", Offset: 16, Type: "uint16", ScaleFactor: "KWH_SF", Units: "kWh", Mandatory: true},
+					smdx.PointElement{Id: "TodayAHOutput", Offset: 17, Type: "uint16", ScaleFactor: "AH_SF", Units: "AH", Mandatory: true},
+					smdx.PointElement{Id: "LifeTimeKWHOut", Offset: 18, Type: "uint16", ScaleFactor: "P_SF", Units: "kWh", Mandatory: true},
+					smdx.PointElement{Id: "LifeTimeAHOut", Offset: 19, Type: "uint16", ScaleFactor: "KWH_SF", Units: "kAH", Mandatory: true},
+					smdx.PointElement{Id: "LifeTimeMaxOut", Offset: 20, Type: "uint16", ScaleFactor: "P_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "LifeTimeMaxBatt", Offset: 21, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "LifeTimeMaxVOC", Offset: 22, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model64111) }
 
 // Block64112 - OutBack FM Charge Controller -
 
@@ -8886,82 +8795,81 @@ func (self *Block64112) GetId() ModelId {
 	return 64112
 }
 
-var model64112 = smdx.ModelElement{
-	Id:     64112,
-	Name:   "",
-	Length: 64,
-	Blocks: []smdx.BlockElement{
-		smdx.BlockElement{
-			Length: 64,
+func init() {
+	smdx.RegisterModel(&smdx.ModelElement{
+		Id:     64112,
+		Name:   "",
+		Length: 64,
+		Blocks: []smdx.BlockElement{
+			smdx.BlockElement{
+				Length: 64,
 
-			Points: []smdx.PointElement{
-				smdx.PointElement{Id: "Port", Offset: 0, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "V_SF", Offset: 1, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "C_SF", Offset: 2, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "H_SF", Offset: 3, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "P_SF", Offset: 4, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "AH_SF", Offset: 5, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "KWH_SF", Offset: 6, Type: "sunssf", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_fault", Offset: 7, Type: "bitfield16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_absorb_V", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_absorb_Hr", Offset: 9, Type: "uint16", ScaleFactor: "H_SF", Units: "Tmh", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_absorb_End_A", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_rebulk_V", Offset: 11, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_float_V", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_max_Chg_A", Offset: 13, Type: "uint16", ScaleFactor: "V_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_equalize_V", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_equalize_Hr", Offset: 15, Type: "uint16", Units: "Tmh", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_auto_equalize", Offset: 16, Type: "uint16", Units: "Tmd", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_MPPT_mode", Offset: 17, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_sweep_width", Offset: 18, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_sweep_max", Offset: 19, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_U_Pick_Duty_cyc", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "Pct", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_grid_tie", Offset: 21, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_temp_comp", Offset: 22, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_temp_comp_llimt", Offset: 23, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_temp_comp_hlimt", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_auto_restart", Offset: 25, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_wakeup_VOC", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_snooze_mode_A", Offset: 27, Type: "uint16", ScaleFactor: "V_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_wakeup_interval", Offset: 28, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_mode", Offset: 29, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_control", Offset: 30, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_state", Offset: 31, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_polarity", Offset: 32, Type: "enum16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_L_Batt_disc", Offset: 33, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_L_Batt_rcon", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_L_Batt_dly", Offset: 35, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Vent_fan_V", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_PV_triggerV", Offset: 37, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_PV_trg_h_tm", Offset: 38, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Nlite_ThrsV", Offset: 39, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Nlite_On_tm", Offset: 40, Type: "uint16", ScaleFactor: "H_SF", Units: "Tmh", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Nlite_On_hist", Offset: 41, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Nlite_Off_hist", Offset: 42, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Error_batt_V", Offset: 43, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Divert_h_time", Offset: 44, Type: "uint16", ScaleFactor: "V_SF", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Divert_dly_time", Offset: 45, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Divert_Rel_V", Offset: 46, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_AUX_Divert_Hyst_V", Offset: 47, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_MajorFWRev", Offset: 48, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_MidFWRev", Offset: 49, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_MinorFWRev", Offset: 50, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Day_offset", Offset: 51, Type: "uint16", Units: "Tmd", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Cur_Day_off", Offset: 52, Type: "uint16", Units: "Tmd", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Daily_AH", Offset: 53, Type: "uint16", Units: "Ah", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Daily_KWH", Offset: 54, Type: "uint16", ScaleFactor: "KWH_SF", Units: "kWh", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Max_Out_A", Offset: 55, Type: "uint16", ScaleFactor: "V_SF", Units: "A", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Max_Out_W", Offset: 56, Type: "uint16", ScaleFactor: "V_SF", Units: "W", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Absorb_T", Offset: 57, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Float_T", Offset: 58, Type: "uint16", Units: "Tms", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Min_Batt_V", Offset: 59, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Max_Batt_V", Offset: 60, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Max_Input_V", Offset: 61, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Clear", Offset: 62, Type: "uint16", Mandatory: true},
-				smdx.PointElement{Id: "CC_Config_DataLog_Clr_Comp", Offset: 63, Type: "uint16", Mandatory: true},
+				Points: []smdx.PointElement{
+					smdx.PointElement{Id: "Port", Offset: 0, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "V_SF", Offset: 1, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "C_SF", Offset: 2, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "H_SF", Offset: 3, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "P_SF", Offset: 4, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "AH_SF", Offset: 5, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "KWH_SF", Offset: 6, Type: "sunssf", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_fault", Offset: 7, Type: "bitfield16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_absorb_V", Offset: 8, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_absorb_Hr", Offset: 9, Type: "uint16", ScaleFactor: "H_SF", Units: "Tmh", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_absorb_End_A", Offset: 10, Type: "uint16", ScaleFactor: "V_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_rebulk_V", Offset: 11, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_float_V", Offset: 12, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_max_Chg_A", Offset: 13, Type: "uint16", ScaleFactor: "V_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_equalize_V", Offset: 14, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_equalize_Hr", Offset: 15, Type: "uint16", Units: "Tmh", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_auto_equalize", Offset: 16, Type: "uint16", Units: "Tmd", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_MPPT_mode", Offset: 17, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_sweep_width", Offset: 18, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_sweep_max", Offset: 19, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_U_Pick_Duty_cyc", Offset: 20, Type: "uint16", ScaleFactor: "V_SF", Units: "Pct", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_grid_tie", Offset: 21, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_temp_comp", Offset: 22, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_temp_comp_llimt", Offset: 23, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_temp_comp_hlimt", Offset: 24, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_auto_restart", Offset: 25, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_wakeup_VOC", Offset: 26, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_snooze_mode_A", Offset: 27, Type: "uint16", ScaleFactor: "V_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_wakeup_interval", Offset: 28, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_mode", Offset: 29, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_control", Offset: 30, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_state", Offset: 31, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_polarity", Offset: 32, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_L_Batt_disc", Offset: 33, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_L_Batt_rcon", Offset: 34, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_L_Batt_dly", Offset: 35, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Vent_fan_V", Offset: 36, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_PV_triggerV", Offset: 37, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_PV_trg_h_tm", Offset: 38, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Nlite_ThrsV", Offset: 39, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Nlite_On_tm", Offset: 40, Type: "uint16", ScaleFactor: "H_SF", Units: "Tmh", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Nlite_On_hist", Offset: 41, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Nlite_Off_hist", Offset: 42, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Error_batt_V", Offset: 43, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Divert_h_time", Offset: 44, Type: "uint16", ScaleFactor: "V_SF", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Divert_dly_time", Offset: 45, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Divert_Rel_V", Offset: 46, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_AUX_Divert_Hyst_V", Offset: 47, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_MajorFWRev", Offset: 48, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_MidFWRev", Offset: 49, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_MinorFWRev", Offset: 50, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Day_offset", Offset: 51, Type: "uint16", Units: "Tmd", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Cur_Day_off", Offset: 52, Type: "uint16", Units: "Tmd", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Daily_AH", Offset: 53, Type: "uint16", Units: "Ah", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Daily_KWH", Offset: 54, Type: "uint16", ScaleFactor: "KWH_SF", Units: "kWh", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Max_Out_A", Offset: 55, Type: "uint16", ScaleFactor: "V_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Max_Out_W", Offset: 56, Type: "uint16", ScaleFactor: "V_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Absorb_T", Offset: 57, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Float_T", Offset: 58, Type: "uint16", Units: "Tms", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Min_Batt_V", Offset: 59, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Max_Batt_V", Offset: 60, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Max_Input_V", Offset: 61, Type: "uint16", ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Clear", Offset: 62, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: "CC_Config_DataLog_Clr_Comp", Offset: 63, Type: "uint16", Mandatory: true},
+				},
 			},
-		},
-	},
+		}})
 }
-
-func init() { smdx.RegisterModel(&model64112) }
