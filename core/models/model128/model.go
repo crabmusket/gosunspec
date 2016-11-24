@@ -6,6 +6,7 @@ package model128
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -63,20 +64,20 @@ func init() {
 				Length: 14,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: ArGraMod, Offset: 0, Type: "enum16", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ArGraSag, Offset: 1, Type: "uint16", ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ArGraSwell, Offset: 2, Type: "uint16", ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ModEna, Offset: 3, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: FilTms, Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: DbVMin, Offset: 5, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-					smdx.PointElement{Id: DbVMax, Offset: 6, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-					smdx.PointElement{Id: BlkZnV, Offset: 7, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-					smdx.PointElement{Id: HysBlkZnV, Offset: 8, Type: "uint16", ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-					smdx.PointElement{Id: BlkZnTmms, Offset: 9, Type: "uint16", Units: "mSecs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: HoldTmms, Offset: 10, Type: "uint16", Units: "mSecs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: ArGra_SF, Offset: 11, Type: "sunssf", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VRefPct_SF, Offset: 12, Type: "sunssf", Access: "r", Length: 1},
-					smdx.PointElement{Id: Pad, Offset: 13, Type: "pad", Access: "r", Length: 1},
+					smdx.PointElement{Id: ArGraMod, Offset: 0, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: ArGraSag, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: ArGraSwell, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: ModEna, Offset: 3, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: FilTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: DbVMin, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: DbVMax, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: BlkZnV, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: HysBlkZnV, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
+					smdx.PointElement{Id: BlkZnTmms, Offset: 9, Type: typelabel.Uint16, Units: "mSecs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: HoldTmms, Offset: 10, Type: typelabel.Uint16, Units: "mSecs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: ArGra_SF, Offset: 11, Type: typelabel.Sunssf, Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: VRefPct_SF, Offset: 12, Type: typelabel.Sunssf, Access: "r", Length: 1},
+					smdx.PointElement{Id: Pad, Offset: 13, Type: typelabel.Pad, Access: "r", Length: 1},
 				},
 			},
 		}})

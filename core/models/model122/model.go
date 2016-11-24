@@ -6,6 +6,7 @@ package model122
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -75,26 +76,26 @@ func init() {
 				Length: 44,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: PVConn, Offset: 0, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: StorConn, Offset: 1, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ECPConn, Offset: 2, Type: "bitfield16", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ActWh, Offset: 3, Type: "acc64", Units: "Wh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVAh, Offset: 7, Type: "acc64", Units: "VAh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVArhQ1, Offset: 11, Type: "acc64", Units: "varh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVArhQ2, Offset: 15, Type: "acc64", Units: "varh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVArhQ3, Offset: 19, Type: "acc64", Units: "varh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVArhQ4, Offset: 23, Type: "acc64", Units: "varh", Access: "r", Length: 4},
-					smdx.PointElement{Id: VArAval, Offset: 27, Type: "int16", ScaleFactor: "VArAval_SF", Units: "var", Access: "r", Length: 1},
-					smdx.PointElement{Id: VArAval_SF, Offset: 28, Type: "sunssf", Access: "r", Length: 1},
-					smdx.PointElement{Id: WAval, Offset: 29, Type: "uint16", ScaleFactor: "WAval_SF", Units: "var", Access: "r", Length: 1},
-					smdx.PointElement{Id: WAval_SF, Offset: 30, Type: "sunssf", Access: "r", Length: 1},
-					smdx.PointElement{Id: StSetLimMsk, Offset: 31, Type: "bitfield32", Access: "r", Length: 2},
-					smdx.PointElement{Id: StActCtl, Offset: 33, Type: "bitfield32", Access: "r", Length: 2},
-					smdx.PointElement{Id: TmSrc, Offset: 35, Type: "string", Access: "r", Length: 4},
-					smdx.PointElement{Id: Tms, Offset: 39, Type: "uint32", Units: "Secs", Access: "r", Length: 2},
-					smdx.PointElement{Id: RtSt, Offset: 41, Type: "bitfield16", Access: "r", Length: 1},
-					smdx.PointElement{Id: Ris, Offset: 42, Type: "uint16", ScaleFactor: "Ris_SF", Units: "ohms", Access: "r", Length: 1},
-					smdx.PointElement{Id: Ris_SF, Offset: 43, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: PVConn, Offset: 0, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: StorConn, Offset: 1, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: ECPConn, Offset: 2, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: ActWh, Offset: 3, Type: typelabel.Acc64, Units: "Wh", Access: "r", Length: 4},
+					smdx.PointElement{Id: ActVAh, Offset: 7, Type: typelabel.Acc64, Units: "VAh", Access: "r", Length: 4},
+					smdx.PointElement{Id: ActVArhQ1, Offset: 11, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4},
+					smdx.PointElement{Id: ActVArhQ2, Offset: 15, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4},
+					smdx.PointElement{Id: ActVArhQ3, Offset: 19, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4},
+					smdx.PointElement{Id: ActVArhQ4, Offset: 23, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4},
+					smdx.PointElement{Id: VArAval, Offset: 27, Type: typelabel.Int16, ScaleFactor: "VArAval_SF", Units: "var", Access: "r", Length: 1},
+					smdx.PointElement{Id: VArAval_SF, Offset: 28, Type: typelabel.Sunssf, Access: "r", Length: 1},
+					smdx.PointElement{Id: WAval, Offset: 29, Type: typelabel.Uint16, ScaleFactor: "WAval_SF", Units: "var", Access: "r", Length: 1},
+					smdx.PointElement{Id: WAval_SF, Offset: 30, Type: typelabel.Sunssf, Access: "r", Length: 1},
+					smdx.PointElement{Id: StSetLimMsk, Offset: 31, Type: typelabel.Bitfield32, Access: "r", Length: 2},
+					smdx.PointElement{Id: StActCtl, Offset: 33, Type: typelabel.Bitfield32, Access: "r", Length: 2},
+					smdx.PointElement{Id: TmSrc, Offset: 35, Type: typelabel.String, Access: "r", Length: 4},
+					smdx.PointElement{Id: Tms, Offset: 39, Type: typelabel.Uint32, Units: "Secs", Access: "r", Length: 2},
+					smdx.PointElement{Id: RtSt, Offset: 41, Type: typelabel.Bitfield16, Access: "r", Length: 1},
+					smdx.PointElement{Id: Ris, Offset: 42, Type: typelabel.Uint16, ScaleFactor: "Ris_SF", Units: "ohms", Access: "r", Length: 1},
+					smdx.PointElement{Id: Ris_SF, Offset: 43, Type: typelabel.Sunssf, Access: "r", Length: 1},
 				},
 			},
 		}})

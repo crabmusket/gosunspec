@@ -6,6 +6,7 @@ package model2
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -55,16 +56,16 @@ func init() {
 				Length: 14,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: AID, Offset: 0, Type: "uint16", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 1, Type: "uint16", Mandatory: true},
-					smdx.PointElement{Id: UN, Offset: 2, Type: "uint16", Mandatory: true},
-					smdx.PointElement{Id: St, Offset: 3, Type: "enum16", Mandatory: true},
-					smdx.PointElement{Id: StVnd, Offset: 4, Type: "enum16"},
-					smdx.PointElement{Id: Evt, Offset: 5, Type: "bitfield32", Mandatory: true},
-					smdx.PointElement{Id: EvtVnd, Offset: 7, Type: "bitfield32"},
-					smdx.PointElement{Id: Ctl, Offset: 9, Type: "enum16"},
-					smdx.PointElement{Id: CtlVnd, Offset: 10, Type: "enum32"},
-					smdx.PointElement{Id: CtlVl, Offset: 12, Type: "enum32"},
+					smdx.PointElement{Id: AID, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: N, Offset: 1, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: UN, Offset: 2, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: St, Offset: 3, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: StVnd, Offset: 4, Type: typelabel.Enum16},
+					smdx.PointElement{Id: Evt, Offset: 5, Type: typelabel.Bitfield32, Mandatory: true},
+					smdx.PointElement{Id: EvtVnd, Offset: 7, Type: typelabel.Bitfield32},
+					smdx.PointElement{Id: Ctl, Offset: 9, Type: typelabel.Enum16},
+					smdx.PointElement{Id: CtlVnd, Offset: 10, Type: typelabel.Enum32},
+					smdx.PointElement{Id: CtlVl, Offset: 12, Type: typelabel.Enum32},
 				},
 			},
 		}})

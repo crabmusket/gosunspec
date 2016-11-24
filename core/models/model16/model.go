@@ -6,6 +6,7 @@ package model16
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -57,17 +58,17 @@ func init() {
 				Length: 52,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: "string", Access: "rw", Length: 4},
-					smdx.PointElement{Id: Cfg, Offset: 4, Type: "enum16", Mandatory: true},
-					smdx.PointElement{Id: Ctl, Offset: 5, Type: "enum16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Addr, Offset: 6, Type: "string", Access: "rw", Length: 8, Mandatory: true},
-					smdx.PointElement{Id: Msk, Offset: 14, Type: "string", Access: "rw", Length: 8, Mandatory: true},
-					smdx.PointElement{Id: Gw, Offset: 22, Type: "string", Access: "rw", Length: 8},
-					smdx.PointElement{Id: DNS1, Offset: 30, Type: "string", Access: "rw", Length: 8},
-					smdx.PointElement{Id: DNS2, Offset: 38, Type: "string", Access: "rw", Length: 8},
-					smdx.PointElement{Id: MAC, Offset: 46, Type: "uint64", Access: "r"},
-					smdx.PointElement{Id: LnkCtl, Offset: 50, Type: "bitfield16", Access: "rw"},
-					smdx.PointElement{Id: Pad, Offset: 51, Type: "pad"},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
+					smdx.PointElement{Id: Cfg, Offset: 4, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: Ctl, Offset: 5, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Addr, Offset: 6, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: Msk, Offset: 14, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: Gw, Offset: 22, Type: typelabel.String, Access: "rw", Length: 8},
+					smdx.PointElement{Id: DNS1, Offset: 30, Type: typelabel.String, Access: "rw", Length: 8},
+					smdx.PointElement{Id: DNS2, Offset: 38, Type: typelabel.String, Access: "rw", Length: 8},
+					smdx.PointElement{Id: MAC, Offset: 46, Type: typelabel.Uint64, Access: "r"},
+					smdx.PointElement{Id: LnkCtl, Offset: 50, Type: typelabel.Bitfield16, Access: "rw"},
+					smdx.PointElement{Id: Pad, Offset: 51, Type: typelabel.Pad},
 				},
 			},
 		}})

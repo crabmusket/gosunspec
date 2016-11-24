@@ -6,6 +6,7 @@ package model63002
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -47,10 +48,10 @@ func init() {
 				Length: 4,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Sunssf_1, Offset: 0, Type: "sunssf"},
-					smdx.PointElement{Id: Int16_1, Offset: 1, Type: "int16", ScaleFactor: "sunssf_1", Access: "rw"},
-					smdx.PointElement{Id: Int16_2, Offset: 2, Type: "int16", ScaleFactor: "sunssf_2"},
-					smdx.PointElement{Id: Sunssf_2, Offset: 3, Type: "sunssf"},
+					smdx.PointElement{Id: Sunssf_1, Offset: 0, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: Int16_1, Offset: 1, Type: typelabel.Int16, ScaleFactor: "sunssf_1", Access: "rw"},
+					smdx.PointElement{Id: Int16_2, Offset: 2, Type: typelabel.Int16, ScaleFactor: "sunssf_2"},
+					smdx.PointElement{Id: Sunssf_2, Offset: 3, Type: typelabel.Sunssf},
 				},
 			},
 		}})

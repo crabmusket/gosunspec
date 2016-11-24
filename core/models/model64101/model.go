@@ -6,6 +6,7 @@ package model64101
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -49,13 +50,13 @@ func init() {
 				Length: 7,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Eltek_Country_Code, Offset: 0, Type: "uint16"},
-					smdx.PointElement{Id: Eltek_Feeding_Phase, Offset: 1, Type: "uint16"},
-					smdx.PointElement{Id: Eltek_APD_Method, Offset: 2, Type: "uint16"},
-					smdx.PointElement{Id: Eltek_APD_Power_Ref, Offset: 3, Type: "uint16"},
-					smdx.PointElement{Id: Eltek_RPS_Method, Offset: 4, Type: "uint16"},
-					smdx.PointElement{Id: Eltek_RPS_Q_Ref, Offset: 5, Type: "uint16"},
-					smdx.PointElement{Id: Eltek_RPS_CosPhi_Ref, Offset: 6, Type: "int16"},
+					smdx.PointElement{Id: Eltek_Country_Code, Offset: 0, Type: typelabel.Uint16},
+					smdx.PointElement{Id: Eltek_Feeding_Phase, Offset: 1, Type: typelabel.Uint16},
+					smdx.PointElement{Id: Eltek_APD_Method, Offset: 2, Type: typelabel.Uint16},
+					smdx.PointElement{Id: Eltek_APD_Power_Ref, Offset: 3, Type: typelabel.Uint16},
+					smdx.PointElement{Id: Eltek_RPS_Method, Offset: 4, Type: typelabel.Uint16},
+					smdx.PointElement{Id: Eltek_RPS_Q_Ref, Offset: 5, Type: typelabel.Uint16},
+					smdx.PointElement{Id: Eltek_RPS_CosPhi_Ref, Offset: 6, Type: typelabel.Int16},
 				},
 			},
 		}})

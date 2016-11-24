@@ -6,6 +6,7 @@ package model8
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -46,15 +47,15 @@ func init() {
 				Length: 2,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Fmt, Offset: 0, Type: "enum16", Access: "r", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 1, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Fmt, Offset: 0, Type: typelabel.Enum16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: N, Offset: 1, Type: typelabel.Uint16, Access: "r", Mandatory: true},
 				},
 			},
 			smdx.BlockElement{
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Cert, Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Cert, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true},
 				},
 			},
 		}})

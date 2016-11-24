@@ -6,6 +6,7 @@ package model801
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -37,7 +38,7 @@ func init() {
 				Length: 1,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DEPRECATED, Offset: 0, Type: "enum16", Mandatory: true},
+					smdx.PointElement{Id: DEPRECATED, Offset: 0, Type: typelabel.Enum16, Mandatory: true},
 				},
 			},
 		}})

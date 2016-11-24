@@ -6,6 +6,7 @@ package model125
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -51,14 +52,14 @@ func init() {
 				Length: 8,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: ModEna, Offset: 0, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: SigType, Offset: 1, Type: "enum16", ScaleFactor: " ", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Sig, Offset: 2, Type: "int16", ScaleFactor: "Sig_SF", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WinTms, Offset: 3, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: RvtTms, Offset: 4, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: RmpTms, Offset: 5, Type: "uint16", Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Sig_SF, Offset: 6, Type: "sunssf", ScaleFactor: " ", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: Pad, Offset: 7, Type: "pad", Access: "r", Length: 1},
+					smdx.PointElement{Id: ModEna, Offset: 0, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: SigType, Offset: 1, Type: typelabel.Enum16, ScaleFactor: " ", Access: "rw", Length: 1},
+					smdx.PointElement{Id: Sig, Offset: 2, Type: typelabel.Int16, ScaleFactor: "Sig_SF", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: WinTms, Offset: 3, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: RvtTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: RmpTms, Offset: 5, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: Sig_SF, Offset: 6, Type: typelabel.Sunssf, ScaleFactor: " ", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: Pad, Offset: 7, Type: typelabel.Pad, Access: "r", Length: 1},
 				},
 			},
 		}})

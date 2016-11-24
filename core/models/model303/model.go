@@ -6,6 +6,7 @@ package model303
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -41,7 +42,7 @@ func init() {
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: TmpBOM, Offset: 0, Type: "int16", ScaleFactor: "-1", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: TmpBOM, Offset: 0, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C", Mandatory: true},
 				},
 			},
 		}})

@@ -6,6 +6,7 @@ package model145
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -51,14 +52,14 @@ func init() {
 				Length: 8,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: NomRmpUpRte, Offset: 0, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: NomRmpDnRte, Offset: 1, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: EmgRmpUpRte, Offset: 2, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: EmgRmpDnRte, Offset: 3, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: ConnRmpUpRte, Offset: 4, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: ConnRmpDnRte, Offset: 5, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: AGra, Offset: 6, Type: "uint16", ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Rmp_SF, Offset: 7, Type: "sunssf", Access: "r", Length: 1},
+					smdx.PointElement{Id: NomRmpUpRte, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: NomRmpDnRte, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: EmgRmpUpRte, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: EmgRmpDnRte, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: ConnRmpUpRte, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: ConnRmpDnRte, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: AGra, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
+					smdx.PointElement{Id: Rmp_SF, Offset: 7, Type: typelabel.Sunssf, Access: "r", Length: 1},
 				},
 			},
 		}})

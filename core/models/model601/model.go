@@ -6,6 +6,7 @@ package model601
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -80,32 +81,32 @@ func init() {
 				Length: 26,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: "string", Length: 8},
-					smdx.PointElement{Id: Typ, Offset: 8, Type: "enum16", Mandatory: true},
-					smdx.PointElement{Id: DtLoc, Offset: 9, Type: "string", Units: "YYYYMMDD", Length: 5},
-					smdx.PointElement{Id: TmLoc, Offset: 14, Type: "string", Units: "hhmmss", Length: 3},
-					smdx.PointElement{Id: Day, Offset: 17, Type: "uint16"},
-					smdx.PointElement{Id: GlblElCtl, Offset: 18, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-					smdx.PointElement{Id: GlblAzCtl, Offset: 20, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-					smdx.PointElement{Id: GlblCtl, Offset: 22, Type: "enum16", Access: "rw"},
-					smdx.PointElement{Id: GlblAlm, Offset: 23, Type: "bitfield16"},
-					smdx.PointElement{Id: Dgr_SF, Offset: 24, Type: "sunssf", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 25, Type: "uint16", Mandatory: true},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Length: 8},
+					smdx.PointElement{Id: Typ, Offset: 8, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: DtLoc, Offset: 9, Type: typelabel.String, Units: "YYYYMMDD", Length: 5},
+					smdx.PointElement{Id: TmLoc, Offset: 14, Type: typelabel.String, Units: "hhmmss", Length: 3},
+					smdx.PointElement{Id: Day, Offset: 17, Type: typelabel.Uint16},
+					smdx.PointElement{Id: GlblElCtl, Offset: 18, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
+					smdx.PointElement{Id: GlblAzCtl, Offset: 20, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
+					smdx.PointElement{Id: GlblCtl, Offset: 22, Type: typelabel.Enum16, Access: "rw"},
+					smdx.PointElement{Id: GlblAlm, Offset: 23, Type: typelabel.Bitfield16},
+					smdx.PointElement{Id: Dgr_SF, Offset: 24, Type: typelabel.Sunssf, Mandatory: true},
+					smdx.PointElement{Id: N, Offset: 25, Type: typelabel.Uint16, Mandatory: true},
 				},
 			},
 			smdx.BlockElement{Name: "tracker",
 				Length: 22,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Id, Offset: 0, Type: "string", Length: 8},
-					smdx.PointElement{Id: ElTrgt, Offset: 8, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
-					smdx.PointElement{Id: AzTrgt, Offset: 10, Type: "int32", ScaleFactor: "SF", Units: "Degrees"},
-					smdx.PointElement{Id: ElPos, Offset: 12, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
-					smdx.PointElement{Id: AzPos, Offset: 14, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees"},
-					smdx.PointElement{Id: ElCtl, Offset: 16, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-					smdx.PointElement{Id: AzCtl, Offset: 18, Type: "int32", ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-					smdx.PointElement{Id: Ctl, Offset: 20, Type: "enum16", Access: "rw"},
-					smdx.PointElement{Id: Alm, Offset: 21, Type: "bitfield16"},
+					smdx.PointElement{Id: Id, Offset: 0, Type: typelabel.String, Length: 8},
+					smdx.PointElement{Id: ElTrgt, Offset: 8, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
+					smdx.PointElement{Id: AzTrgt, Offset: 10, Type: typelabel.Int32, ScaleFactor: "SF", Units: "Degrees"},
+					smdx.PointElement{Id: ElPos, Offset: 12, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
+					smdx.PointElement{Id: AzPos, Offset: 14, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
+					smdx.PointElement{Id: ElCtl, Offset: 16, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
+					smdx.PointElement{Id: AzCtl, Offset: 18, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
+					smdx.PointElement{Id: Ctl, Offset: 20, Type: typelabel.Enum16, Access: "rw"},
+					smdx.PointElement{Id: Alm, Offset: 21, Type: typelabel.Bitfield16},
 				},
 			},
 		}})

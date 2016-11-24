@@ -6,6 +6,7 @@ package model11
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -49,13 +50,13 @@ func init() {
 				Length: 13,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Spd, Offset: 0, Type: "uint16", Units: "Mbps", Mandatory: true},
-					smdx.PointElement{Id: CfgSt, Offset: 1, Type: "bitfield16", Mandatory: true},
-					smdx.PointElement{Id: St, Offset: 2, Type: "enum16", Mandatory: true},
-					smdx.PointElement{Id: MAC, Offset: 3, Type: "eui48"},
-					smdx.PointElement{Id: Nam, Offset: 7, Type: "string", Access: "rw", Length: 4},
-					smdx.PointElement{Id: Ctl, Offset: 11, Type: "bitfield16", Access: "rw"},
-					smdx.PointElement{Id: FrcSpd, Offset: 12, Type: "uint16", Units: "Mbps", Access: "rw"},
+					smdx.PointElement{Id: Spd, Offset: 0, Type: typelabel.Uint16, Units: "Mbps", Mandatory: true},
+					smdx.PointElement{Id: CfgSt, Offset: 1, Type: typelabel.Bitfield16, Mandatory: true},
+					smdx.PointElement{Id: St, Offset: 2, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: MAC, Offset: 3, Type: typelabel.Eui48},
+					smdx.PointElement{Id: Nam, Offset: 7, Type: typelabel.String, Access: "rw", Length: 4},
+					smdx.PointElement{Id: Ctl, Offset: 11, Type: typelabel.Bitfield16, Access: "rw"},
+					smdx.PointElement{Id: FrcSpd, Offset: 12, Type: typelabel.Uint16, Units: "Mbps", Access: "rw"},
 				},
 			},
 		}})

@@ -6,6 +6,7 @@ package model127
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -55,16 +56,16 @@ func init() {
 				Length: 10,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: WGra, Offset: 0, Type: "uint16", ScaleFactor: "WGra_SF", Units: "% PM/Hz", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: HzStr, Offset: 1, Type: "int16", ScaleFactor: "HzStrStop_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: HzStop, Offset: 2, Type: "int16", ScaleFactor: "HzStrStop_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: HysEna, Offset: 3, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ModEna, Offset: 4, Type: "bitfield16", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: HzStopWGra, Offset: 5, Type: "uint16", ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
-					smdx.PointElement{Id: WGra_SF, Offset: 6, Type: "sunssf", Access: "r", Length: 1},
-					smdx.PointElement{Id: HzStrStop_SF, Offset: 7, Type: "sunssf", Access: "r", Length: 1},
-					smdx.PointElement{Id: RmpIncDec_SF, Offset: 8, Type: "sunssf", Access: "r", Length: 1},
-					smdx.PointElement{Id: Pad, Offset: 9, Type: "pad", Access: "r", Length: 1},
+					smdx.PointElement{Id: WGra, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "WGra_SF", Units: "% PM/Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: HzStr, Offset: 1, Type: typelabel.Int16, ScaleFactor: "HzStrStop_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: HzStop, Offset: 2, Type: typelabel.Int16, ScaleFactor: "HzStrStop_SF", Units: "Hz", Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: HysEna, Offset: 3, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: ModEna, Offset: 4, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: HzStopWGra, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "RmpIncDec_SF", Units: "% WMax/min", Access: "rw", Length: 1},
+					smdx.PointElement{Id: WGra_SF, Offset: 6, Type: typelabel.Sunssf, Access: "r", Length: 1},
+					smdx.PointElement{Id: HzStrStop_SF, Offset: 7, Type: typelabel.Sunssf, Access: "r", Length: 1},
+					smdx.PointElement{Id: RmpIncDec_SF, Offset: 8, Type: typelabel.Sunssf, Access: "r", Length: 1},
+					smdx.PointElement{Id: Pad, Offset: 9, Type: typelabel.Pad, Access: "r", Length: 1},
 				},
 			},
 		}})

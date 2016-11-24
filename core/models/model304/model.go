@@ -6,6 +6,7 @@ package model304
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -45,9 +46,9 @@ func init() {
 				Length: 6,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Inclx, Offset: 0, Type: "int32", ScaleFactor: "-2", Units: "Degrees", Mandatory: true},
-					smdx.PointElement{Id: Incly, Offset: 2, Type: "int32", ScaleFactor: "-2", Units: "Degrees"},
-					smdx.PointElement{Id: Inclz, Offset: 4, Type: "int32", ScaleFactor: "-2", Units: "Degrees"},
+					smdx.PointElement{Id: Inclx, Offset: 0, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees", Mandatory: true},
+					smdx.PointElement{Id: Incly, Offset: 2, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees"},
+					smdx.PointElement{Id: Inclz, Offset: 4, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees"},
 				},
 			},
 		}})

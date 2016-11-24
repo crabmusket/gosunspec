@@ -6,6 +6,7 @@ package model307
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -57,17 +58,17 @@ func init() {
 				Length: 11,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: TmpAmb, Offset: 0, Type: "int16", ScaleFactor: "-1", Units: "C"},
-					smdx.PointElement{Id: RH, Offset: 1, Type: "int16", Units: "Pct"},
-					smdx.PointElement{Id: Pres, Offset: 2, Type: "int16", Units: "HPa"},
-					smdx.PointElement{Id: WndSpd, Offset: 3, Type: "int16", Units: "mps"},
-					smdx.PointElement{Id: WndDir, Offset: 4, Type: "int16", Units: "deg"},
-					smdx.PointElement{Id: Rain, Offset: 5, Type: "int16", Units: "mm"},
-					smdx.PointElement{Id: Snw, Offset: 6, Type: "int16", Units: "mm"},
-					smdx.PointElement{Id: PPT, Offset: 7, Type: "int16"},
-					smdx.PointElement{Id: ElecFld, Offset: 8, Type: "int16", Units: "Vm"},
-					smdx.PointElement{Id: SurWet, Offset: 9, Type: "int16", Units: "kO"},
-					smdx.PointElement{Id: SoilWet, Offset: 10, Type: "int16", Units: "Pct"},
+					smdx.PointElement{Id: TmpAmb, Offset: 0, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C"},
+					smdx.PointElement{Id: RH, Offset: 1, Type: typelabel.Int16, Units: "Pct"},
+					smdx.PointElement{Id: Pres, Offset: 2, Type: typelabel.Int16, Units: "HPa"},
+					smdx.PointElement{Id: WndSpd, Offset: 3, Type: typelabel.Int16, Units: "mps"},
+					smdx.PointElement{Id: WndDir, Offset: 4, Type: typelabel.Int16, Units: "deg"},
+					smdx.PointElement{Id: Rain, Offset: 5, Type: typelabel.Int16, Units: "mm"},
+					smdx.PointElement{Id: Snw, Offset: 6, Type: typelabel.Int16, Units: "mm"},
+					smdx.PointElement{Id: PPT, Offset: 7, Type: typelabel.Int16},
+					smdx.PointElement{Id: ElecFld, Offset: 8, Type: typelabel.Int16, Units: "Vm"},
+					smdx.PointElement{Id: SurWet, Offset: 9, Type: typelabel.Int16, Units: "kO"},
+					smdx.PointElement{Id: SoilWet, Offset: 10, Type: typelabel.Int16, Units: "Pct"},
 				},
 			},
 		}})

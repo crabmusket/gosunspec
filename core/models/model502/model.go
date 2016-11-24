@@ -6,6 +6,7 @@ package model502
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -77,27 +78,27 @@ func init() {
 				Length: 28,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: A_SF, Offset: 0, Type: "sunssf"},
-					smdx.PointElement{Id: V_SF, Offset: 1, Type: "sunssf"},
-					smdx.PointElement{Id: W_SF, Offset: 2, Type: "sunssf"},
-					smdx.PointElement{Id: Wh_SF, Offset: 3, Type: "sunssf"},
-					smdx.PointElement{Id: Stat, Offset: 4, Type: "enum16", Mandatory: true},
-					smdx.PointElement{Id: StatVend, Offset: 5, Type: "enum16"},
-					smdx.PointElement{Id: Evt, Offset: 6, Type: "bitfield32", Mandatory: true},
-					smdx.PointElement{Id: EvtVend, Offset: 8, Type: "bitfield32"},
-					smdx.PointElement{Id: Ctl, Offset: 10, Type: "enum16", Access: "rw"},
-					smdx.PointElement{Id: CtlVend, Offset: 11, Type: "enum32", Access: "rw"},
-					smdx.PointElement{Id: CtlVal, Offset: 13, Type: "int32", Access: "rw"},
-					smdx.PointElement{Id: Tms, Offset: 15, Type: "uint32", Units: "Secs"},
-					smdx.PointElement{Id: OutA, Offset: 17, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-					smdx.PointElement{Id: OutV, Offset: 18, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-					smdx.PointElement{Id: OutWh, Offset: 19, Type: "acc32", ScaleFactor: "Wh_SF", Units: "Wh"},
-					smdx.PointElement{Id: OutPw, Offset: 21, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
-					smdx.PointElement{Id: Tmp, Offset: 22, Type: "int16", Units: "C"},
-					smdx.PointElement{Id: InA, Offset: 23, Type: "int16", ScaleFactor: "A_SF", Units: "A"},
-					smdx.PointElement{Id: InV, Offset: 24, Type: "int16", ScaleFactor: "V_SF", Units: "V"},
-					smdx.PointElement{Id: InWh, Offset: 25, Type: "acc32", ScaleFactor: "Wh_SF", Units: "Wh"},
-					smdx.PointElement{Id: InW, Offset: 27, Type: "int16", ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: A_SF, Offset: 0, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: V_SF, Offset: 1, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: W_SF, Offset: 2, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: Wh_SF, Offset: 3, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: Stat, Offset: 4, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: StatVend, Offset: 5, Type: typelabel.Enum16},
+					smdx.PointElement{Id: Evt, Offset: 6, Type: typelabel.Bitfield32, Mandatory: true},
+					smdx.PointElement{Id: EvtVend, Offset: 8, Type: typelabel.Bitfield32},
+					smdx.PointElement{Id: Ctl, Offset: 10, Type: typelabel.Enum16, Access: "rw"},
+					smdx.PointElement{Id: CtlVend, Offset: 11, Type: typelabel.Enum32, Access: "rw"},
+					smdx.PointElement{Id: CtlVal, Offset: 13, Type: typelabel.Int32, Access: "rw"},
+					smdx.PointElement{Id: Tms, Offset: 15, Type: typelabel.Uint32, Units: "Secs"},
+					smdx.PointElement{Id: OutA, Offset: 17, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: OutV, Offset: 18, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: OutWh, Offset: 19, Type: typelabel.Acc32, ScaleFactor: "Wh_SF", Units: "Wh"},
+					smdx.PointElement{Id: OutPw, Offset: 21, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: Tmp, Offset: 22, Type: typelabel.Int16, Units: "C"},
+					smdx.PointElement{Id: InA, Offset: 23, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A"},
+					smdx.PointElement{Id: InV, Offset: 24, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: InWh, Offset: 25, Type: typelabel.Acc32, ScaleFactor: "Wh_SF", Units: "Wh"},
+					smdx.PointElement{Id: InW, Offset: 27, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W"},
 				},
 			},
 		}})

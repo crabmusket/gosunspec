@@ -6,6 +6,7 @@ package model14
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -51,14 +52,14 @@ func init() {
 				Length: 52,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: "string", Access: "rw", Length: 4},
-					smdx.PointElement{Id: Cap, Offset: 4, Type: "bitfield16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Cfg, Offset: 5, Type: "enum16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Typ, Offset: 6, Type: "bitfield16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Addr, Offset: 7, Type: "string", Access: "rw", Length: 20, Mandatory: true},
-					smdx.PointElement{Id: Port, Offset: 27, Type: "uint16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: User, Offset: 28, Type: "string", Access: "rw", Length: 12},
-					smdx.PointElement{Id: Pw, Offset: 40, Type: "string", Access: "rw", Length: 12},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
+					smdx.PointElement{Id: Cap, Offset: 4, Type: typelabel.Bitfield16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Cfg, Offset: 5, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Typ, Offset: 6, Type: typelabel.Bitfield16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Addr, Offset: 7, Type: typelabel.String, Access: "rw", Length: 20, Mandatory: true},
+					smdx.PointElement{Id: Port, Offset: 27, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: User, Offset: 28, Type: typelabel.String, Access: "rw", Length: 12},
+					smdx.PointElement{Id: Pw, Offset: 40, Type: typelabel.String, Access: "rw", Length: 12},
 				},
 			},
 		}})

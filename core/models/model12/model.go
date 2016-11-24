@@ -6,6 +6,7 @@ package model12
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -67,22 +68,22 @@ func init() {
 				Length: 98,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: "string", Access: "rw", Length: 4},
-					smdx.PointElement{Id: CfgSt, Offset: 4, Type: "enum16", Mandatory: true},
-					smdx.PointElement{Id: ChgSt, Offset: 5, Type: "bitfield16", Mandatory: true},
-					smdx.PointElement{Id: Cap, Offset: 6, Type: "bitfield16", Mandatory: true},
-					smdx.PointElement{Id: Cfg, Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Ctl, Offset: 8, Type: "enum16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Addr, Offset: 9, Type: "string", Access: "rw", Length: 8, Mandatory: true},
-					smdx.PointElement{Id: Msk, Offset: 17, Type: "string", Access: "rw", Length: 8, Mandatory: true},
-					smdx.PointElement{Id: Gw, Offset: 25, Type: "string", Access: "rw", Length: 8},
-					smdx.PointElement{Id: DNS1, Offset: 33, Type: "string", Access: "rw", Length: 8},
-					smdx.PointElement{Id: DNS2, Offset: 41, Type: "string", Access: "rw", Length: 8},
-					smdx.PointElement{Id: NTP1, Offset: 49, Type: "string", Access: "rw", Length: 12},
-					smdx.PointElement{Id: NTP2, Offset: 61, Type: "string", Access: "rw", Length: 12},
-					smdx.PointElement{Id: DomNam, Offset: 73, Type: "string", Access: "rw", Length: 12},
-					smdx.PointElement{Id: HostNam, Offset: 85, Type: "string", Access: "rw", Length: 12},
-					smdx.PointElement{Id: Pad, Offset: 97, Type: "pad"},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
+					smdx.PointElement{Id: CfgSt, Offset: 4, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: ChgSt, Offset: 5, Type: typelabel.Bitfield16, Mandatory: true},
+					smdx.PointElement{Id: Cap, Offset: 6, Type: typelabel.Bitfield16, Mandatory: true},
+					smdx.PointElement{Id: Cfg, Offset: 7, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Ctl, Offset: 8, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Addr, Offset: 9, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: Msk, Offset: 17, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true},
+					smdx.PointElement{Id: Gw, Offset: 25, Type: typelabel.String, Access: "rw", Length: 8},
+					smdx.PointElement{Id: DNS1, Offset: 33, Type: typelabel.String, Access: "rw", Length: 8},
+					smdx.PointElement{Id: DNS2, Offset: 41, Type: typelabel.String, Access: "rw", Length: 8},
+					smdx.PointElement{Id: NTP1, Offset: 49, Type: typelabel.String, Access: "rw", Length: 12},
+					smdx.PointElement{Id: NTP2, Offset: 61, Type: typelabel.String, Access: "rw", Length: 12},
+					smdx.PointElement{Id: DomNam, Offset: 73, Type: typelabel.String, Access: "rw", Length: 12},
+					smdx.PointElement{Id: HostNam, Offset: 85, Type: typelabel.String, Access: "rw", Length: 12},
+					smdx.PointElement{Id: Pad, Offset: 97, Type: typelabel.Pad},
 				},
 			},
 		}})

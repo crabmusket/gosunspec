@@ -6,6 +6,7 @@ package model17
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -51,14 +52,14 @@ func init() {
 				Length: 12,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: "string", Access: "rw", Length: 4},
-					smdx.PointElement{Id: Rte, Offset: 4, Type: "uint32", Units: "bps", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Bits, Offset: 6, Type: "uint16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Pty, Offset: 7, Type: "enum16", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Dup, Offset: 8, Type: "enum16", Access: "rw"},
-					smdx.PointElement{Id: Flw, Offset: 9, Type: "enum16", Access: "rw"},
-					smdx.PointElement{Id: Typ, Offset: 10, Type: "enum16"},
-					smdx.PointElement{Id: Pcol, Offset: 11, Type: "enum16"},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
+					smdx.PointElement{Id: Rte, Offset: 4, Type: typelabel.Uint32, Units: "bps", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Bits, Offset: 6, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Pty, Offset: 7, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Dup, Offset: 8, Type: typelabel.Enum16, Access: "rw"},
+					smdx.PointElement{Id: Flw, Offset: 9, Type: typelabel.Enum16, Access: "rw"},
+					smdx.PointElement{Id: Typ, Offset: 10, Type: typelabel.Enum16},
+					smdx.PointElement{Id: Pcol, Offset: 11, Type: typelabel.Enum16},
 				},
 			},
 		}})

@@ -6,6 +6,7 @@ package model1
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -49,13 +50,13 @@ func init() {
 				Length: 66,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Mn, Offset: 0, Type: "string", Length: 16, Mandatory: true},
-					smdx.PointElement{Id: Md, Offset: 16, Type: "string", Length: 16, Mandatory: true},
-					smdx.PointElement{Id: Opt, Offset: 32, Type: "string", Length: 8},
-					smdx.PointElement{Id: Vr, Offset: 40, Type: "string", Length: 8},
-					smdx.PointElement{Id: SN, Offset: 48, Type: "string", Length: 16, Mandatory: true},
-					smdx.PointElement{Id: DA, Offset: 64, Type: "uint16", Access: "rw"},
-					smdx.PointElement{Id: Pad, Offset: 65, Type: "pad", Access: "r"},
+					smdx.PointElement{Id: Mn, Offset: 0, Type: typelabel.String, Length: 16, Mandatory: true},
+					smdx.PointElement{Id: Md, Offset: 16, Type: typelabel.String, Length: 16, Mandatory: true},
+					smdx.PointElement{Id: Opt, Offset: 32, Type: typelabel.String, Length: 8},
+					smdx.PointElement{Id: Vr, Offset: 40, Type: typelabel.String, Length: 8},
+					smdx.PointElement{Id: SN, Offset: 48, Type: typelabel.String, Length: 16, Mandatory: true},
+					smdx.PointElement{Id: DA, Offset: 64, Type: typelabel.Uint16, Access: "rw"},
+					smdx.PointElement{Id: Pad, Offset: 65, Type: typelabel.Pad, Access: "r"},
 				},
 			},
 		}})

@@ -6,6 +6,7 @@ package model15
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -61,19 +62,19 @@ func init() {
 				Length: 24,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Clr, Offset: 0, Type: "uint16", Access: "rw"},
-					smdx.PointElement{Id: InCnt, Offset: 1, Type: "acc32"},
-					smdx.PointElement{Id: InUcCnt, Offset: 3, Type: "acc32"},
-					smdx.PointElement{Id: InNUcCnt, Offset: 5, Type: "acc32"},
-					smdx.PointElement{Id: InDscCnt, Offset: 7, Type: "acc32"},
-					smdx.PointElement{Id: InErrCnt, Offset: 9, Type: "acc32"},
-					smdx.PointElement{Id: InUnkCnt, Offset: 11, Type: "acc32"},
-					smdx.PointElement{Id: OutCnt, Offset: 13, Type: "acc32"},
-					smdx.PointElement{Id: OutUcCnt, Offset: 15, Type: "acc32"},
-					smdx.PointElement{Id: OutNUcCnt, Offset: 17, Type: "acc32"},
-					smdx.PointElement{Id: OutDscCnt, Offset: 19, Type: "acc32"},
-					smdx.PointElement{Id: OutErrCnt, Offset: 21, Type: "acc32"},
-					smdx.PointElement{Id: Pad, Offset: 23, Type: "pad"},
+					smdx.PointElement{Id: Clr, Offset: 0, Type: typelabel.Uint16, Access: "rw"},
+					smdx.PointElement{Id: InCnt, Offset: 1, Type: typelabel.Acc32},
+					smdx.PointElement{Id: InUcCnt, Offset: 3, Type: typelabel.Acc32},
+					smdx.PointElement{Id: InNUcCnt, Offset: 5, Type: typelabel.Acc32},
+					smdx.PointElement{Id: InDscCnt, Offset: 7, Type: typelabel.Acc32},
+					smdx.PointElement{Id: InErrCnt, Offset: 9, Type: typelabel.Acc32},
+					smdx.PointElement{Id: InUnkCnt, Offset: 11, Type: typelabel.Acc32},
+					smdx.PointElement{Id: OutCnt, Offset: 13, Type: typelabel.Acc32},
+					smdx.PointElement{Id: OutUcCnt, Offset: 15, Type: typelabel.Acc32},
+					smdx.PointElement{Id: OutNUcCnt, Offset: 17, Type: typelabel.Acc32},
+					smdx.PointElement{Id: OutDscCnt, Offset: 19, Type: typelabel.Acc32},
+					smdx.PointElement{Id: OutErrCnt, Offset: 21, Type: typelabel.Acc32},
+					smdx.PointElement{Id: Pad, Offset: 23, Type: typelabel.Pad},
 				},
 			},
 		}})

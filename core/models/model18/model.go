@@ -6,6 +6,7 @@ package model18
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -45,11 +46,11 @@ func init() {
 				Length: 22,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: "string", Access: "rw", Length: 4},
-					smdx.PointElement{Id: IMEI, Offset: 4, Type: "uint32", Access: "rw"},
-					smdx.PointElement{Id: APN, Offset: 6, Type: "string", Access: "rw", Length: 4},
-					smdx.PointElement{Id: Num, Offset: 10, Type: "string", Access: "rw", Length: 6},
-					smdx.PointElement{Id: Pin, Offset: 16, Type: "string", Access: "rw", Length: 6},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
+					smdx.PointElement{Id: IMEI, Offset: 4, Type: typelabel.Uint32, Access: "rw"},
+					smdx.PointElement{Id: APN, Offset: 6, Type: typelabel.String, Access: "rw", Length: 4},
+					smdx.PointElement{Id: Num, Offset: 10, Type: typelabel.String, Access: "rw", Length: 6},
+					smdx.PointElement{Id: Pin, Offset: 16, Type: typelabel.String, Access: "rw", Length: 6},
 				},
 			},
 		}})

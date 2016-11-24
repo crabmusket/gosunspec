@@ -6,6 +6,7 @@ package model7
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -60,22 +61,22 @@ func init() {
 				Length: 10,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: RqSeq, Offset: 0, Type: "uint16", Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Sts, Offset: 1, Type: "enum16", Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Ts, Offset: 2, Type: "uint32", Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Ms, Offset: 4, Type: "uint16", Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Seq, Offset: 5, Type: "uint16", Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Alm, Offset: 6, Type: "enum16", Mandatory: true},
-					smdx.PointElement{Id: Rsrvd, Offset: 7, Type: "pad", Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Alg, Offset: 8, Type: "enum16", Access: "r", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 9, Type: "uint16", Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: RqSeq, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Sts, Offset: 1, Type: typelabel.Enum16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Ts, Offset: 2, Type: typelabel.Uint32, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Ms, Offset: 4, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Seq, Offset: 5, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Alm, Offset: 6, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: Rsrvd, Offset: 7, Type: typelabel.Pad, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Alg, Offset: 8, Type: typelabel.Enum16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: N, Offset: 9, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 				},
 			},
 			smdx.BlockElement{
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DS, Offset: 0, Type: "uint16", Access: "rw"},
+					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "rw"},
 				},
 			},
 		}})

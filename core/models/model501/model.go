@@ -6,6 +6,7 @@ package model501
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -69,23 +70,23 @@ func init() {
 				Length: 31,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Stat, Offset: 0, Type: "enum16", Mandatory: true},
-					smdx.PointElement{Id: StatVend, Offset: 1, Type: "enum16"},
-					smdx.PointElement{Id: Evt, Offset: 2, Type: "bitfield32", Mandatory: true},
-					smdx.PointElement{Id: EvtVend, Offset: 4, Type: "bitfield32"},
-					smdx.PointElement{Id: Ctl, Offset: 6, Type: "enum16", Access: "rw"},
-					smdx.PointElement{Id: CtlVend, Offset: 7, Type: "enum32", Access: "rw"},
-					smdx.PointElement{Id: CtlVal, Offset: 9, Type: "int32", Access: "rw"},
-					smdx.PointElement{Id: Tms, Offset: 11, Type: "uint32", Units: "Secs"},
-					smdx.PointElement{Id: OutA, Offset: 13, Type: "float32", Units: "A"},
-					smdx.PointElement{Id: OutV, Offset: 15, Type: "float32", Units: "V"},
-					smdx.PointElement{Id: OutWh, Offset: 17, Type: "float32", Units: "Wh"},
-					smdx.PointElement{Id: OutW, Offset: 19, Type: "float32", Units: "W"},
-					smdx.PointElement{Id: Tmp, Offset: 21, Type: "float32", Units: "C"},
-					smdx.PointElement{Id: InA, Offset: 23, Type: "float32", Units: "A"},
-					smdx.PointElement{Id: InV, Offset: 25, Type: "float32", Units: "V"},
-					smdx.PointElement{Id: InWh, Offset: 27, Type: "float32", Units: "Wh"},
-					smdx.PointElement{Id: InW, Offset: 29, Type: "float32", Units: "W"},
+					smdx.PointElement{Id: Stat, Offset: 0, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: StatVend, Offset: 1, Type: typelabel.Enum16},
+					smdx.PointElement{Id: Evt, Offset: 2, Type: typelabel.Bitfield32, Mandatory: true},
+					smdx.PointElement{Id: EvtVend, Offset: 4, Type: typelabel.Bitfield32},
+					smdx.PointElement{Id: Ctl, Offset: 6, Type: typelabel.Enum16, Access: "rw"},
+					smdx.PointElement{Id: CtlVend, Offset: 7, Type: typelabel.Enum32, Access: "rw"},
+					smdx.PointElement{Id: CtlVal, Offset: 9, Type: typelabel.Int32, Access: "rw"},
+					smdx.PointElement{Id: Tms, Offset: 11, Type: typelabel.Uint32, Units: "Secs"},
+					smdx.PointElement{Id: OutA, Offset: 13, Type: typelabel.Float32, Units: "A"},
+					smdx.PointElement{Id: OutV, Offset: 15, Type: typelabel.Float32, Units: "V"},
+					smdx.PointElement{Id: OutWh, Offset: 17, Type: typelabel.Float32, Units: "Wh"},
+					smdx.PointElement{Id: OutW, Offset: 19, Type: typelabel.Float32, Units: "W"},
+					smdx.PointElement{Id: Tmp, Offset: 21, Type: typelabel.Float32, Units: "C"},
+					smdx.PointElement{Id: InA, Offset: 23, Type: typelabel.Float32, Units: "A"},
+					smdx.PointElement{Id: InV, Offset: 25, Type: typelabel.Float32, Units: "V"},
+					smdx.PointElement{Id: InWh, Offset: 27, Type: typelabel.Float32, Units: "Wh"},
+					smdx.PointElement{Id: InW, Offset: 29, Type: typelabel.Float32, Units: "W"},
 				},
 			},
 		}})

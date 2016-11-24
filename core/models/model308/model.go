@@ -6,6 +6,7 @@ package model308
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -43,10 +44,10 @@ func init() {
 				Length: 4,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: GHI, Offset: 0, Type: "uint16", Units: "W/m2"},
-					smdx.PointElement{Id: TmpBOM, Offset: 1, Type: "int16", ScaleFactor: "-1", Units: "C"},
-					smdx.PointElement{Id: TmpAmb, Offset: 2, Type: "int16", ScaleFactor: "-1", Units: "C"},
-					smdx.PointElement{Id: WndSpd, Offset: 3, Type: "uint16", Units: "m/s"},
+					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2"},
+					smdx.PointElement{Id: TmpBOM, Offset: 1, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C"},
+					smdx.PointElement{Id: TmpAmb, Offset: 2, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C"},
+					smdx.PointElement{Id: WndSpd, Offset: 3, Type: typelabel.Uint16, Units: "m/s"},
 				},
 			},
 		}})

@@ -6,6 +6,7 @@ package model403
 
 import (
 	"github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/core/typelabel"
 	"github.com/crabmusket/gosunspec/smdx"
 )
 
@@ -76,30 +77,30 @@ func init() {
 				Length: 16,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DCA_SF, Offset: 0, Type: "sunssf", Mandatory: true},
-					smdx.PointElement{Id: DCAhr_SF, Offset: 1, Type: "sunssf"},
-					smdx.PointElement{Id: DCV_SF, Offset: 2, Type: "sunssf"},
-					smdx.PointElement{Id: DCAMax, Offset: 3, Type: "uint16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 4, Type: "count", Mandatory: true},
-					smdx.PointElement{Id: Evt, Offset: 5, Type: "bitfield32", Mandatory: true},
-					smdx.PointElement{Id: EvtVnd, Offset: 7, Type: "bitfield32"},
-					smdx.PointElement{Id: DCA, Offset: 9, Type: "int16", ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-					smdx.PointElement{Id: DCAhr, Offset: 10, Type: "acc32", ScaleFactor: "DCAhr_SF", Units: "Ah"},
-					smdx.PointElement{Id: DCV, Offset: 12, Type: "int16", ScaleFactor: "DCV_SF", Units: "V"},
-					smdx.PointElement{Id: Tmp, Offset: 13, Type: "int16", Units: "C"},
-					smdx.PointElement{Id: InDCA_SF, Offset: 14, Type: "sunssf"},
-					smdx.PointElement{Id: InDCAhr_SF, Offset: 15, Type: "sunssf"},
+					smdx.PointElement{Id: DCA_SF, Offset: 0, Type: typelabel.Sunssf, Mandatory: true},
+					smdx.PointElement{Id: DCAhr_SF, Offset: 1, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: DCV_SF, Offset: 2, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: DCAMax, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: N, Offset: 4, Type: typelabel.Count, Mandatory: true},
+					smdx.PointElement{Id: Evt, Offset: 5, Type: typelabel.Bitfield32, Mandatory: true},
+					smdx.PointElement{Id: EvtVnd, Offset: 7, Type: typelabel.Bitfield32},
+					smdx.PointElement{Id: DCA, Offset: 9, Type: typelabel.Int16, ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: DCAhr, Offset: 10, Type: typelabel.Acc32, ScaleFactor: "DCAhr_SF", Units: "Ah"},
+					smdx.PointElement{Id: DCV, Offset: 12, Type: typelabel.Int16, ScaleFactor: "DCV_SF", Units: "V"},
+					smdx.PointElement{Id: Tmp, Offset: 13, Type: typelabel.Int16, Units: "C"},
+					smdx.PointElement{Id: InDCA_SF, Offset: 14, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: InDCAhr_SF, Offset: 15, Type: typelabel.Sunssf},
 				},
 			},
 			smdx.BlockElement{Name: "string",
 				Length: 8,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: InID, Offset: 0, Type: "uint16", Mandatory: true},
-					smdx.PointElement{Id: InEvt, Offset: 1, Type: "bitfield32", Mandatory: true},
-					smdx.PointElement{Id: InEvtVnd, Offset: 3, Type: "bitfield32"},
-					smdx.PointElement{Id: InDCA, Offset: 5, Type: "int16", ScaleFactor: "InDCA_SF", Units: "A", Mandatory: true},
-					smdx.PointElement{Id: InDCAhr, Offset: 6, Type: "acc32", ScaleFactor: "InDCAhr_SF", Units: "Ah"},
+					smdx.PointElement{Id: InID, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: InEvt, Offset: 1, Type: typelabel.Bitfield32, Mandatory: true},
+					smdx.PointElement{Id: InEvtVnd, Offset: 3, Type: typelabel.Bitfield32},
+					smdx.PointElement{Id: InDCA, Offset: 5, Type: typelabel.Int16, ScaleFactor: "InDCA_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: InDCAhr, Offset: 6, Type: typelabel.Acc32, ScaleFactor: "InDCAhr_SF", Units: "Ah"},
 				},
 			},
 		}})
