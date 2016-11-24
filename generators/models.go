@@ -88,14 +88,14 @@ const loader = `
 package models
 
 import (
-{{range .Names}}   _ "github.com/crabmusket/gosunspec/core/models/{{.}}"
+{{range .Names}}   _ "github.com/crabmusket/gosunspec/models/{{.}}"
 {{end}}
 )
 `
 
 func main() {
 
-	smdxDir := "../models/smdx/"
+	smdxDir := "../spec/smdx/"
 	files, err := ioutil.ReadDir(smdxDir)
 	if err != nil {
 		log.Fatal(err)
@@ -186,7 +186,7 @@ func main() {
 	// write out all the model files
 
 	for _, m := range models {
-		dir := fmt.Sprintf("../core/models/model%d", m.Models[0].Id)
+		dir := fmt.Sprintf("../models/model%d", m.Models[0].Id)
 		if err := os.MkdirAll(dir, 0777); err != nil {
 			log.Fatalf("%v", err)
 		}
@@ -212,7 +212,7 @@ func main() {
 
 	// write out a loader module
 
-	files, err = ioutil.ReadDir("../core/models/")
+	files, err = ioutil.ReadDir("../models/")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -222,7 +222,7 @@ func main() {
 			names = append(names, f.Name())
 		}
 	}
-	outputFile, err := os.OpenFile("../core/models/loader.go", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+	outputFile, err := os.OpenFile("../models/loader.go", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -231,7 +231,7 @@ func main() {
 		"Names": names,
 	})
 	outputFile.Close()
-	cmd := exec.Command("/bin/sh", "-c", "gofmt -w ../core/models/loader.go")
+	cmd := exec.Command("/bin/sh", "-c", "gofmt -w ../models/loader.go")
 	if err := cmd.Run(); err != nil {
 		log.Fatalf("gofmt failed: %v", err)
 	}

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	_ "github.com/crabmusket/gosunspec/core"
-	_ "github.com/crabmusket/gosunspec/core/models"
+	_ "github.com/crabmusket/gosunspec/models"
 	"github.com/crabmusket/gosunspec/smdx"
 	"log"
 	"os"
