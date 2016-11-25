@@ -132,7 +132,7 @@ func main() {
 	t.Funcs(map[string]interface{}{
 		"goType": func(sstype string) string {
 			switch sstype {
-			case "uint16", "uint32", "uint64", "int16", "float32", "int32", "int64":
+			case "uint16", "uint32", "uint64", "int16", "float32", "int32", "int64", "string":
 				return sstype
 			case "sunssf":
 				return "core.ScaleFactor"
