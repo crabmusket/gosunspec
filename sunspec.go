@@ -1,4 +1,4 @@
-package core
+package sunspec
 
 type ModelId uint16
 
@@ -27,3 +27,11 @@ type Float float32
 type ScaleFactor int16
 
 type Count uint16
+
+type Model interface {
+	GetId() ModelId
+}
+
+type Device struct {
+	Models []Model
+}

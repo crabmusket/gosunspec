@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	_ "github.com/crabmusket/gosunspec/core"
 	_ "github.com/crabmusket/gosunspec/models"
 	"github.com/crabmusket/gosunspec/smdx"
+	"github.com/crabmusket/gosunspec/typelabel"
+	"github.com/crabmusket/gosunspec/typelen"
 	"log"
 	"os"
 )
@@ -15,27 +16,27 @@ type Type struct {
 }
 
 var types = []Type{
-	Type{"acc16", 1},
-	Type{"acc32", 2},
-	Type{"acc64", 4},
-	Type{"bitfield16", 1},
-	Type{"bitfield32", 2},
-	Type{"count", 1},
-	Type{"enum16", 1},
-	Type{"enum32", 2},
-	Type{"eui48", 3},
-	Type{"float32", 2},
-	Type{"int16", 1},
-	Type{"int32", 2},
-	Type{"int64", 4},
-	Type{"ipaddr", 2},
-	Type{"ipv6addr", 8},
-	Type{"pad", 1},
-	Type{"string", 0},
-	Type{"sunssf", 1},
-	Type{"uint16", 1},
-	Type{"uint32", 2},
-	Type{"uint64", 4},
+	Type{typelabel.Acc16, typelen.Acc16},
+	Type{typelabel.Acc32, typelen.Acc32},
+	Type{typelabel.Acc64, typelen.Acc64},
+	Type{typelabel.Bitfield16, typelen.Bitfield16},
+	Type{typelabel.Bitfield32, typelen.Bitfield32},
+	Type{typelabel.Count, typelen.Count},
+	Type{typelabel.Enum16, typelen.Enum16},
+	Type{typelabel.Enum32, typelen.Enum32},
+	Type{typelabel.Eui48, typelen.Eui48},
+	Type{typelabel.Float32, typelen.Float32},
+	Type{typelabel.Int16, typelen.Int16},
+	Type{typelabel.Int32, typelen.Int32},
+	Type{typelabel.Int64, typelen.Int64},
+	Type{typelabel.Ipaddr, typelen.Ipaddr},
+	Type{typelabel.Ipv6addr, typelen.Ipv6addr},
+	Type{typelabel.Pad, typelen.Pad},
+	Type{typelabel.String, typelen.String},
+	Type{typelabel.Sunssf, typelen.Sunssf},
+	Type{typelabel.Uint16, typelen.Uint16},
+	Type{typelabel.Uint32, typelen.Uint32},
+	Type{typelabel.Uint64, typelen.Uint64},
 }
 
 var typeMap = map[string]Type{}
