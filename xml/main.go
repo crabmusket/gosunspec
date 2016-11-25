@@ -99,7 +99,7 @@ func deviceFromElement(deviceElement DeviceElement) *sunspec.Device {
 	}
 }
 
-func (self *ModelElement) GetPointValueString(id string) sunspec.String {
+func (self *ModelElement) GetPointValueString(id string) string {
 	rawVal := ""
 	for _, point := range self.Points {
 		if point.Id == id {
@@ -107,7 +107,7 @@ func (self *ModelElement) GetPointValueString(id string) sunspec.String {
 			break
 		}
 	}
-	return sunspec.String(rawVal)
+	return rawVal
 }
 
 func (self *ModelElement) GetPointValueUint16(id string) uint16 {

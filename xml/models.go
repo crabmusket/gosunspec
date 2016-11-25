@@ -2,12 +2,14 @@ package xml
 
 import (
 	sunspec "github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec/models/model1"
+	"github.com/crabmusket/gosunspec/models/model101"
 )
 
 func modelFromElement(el ModelElement) sunspec.Model {
 	switch el.Id {
 	case 1:
-		return &sunspec.Model1{
+		return &model1.Block1{
 			Mn:  el.GetPointValueString("Mn"),
 			Md:  el.GetPointValueString("Md"),
 			Opt: el.GetPointValueString("Opt"),
@@ -17,8 +19,8 @@ func modelFromElement(el ModelElement) sunspec.Model {
 		}
 
 	case 101:
-		return &sunspec.Model101{
-			A: float64(el.GetPointValueUint16("A")) * el.GetPointScaleFactor("A", "A_SF"),
+		return &model101.Block101{
+			A: el.GetPointValueUint16("A"),
 			/*
 				AphA uint16
 				AphB uint16
@@ -28,7 +30,7 @@ func modelFromElement(el ModelElement) sunspec.Model {
 				PPVphBC uint16
 				PPVphCA uint16
 			*/
-			PhVphA: float64(el.GetPointValueUint16("PhVphA")) * el.GetPointScaleFactor("PhVphA", "V_SF"),
+			PhVphA: el.GetPointValueUint16("PhVphA"),
 			/*
 				PhVphB uint16
 				PhVphC uint16

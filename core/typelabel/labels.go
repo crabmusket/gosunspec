@@ -1,0 +1,25 @@
+package typelabel
+
+const (
+	Acc16      = "acc16"
+	Acc32      = "acc32"
+	Acc64      = "acc64"
+	Bitfield16 = "bitfield16"
+	Bitfield32 = "bitfield32"
+	Count      = "count"
+	Enum16     = "enum16"
+	Enum32     = "enum32"
+	Eui48      = "eui48"
+	Float32    = "float32"
+	Int16      = "int16"
+	Int32      = "int32"
+	Int64      = "int64"
+	Ipaddr     = "ipaddr"
+	Ipv6addr   = "ipv6addr"
+	Pad        = "pad"
+	String     = "string"
+	Sunssf     = "sunssf"
+	Uint16     = "uint16"
+	Uint32     = "uint32"
+	Uint64     = "uint64"
+)
