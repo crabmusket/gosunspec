@@ -85,7 +85,7 @@ type Block133Repeat struct {
 	Y9      int32            `sunspec:"offset=43,len=2,sf=Y_SF,access=rw"`
 	X10     int32            `sunspec:"offset=45,len=2,sf=X_SF,access=rw"`
 	Y10     int32            `sunspec:"offset=47,len=2,sf=Y_SF,access=rw"`
-	Nam     core.String      `sunspec:"offset=49,len=8,access=rw"`
+	Nam     string           `sunspec:"offset=49,len=8,access=rw"`
 	WinTms  uint16           `sunspec:"offset=57,len=1,access=rw"`
 	RmpTms  uint16           `sunspec:"offset=58,len=1,access=rw"`
 	ActIndx uint16           `sunspec:"offset=59,len=1,access=r"`

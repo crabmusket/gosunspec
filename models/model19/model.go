@@ -30,15 +30,15 @@ const (
 )
 
 type Block19 struct {
-	Nam    core.String `sunspec:"offset=0,len=4,access=rw"`
+	Nam    string      `sunspec:"offset=0,len=4,access=rw"`
 	Rte    uint32      `sunspec:"offset=4,access=rw"`
 	Bits   uint16      `sunspec:"offset=6,access=rw"`
 	Pty    core.Enum16 `sunspec:"offset=7,access=rw"`
 	Dup    core.Enum16 `sunspec:"offset=8,access=rw"`
 	Flw    core.Enum16 `sunspec:"offset=9,access=rw"`
 	Auth   core.Enum16 `sunspec:"offset=10"`
-	UsrNam core.String `sunspec:"offset=11,len=12"`
-	Pw     core.String `sunspec:"offset=23,len=6"`
+	UsrNam string      `sunspec:"offset=11,len=12"`
+	Pw     string      `sunspec:"offset=23,len=6"`
 	Pad    core.Pad    `sunspec:"offset=29"`
 }
 

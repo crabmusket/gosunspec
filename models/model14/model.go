@@ -28,14 +28,14 @@ const (
 )
 
 type Block14 struct {
-	Nam  core.String     `sunspec:"offset=0,len=4,access=rw"`
+	Nam  string          `sunspec:"offset=0,len=4,access=rw"`
 	Cap  core.Bitfield16 `sunspec:"offset=4,access=rw"`
 	Cfg  core.Enum16     `sunspec:"offset=5,access=rw"`
 	Typ  core.Bitfield16 `sunspec:"offset=6,access=rw"`
-	Addr core.String     `sunspec:"offset=7,len=20,access=rw"`
+	Addr string          `sunspec:"offset=7,len=20,access=rw"`
 	Port uint16          `sunspec:"offset=27,access=rw"`
-	User core.String     `sunspec:"offset=28,len=12,access=rw"`
-	Pw   core.String     `sunspec:"offset=40,len=12,access=rw"`
+	User string          `sunspec:"offset=28,len=12,access=rw"`
+	Pw   string          `sunspec:"offset=40,len=12,access=rw"`
 }
 
 func (self *Block14) GetId() core.ModelId {

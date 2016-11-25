@@ -55,7 +55,7 @@ type Block122 struct {
 	WAval_SF    core.ScaleFactor `sunspec:"offset=30,len=1,access=r"`
 	StSetLimMsk core.Bitfield32  `sunspec:"offset=31,len=2,access=r"`
 	StActCtl    core.Bitfield32  `sunspec:"offset=33,len=2,access=r"`
-	TmSrc       core.String      `sunspec:"offset=35,len=4,access=r"`
+	TmSrc       string           `sunspec:"offset=35,len=4,access=r"`
 	Tms         uint32           `sunspec:"offset=39,len=2,access=r"`
 	RtSt        core.Bitfield16  `sunspec:"offset=41,len=1,access=r"`
 	Ris         uint16           `sunspec:"offset=42,len=1,sf=Ris_SF,access=r"`

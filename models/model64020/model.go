@@ -53,9 +53,9 @@ const (
 )
 
 type Block64020Repeat struct {
-	SerialNumber core.String `sunspec:"offset=0,len=9"`
-	Firmware     core.String `sunspec:"offset=9,len=6"`
-	Hardware     uint16      `sunspec:"offset=15"`
+	SerialNumber string `sunspec:"offset=0,len=9"`
+	Firmware     string `sunspec:"offset=9,len=6"`
+	Hardware     uint16 `sunspec:"offset=15"`
 }
 
 type Block64020 struct {

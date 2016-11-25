@@ -31,14 +31,14 @@ const (
 )
 
 type Block16 struct {
-	Nam    core.String     `sunspec:"offset=0,len=4,access=rw"`
+	Nam    string          `sunspec:"offset=0,len=4,access=rw"`
 	Cfg    core.Enum16     `sunspec:"offset=4"`
 	Ctl    core.Enum16     `sunspec:"offset=5,access=rw"`
-	Addr   core.String     `sunspec:"offset=6,len=8,access=rw"`
-	Msk    core.String     `sunspec:"offset=14,len=8,access=rw"`
-	Gw     core.String     `sunspec:"offset=22,len=8,access=rw"`
-	DNS1   core.String     `sunspec:"offset=30,len=8,access=rw"`
-	DNS2   core.String     `sunspec:"offset=38,len=8,access=rw"`
+	Addr   string          `sunspec:"offset=6,len=8,access=rw"`
+	Msk    string          `sunspec:"offset=14,len=8,access=rw"`
+	Gw     string          `sunspec:"offset=22,len=8,access=rw"`
+	DNS1   string          `sunspec:"offset=30,len=8,access=rw"`
+	DNS2   string          `sunspec:"offset=38,len=8,access=rw"`
 	MAC    uint64          `sunspec:"offset=46,access=r"`
 	LnkCtl core.Bitfield16 `sunspec:"offset=50,access=rw"`
 	Pad    core.Pad        `sunspec:"offset=51"`

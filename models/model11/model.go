@@ -31,7 +31,7 @@ type Block11 struct {
 	CfgSt  core.Bitfield16 `sunspec:"offset=1"`
 	St     core.Enum16     `sunspec:"offset=2"`
 	MAC    core.EUI48      `sunspec:"offset=3"`
-	Nam    core.String     `sunspec:"offset=7,len=4,access=rw"`
+	Nam    string          `sunspec:"offset=7,len=4,access=rw"`
 	Ctl    core.Bitfield16 `sunspec:"offset=11,access=rw"`
 	FrcSpd uint16          `sunspec:"offset=12,access=rw"`
 }

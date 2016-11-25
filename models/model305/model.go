@@ -26,12 +26,12 @@ const (
 )
 
 type Block305 struct {
-	Tm   core.String `sunspec:"offset=0,len=6"`
-	Date core.String `sunspec:"offset=6,len=4"`
-	Loc  core.String `sunspec:"offset=10,len=20"`
-	Lat  int32       `sunspec:"offset=30,sf=-7"`
-	Long int32       `sunspec:"offset=32,sf=-7"`
-	Alt  int32       `sunspec:"offset=34"`
+	Tm   string `sunspec:"offset=0,len=6"`
+	Date string `sunspec:"offset=6,len=4"`
+	Loc  string `sunspec:"offset=10,len=20"`
+	Lat  int32  `sunspec:"offset=30,sf=-7"`
+	Long int32  `sunspec:"offset=32,sf=-7"`
+	Alt  int32  `sunspec:"offset=34"`
 }
 
 func (self *Block305) GetId() core.ModelId {

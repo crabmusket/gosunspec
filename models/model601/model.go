@@ -40,7 +40,7 @@ const (
 )
 
 type Block601Repeat struct {
-	Id     core.String     `sunspec:"offset=0,len=8"`
+	Id     string          `sunspec:"offset=0,len=8"`
 	ElTrgt int32           `sunspec:"offset=8,sf=Dgr_SF"`
 	AzTrgt int32           `sunspec:"offset=10,sf=SF"`
 	ElPos  int32           `sunspec:"offset=12,sf=Dgr_SF"`
@@ -52,10 +52,10 @@ type Block601Repeat struct {
 }
 
 type Block601 struct {
-	Nam       core.String      `sunspec:"offset=0,len=8"`
+	Nam       string           `sunspec:"offset=0,len=8"`
 	Typ       core.Enum16      `sunspec:"offset=8"`
-	DtLoc     core.String      `sunspec:"offset=9,len=5"`
-	TmLoc     core.String      `sunspec:"offset=14,len=3"`
+	DtLoc     string           `sunspec:"offset=9,len=5"`
+	TmLoc     string           `sunspec:"offset=14,len=3"`
 	Day       uint16           `sunspec:"offset=17"`
 	GlblElCtl int32            `sunspec:"offset=18,sf=Dgr_SF,access=rw"`
 	GlblAzCtl int32            `sunspec:"offset=20,sf=Dgr_SF,access=rw"`

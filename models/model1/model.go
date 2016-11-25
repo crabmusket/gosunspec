@@ -27,13 +27,13 @@ const (
 )
 
 type Block1 struct {
-	Mn  core.String `sunspec:"offset=0,len=16"`
-	Md  core.String `sunspec:"offset=16,len=16"`
-	Opt core.String `sunspec:"offset=32,len=8"`
-	Vr  core.String `sunspec:"offset=40,len=8"`
-	SN  core.String `sunspec:"offset=48,len=16"`
-	DA  uint16      `sunspec:"offset=64,access=rw"`
-	Pad core.Pad    `sunspec:"offset=65,access=r"`
+	Mn  string   `sunspec:"offset=0,len=16"`
+	Md  string   `sunspec:"offset=16,len=16"`
+	Opt string   `sunspec:"offset=32,len=8"`
+	Vr  string   `sunspec:"offset=40,len=8"`
+	SN  string   `sunspec:"offset=48,len=16"`
+	DA  uint16   `sunspec:"offset=64,access=rw"`
+	Pad core.Pad `sunspec:"offset=65,access=r"`
 }
 
 func (self *Block1) GetId() core.ModelId {

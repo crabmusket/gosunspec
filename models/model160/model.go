@@ -38,7 +38,7 @@ const (
 
 type Block160Repeat struct {
 	ID    uint16          `sunspec:"offset=0"`
-	IDStr core.String     `sunspec:"offset=1,len=8"`
+	IDStr string          `sunspec:"offset=1,len=8"`
 	DCA   uint16          `sunspec:"offset=9,sf=DCA_SF"`
 	DCV   uint16          `sunspec:"offset=10,sf=DCV_SF"`
 	DCW   uint16          `sunspec:"offset=11,sf=DCW_SF"`

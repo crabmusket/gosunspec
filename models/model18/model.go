@@ -25,11 +25,11 @@ const (
 )
 
 type Block18 struct {
-	Nam  core.String `sunspec:"offset=0,len=4,access=rw"`
-	IMEI uint32      `sunspec:"offset=4,access=rw"`
-	APN  core.String `sunspec:"offset=6,len=4,access=rw"`
-	Num  core.String `sunspec:"offset=10,len=6,access=rw"`
-	Pin  core.String `sunspec:"offset=16,len=6,access=rw"`
+	Nam  string `sunspec:"offset=0,len=4,access=rw"`
+	IMEI uint32 `sunspec:"offset=4,access=rw"`
+	APN  string `sunspec:"offset=6,len=4,access=rw"`
+	Num  string `sunspec:"offset=10,len=6,access=rw"`
+	Pin  string `sunspec:"offset=16,len=6,access=rw"`
 }
 
 func (self *Block18) GetId() core.ModelId {

@@ -71,8 +71,8 @@ type Block64110 struct {
 	MidFWRev          uint16           `sunspec:"offset=1"`
 	MinorFWRev        uint16           `sunspec:"offset=2"`
 	EncrypKey         uint16           `sunspec:"offset=3"`
-	MAC_Address       core.String      `sunspec:"offset=4,len=7"`
-	WritePassword     core.String      `sunspec:"offset=11,len=8"`
+	MAC_Address       string           `sunspec:"offset=4,len=7"`
+	WritePassword     string           `sunspec:"offset=11,len=8"`
 	EnableDHCP        core.Enum16      `sunspec:"offset=19"`
 	TCPIP_address     core.Ipaddr      `sunspec:"offset=20"`
 	Gateway_address   core.Ipaddr      `sunspec:"offset=22"`
@@ -80,26 +80,26 @@ type Block64110 struct {
 	DNS1_address      core.Ipaddr      `sunspec:"offset=26"`
 	DNS2_address      core.Ipaddr      `sunspec:"offset=28"`
 	Modbus_port       uint16           `sunspec:"offset=30"`
-	SMTP_server_nm    core.String      `sunspec:"offset=31,len=20"`
-	SMTP_account_nm   core.String      `sunspec:"offset=51,len=16"`
+	SMTP_server_nm    string           `sunspec:"offset=31,len=20"`
+	SMTP_account_nm   string           `sunspec:"offset=51,len=16"`
 	SMTP_enable_SSL   core.Enum16      `sunspec:"offset=67"`
-	SMTP_password     core.String      `sunspec:"offset=68,len=8"`
-	SMTP_user_nm      core.String      `sunspec:"offset=76,len=20"`
+	SMTP_password     string           `sunspec:"offset=68,len=8"`
+	SMTP_user_nm      string           `sunspec:"offset=76,len=20"`
 	Stat_email_int    uint16           `sunspec:"offset=96"`
 	Stat_start_HR     uint16           `sunspec:"offset=97"`
-	Stat_email_sub    core.String      `sunspec:"offset=98,len=25"`
-	Stat_email_addr1  core.String      `sunspec:"offset=123,len=20"`
-	Stat_email_addr2  core.String      `sunspec:"offset=143,len=20"`
+	Stat_email_sub    string           `sunspec:"offset=98,len=25"`
+	Stat_email_addr1  string           `sunspec:"offset=123,len=20"`
+	Stat_email_addr2  string           `sunspec:"offset=143,len=20"`
 	Alarm_email_en    core.Enum16      `sunspec:"offset=163"`
-	Alarm_email_sub   core.String      `sunspec:"offset=164,len=25"`
-	Alarm_email_addr1 core.String      `sunspec:"offset=189,len=20"`
-	Alarm_email_addr2 core.String      `sunspec:"offset=209,len=20"`
-	FTP_password      core.String      `sunspec:"offset=229,len=8"`
-	TELNET_password   core.String      `sunspec:"offset=237,len=8"`
+	Alarm_email_sub   string           `sunspec:"offset=164,len=25"`
+	Alarm_email_addr1 string           `sunspec:"offset=189,len=20"`
+	Alarm_email_addr2 string           `sunspec:"offset=209,len=20"`
+	FTP_password      string           `sunspec:"offset=229,len=8"`
+	TELNET_password   string           `sunspec:"offset=237,len=8"`
 	Log_write_int     uint16           `sunspec:"offset=245"`
 	Log_retain        uint16           `sunspec:"offset=246"`
 	Log_mode          core.Enum16      `sunspec:"offset=247"`
-	NTP_server_nm     core.String      `sunspec:"offset=248,len=20"`
+	NTP_server_nm     string           `sunspec:"offset=248,len=20"`
 	NTP_enable        core.Enum16      `sunspec:"offset=268"`
 	TimeZone          int16            `sunspec:"offset=269"`
 	Date_year         uint16           `sunspec:"offset=270"`

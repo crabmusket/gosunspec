@@ -36,21 +36,21 @@ const (
 )
 
 type Block12 struct {
-	Nam     core.String     `sunspec:"offset=0,len=4,access=rw"`
+	Nam     string          `sunspec:"offset=0,len=4,access=rw"`
 	CfgSt   core.Enum16     `sunspec:"offset=4"`
 	ChgSt   core.Bitfield16 `sunspec:"offset=5"`
 	Cap     core.Bitfield16 `sunspec:"offset=6"`
 	Cfg     core.Enum16     `sunspec:"offset=7,access=rw"`
 	Ctl     core.Enum16     `sunspec:"offset=8,access=rw"`
-	Addr    core.String     `sunspec:"offset=9,len=8,access=rw"`
-	Msk     core.String     `sunspec:"offset=17,len=8,access=rw"`
-	Gw      core.String     `sunspec:"offset=25,len=8,access=rw"`
-	DNS1    core.String     `sunspec:"offset=33,len=8,access=rw"`
-	DNS2    core.String     `sunspec:"offset=41,len=8,access=rw"`
-	NTP1    core.String     `sunspec:"offset=49,len=12,access=rw"`
-	NTP2    core.String     `sunspec:"offset=61,len=12,access=rw"`
-	DomNam  core.String     `sunspec:"offset=73,len=12,access=rw"`
-	HostNam core.String     `sunspec:"offset=85,len=12,access=rw"`
+	Addr    string          `sunspec:"offset=9,len=8,access=rw"`
+	Msk     string          `sunspec:"offset=17,len=8,access=rw"`
+	Gw      string          `sunspec:"offset=25,len=8,access=rw"`
+	DNS1    string          `sunspec:"offset=33,len=8,access=rw"`
+	DNS2    string          `sunspec:"offset=41,len=8,access=rw"`
+	NTP1    string          `sunspec:"offset=49,len=12,access=rw"`
+	NTP2    string          `sunspec:"offset=61,len=12,access=rw"`
+	DomNam  string          `sunspec:"offset=73,len=12,access=rw"`
+	HostNam string          `sunspec:"offset=85,len=12,access=rw"`
 	Pad     core.Pad        `sunspec:"offset=97"`
 }
 

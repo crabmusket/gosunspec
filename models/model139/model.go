@@ -114,7 +114,7 @@ type Block139Repeat struct {
 	V19      uint16      `sunspec:"offset=38,len=1,sf=V_SF,access=rw"`
 	Tms20    uint16      `sunspec:"offset=39,len=1,sf=Tms_SF,access=rw"`
 	V20      uint16      `sunspec:"offset=40,len=1,sf=V_SF,access=rw"`
-	CrvNam   core.String `sunspec:"offset=41,len=8,access=rw"`
+	CrvNam   string      `sunspec:"offset=41,len=8,access=rw"`
 	ReadOnly core.Enum16 `sunspec:"offset=49,len=1,access=r"`
 }
 

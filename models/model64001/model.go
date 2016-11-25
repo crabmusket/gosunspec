@@ -59,7 +59,7 @@ type Block64001 struct {
 	HWRev    uint16          `sunspec:"offset=1"`
 	RSFWRev  uint16          `sunspec:"offset=2"`
 	OSFWRev  uint16          `sunspec:"offset=3"`
-	ProdRev  core.String     `sunspec:"offset=4,len=2"`
+	ProdRev  string          `sunspec:"offset=4,len=2"`
 	Boots    uint16          `sunspec:"offset=6"`
 	Switch   core.Bitfield16 `sunspec:"offset=7"`
 	Sensors  uint16          `sunspec:"offset=8"`
@@ -69,27 +69,27 @@ type Block64001 struct {
 	LEDblink uint16          `sunspec:"offset=12"`
 	LEDon    uint16          `sunspec:"offset=13"`
 	Reserved uint16          `sunspec:"offset=14"`
-	Loc      core.String     `sunspec:"offset=15,len=16"`
+	Loc      string          `sunspec:"offset=15,len=16"`
 	S1ID     core.Enum16     `sunspec:"offset=31"`
 	S1Addr   uint16          `sunspec:"offset=32"`
 	S1OSVer  uint16          `sunspec:"offset=33"`
-	S1Ver    core.String     `sunspec:"offset=34,len=2"`
-	S1Serial core.String     `sunspec:"offset=36,len=5"`
+	S1Ver    string          `sunspec:"offset=34,len=2"`
+	S1Serial string          `sunspec:"offset=36,len=5"`
 	S2ID     core.Enum16     `sunspec:"offset=41"`
 	S2Addr   uint16          `sunspec:"offset=42"`
 	S2OSVer  uint16          `sunspec:"offset=43"`
-	S2Ver    core.String     `sunspec:"offset=44,len=2"`
-	S2Serial core.String     `sunspec:"offset=46,len=5"`
+	S2Ver    string          `sunspec:"offset=44,len=2"`
+	S2Serial string          `sunspec:"offset=46,len=5"`
 	S3ID     core.Enum16     `sunspec:"offset=51"`
 	S3Addr   uint16          `sunspec:"offset=52"`
 	S3OSVer  uint16          `sunspec:"offset=53"`
-	S3Ver    core.String     `sunspec:"offset=54,len=2"`
-	S3Serial core.String     `sunspec:"offset=56,len=5"`
+	S3Ver    string          `sunspec:"offset=54,len=2"`
+	S3Serial string          `sunspec:"offset=56,len=5"`
 	S4ID     core.Enum16     `sunspec:"offset=61"`
 	S4Addr   uint16          `sunspec:"offset=62"`
 	S4OSVer  uint16          `sunspec:"offset=63"`
-	S4Ver    core.String     `sunspec:"offset=64,len=2"`
-	S4Serial core.String     `sunspec:"offset=66,len=5"`
+	S4Ver    string          `sunspec:"offset=64,len=2"`
+	S4Serial string          `sunspec:"offset=66,len=5"`
 }
 
 func (self *Block64001) GetId() core.ModelId {

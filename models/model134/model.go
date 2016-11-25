@@ -122,7 +122,7 @@ type Block134Repeat struct {
 	W19        int16           `sunspec:"offset=38,len=1,sf=W_SF,access=rw"`
 	Hz20       uint16          `sunspec:"offset=39,len=1,sf=Hz_SF,access=rw"`
 	W20        int16           `sunspec:"offset=40,len=1,sf=W_SF,access=rw"`
-	CrvNam     core.String     `sunspec:"offset=41,len=8,access=rw"`
+	CrvNam     string          `sunspec:"offset=41,len=8,access=rw"`
 	RmpPT1Tms  uint16          `sunspec:"offset=49,len=1,access=rw"`
 	RmpDecTmm  uint16          `sunspec:"offset=50,len=1,sf=RmpIncDec_SF,access=rw"`
 	RmpIncTmm  uint16          `sunspec:"offset=51,len=1,sf=RmpIncDec_SF,access=rw"`

@@ -153,8 +153,8 @@ type Block63001 struct {
 	ipv6addr_u   core.Ipv6addr    `sunspec:"offset=86"`
 	float32      float32          `sunspec:"offset=94,access=rw"`
 	float32_u    float32          `sunspec:"offset=96"`
-	string       core.String      `sunspec:"offset=98,len=16,access=rw"`
-	string_u     core.String      `sunspec:"offset=114,len=16"`
+	string       string           `sunspec:"offset=98,len=16,access=rw"`
+	string_u     string           `sunspec:"offset=114,len=16"`
 	sunssf_5     core.ScaleFactor `sunspec:"offset=130"`
 	sunssf_6     core.ScaleFactor `sunspec:"offset=131"`
 	sunssf_7     core.ScaleFactor `sunspec:"offset=132"`

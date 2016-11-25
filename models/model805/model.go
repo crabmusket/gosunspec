@@ -72,7 +72,7 @@ type Block805 struct {
 	CellTmpMin     int16            `sunspec:"offset=15,sf=Tmp_SF"`
 	CellTmpMinCell uint16           `sunspec:"offset=16"`
 	CellTmpAvg     int16            `sunspec:"offset=17,sf=Tmp_SF"`
-	SN             core.String      `sunspec:"offset=18,len=16"`
+	SN             string           `sunspec:"offset=18,len=16"`
 	NCellBal       uint16           `sunspec:"offset=34"`
 	SoC_SF         core.ScaleFactor `sunspec:"offset=35"`
 	SoH_SF         core.ScaleFactor `sunspec:"offset=36"`

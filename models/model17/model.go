@@ -28,7 +28,7 @@ const (
 )
 
 type Block17 struct {
-	Nam  core.String `sunspec:"offset=0,len=4,access=rw"`
+	Nam  string      `sunspec:"offset=0,len=4,access=rw"`
 	Rte  uint32      `sunspec:"offset=4,access=rw"`
 	Bits uint16      `sunspec:"offset=6,access=rw"`
 	Pty  core.Enum16 `sunspec:"offset=7,access=rw"`
