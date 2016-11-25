@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/crabmusket/gosunspec/core/typelabel"
-	"github.com/crabmusket/gosunspec/core/typelen"
 	_ "github.com/crabmusket/gosunspec/models"
 	"github.com/crabmusket/gosunspec/smdx"
+	"github.com/crabmusket/gosunspec/typelabel"
+	"github.com/crabmusket/gosunspec/typelen"
 	"log"
 	"os"
 )

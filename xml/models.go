@@ -1,7 +1,7 @@
 package xml
 
 import (
-	sunspec "github.com/crabmusket/gosunspec/core"
+	"github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/models/model101"
 )
