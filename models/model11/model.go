@@ -30,7 +30,7 @@ type Block11 struct {
 	Spd    uint16             `sunspec:"offset=0"`
 	CfgSt  sunspec.Bitfield16 `sunspec:"offset=1"`
 	St     sunspec.Enum16     `sunspec:"offset=2"`
-	MAC    sunspec.EUI48      `sunspec:"offset=3"`
+	MAC    sunspec.Eui48      `sunspec:"offset=3"`
 	Nam    string             `sunspec:"offset=7,len=4,access=rw"`
 	Ctl    sunspec.Bitfield16 `sunspec:"offset=11,access=rw"`
 	FrcSpd uint16             `sunspec:"offset=12,access=rw"`

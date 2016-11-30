@@ -48,10 +48,10 @@ func init() {
 				Length: 4,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Sunssf_1, Offset: 0, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: Sunssf_1, Offset: 0, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: Int16_1, Offset: 1, Type: typelabel.Int16, ScaleFactor: "sunssf_1", Access: "rw"},
 					smdx.PointElement{Id: Int16_2, Offset: 2, Type: typelabel.Int16, ScaleFactor: "sunssf_2"},
-					smdx.PointElement{Id: Sunssf_2, Offset: 3, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: Sunssf_2, Offset: 3, Type: typelabel.ScaleFactor},
 				},
 			},
 		}})

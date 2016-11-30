@@ -173,7 +173,7 @@ func init() {
 					smdx.PointElement{Id: Time_second, Offset: 275, Type: typelabel.Uint16, Mandatory: true},
 					smdx.PointElement{Id: Battery_temp, Offset: 276, Type: typelabel.Int16, ScaleFactor: "Temp_SF", Units: "C", Mandatory: true},
 					smdx.PointElement{Id: Ambient_temp, Offset: 277, Type: typelabel.Int16, ScaleFactor: "Temp_SF", Units: "C", Mandatory: true},
-					smdx.PointElement{Id: Temp_SF, Offset: 278, Type: typelabel.Sunssf, Mandatory: true},
+					smdx.PointElement{Id: Temp_SF, Offset: 278, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: AXS_Error, Offset: 279, Type: typelabel.Bitfield16, Mandatory: true},
 					smdx.PointElement{Id: AXS_Status, Offset: 280, Type: typelabel.Bitfield16, Mandatory: true},
 					smdx.PointElement{Id: AXS_Spare, Offset: 281, Type: typelabel.Uint16, Mandatory: true},

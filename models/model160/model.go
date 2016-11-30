@@ -75,10 +75,10 @@ func init() {
 				Length: 8,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DCA_SF, Offset: 0, Type: typelabel.Sunssf},
-					smdx.PointElement{Id: DCV_SF, Offset: 1, Type: typelabel.Sunssf},
-					smdx.PointElement{Id: DCW_SF, Offset: 2, Type: typelabel.Sunssf},
-					smdx.PointElement{Id: DCWH_SF, Offset: 3, Type: typelabel.Sunssf},
+					smdx.PointElement{Id: DCA_SF, Offset: 0, Type: typelabel.ScaleFactor},
+					smdx.PointElement{Id: DCV_SF, Offset: 1, Type: typelabel.ScaleFactor},
+					smdx.PointElement{Id: DCW_SF, Offset: 2, Type: typelabel.ScaleFactor},
+					smdx.PointElement{Id: DCWH_SF, Offset: 3, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: Evt, Offset: 4, Type: typelabel.Bitfield32},
 					smdx.PointElement{Id: N, Offset: 6, Type: typelabel.Count},
 					smdx.PointElement{Id: TmsPer, Offset: 7, Type: typelabel.Uint16},
