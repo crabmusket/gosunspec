@@ -136,8 +136,6 @@ func main() {
 				return sstype
 			case "sunssf":
 				return "sunspec.ScaleFactor"
-			case "eui48":
-				return "sunspec." + strings.ToUpper(sstype)
 			default:
 				return "sunspec." + strings.Title(sstype)
 			}
@@ -165,7 +163,14 @@ func main() {
 				return ""
 			}
 		},
-		"title": strings.Title,
+		"title": func(in string) string {
+			switch in {
+			case "sunssf":
+				return "ScaleFactor"
+			default:
+				return strings.Title(in)
+			}
+		},
 		"uniqueNames": func(m smdx.ModelElement) []string {
 			seen := map[string]bool{}
 			for _, b := range m.Blocks {
