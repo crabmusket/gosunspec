@@ -64,40 +64,40 @@ func parseXML(reader io.Reader) (elements []DataElement, err error) {
 	return
 }
 
-func LoadDevices(reader io.Reader) (devices []*sunspec.Device, err error) {
-	dataElements, err := parseXML(reader)
-	if err != nil {
-		return
-	}
+// func LoadDevices(reader io.Reader) (devices []sunspec.Device, err error) {
+// 	dataElements, err := parseXML(reader)
+// 	if err != nil {
+// 		return
+// 	}
 
-	for _, dataElement := range dataElements {
-		for _, deviceElement := range dataElement.Devices {
-			if loaded := deviceFromElement(deviceElement); loaded != nil {
-				devices = append(devices, loaded)
-			}
-		}
-	}
+// 	for _, dataElement := range dataElements {
+// 		for _, deviceElement := range dataElement.Devices {
+// 			if loaded := deviceFromElement(deviceElement); loaded != nil {
+// 				devices = append(devices, loaded)
+// 			}
+// 		}
+// 	}
 
-	return
-}
+// 	return
+// }
 
-func deviceFromElement(deviceElement DeviceElement) *sunspec.Device {
-	device := sunspec.Device{
-		Models: []sunspec.Model{},
-	}
+// func deviceFromElement(deviceElement DeviceElement) sunspec.Device {
+// 	device := sunspec.Device{
+// 		Models: []sunspec.Model{},
+// 	}
 
-	for _, modelElement := range deviceElement.Models {
-		if model := modelFromElement(modelElement); model != nil {
-			device.Models = append(device.Models, model)
-		}
-	}
+// 	for _, modelElement := range deviceElement.Models {
+// 		if model := modelFromElement(modelElement); model != nil {
+// 			device.Models = append(device.Models, model)
+// 		}
+// 	}
 
-	if len(device.Models) > 0 {
-		return &device
-	} else {
-		return nil
-	}
-}
+// 	if len(device.Models) > 0 {
+// 		return &device
+// 	} else {
+// 		return nil
+// 	}
+// }
 
 func (self *ModelElement) GetPointValueString(id string) string {
 	rawVal := ""

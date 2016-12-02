@@ -90,7 +90,7 @@ func init() {
 					smdx.PointElement{Id: GlblAzCtl, Offset: 20, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
 					smdx.PointElement{Id: GlblCtl, Offset: 22, Type: typelabel.Enum16, Access: "rw"},
 					smdx.PointElement{Id: GlblAlm, Offset: 23, Type: typelabel.Bitfield16},
-					smdx.PointElement{Id: Dgr_SF, Offset: 24, Type: typelabel.Sunssf, Mandatory: true},
+					smdx.PointElement{Id: Dgr_SF, Offset: 24, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: N, Offset: 25, Type: typelabel.Uint16, Mandatory: true},
 				},
 			},

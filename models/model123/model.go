@@ -105,9 +105,9 @@ func init() {
 					smdx.PointElement{Id: VArPct_RmpTms, Offset: 18, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
 					smdx.PointElement{Id: VArPct_Mod, Offset: 19, Type: typelabel.Enum16, Access: "rw", Length: 1},
 					smdx.PointElement{Id: VArPct_Ena, Offset: 20, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WMaxLimPct_SF, Offset: 21, Type: typelabel.Sunssf, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: OutPFSet_SF, Offset: 22, Type: typelabel.Sunssf, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VArPct_SF, Offset: 23, Type: typelabel.Sunssf, Access: "r", Length: 1},
+					smdx.PointElement{Id: WMaxLimPct_SF, Offset: 21, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: OutPFSet_SF, Offset: 22, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: VArPct_SF, Offset: 23, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
 				},
 			},
 		}})

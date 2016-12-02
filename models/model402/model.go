@@ -92,11 +92,11 @@ func init() {
 				Length: 20,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DCA_SF, Offset: 0, Type: typelabel.Sunssf, Mandatory: true},
-					smdx.PointElement{Id: DCAhr_SF, Offset: 1, Type: typelabel.Sunssf},
-					smdx.PointElement{Id: DCV_SF, Offset: 2, Type: typelabel.Sunssf},
-					smdx.PointElement{Id: DCW_SF, Offset: 3, Type: typelabel.Sunssf},
-					smdx.PointElement{Id: DCWh_SF, Offset: 4, Type: typelabel.Sunssf, Mandatory: true},
+					smdx.PointElement{Id: DCA_SF, Offset: 0, Type: typelabel.ScaleFactor, Mandatory: true},
+					smdx.PointElement{Id: DCAhr_SF, Offset: 1, Type: typelabel.ScaleFactor},
+					smdx.PointElement{Id: DCV_SF, Offset: 2, Type: typelabel.ScaleFactor},
+					smdx.PointElement{Id: DCW_SF, Offset: 3, Type: typelabel.ScaleFactor},
+					smdx.PointElement{Id: DCWh_SF, Offset: 4, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: DCAMax, Offset: 5, Type: typelabel.Uint16, Units: "A"},
 					smdx.PointElement{Id: N, Offset: 6, Type: typelabel.Count},
 					smdx.PointElement{Id: Evt, Offset: 7, Type: typelabel.Bitfield32, Mandatory: true},

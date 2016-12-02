@@ -33,7 +33,7 @@ var types = []Type{
 	Type{typelabel.Ipv6addr, typelen.Ipv6addr},
 	Type{typelabel.Pad, typelen.Pad},
 	Type{typelabel.String, typelen.String},
-	Type{typelabel.Sunssf, typelen.Sunssf},
+	Type{typelabel.ScaleFactor, typelen.ScaleFactor},
 	Type{typelabel.Uint16, typelen.Uint16},
 	Type{typelabel.Uint32, typelen.Uint32},
 	Type{typelabel.Uint64, typelen.Uint64},

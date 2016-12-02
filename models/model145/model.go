@@ -59,7 +59,7 @@ func init() {
 					smdx.PointElement{Id: ConnRmpUpRte, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
 					smdx.PointElement{Id: ConnRmpDnRte, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
 					smdx.PointElement{Id: AGra, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Rmp_SF, Offset: 7, Type: typelabel.Sunssf, Access: "r", Length: 1},
+					smdx.PointElement{Id: Rmp_SF, Offset: 7, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
 				},
 			},
 		}})

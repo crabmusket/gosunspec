@@ -165,12 +165,12 @@ func init() {
 
 				Points: []smdx.PointElement{
 					smdx.PointElement{Id: Port, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
-					smdx.PointElement{Id: V_SF, Offset: 1, Type: typelabel.Sunssf, Mandatory: true},
-					smdx.PointElement{Id: C_SF, Offset: 2, Type: typelabel.Sunssf, Mandatory: true},
-					smdx.PointElement{Id: H_SF, Offset: 3, Type: typelabel.Sunssf, Mandatory: true},
-					smdx.PointElement{Id: P_SF, Offset: 4, Type: typelabel.Sunssf, Mandatory: true},
-					smdx.PointElement{Id: AH_SF, Offset: 5, Type: typelabel.Sunssf, Mandatory: true},
-					smdx.PointElement{Id: KWH_SF, Offset: 6, Type: typelabel.Sunssf, Mandatory: true},
+					smdx.PointElement{Id: V_SF, Offset: 1, Type: typelabel.ScaleFactor, Mandatory: true},
+					smdx.PointElement{Id: C_SF, Offset: 2, Type: typelabel.ScaleFactor, Mandatory: true},
+					smdx.PointElement{Id: H_SF, Offset: 3, Type: typelabel.ScaleFactor, Mandatory: true},
+					smdx.PointElement{Id: P_SF, Offset: 4, Type: typelabel.ScaleFactor, Mandatory: true},
+					smdx.PointElement{Id: AH_SF, Offset: 5, Type: typelabel.ScaleFactor, Mandatory: true},
+					smdx.PointElement{Id: KWH_SF, Offset: 6, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: CC_Config_fault, Offset: 7, Type: typelabel.Bitfield16, Mandatory: true},
 					smdx.PointElement{Id: CC_Config_absorb_V, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
 					smdx.PointElement{Id: CC_Config_absorb_Hr, Offset: 9, Type: typelabel.Uint16, ScaleFactor: "H_SF", Units: "Tmh", Mandatory: true},
