@@ -22,6 +22,7 @@ func (a *array) DoWithSPI(f func(d spi.DeviceSPI)) {
 	}
 }
 
-func (a *array) AddDevice(m spi.DeviceSPI) error {
+func (a *array) AddDevice(d spi.DeviceSPI) error {
+	a.devices = append(a.devices, d.(*device))
 	return nil
 }
