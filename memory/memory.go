@@ -17,7 +17,7 @@ var (
 	errNoModel        = errors.New("no model")
 	errBadEyeCatcher  = errors.New("bad eyecatcher")
 	errBufferTooShort = errors.New("buffer too short")
-	eyeCatcher        = []byte{0x53, 0x76, 0x6e, 0x53} // "SunS"
+	eyeCatcher        = []byte{0x53, 0x75, 0x6e, 0x53} // "SunS"
 )
 
 type device struct {
