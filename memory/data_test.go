@@ -7,6 +7,7 @@ import (
 	"github.com/crabmusket/gosunspec/models/model304"
 	"github.com/crabmusket/gosunspec/models/model401"
 	"github.com/crabmusket/gosunspec/models/model501"
+	"github.com/crabmusket/gosunspec/models/model502"
 	"github.com/crabmusket/gosunspec/models/model63001"
 	"github.com/crabmusket/gosunspec/typelabel"
 )
@@ -73,6 +74,8 @@ func init() {
 		AddRepeat(model401.ModelID).
 		AddRepeat(model401.ModelID).
 		AddModel(model501.ModelID).
+		AddModel(model502.ModelID).
+		AddModel(model502.ModelID).
 		AddModel(model63001.ModelID).
 		AddRepeat(model63001.ModelID).
 		Build()

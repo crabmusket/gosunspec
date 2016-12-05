@@ -4,6 +4,7 @@ import (
 	"github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/models/model101"
+	"github.com/crabmusket/gosunspec/models/model502"
 	"testing"
 )
 
@@ -49,6 +50,7 @@ func TestSlab(t *testing.T) {
 			b.MustPoint(model1.SN).SetStringValue("abcde")
 			b.Write(model1.SN)
 		}
+
 	}
 
 	// reopen the slab for reading
@@ -156,8 +158,28 @@ func TestComplexSlab(t *testing.T) {
 		})
 	})
 
-	expected := 168
+	expected := 210
 	if count != expected {
 		t.Fatalf("unexpected number of points. actual: %d, expected: %d", count, expected)
+	}
+}
+
+func TestMustModelFailsWithManyModels(t *testing.T) {
+
+	d, _ := Open(ComplexNonZeroSlab)
+
+	err := func() (err error) {
+		defer func() {
+			r := recover()
+			if e, ok := r.(error); ok {
+				err = e
+			}
+			panic(r)
+		}()
+		d.MustModel(model502.ModelID)
+		return nil
+	}
+	if err == nil {
+		t.Fatalf("error expected")
 	}
 }

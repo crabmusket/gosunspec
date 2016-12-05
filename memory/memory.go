@@ -229,11 +229,16 @@ func (b *builder) AddModel(id sunspec.ModelId) SlabBuilder {
 
 // Add a repeat to the specified model
 func (b *builder) AddRepeat(id sunspec.ModelId) SlabBuilder {
-	if m, err := b.device.Model(id); err != nil {
-		b.record(err)
-	} else {
-		b.record(m.(spi.ModelSPI).AddRepeat())
-	}
+	// Note: this assumes all models of the same identifier
+	// in the same address space have the same number of repeats
+	// In principle, this might not be true. In practice,
+	// it is likely to be true. We can live with the simplification
+	// for now.
+	b.device.Do(func(m sunspec.Model) {
+		if m.Id() == id {
+			b.record(m.(spi.ModelSPI).AddRepeat())
+		}
+	})
 	return b
 }
 

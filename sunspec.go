@@ -18,8 +18,10 @@ import (
 )
 
 var (
-	ErrNoSuchBlock = errors.New("no such block")
-	ErrNoSuchPoint = errors.New("no such point")
+	ErrNoSuchBlock   = errors.New("no such block")
+	ErrNoSuchModel   = errors.New("no such model")
+	ErrTooManyModels = errors.New("too many models")
+	ErrNoSuchPoint   = errors.New("no such point")
 )
 
 // ModelId is the type of model identifiers used with the Device.Model and Device.MustModel
@@ -92,10 +94,9 @@ type Array interface {
 // A Device is a collection of Models that provides an uniform abstraction of
 // physical devices of various kinds (Modbus, memory, XML documents)
 type Device interface {
-	// Model answers the first model with the matching identifier, or returns an error otherwise
-	Model(id ModelId) (Model, error) // Answer the specified model instance or nil
-
-	// MustModel answers the first model specified by id, or panics otherwise
+	// MustModel answers the first and only model specified by id, or panics otherwise
+	// This method should not be used unless it is known for sure that the device
+	// does not have multiple models with the specified id.
 	MustModel(id ModelId) Model
 
 	// Do iterates over all the models supported by the device
