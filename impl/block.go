@@ -1,7 +1,6 @@
 package impl
 
 import (
-	_ "fmt"
 	"github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
@@ -65,75 +64,102 @@ func (b *block) SetLength(l uint16) {
 	b.length = l
 }
 
-type ScaleFactorFirstOrder []spi.PointSPI
-
-func (o ScaleFactorFirstOrder) Len() int {
-	return len(o)
-}
-
-func (o ScaleFactorFirstOrder) Less(i, j int) bool {
-	p1 := o[i]
-	p2 := o[j]
-	if p1.Type() == typelabel.ScaleFactor && p2.Type() != typelabel.ScaleFactor {
-		return true
-	} else if p1.Type() != typelabel.ScaleFactor && p2.Type() == typelabel.ScaleFactor {
-		return false
-	} else {
-		return p1.Offset() < p2.Offset()
-	}
-}
-
-func (o ScaleFactorFirstOrder) Swap(i, j int) {
-	o[i], o[j] = o[j], o[i]
-}
-
 // Plan expands and re-orders the specified set of points, if any, then returns a
 // slice that is ordered in the order that they should be applied to the
 // model.
 //
 // If no points are specified, then the set is expanded to all points in the
 // block. If any points with scale factors are specified, then the scale
-// factors are included if they are not already inncluded.
+// factors are included if they are not already included. The set of points
+// to be read is also extended to re-read any currently valid point
+// that references any scale factor that is included in the list of points
+// to be read (so that these points do not "unexpectedly" become invalid.)
 //
 // Then the points are sorted so scale factors appear first in the list,
 // then non-scale factors and then within each section, the points
 // are sorted in offset order.
 func (b *block) Plan(pointIds ...string) ([]spi.PointSPI, error) {
 	points := []spi.PointSPI{}
-	included := map[string]bool{}
 
-	// include all specified points
-	for _, id := range pointIds {
-		if p, ok := b.points[id]; !ok {
-			return nil, sunspec.ErrNoSuchPoint
-		} else {
-			if !included[id] {
-				points = append(points, p)
-				included[id] = true
-			}
-		}
-	}
-
-	// include their scale factors too
-	for _, p := range points {
-		sfp := p.(*point).scaleFactor
-		if sfp != nil {
-			if !included[sfp.Id()] {
-				points = append(points, sfp.(spi.PointSPI))
-				included[sfp.Id()] = true
-			}
-		}
-	}
-
-	// if there are no points, include all points
 	if len(pointIds) == 0 {
+		// if there are no specified points, include all points
+
 		for _, p := range b.points {
 			points = append(points, p)
+		}
+	} else {
+		included := map[string]bool{}
+		included_sf := map[string]bool{}
+
+		// include all specified points
+		for _, id := range pointIds {
+			if p, ok := b.points[id]; !ok {
+				return nil, sunspec.ErrNoSuchPoint
+			} else {
+				if !included[id] {
+					points = append(points, p)
+					included[id] = true
+				}
+				if p.Type() == typelabel.ScaleFactor {
+					included_sf[id] = true
+				}
+			}
+		}
+
+		// include their scale factors too...
+		//
+		// we do this for several reasons:
+		//    - to interpret a point that uses a scale factor, we need the scale factor too
+		//    - if we don't there we may read a value point after its scale factor point has changed
+		//      By forcing contemporaneous reads of a scale factor and its related points we help to ensure
+		//      that the two values are consistent.
+		//    - we want to avoid app programmers having to encode knowedlege in their programs
+		//      about these depednencies - the knowledge is in the SMDX documents, so lets use it
+		for _, p := range points {
+			sfp := p.(*point).scaleFactor
+			if sfp != nil {
+				if !included[sfp.Id()] {
+					points = append(points, sfp.(spi.PointSPI))
+					included[sfp.Id()] = true
+					included_sf[sfp.Id()] = true
+				}
+			}
+		}
+
+		// We also include all the currently valid points that reference any scale
+		// factor points we are going to read since we don't want such points to
+		// unexpectedly enter an error state when they are invalidated by the
+		// read of the scale factor point. This allows twp separate reads each
+		// of which have a point that reference a shared scale factor point to
+		// be equivalent to a single read of all points or to two reads in which
+		// all points related to a single scale factor are read in the same read
+		// as the scale factor itself.
+		//
+		// One consequence of this behaviour is that any local changes (via a
+		// setter) to a point dependent on a scale factor point may be lost by a
+		// read of any point that is dependent on the same scale factor which
+		// itself means that local changes to points should be written to the
+		// physical device with Block.Write before the next Block.Read or else
+		// they may be lost under some circumstances even if the point concerned
+		// is not directly referened by the Read call.
+		//
+		// Part of the reason we do this is to maximise the consistency of data
+		// exposed by the API while minimising both the effort for the programmer
+		// to maintain the consistency and also surprising behaviour.
+		for _, p := range b.points {
+			if sfp := p.scaleFactor; sfp == nil || p.Error() != nil || !included_sf[sfp.Id()] {
+				continue
+			} else {
+				if !included[p.Id()] {
+					points = append(points, p)
+					included[p.Id()] = true
+				}
+			}
 		}
 	}
 
 	// sort so scale factors come first, then other points in offset order
-	sort.Sort(ScaleFactorFirstOrder(points))
+	sort.Sort(scaleFactorFirstOrder(points))
 	return points, nil
 }
 
