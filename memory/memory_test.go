@@ -4,6 +4,7 @@ import (
 	"github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/models/model101"
+	"github.com/crabmusket/gosunspec/models/model304"
 	"github.com/crabmusket/gosunspec/models/model502"
 	"testing"
 )
@@ -158,7 +159,15 @@ func TestComplexSlab(t *testing.T) {
 		})
 	})
 
-	expected := 210
+	{
+		actual := d.MustModel(model304.ModelID).Blocks()
+		expected := 2
+		if actual != expected {
+			t.Fatalf("wrong number of blocks. actual: %d, expected: %d", actual, expected)
+		}
+	}
+
+	expected := 213
 	if count != expected {
 		t.Fatalf("unexpected number of points. actual: %d, expected: %d", count, expected)
 	}

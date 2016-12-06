@@ -5,6 +5,7 @@ import (
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
 	"github.com/crabmusket/gosunspec/typelabel"
+	"log"
 )
 
 func NewArray() spi.ArraySPI {
@@ -22,23 +23,59 @@ func NewDevice() spi.DeviceSPI {
 // Answer a new model that can be mapped to a contiguous range of bytes. The size
 // (or bound) of that range determines the number of repeats.
 func NewContiguousModel(me *smdx.ModelElement, bound uint16, phys spi.Physical) spi.ModelSPI {
-	reps := 0
-	trunc := false
+	block0len := int(me.Blocks[0].Length) // specified length of the first block
+	excess := int(bound) - block0len      // number of words for additional blocks
+	nr := 0                               // number of repeat blocks
+	rlen := block0len                     // repeat block length
+
+	// reset the repeat block length if there is a repeat block
+
 	if len(me.Blocks) > 1 {
-		reps = (int(bound) - int(me.Blocks[0].Length)) / int(me.Blocks[1].Length)
-		if reps < 0 {
-			reps = 0
-		}
-	} else {
-		if me.Blocks[0].Length > bound {
-			// see memory.go for explanation of this condition
-			trunc = true
-		}
+		rlen = int(me.Blocks[1].Length)
 	}
-	m := NewModel(me, reps, phys)
-	if trunc {
-		if b, err := m.Block(0); err != nil {
-			b.(spi.BlockSPI).SetLength(bound)
+
+	// calculate the repeats and normalize negative numbers to zero
+
+	nr = (excess / rlen)
+	if nr < 0 {
+		nr = 0
+	}
+
+	// build a model with the specified geometry
+
+	m := NewModel(me, nr, phys)
+
+	// handle a specification special case &/or report length inconsistenes.
+
+	if len(me.Blocks) == 1 && excess < 0 {
+		// Models with fixed-blocks only are allowed to truncate the
+		// fixed block to a smaller model length because of a special
+		// case for the Common Model allowed for by the SunSpec Information Model.
+		//
+		// (Note: it isn't clear why the specification needs to cater for
+		// this special case.)
+		//
+		// In particular, implementations are allowed to return a Common
+		// Model block of length 65 instead of 66 if it suits their purposes to do so.
+		//
+		// We support truncation of other fixed-blocks only models in the same
+		// way, if it occurs (e.g. model length < block length) just in case i
+		// the standard has been interpreted by others to permit this for
+		// other models.
+		//
+		// The same support cannot be extended to models with repeating blocks
+		// because the specification doesn't provide guidance about where to
+		// apply such truncations in this case.
+		m.MustBlock(0).(spi.BlockSPI).SetLength(bound)
+	} else {
+
+		// If the model length is not strictly identical to the canaonical
+		// length of a model instance with 'nr' repeat blocks, then report
+		// the inconsistency but don't otherwise do anything. It is likely
+		// that API may not correctly map points of at least some blocks
+		// in this case.
+		if nr*rlen+block0len != int(bound) {
+			log.Printf("warning: inconsistent model and block lengths: %d, %d, %d*%d. YMMV.", bound, block0len, nr, rlen)
 		}
 	}
 	return m
