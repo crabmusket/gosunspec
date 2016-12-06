@@ -15,22 +15,22 @@ import (
 )
 
 type DataElement struct {
-	XMLName xml.Name        `xml:"SunSpecData"`
-	Version string          `xml:"v,attr"`
-	Devices []DeviceElement `xml:"d"`
+	XMLName xml.Name         `xml:"SunSpecData"`
+	Version string           `xml:"v,attr"`
+	Devices []*DeviceElement `xml:"d"`
 }
 
 type DeviceElement struct {
-	XMLName       xml.Name       `xml:"d"`
-	CorrelationId uint32         `xml:"cid,attr,omitempty"`
-	Id            string         `xml:"id,attr,omitempty"`
-	Namespace     string         `xml:"ns,attr"`
-	LoggerId      string         `xml:"lid,attr,omitempty"`
-	Manufacturer  string         `xml:"man,attr"`
-	Model         string         `xml:"mod,attr"`
-	Serial        string         `xml:"sn,attr"`
-	Timestamp     time.Time      `xml:"t,attr"`
-	Models        []ModelElement `xml:"m"`
+	XMLName       xml.Name        `xml:"d"`
+	CorrelationId uint32          `xml:"cid,attr,omitempty"`
+	Id            string          `xml:"id,attr,omitempty"`
+	Namespace     string          `xml:"ns,attr,omitempty"`
+	LoggerId      string          `xml:"lid,attr,omitempty"`
+	Manufacturer  string          `xml:"man,attr,omitempty"`
+	Model         string          `xml:"mod,attr,omitempty"`
+	Serial        string          `xml:"sn,attr,omitempty"`
+	Timestamp     *time.Time      `xml:"t,attr,omitempty"`
+	Models        []*ModelElement `xml:"m"`
 }
 
 // Note that we can use omitempty on Index because indices in SunSpec XML start
@@ -40,20 +40,20 @@ type ModelElement struct {
 	Id        sunspec.ModelId `xml:"id,attr"`
 	Namespace string          `xml:"ns,attr,omitempty"`
 	Index     uint32          `xml:"x,attr,omitempty"`
-	Points    []PointElement  `xml:"p"`
+	Points    []*PointElement `xml:"p"`
 }
 
 // Note that we can use omitempty on ScaleFactor because a scale factor of 0
 // means no scaling. Therefore an sf of 0 is meaningless anyway.
 type PointElement struct {
-	XMLName     xml.Name  `xml:"p"`
-	Description string    `xml:"d,attr,omitempty"`
-	Id          string    `xml:"id,attr"`
-	ScaleFactor int16     `xml:"sf,attr,omitempty"`
-	Timestamp   time.Time `xml:"t,attr,omitempty"`
-	Unit        string    `xml:"u,attr,omitempty"`
-	Index       uint32    `xml:"x,attr,omitempty"`
-	Value       string    `xml:",chardata"`
+	XMLName     xml.Name   `xml:"p"`
+	Description string     `xml:"d,attr,omitempty"`
+	Id          string     `xml:"id,attr"`
+	ScaleFactor int16      `xml:"sf,attr,omitempty"`
+	Timestamp   *time.Time `xml:"t,attr,omitempty"`
+	Unit        string     `xml:"u,attr,omitempty"`
+	Index       uint32     `xml:"x,attr,omitempty"`
+	Value       string     `xml:",chardata"`
 }
 
 func parseXML(reader io.Reader) (elements []DataElement, err error) {
