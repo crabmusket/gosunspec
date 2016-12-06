@@ -19,7 +19,33 @@ func NewDevice() spi.DeviceSPI {
 	}
 }
 
-// Answer a new model instance.
+// Answer a new model that can be mapped to a contiguous range of bytes. The size
+// (or bound) of that range determines the number of repeats.
+func NewContiguousModel(me *smdx.ModelElement, bound uint16, phys spi.Physical) spi.ModelSPI {
+	reps := 0
+	trunc := false
+	if len(me.Blocks) > 1 {
+		reps = (int(bound) - int(me.Blocks[0].Length)) / int(me.Blocks[1].Length)
+		if reps < 0 {
+			reps = 0
+		}
+	} else {
+		if me.Blocks[0].Length > bound {
+			// see memory.go for explanation of this condition
+			trunc = true
+		}
+	}
+	m := NewModel(me, reps, phys)
+	if trunc {
+		if b, err := m.Block(0); err != nil {
+			b.(spi.BlockSPI).SetLength(bound)
+		}
+	}
+	return m
+}
+
+// Answer a new model with nr repeats of the repating block, if any. The caller
+// determines the number of repeats.
 func NewModel(me *smdx.ModelElement, nr int, physical spi.Physical) spi.ModelSPI {
 
 	blocks := []*block{}

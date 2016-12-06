@@ -140,35 +140,7 @@ func Open(bytes []byte) (sunspec.Device, error) {
 		}
 		me := smdx.GetModel(uint16(modelId))
 		if me != nil {
-			reps := 0
-			trunc := false
-			if len(me.Blocks) > 1 {
-				reps = (int(length) - int(me.Blocks[0].Length)) / int(me.Blocks[1].Length)
-				if reps < 0 {
-					reps = 0
-				}
-			} else {
-				if me.Blocks[0].Length > length {
-					// Required specifically for the common model (model 1)
-					// since the pad byte can be omitted at the implementation's
-					// choosing.
-					//
-					// See page 8 of the Sunspec Information Model v1.9
-					// http://sunspec.org/wp-content/uploads/2015/06/SunSpec-Information-Models-12041.pdf
-					//
-					// In theory we can support truncation of this kind for other single
-					// block models, however, we can't do this for repeating block models since
-					// there is no way to correctly discover the first byte of the first repeating
-					// block if the fixed block doesn't have its specified length.
-					trunc = true
-				}
-			}
-			m := impl.NewModel(me, reps, d)
-			if trunc {
-				if b, err := m.Block(0); err != nil {
-					b.(spi.BlockSPI).SetLength(length)
-				}
-			}
+			m := impl.NewContiguousModel(me, length, d)
 
 			// set anchors on the blocks
 
