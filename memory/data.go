@@ -14,6 +14,7 @@ import (
 
 var ComplexEmptySlab []byte
 var ComplexNonZeroSlab []byte
+var TwoDeviceSlab []byte
 
 const (
 	CONST_ACC16  = sunspec.Acc16(106)
@@ -84,66 +85,73 @@ func init() {
 	ComplexNonZeroSlab = make([]byte, len(bytes), len(bytes))
 	copy(ComplexNonZeroSlab, ComplexEmptySlab)
 
-	d, _ := Open(ComplexNonZeroSlab)
-	d.Do(func(m sunspec.Model) {
-		m.Do(func(b sunspec.Block) {
-			// set scale factors first
-			b.Do(func(p sunspec.Point) {
-				switch p.Type() {
-				case typelabel.ScaleFactor:
-					p.SetScaleFactor(CONST_SF)
-				default:
-				}
-			})
+	a, _ := Open(ComplexNonZeroSlab)
+	a.Do(func(d sunspec.Device) {
+		d.Do(func(m sunspec.Model) {
+			m.Do(func(b sunspec.Block) {
+				// set scale factors first
+				b.Do(func(p sunspec.Point) {
+					switch p.Type() {
+					case typelabel.ScaleFactor:
+						p.SetScaleFactor(CONST_SF)
+					default:
+					}
+				})
 
-			// then the other types ...
-			b.Do(func(p sunspec.Point) {
-				switch p.Type() {
-				case typelabel.Count:
-					p.SetCount(CONST_COUNT)
-				case typelabel.Uint32:
-					p.SetUint32(CONST_UINT32)
-				case typelabel.Float32:
-					p.SetFloat32(CONST_FLOAT32)
-				case typelabel.Uint16:
-					p.SetUint16(CONST_UINT16)
-				case typelabel.Acc16:
-					p.SetAcc16(CONST_ACC16)
-				case typelabel.Acc32:
-					p.SetAcc32(CONST_ACC32)
-				case typelabel.Acc64:
-					p.SetAcc64(CONST_ACC64)
-				case typelabel.Int16:
-					p.SetInt16(CONST_INT16)
-				case typelabel.Int32:
-					p.SetInt32(CONST_INT32)
-				case typelabel.Int64:
-					p.SetInt64(CONST_INT64)
-				case typelabel.Bitfield16:
-					p.SetBitfield16(CONST_BIT16)
-				case typelabel.Bitfield32:
-					p.SetBitfield32(CONST_BIT32)
-				case typelabel.Enum32:
-					p.SetEnum32(CONST_ENUM32)
-				case typelabel.Enum16:
-					p.SetEnum16(CONST_ENUM16)
-				case typelabel.Pad:
-					p.SetPad(CONST_PAD)
-				case typelabel.String:
-					p.SetStringValue(CONST_STRING)
-				case typelabel.Ipaddr:
-					p.SetIpaddr(CONST_IP)
-				case typelabel.Ipv6addr:
-					p.SetIpv6addr(CONST_IPV6)
-				case typelabel.Eui48:
-					p.SetEui48(CONST_EUI48)
-				case typelabel.ScaleFactor:
-					// do nothing, to avoid resetting related points
-				default:
-					panic("unhandled type: " + p.Type())
-				}
+				// then the other types ...
+				b.Do(func(p sunspec.Point) {
+					switch p.Type() {
+					case typelabel.Count:
+						p.SetCount(CONST_COUNT)
+					case typelabel.Uint32:
+						p.SetUint32(CONST_UINT32)
+					case typelabel.Float32:
+						p.SetFloat32(CONST_FLOAT32)
+					case typelabel.Uint16:
+						p.SetUint16(CONST_UINT16)
+					case typelabel.Acc16:
+						p.SetAcc16(CONST_ACC16)
+					case typelabel.Acc32:
+						p.SetAcc32(CONST_ACC32)
+					case typelabel.Acc64:
+						p.SetAcc64(CONST_ACC64)
+					case typelabel.Int16:
+						p.SetInt16(CONST_INT16)
+					case typelabel.Int32:
+						p.SetInt32(CONST_INT32)
+					case typelabel.Int64:
+						p.SetInt64(CONST_INT64)
+					case typelabel.Bitfield16:
+						p.SetBitfield16(CONST_BIT16)
+					case typelabel.Bitfield32:
+						p.SetBitfield32(CONST_BIT32)
+					case typelabel.Enum32:
+						p.SetEnum32(CONST_ENUM32)
+					case typelabel.Enum16:
+						p.SetEnum16(CONST_ENUM16)
+					case typelabel.Pad:
+						p.SetPad(CONST_PAD)
+					case typelabel.String:
+						p.SetStringValue(CONST_STRING)
+					case typelabel.Ipaddr:
+						p.SetIpaddr(CONST_IP)
+					case typelabel.Ipv6addr:
+						p.SetIpv6addr(CONST_IPV6)
+					case typelabel.Eui48:
+						p.SetEui48(CONST_EUI48)
+					case typelabel.ScaleFactor:
+						// do nothing, to avoid resetting related points
+					default:
+						panic("unhandled type: " + p.Type())
+					}
+				})
+				b.Write()
 			})
-			b.Write()
 		})
 	})
+
+	TwoDeviceSlab = make([]byte, len(ComplexNonZeroSlab)*2-8)               // exclude one set of start and end markers
+	copy(TwoDeviceSlab, ComplexNonZeroSlab[0:len(ComplexNonZeroSlab)-4])    // don't copy the end markers
+	copy(TwoDeviceSlab[len(ComplexNonZeroSlab)-4:], ComplexNonZeroSlab[4:]) // don't copy the start markers
+
 }
