@@ -108,30 +108,7 @@ func (p *modbusPhysical) Write(block spi.BlockSPI, pointIds ...string) error {
 
 	// identify runs of adajacent points
 
-	run := []spi.PointSPI{}
-	writeOrder := [][]spi.PointSPI{run}
-
-	// is the specified point immediately adjacent to the current run
-	adjacent := func(pt spi.PointSPI) bool {
-		if len(run) == 0 {
-			return true
-		} else {
-			last := run[len(run)-1]
-			return last.Offset()+last.Length() == pt.Offset()
-		}
-	}
-
-	// extend the current run with the specified point
-	extend := func(pt spi.PointSPI) {
-		run = append(run, pt)
-		writeOrder[len(writeOrder)-1] = run
-	}
-
-	// spawn a new run with the specified point
-	spawn := func(pt spi.PointSPI) {
-		run = []spi.PointSPI{pt}
-		writeOrder = append(writeOrder, run)
-	}
+	runs := newRunBuilder()
 
 	// note: we preserve the programmer specified order
 	// (not the specification order) because the write order
@@ -142,18 +119,13 @@ func (p *modbusPhysical) Write(block spi.BlockSPI, pointIds ...string) error {
 		if p, err := block.Point(pid); err != nil {
 			return err
 		} else {
-			pt := p.(spi.PointSPI)
-			if adjacent(pt) {
-				extend(pt)
-			} else {
-				spawn(pt)
-			}
+			runs.add(p.(spi.PointSPI))
 		}
 	}
 
 	// marshal each group of adjacent points into byte slices and then
 	// immediately write each byte slice into the modbus client.
-	for _, run := range writeOrder {
+	for _, run := range runs.runs {
 		l := uint16(0)
 		for _, pt := range run {
 			l += pt.Length()
@@ -180,37 +152,14 @@ func (p *modbusPhysical) Read(block spi.BlockSPI, pointIds ...string) error {
 	if applicationOrder, err := block.Plan(pointIds...); err != nil {
 		return err
 	} else {
-		run := []spi.PointSPI{}            // the current run of adjacent points
-		readOrder := [][]spi.PointSPI{run} // all the runs of adjacent points
-		offsets := map[string]uint16{}     // offsets into read buffer, by point
-		off := uint16(0)                   // the current offset
-		toRead := map[string]bool{}        // the set of ponts to read
+		runs := newRunBuilder()
+		offsets := map[string]uint16{} // offsets into read buffer, by point
+		off := uint16(0)               // the current offset
+		toRead := map[string]bool{}    // the set of ponts to read
 
 		// initialise the toRead set
 		for _, p := range applicationOrder {
 			toRead[p.Id()] = true
-		}
-
-		// is the specified point immediately adjacent to the current run
-		adjacent := func(pt spi.PointSPI) bool {
-			if len(run) == 0 {
-				return true
-			} else {
-				last := run[len(run)-1]
-				return last.Offset()+last.Length() == pt.Offset()
-			}
-		}
-
-		// extend the current run with the specified point
-		extend := func(pt spi.PointSPI) {
-			run = append(run, pt)
-			readOrder[len(readOrder)-1] = run
-		}
-
-		// spawn a new run with the specified point
-		spawn := func(pt spi.PointSPI) {
-			run = []spi.PointSPI{pt}
-			readOrder = append(readOrder, run)
 		}
 
 		// break the list of points to be retrieved
@@ -222,12 +171,7 @@ func (p *modbusPhysical) Read(block spi.BlockSPI, pointIds ...string) error {
 				return
 			}
 
-			if adjacent(pt) {
-				extend(pt)
-			} else {
-				spawn(pt)
-			}
-
+			runs.add(pt)
 			offsets[pt.Id()] = off
 			off += pt.Length() * 2
 		})
@@ -237,7 +181,7 @@ func (p *modbusPhysical) Read(block spi.BlockSPI, pointIds ...string) error {
 
 		// read runs of points into the buffer
 		off = 0
-		for _, run := range readOrder {
+		for _, run := range runs.runs {
 			l := uint16(0)
 			for _, pt := range run {
 				l += pt.Length()
