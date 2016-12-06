@@ -1,6 +1,7 @@
 package memory
 
 import (
+	"errors"
 	"github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/models/model101"
@@ -8,6 +9,21 @@ import (
 	"github.com/crabmusket/gosunspec/models/model502"
 	"testing"
 )
+
+func justOneDevice(a sunspec.Array, err error) (sunspec.Device, error) {
+	var d sunspec.Device
+	if err != nil {
+		return nil, err
+	}
+	a.Do(func(loop sunspec.Device) {
+		if d != nil {
+			err = errors.New("too many devices")
+			return
+		}
+		d = loop
+	})
+	return d, err
+}
 
 // TestSlab tests that we can build a slab, re-open it, write to it, re-open it
 // and read the data that we wrote to it back. Also check that implicit reads of
@@ -27,10 +43,11 @@ func TestSlab(t *testing.T) {
 	// open it for writing
 
 	{
-		d, err := Open(bytes)
+		d, err := justOneDevice(Open(bytes))
 		if err != nil {
 			t.Fatal(err)
 		}
+
 		// write a scale factor and a value point
 
 		m := d.MustModel(model101.ModelID)
@@ -57,7 +74,7 @@ func TestSlab(t *testing.T) {
 	// reopen the slab for reading
 
 	{
-		d, err := Open(bytes)
+		d, err := justOneDevice(Open(bytes))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -137,7 +154,10 @@ func TestSlab(t *testing.T) {
 
 // TestComplexSlab iterate over all points and check that they have the expected values.
 func TestComplexSlab(t *testing.T) {
-	d, _ := Open(ComplexNonZeroSlab)
+	d, err := justOneDevice(Open(ComplexNonZeroSlab))
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	count := 0
 
@@ -173,9 +193,44 @@ func TestComplexSlab(t *testing.T) {
 	}
 }
 
+func TestTwoDeviceSlab(t *testing.T) {
+	a, err := Open(TwoDeviceSlab)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	count := 0
+
+	a.Do(func(d sunspec.Device) {
+		d.Do(func(m sunspec.Model) {
+			m.Do(func(b sunspec.Block) {
+				if err := b.Read(); err != nil {
+					t.Fatal(err)
+				}
+				b.Do(func(p sunspec.Point) {
+					if err := p.Error(); err != nil {
+						t.Fatalf("p has error. model=%d, point=%s\n", m.Id(), p.Id())
+					}
+
+					if v := p.Value(); v != ExpectedValues[p.Type()] {
+						t.Fatalf("unexpected value. model=%d, point=%s. actual=%#v, expected=%#v. type=%s", m.Id(), p.Id(), v, ExpectedValues[p.Type()], p.Type())
+					}
+					count++
+				})
+			})
+		})
+	})
+
+	expected := 426
+	if count != expected {
+		t.Fatalf("unexpected number of points. actual: %d, expected: %d", count, expected)
+	}
+
+}
+
 func TestMustModelFailsWithManyModels(t *testing.T) {
 
-	d, _ := Open(ComplexNonZeroSlab)
+	d, _ := justOneDevice(Open(ComplexNonZeroSlab))
 
 	err := func() (err error) {
 		defer func() {

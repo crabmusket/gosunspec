@@ -114,9 +114,10 @@ func (d *device) Write(b spi.BlockSPI, pointIds ...string) error {
 
 // Open a memory mapped Sunspec device from the specified
 // byte slice or return an error if this cannot be done.
-func Open(bytes []byte) (sunspec.Device, error) {
+func Open(bytes []byte) (sunspec.Array, error) {
 	d := &device{}
-	dev := impl.NewDevice()
+	arr := impl.NewArray()
+	var dev spi.DeviceSPI
 	if len(bytes) < len(eyeCatcher) {
 		return nil, errBadEyeCatcher
 	}
@@ -138,6 +139,10 @@ func Open(bytes []byte) (sunspec.Device, error) {
 		if modelId == 0xffff {
 			break
 		}
+		if modelId == uint16(model1.ModelID) || dev == nil {
+			dev = impl.NewDevice()
+			arr.AddDevice(dev)
+		}
 		me := smdx.GetModel(uint16(modelId))
 		if me != nil {
 			m := impl.NewContiguousModel(me, length, d)
@@ -153,7 +158,7 @@ func Open(bytes []byte) (sunspec.Device, error) {
 		}
 		offset += 4 + int(length)*2
 	}
-	return dev, nil
+	return arr, nil
 }
 
 // SlabBuilder creates a slab of memory (actually a byte slice)
@@ -162,6 +167,7 @@ func Open(bytes []byte) (sunspec.Device, error) {
 // The main purpose of this type is to enable unit testing of the API
 // without an actual Modbus device.
 type SlabBuilder interface {
+	AddDevice() SlabBuilder
 	AddModel(id sunspec.ModelId) SlabBuilder
 	AddRepeat(id sunspec.ModelId) SlabBuilder
 	Build() ([]byte, error) // generates a byte slice containing the memory mapped device.
@@ -170,13 +176,16 @@ type SlabBuilder interface {
 // Create a new device map builder.
 func NewSlabBuilder() SlabBuilder {
 	b := &builder{
-		device: impl.NewDevice(),
+		array: impl.NewArray(),
 	}
+	b.device = impl.NewDevice()
 	b.AddModel(model1.ModelID) // all maps include the common model
+	b.array.AddDevice(b.device)
 	return b
 }
 
 type builder struct {
+	array  spi.ArraySPI
 	device spi.DeviceSPI
 	err    error
 }
@@ -196,6 +205,13 @@ func (b *builder) AddModel(id sunspec.ModelId) SlabBuilder {
 	} else {
 		b.record(errNoModel)
 	}
+	return b
+}
+
+func (b *builder) AddDevice() SlabBuilder {
+	b.device = impl.NewDevice()
+	b.AddModel(model1.ModelID) // all maps include the common model
+	b.array.AddDevice(b.device)
 	return b
 }
 
@@ -226,8 +242,10 @@ func (b *builder) Build() ([]byte, error) {
 	// calculate the total size
 
 	total := uint16(4) // eyecatcher + endmarker
-	b.device.DoWithSPI(func(m spi.ModelSPI) {
-		total += 2 + m.Length() // header + model
+	b.array.DoWithSPI(func(d spi.DeviceSPI) {
+		d.DoWithSPI(func(m spi.ModelSPI) {
+			total += 2 + m.Length() // header + model
+		})
 	})
 	output := make([]byte, total*2)
 
@@ -235,10 +253,12 @@ func (b *builder) Build() ([]byte, error) {
 
 	copy(output, eyeCatcher)
 	offset := 4
-	b.device.DoWithSPI(func(m spi.ModelSPI) {
-		binary.BigEndian.PutUint16(output[offset:], uint16(m.Id()))
-		binary.BigEndian.PutUint16(output[offset+2:], m.Length())
-		offset += 4 + int(m.Length())*2
+	b.array.DoWithSPI(func(d spi.DeviceSPI) {
+		d.DoWithSPI(func(m spi.ModelSPI) {
+			binary.BigEndian.PutUint16(output[offset:], uint16(m.Id()))
+			binary.BigEndian.PutUint16(output[offset+2:], m.Length())
+			offset += 4 + int(m.Length())*2
+		})
 	})
 
 	// render the end marker
