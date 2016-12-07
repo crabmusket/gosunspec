@@ -101,6 +101,34 @@ type Device interface {
 
 	// Do iterates over all the models supported by the device
 	Do(func(m Model))
+
+	// Collects the subset of models that match the filter specified.
+	//
+	// for example:
+	//     if m, err := ExactlyOneModel(d.Collect(SameModelId(model101.ModelID))); err == nil {
+	//          // operate on the one and only model m
+	//     }
+	Collect(func(m Model) bool) []Model
+}
+
+// A filter that can be used with Device.Collect to select a subset
+// of the models that have the model id specified.
+func SameModelId(id ModelId) func(m Model) bool {
+	return func(m Model) bool {
+		return id == m.Id()
+	}
+}
+
+// ExactlyOneModel returns a model iff the slice contains
+// exactly one model or an error otherwise.
+func ExactlyOneModel(models []Model) (Model, error) {
+	if len(models) > 1 {
+		return nil, ErrTooManyModels
+	} else if len(models) < 1 {
+		return nil, ErrNoSuchModel
+	} else {
+		return models[0], nil
+	}
 }
 
 // A Model is a collection of Blocks which represents a relocatable
