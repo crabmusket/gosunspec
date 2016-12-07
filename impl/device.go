@@ -16,18 +16,11 @@ type device struct {
 }
 
 func (d *device) MustModel(id sunspec.ModelId) sunspec.Model {
-	r := []sunspec.Model{}
-	d.Do(func(m sunspec.Model) {
-		if m.Id() == id {
-			r = append(r, m)
-		}
-	})
-	if len(r) < 1 {
-		panic(sunspec.ErrNoSuchModel)
-	} else if len(r) > 1 {
-		panic(sunspec.ErrTooManyModels)
+	if m, err := sunspec.ExactlyOneModel(d.Collect(sunspec.SameModelId(id))); err == nil {
+		return m
+	} else {
+		panic(err)
 	}
-	return r[0]
 }
 
 func (d *device) Do(f func(b sunspec.Model)) {
@@ -49,4 +42,14 @@ func (d *device) AddModel(m spi.ModelSPI) error {
 		return errWrongType
 	}
 	return nil
+}
+
+func (d *device) Collect(f func(m sunspec.Model) bool) []sunspec.Model {
+	r := []sunspec.Model{}
+	d.Do(func(m sunspec.Model) {
+		if f(m) {
+			r = append(r, m)
+		}
+	})
+	return r
 }
