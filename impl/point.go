@@ -17,6 +17,7 @@ var (
 	errNotInitialized = errors.New("point not initialised")
 	errBadType        = errors.New("bad type")
 	errLength         = errors.New("length")
+	errValueTooLarge  = errors.New("value too large")
 )
 
 type point struct {
@@ -503,6 +504,178 @@ func (p *point) Unmarshal(bytes []byte) error {
 		p.SetUint64(uint64(binary.BigEndian.Uint64(bytes)))
 	default:
 		return errBadType
+	}
+	return nil
+}
+
+func (p *point) ScaleFactorPoint() spi.PointSPI {
+	if p.scaleFactor == nil {
+		return nil
+	} else {
+		return p.scaleFactor.(spi.PointSPI)
+	}
+}
+
+func (p *point) MarshalXML() string {
+	if p.err != nil {
+		panic(p.err)
+	}
+	switch p.Type() {
+	case typelabel.Bitfield16, typelabel.Pad:
+		return fmt.Sprintf("0x%04x", p.value)
+	case typelabel.Bitfield32:
+		return fmt.Sprintf("0x%08x", p.value)
+	case typelabel.Ipaddr:
+		buf := []byte{}
+		for x, b := range p.Ipaddr() {
+			if x != 0 {
+				buf = append(buf, '.')
+			}
+			buf = append(buf, fmt.Sprintf("%d", b)...)
+		}
+		return string(buf)
+	case typelabel.Ipv6addr:
+		buf := []byte{}
+		in := p.Ipv6addr()
+		for x, _ := range in {
+			if x%2 == 1 {
+				continue
+			}
+			if x != 0 {
+				buf = append(buf, ':')
+			}
+			buf = append(buf, fmt.Sprintf("%04x", uint16(in[x])<<8|uint16(in[x+1]))...)
+		}
+		return string(buf)
+	case typelabel.Eui48:
+		buf := []byte{}
+		for x, b := range p.Eui48() {
+			if x != 0 {
+				buf = append(buf, ':')
+			}
+			buf = append(buf, fmt.Sprintf("%02x", b)...)
+		}
+		return string(buf)
+	default:
+		return fmt.Sprintf("%v", p.value)
+	}
+}
+
+func (p *point) UnmarshalXML(s string) error {
+	checkzero := func(buf [8]byte, n int) error {
+		b0 := buf[0]
+		for _, b := range buf[0 : 8-n] {
+			if b != b0 {
+				return errValueTooLarge
+			}
+		}
+		return nil
+	}
+	intApply := func(n int) error {
+		if v, e := strconv.Atoi(s); e != nil {
+			return e
+		} else {
+			buf := [8]byte{}
+			binary.BigEndian.PutUint64(buf[0:], uint64(v))
+			if err := checkzero(buf, n); err != nil {
+				return err
+			} else {
+				return p.Unmarshal(buf[8-n:])
+			}
+		}
+	}
+	uintApply := func(n int) error {
+		if v, e := strconv.ParseUint(s, 10, 64); e != nil {
+			return e
+		} else {
+			buf := [8]byte{}
+			binary.BigEndian.PutUint64(buf[0:], v)
+			if err := checkzero(buf, n); err != nil {
+				return err
+			} else {
+				return p.Unmarshal(buf[8-n:])
+			}
+		}
+	}
+
+	xintApply := func(n int) error {
+		var x uint64
+		fmt.Sscanf(s, "0x%x", &x)
+		buf := [8]byte{}
+		binary.BigEndian.PutUint64(buf[0:], x)
+		if err := checkzero(buf, n); err != nil {
+			return err
+		} else {
+			return p.Unmarshal(buf[8-n:])
+		}
+	}
+
+	switch p.Type() {
+	case typelabel.Bitfield16, typelabel.Pad:
+		xintApply(2)
+	case typelabel.Bitfield32:
+		xintApply(4)
+	case typelabel.Ipaddr:
+		var buf sunspec.Ipaddr
+		if _, err := fmt.Sscanf(s, "%d.%d.%d.%d", &buf[0], &buf[1], &buf[2], &buf[3]); err != nil {
+			return err
+		} else {
+			p.SetIpaddr(buf)
+		}
+	case typelabel.Ipv6addr:
+		var ubuf [8]uint16
+		if _, err := fmt.Sscanf(s, "%04x:%04x:%04x:%04x:%04x:%04x:%04x:%04x", &ubuf[0], &ubuf[1], &ubuf[2], &ubuf[3], &ubuf[4], &ubuf[5], &ubuf[6], &ubuf[7]); err != nil {
+			return err
+		} else {
+			var bbuf [16]byte
+			for i, u := range ubuf {
+				binary.BigEndian.PutUint16(bbuf[i*2:i*2+2], u)
+			}
+			return p.Unmarshal(bbuf[0:])
+		}
+	case typelabel.Eui48:
+		var buf sunspec.Eui48
+		if _, err := fmt.Sscanf(s, "%02x:%02x:%02x:%02x:%02x:%02x", &buf[0], &buf[1], &buf[2], &buf[3], &buf[4], &buf[5]); err != nil {
+			return err
+		} else {
+			p.SetEui48(buf)
+		}
+	case typelabel.String:
+		p.SetStringValue(s)
+	case typelabel.Int16:
+		return intApply(2)
+	case typelabel.ScaleFactor:
+		return intApply(2)
+	case typelabel.Int32:
+		return intApply(4)
+	case typelabel.Int64:
+		return intApply(8)
+	case typelabel.Enum16:
+		return uintApply(2)
+	case typelabel.Count:
+		return uintApply(2)
+	case typelabel.Enum32:
+		return uintApply(4)
+	case typelabel.Acc16:
+		return uintApply(2)
+	case typelabel.Acc32:
+		return uintApply(4)
+	case typelabel.Acc64:
+		return uintApply(8)
+	case typelabel.Uint16:
+		return uintApply(2)
+	case typelabel.Uint32:
+		return uintApply(4)
+	case typelabel.Uint64:
+		return uintApply(8)
+	case typelabel.Float32:
+		if f, err := strconv.ParseFloat(s, 32); err != nil {
+			return err
+		} else {
+			p.SetFloat32(float32(f))
+		}
+	default:
+		panic(errBadType)
 	}
 	return nil
 }
