@@ -56,8 +56,9 @@ type PointElement struct {
 	Value       string     `xml:",chardata"`
 }
 
-func parseXML(reader io.Reader) (elements []DataElement, err error) {
+func parseXML(reader io.Reader) (elements *DataElement, err error) {
 	decoder := xml.NewDecoder(reader)
-	err = decoder.Decode(&elements)
+	elements = &DataElement{}
+	err = decoder.Decode(elements)
 	return
 }
