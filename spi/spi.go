@@ -51,9 +51,12 @@ type BlockSPI interface {
 
 	// Plan takes a set of pointIds to be read and returns a slice of points to
 	// be read in the order they should be applied to the model
+	//
 	// The algorithm ensures that:
-	//    - if no points are specified, all are retrieved
-	//    - if a point is read, then its scale factor (if any) is also read.
+	//    - if no points are specified, then all are read
+	//    - if a point is read, then the related scale factor point (if any) is also read.
+	//    - if a scale factor point is read, then any other point dependent on the scale factor
+	//      is also read.
 	//    - scale factors are applied to the model before any related points
 	Plan(pointIds ...string) ([]PointSPI, error)
 
