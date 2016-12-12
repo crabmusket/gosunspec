@@ -10,10 +10,6 @@ import (
 	"strconv"
 )
 
-type modelAnchor struct {
-	model *ModelElement
-}
-
 type blockAnchor struct {
 	device   *DeviceElement
 	model    *ModelElement
@@ -186,34 +182,33 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 	dx := &DeviceElement{}
 	xp := &xmlPhysical{}
 
-	modelAnchors := map[sunspec.ModelId]*modelAnchor{}
+	modelElements := map[sunspec.ModelId]*ModelElement{}
 
-	newModelAnchor := func(id sunspec.ModelId) *modelAnchor {
+	newModelElement := func(id sunspec.ModelId) *ModelElement {
 
 		// we only use labels when there is ambiguity
 
-		var ma *modelAnchor
+		var mx *ModelElement
 		var ok bool
-		if ma, ok = modelAnchors[id]; ok {
-			if ma.model.Index == 0 {
-				ma.model.Index = 1
+		if mx, ok = modelElements[id]; ok {
+			if mx.Index == 0 {
+				mx.Index = 1
 			}
-			ma = &modelAnchor{model: &ModelElement{Id: id, Index: ma.model.Index + 1}}
+			mx = &ModelElement{Id: id, Index: mx.Index + 1}
 		} else {
-			ma = &modelAnchor{model: &ModelElement{Id: id, Index: 0}}
+			mx = &ModelElement{Id: id, Index: 0}
 		}
-		modelAnchors[id] = ma
-		return ma
+		modelElements[id] = mx
+		return mx
 	}
 
 	d.Do(func(m sunspec.Model) {
 		smdx := smdx.GetModel(uint16(m.Id()))
 
 		mc := impl.NewModel(smdx, m.Blocks(), xp)
-		ma := newModelAnchor(m.Id())
-		mc.SetAnchor(ma)
+		mx := newModelElement(m.Id())
 
-		dx.Models = append(dx.Models, ma.model)
+		dx.Models = append(dx.Models, mx)
 
 		repeatOnly := m.Blocks() > 1 && len(smdx.Blocks) == 1
 
@@ -227,7 +222,7 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 			}
 			anchor := &blockAnchor{
 				device: dx,
-				model:  ma.model,
+				model:  mx,
 				index:  x,
 			}
 			bc.SetAnchor(anchor)
