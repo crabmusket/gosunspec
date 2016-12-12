@@ -1,7 +1,7 @@
-// spi is a package used by physical implementations. it provides
-// additional interfaces that allow the physical implementations
-// to efficiently map the abstract application entities onto a physical
-// substrate such as a Modbus link or an XML document.
+// spi is a package used by physical implementations or drivers. It provides
+// additional interfaces that allow the drivers to efficiently map the
+// abstract API entities onto the underlying physical substrate such
+// as a byte slice, a  Modbus link or an XML document.
 package spi
 
 import (
