@@ -144,7 +144,7 @@ func newBlock(blockSmdx *smdx.BlockElement, physical spi.Physical) *block {
 }
 
 // Answer a new ppint.
-func newPoint(smdx *smdx.PointElement, scaleFactor sunspec.Point, b spi.BlockSPI) *point {
+func newPoint(smdx *smdx.PointElement, scaleFactor sunspec.Point, b *block) *point {
 	return &point{
 		smdx:        smdx,
 		scaleFactor: scaleFactor,

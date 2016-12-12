@@ -159,7 +159,7 @@ func (b *block) Plan(pointIds ...string) ([]spi.PointSPI, error) {
 
 // Invalidate checks if the specified point is a scale factor. If it is, then
 // any other point that specifies this point as its scale factor is invalidated.
-func (b *block) Invalidate(p spi.PointSPI) {
+func (b *block) invalidate(p spi.PointSPI) {
 	for _, d := range b.points {
 		if sfp := d.scaleFactor; sfp != nil {
 			if sfp.Id() == p.Id() {

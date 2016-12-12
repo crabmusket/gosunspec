@@ -59,9 +59,6 @@ type BlockSPI interface {
 	//      is also read.
 	//    - scale factors are applied to the model before any related points
 	Plan(pointIds ...string) ([]PointSPI, error)
-
-	// Invalidate any related point that depends on the specified point.
-	Invalidate(p PointSPI)
 }
 
 // ModelSPI provides additional interfaces that the physical implementation
