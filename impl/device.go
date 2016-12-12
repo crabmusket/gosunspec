@@ -29,12 +29,6 @@ func (d *device) Do(f func(b sunspec.Model)) {
 	}
 }
 
-func (d *device) DoWithSPI(f func(b spi.ModelSPI)) {
-	for _, b := range d.models {
-		f(b)
-	}
-}
-
 func (d *device) AddModel(m spi.ModelSPI) error {
 	if r, ok := m.(*model); ok {
 		d.models = append(d.models, r)

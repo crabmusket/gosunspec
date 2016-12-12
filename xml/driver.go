@@ -116,16 +116,16 @@ func OpenDevice(dx *DeviceElement) (sunspec.Device, error) {
 				}
 			}
 			bi := 0
-			m.DoWithSPI(func(b spi.BlockSPI) {
+			m.Do(spi.WithBlockSPI(func(b spi.BlockSPI) {
 				detached := mx.Id == model1.ModelID && !foundModel1
 				b.SetAnchor(&blockAnchor{device: dx, model: mx, index: bi, detached: detached})
-				b.DoWithSPI(func(p spi.PointSPI) {
+				b.Do(spi.WithPointSPI(func(p spi.PointSPI) {
 					if p.Anchor() == nil {
 						p.SetAnchor(&pointAnchor{position: -1})
 					}
-				})
+				}))
 				bi++
-			})
+			}))
 		}
 	}
 
@@ -320,7 +320,7 @@ func (phys *xmlPhysical) Write(b spi.BlockSPI, pointIds ...string) error {
 	}
 
 	ba := b.Anchor().(*blockAnchor)
-	b.DoWithSPI(func(p spi.PointSPI) {
+	b.Do(spi.WithPointSPI(func(p spi.PointSPI) {
 		if !write[p.Id()] {
 			return
 		}
@@ -351,7 +351,7 @@ func (phys *xmlPhysical) Write(b spi.BlockSPI, pointIds ...string) error {
 			// we probably need a configuration option to say whether this is necessary
 			// or not
 		}
-	})
+	}))
 
 	// A special case required by a partial redundancy of the XML model.
 	//

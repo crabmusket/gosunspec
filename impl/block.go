@@ -46,12 +46,6 @@ func (b *block) Write(pointIds ...string) error {
 	return b.physical.Write(b, pointIds...)
 }
 
-func (b *block) DoWithSPI(f func(p spi.PointSPI)) {
-	for _, pe := range b.smdx.Points {
-		f(b.points[pe.Id])
-	}
-}
-
 func (b *block) Length() uint16 {
 	if b.length > 0 {
 		return b.length

@@ -78,10 +78,10 @@ func Open(client modbus.Client) (sunspec.Array, error) {
 				// set anchors on the blocks
 
 				blockOffset := offset + 2
-				m.DoWithSPI(func(b spi.BlockSPI) {
+				m.Do(spi.WithBlockSPI(func(b spi.BlockSPI) {
 					b.SetAnchor(uint16(base + blockOffset))
 					blockOffset += b.Length()
-				})
+				}))
 				dev.AddModel(m)
 			} else {
 				log.Printf("unrecognised model identifier skipped @ offset: %d, %d\n", modelId, offset)
@@ -166,7 +166,7 @@ func (p *modbusPhysical) Read(block spi.BlockSPI, pointIds ...string) error {
 		// into runs of strictly adjacent points and
 		// record for each point the offset into a buffer
 		// in which the marshaled point value will be read
-		block.DoWithSPI(func(pt spi.PointSPI) {
+		block.Do(spi.WithPointSPI(func(pt spi.PointSPI) {
 			if !toRead[pt.Id()] {
 				return
 			}
@@ -174,7 +174,7 @@ func (p *modbusPhysical) Read(block spi.BlockSPI, pointIds ...string) error {
 			runs.add(pt)
 			offsets[pt.Id()] = off
 			off += pt.Length() * 2
-		})
+		}))
 
 		// allocate a buffer that can contain all the read points
 		buffer := make([]byte, off, off)

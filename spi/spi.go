@@ -48,7 +48,6 @@ type BlockSPI interface {
 	sunspec.Block
 	Length() uint16
 	SetLength(l uint16) // in cases where actual length differs from the spec length
-	DoWithSPI(f func(p PointSPI))
 
 	// Plan takes a set of pointIds to be read and returns a slice of points to
 	// be read in the order they should be applied to the model
@@ -68,7 +67,6 @@ type ModelSPI interface {
 	Anchored
 	sunspec.Model
 	Length() uint16
-	DoWithSPI(f func(b BlockSPI))
 	AddRepeat() error // Add one repeat to the model
 }
 
@@ -77,7 +75,6 @@ type ModelSPI interface {
 type DeviceSPI interface {
 	Anchored
 	sunspec.Device
-	DoWithSPI(f func(b ModelSPI))
 	AddModel(m ModelSPI) error // Add a new model to the device
 }
 
@@ -86,7 +83,6 @@ type DeviceSPI interface {
 type ArraySPI interface {
 	Anchored
 	sunspec.Array
-	DoWithSPI(f func(b DeviceSPI))
 	AddDevice(m DeviceSPI) error // Add a new model to the device
 }
 
@@ -95,4 +91,44 @@ type ArraySPI interface {
 type Physical interface {
 	Write(block BlockSPI, pointIds ...string) error
 	Read(block BlockSPI, pointIds ...string) error
+}
+
+// WithDeviceSPI answers a function that will apply the specified function, f, to the function's
+// argument if, and only if, the argument is a Device which also implements DeviceSPI.
+func WithDeviceSPI(f func(DeviceSPI)) func(sunspec.Device) {
+	return func(d sunspec.Device) {
+		if ds, ok := d.(DeviceSPI); ok {
+			f(ds)
+		}
+	}
+}
+
+// WithModelSPI answers a function that will apply the specified function, f, to the function's
+// argument if, and only if, the argument is a Model which also implements ModelSPI.
+func WithModelSPI(f func(ModelSPI)) func(sunspec.Model) {
+	return func(m sunspec.Model) {
+		if ms, ok := m.(ModelSPI); ok {
+			f(ms)
+		}
+	}
+}
+
+// WithBlockSPI answers a function that will apply the specified function, f, to the function's
+// argument if, and only if, the argument is a Block which also implements BlockSPI.
+func WithBlockSPI(f func(BlockSPI)) func(sunspec.Block) {
+	return func(b sunspec.Block) {
+		if bs, ok := b.(BlockSPI); ok {
+			f(bs)
+		}
+	}
+}
+
+// WithPointSPI answers a function that will apply the specified function, f, to the function's
+// argument if, and only if, the argument is a Point which also implements PointSPI.
+func WithPointSPI(f func(PointSPI)) func(sunspec.Point) {
+	return func(p sunspec.Point) {
+		if ps, ok := p.(PointSPI); ok {
+			f(ps)
+		}
+	}
 }

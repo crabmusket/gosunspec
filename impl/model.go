@@ -43,12 +43,6 @@ func (m *model) Do(f func(b sunspec.Block)) {
 	}
 }
 
-func (m *model) DoWithSPI(f func(b spi.BlockSPI)) {
-	for _, b := range m.blocks {
-		f(b)
-	}
-}
-
 func (m *model) AddRepeat() error {
 	repeat := &m.smdx.Blocks[len(m.smdx.Blocks)-1]
 	m.blocks = append(m.blocks, newBlock(repeat, m.physical))
