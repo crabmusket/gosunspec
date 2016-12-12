@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/impl"
+	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
 	"strconv"
@@ -14,8 +15,10 @@ type modelAnchor struct {
 }
 
 type blockAnchor struct {
-	model *ModelElement
-	index int
+	device   *DeviceElement
+	model    *ModelElement
+	index    int
+	detached bool
 }
 
 type pointAnchor struct {
@@ -47,10 +50,49 @@ func Open(e *DataElement) (sunspec.Array, error) {
 // DeviceElement.
 func OpenDevice(dx *DeviceElement) (sunspec.Device, error) {
 	d := impl.NewDevice()
+	d.SetAnchor(dx)
 	xp := &xmlPhysical{}
+
+	//
+	// Special case for optional model 1 element in XML representation
+	//
+	// The SunSpec Model Data Exchange specification allows the model 1
+	// element to be omitted from device documents in certain circumstances.
+	//
+	// In these cases several of the common model elements might be
+	// exchanged instead as attributes of the device element. To allow
+	// a generic API to bs used to read and write these points, it
+	// is simplest to create a detached ModelElement for this case.
+	//
+	// We don't link the model element to the parent device element unless
+	// an attempt is made to write a point that is not duplicated by
+	// a device element attribute.
+	//
+	// The intent is to provided a consistent API across XML and non-XML
+	// drivers and to prevent model 1 elements magically appearing in the
+	// XML device element merely because an XML device element has been
+	// opened but also to ensure that if a write is made into the model 1
+	// element, that write is preserved and visible to the consumers
+	// of the XML model.
+	//
+	foundModel1 := false
+	for _, mx := range dx.Models {
+		foundModel1 = (sunspec.ModelId(mx.Id) == model1.ModelID)
+		if foundModel1 {
+			break
+		}
+	}
+
+	models := dx.Models
+	if !foundModel1 {
+		models = make([]*ModelElement, len(dx.Models)+1)
+		models[0] = &ModelElement{Id: model1.ModelID}
+		copy(models[1:], dx.Models)
+	}
+
 	// iterate through the model elements, creating one new model for each
 	// then create a block for each index and add points for each point element
-	for _, mx := range dx.Models {
+	for _, mx := range models {
 		smdx := smdx.GetModel(uint16(mx.Id))
 		if smdx == nil {
 			continue
@@ -79,7 +121,8 @@ func OpenDevice(dx *DeviceElement) (sunspec.Device, error) {
 			}
 			bi := 0
 			m.DoWithSPI(func(b spi.BlockSPI) {
-				b.SetAnchor(&blockAnchor{model: mx, index: bi})
+				detached := mx.Id == model1.ModelID && !foundModel1
+				b.SetAnchor(&blockAnchor{device: dx, model: mx, index: bi, detached: detached})
 				b.DoWithSPI(func(p spi.PointSPI) {
 					if p.Anchor() == nil {
 						p.SetAnchor(&pointAnchor{position: -1})
@@ -89,7 +132,26 @@ func OpenDevice(dx *DeviceElement) (sunspec.Device, error) {
 			})
 		}
 	}
+
+	if !foundModel1 {
+		syncDeviceElementToModel1(dx, d)
+	}
+
 	return d, nil
+}
+
+//
+// For a fake model1 element, initialise it to be consistent with the device element
+//
+func syncDeviceElementToModel1(dx *DeviceElement, d sunspec.Device) {
+	b := d.MustModel(model1.ModelID).MustBlock(0)
+	b.MustPoint(model1.SN).SetStringValue(dx.Serial)
+	b.MustPoint(model1.Md).SetStringValue(dx.Model)
+	b.MustPoint(model1.Mn).SetStringValue(dx.Manufacturer)
+	if err := b.Write(model1.SN, model1.Md, model1.Mn); err != nil {
+		// we are not expecting this
+		panic(err)
+	}
 }
 
 // CopyArray copies an existing SunSpec Array into a new SunSpec Array and an
@@ -164,8 +226,9 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 				x = x + 1
 			}
 			anchor := &blockAnchor{
-				model: ma.model,
-				index: x,
+				device: dx,
+				model:  ma.model,
+				index:  x,
 			}
 			bc.SetAnchor(anchor)
 			points, _ := bc.Plan()
@@ -295,9 +358,57 @@ func (phys *xmlPhysical) Write(b spi.BlockSPI, pointIds ...string) error {
 		}
 	})
 
-	// We need a special case here (or, at least, somewhere) to fixup the device element with
-	// copies of attributes from the model 1 object and a similar case to derive the model 1
-	// object from the device object if there is no model 1 object.
+	// A special case required by a partial redundancy of the XML model.
+	//
+	// Writes into the model 1 points that also appear in the device element
+	// as attributes are mirrored into the device element attributes.
+	//
+	// In all other cases, we need to link a detached model element to the
+	// parent so that these updates are visible to consumers of the XML model.
+	//
+	// See also: OpenDevice
+
+	if ba.model.Id == model1.ModelID {
+
+		count := 0
+		for pid, _ := range write {
+			switch pid {
+			case model1.SN, model1.Md, model1.Mn:
+				// synchronize device element with writes into model
+				p := b.MustPoint(pid)
+				var v string
+				if p.Error() == nil {
+					v = p.StringValue()
+				} else {
+					v = ""
+				}
+				switch pid {
+				case model1.SN:
+					ba.device.Serial = v
+				case model1.Md:
+					ba.device.Model = v
+				case model1.Mn:
+					ba.device.Manufacturer = v
+				}
+			default:
+				// count writes into other points
+				count++
+			}
+		}
+
+		// If there is a write to a point that isn't encoded in the device
+		// element and the model 1 element is currently detached from the device
+		// (because it wasn't present on open) then fix that by attaching the
+		// model element to the parent device now.
+
+		if count > 0 && ba.detached {
+			models := make([]*ModelElement, len(ba.device.Models)+1)
+			models[0] = ba.model
+			copy(models[1:], ba.device.Models)
+			ba.detached = false
+			ba.device.Models = models
+		}
+	}
 
 	return nil
 }
