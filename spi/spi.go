@@ -1,24 +1,30 @@
 // spi is a package used by physical implementations or drivers. It provides
-// additional interfaces that allow the drivers to efficiently map the
-// abstract API entities onto the underlying physical substrate such
-// as a byte slice, a  Modbus link or an XML document.
+// additional interfaces to each implementation object that allow
+// drivers to efficiently map the abstract API entities onto the underlying
+// physical substrate such as a byte slice, a  Modbus link or an XML document.
 package spi
 
 import (
 	"github.com/crabmusket/gosunspec"
 )
 
-// An anchor is a physical-implementation specific anchor to
-// information that pertains to the physical implementation
-// of a data element. So, for example, physical implementations
-// the anchor might be the offset of a block or a model from the
-// start of the physical address space. In an XML implementation
-// the anchor might be a reference to correponding element
-// of the XML representation.
+// Driver is the interface implemented by components that can map
+// the abstract API implementations onto a physical substrate. Each
+// Driver implementation knows about a different kind of physical
+// substrate, for example: byte slices, Modbus links or XML documents.
+type Driver interface {
+	Write(block BlockSPI, pointIds ...string) error
+	Read(block BlockSPI, pointIds ...string) error
+}
+
+// An anchor is a driver specific anchor to information that pertains to the
+// physical implementation of an API object. So, for example, in an address
+// space based driver the anchor is the offset of a block or a model from
+// the start of the physical address space. In an XML implementation the anchor
+// is a reference to correponding element of the XML representation.
 //
 // The purpose it to allow navigation back to the physical
 // implementation from the "canonical" representation.
-
 type Anchor interface{}
 
 type Anchored interface {
@@ -84,13 +90,6 @@ type ArraySPI interface {
 	Anchored
 	sunspec.Array
 	AddDevice(m DeviceSPI) error // Add a new model to the device
-}
-
-// Physical can read and write from the implementation model
-// into the
-type Physical interface {
-	Write(block BlockSPI, pointIds ...string) error
-	Read(block BlockSPI, pointIds ...string) error
 }
 
 // WithDeviceSPI answers a function that will apply the specified function, f, to the function's

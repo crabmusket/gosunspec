@@ -10,10 +10,10 @@ import (
 
 type block struct {
 	anchored
-	physical spi.Physical
-	smdx     *smdx.BlockElement
-	points   map[string]*point
-	length   uint16
+	driver spi.Driver
+	smdx   *smdx.BlockElement
+	points map[string]*point
+	length uint16
 }
 
 func (b *block) Point(id string) (sunspec.Point, error) {
@@ -39,11 +39,11 @@ func (b *block) Do(f func(p sunspec.Point)) {
 }
 
 func (b *block) Read(pointIds ...string) error {
-	return b.physical.Read(b, pointIds...)
+	return b.driver.Read(b, pointIds...)
 }
 
 func (b *block) Write(pointIds ...string) error {
-	return b.physical.Write(b, pointIds...)
+	return b.driver.Write(b, pointIds...)
 }
 
 func (b *block) Length() uint16 {
