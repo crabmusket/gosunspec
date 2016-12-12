@@ -36,6 +36,9 @@ type PointSPI interface {
 	Unmarshal([]byte) error
 	Marshal([]byte) error
 	SetError(err error) // SetError clears the value and sets the error to the specified error
+	ScaleFactorPoint() PointSPI
+	MarshalXML() string
+	UnmarshalXML(s string) error
 }
 
 // BlockSPI provides additional interfaces that the physical implementation
