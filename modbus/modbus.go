@@ -45,7 +45,7 @@ func Open(client modbus.Client) (sunspec.Array, error) {
 		return nil, ErrNotSunspecDevice
 	}
 
-	phys := &modbusPhysical{client: client}
+	phys := &modbusDriver{client: client}
 	array := impl.NewArray()
 	dev := impl.NewDevice()
 
@@ -78,10 +78,10 @@ func Open(client modbus.Client) (sunspec.Array, error) {
 				// set anchors on the blocks
 
 				blockOffset := offset + 2
-				m.DoWithSPI(func(b spi.BlockSPI) {
+				m.Do(spi.WithBlockSPI(func(b spi.BlockSPI) {
 					b.SetAnchor(uint16(base + blockOffset))
 					blockOffset += b.Length()
-				})
+				}))
 				dev.AddModel(m)
 			} else {
 				log.Printf("unrecognised model identifier skipped @ offset: %d, %d\n", modelId, offset)
@@ -92,13 +92,13 @@ func Open(client modbus.Client) (sunspec.Array, error) {
 	return array, nil
 }
 
-type modbusPhysical struct {
+type modbusDriver struct {
 	client modbus.Client
 }
 
 // Write out the points in exactly the order specified, coalescing
 // adjacent points if they are adjacent in the specified order.
-func (p *modbusPhysical) Write(block spi.BlockSPI, pointIds ...string) error {
+func (p *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
 
 	if len(pointIds) == 0 {
 		block.Do(func(p sunspec.Point) {
@@ -148,7 +148,7 @@ func (p *modbusPhysical) Write(block spi.BlockSPI, pointIds ...string) error {
 // Read extends the specified set of points with Block.Plan() then determines
 // runs of points that can be read together. The points are read and then
 // unmarshaled into the model in the order determined by slice returned by Block.Plan()
-func (p *modbusPhysical) Read(block spi.BlockSPI, pointIds ...string) error {
+func (p *modbusDriver) Read(block spi.BlockSPI, pointIds ...string) error {
 	if applicationOrder, err := block.Plan(pointIds...); err != nil {
 		return err
 	} else {
@@ -166,7 +166,7 @@ func (p *modbusPhysical) Read(block spi.BlockSPI, pointIds ...string) error {
 		// into runs of strictly adjacent points and
 		// record for each point the offset into a buffer
 		// in which the marshaled point value will be read
-		block.DoWithSPI(func(pt spi.PointSPI) {
+		block.Do(spi.WithPointSPI(func(pt spi.PointSPI) {
 			if !toRead[pt.Id()] {
 				return
 			}
@@ -174,7 +174,7 @@ func (p *modbusPhysical) Read(block spi.BlockSPI, pointIds ...string) error {
 			runs.add(pt)
 			offsets[pt.Id()] = off
 			off += pt.Length() * 2
-		})
+		}))
 
 		// allocate a buffer that can contain all the read points
 		buffer := make([]byte, off, off)

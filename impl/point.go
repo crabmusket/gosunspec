@@ -24,7 +24,7 @@ type point struct {
 	anchored
 	smdx        *smdx.PointElement
 	scaleFactor sunspec.Point
-	block       spi.BlockSPI
+	block       *block
 	err         error
 	value       interface{}
 }
@@ -154,7 +154,7 @@ func (p *point) SetValue(v interface{}) (result error) {
 		p.value = nil
 		p.err = errNotInitialized
 		if p.Type() == typelabel.ScaleFactor {
-			p.block.Invalidate(p)
+			p.block.invalidate(p)
 		}
 		return nil
 	} else {
@@ -364,7 +364,7 @@ func (p *point) SetStringValue(v string) {
 
 func (p *point) SetScaleFactor(v sunspec.ScaleFactor) {
 	p.checktype(typelabel.ScaleFactor, v)
-	p.block.Invalidate(p)
+	p.block.invalidate(p)
 }
 
 func (p *point) SetUint16(v uint16) {

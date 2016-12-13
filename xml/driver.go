@@ -21,7 +21,7 @@ type pointAnchor struct {
 	position int // position of the point in the model, -1 if it is not present
 }
 
-type xmlPhysical struct {
+type xmlDriver struct {
 }
 
 var ErrNoSuchElement = errors.New("no such element")
@@ -47,7 +47,7 @@ func Open(e *DataElement) (sunspec.Array, error) {
 func OpenDevice(dx *DeviceElement) (sunspec.Device, error) {
 	d := impl.NewDevice()
 	d.SetAnchor(dx)
-	xp := &xmlPhysical{}
+	xp := &xmlDriver{}
 
 	//
 	// Special case for optional model 1 element in XML representation
@@ -116,16 +116,16 @@ func OpenDevice(dx *DeviceElement) (sunspec.Device, error) {
 				}
 			}
 			bi := 0
-			m.DoWithSPI(func(b spi.BlockSPI) {
+			m.Do(spi.WithBlockSPI(func(b spi.BlockSPI) {
 				detached := mx.Id == model1.ModelID && !foundModel1
 				b.SetAnchor(&blockAnchor{device: dx, model: mx, index: bi, detached: detached})
-				b.DoWithSPI(func(p spi.PointSPI) {
+				b.Do(spi.WithPointSPI(func(p spi.PointSPI) {
 					if p.Anchor() == nil {
 						p.SetAnchor(&pointAnchor{position: -1})
 					}
-				})
+				}))
 				bi++
-			})
+			}))
 		}
 	}
 
@@ -180,7 +180,7 @@ func CopyArray(a sunspec.Array) (sunspec.Array, *DataElement) {
 func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 	dc := impl.NewDevice()
 	dx := &DeviceElement{}
-	xp := &xmlPhysical{}
+	xp := &xmlDriver{}
 
 	modelElements := map[sunspec.ModelId]*ModelElement{}
 
@@ -247,7 +247,7 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 	return dc, dx
 }
 
-func (phys *xmlPhysical) Read(b spi.BlockSPI, pointIds ...string) error {
+func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 	errCount := 0
 	ba := b.Anchor().(*blockAnchor)
 	if points, err := b.Plan(pointIds...); err != nil {
@@ -306,7 +306,7 @@ func (phys *xmlPhysical) Read(b spi.BlockSPI, pointIds ...string) error {
 	}
 }
 
-func (phys *xmlPhysical) Write(b spi.BlockSPI, pointIds ...string) error {
+func (phys *xmlDriver) Write(b spi.BlockSPI, pointIds ...string) error {
 
 	write := map[string]bool{}
 	if len(pointIds) == 0 {
@@ -320,7 +320,7 @@ func (phys *xmlPhysical) Write(b spi.BlockSPI, pointIds ...string) error {
 	}
 
 	ba := b.Anchor().(*blockAnchor)
-	b.DoWithSPI(func(p spi.PointSPI) {
+	b.Do(spi.WithPointSPI(func(p spi.PointSPI) {
 		if !write[p.Id()] {
 			return
 		}
@@ -351,7 +351,7 @@ func (phys *xmlPhysical) Write(b spi.BlockSPI, pointIds ...string) error {
 			// we probably need a configuration option to say whether this is necessary
 			// or not
 		}
-	})
+	}))
 
 	// A special case required by a partial redundancy of the XML model.
 	//

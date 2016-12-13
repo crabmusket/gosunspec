@@ -22,7 +22,7 @@ func NewDevice() spi.DeviceSPI {
 
 // Answer a new model that can be mapped to a contiguous range of bytes. The size
 // (or bound) of that range determines the number of repeats.
-func NewContiguousModel(me *smdx.ModelElement, bound uint16, phys spi.Physical) spi.ModelSPI {
+func NewContiguousModel(me *smdx.ModelElement, bound uint16, phys spi.Driver) spi.ModelSPI {
 	block0len := int(me.Blocks[0].Length) // specified length of the first block
 	excess := int(bound) - block0len      // number of words for additional blocks
 	nr := 0                               // number of repeat blocks
@@ -83,20 +83,20 @@ func NewContiguousModel(me *smdx.ModelElement, bound uint16, phys spi.Physical) 
 
 // Answer a new model with nr repeats of the repating block, if any. The caller
 // determines the number of repeats.
-func NewModel(me *smdx.ModelElement, nr int, physical spi.Physical) spi.ModelSPI {
+func NewModel(me *smdx.ModelElement, nr int, driver spi.Driver) spi.ModelSPI {
 
 	blocks := []*block{}
 	for x, _ := range me.Blocks {
-		blocks = append(blocks, newBlock(&me.Blocks[x], physical))
+		blocks = append(blocks, newBlock(&me.Blocks[x], driver))
 		if nr == 0 {
 			break // don't put in the first repeat
 		}
 	}
 
 	m := &model{
-		smdx:     me,
-		physical: physical,
-		blocks:   blocks,
+		smdx:   me,
+		driver: driver,
+		blocks: blocks,
 	}
 
 	for nr > 1 {
@@ -108,11 +108,11 @@ func NewModel(me *smdx.ModelElement, nr int, physical spi.Physical) spi.ModelSPI
 }
 
 // Answer a new block.
-func newBlock(blockSmdx *smdx.BlockElement, physical spi.Physical) *block {
+func newBlock(blockSmdx *smdx.BlockElement, driver spi.Driver) *block {
 	b := &block{
-		smdx:     blockSmdx,
-		points:   map[string]*point{},
-		physical: physical,
+		smdx:   blockSmdx,
+		points: map[string]*point{},
+		driver: driver,
 	}
 
 	p := []*smdx.PointElement{}
@@ -144,7 +144,7 @@ func newBlock(blockSmdx *smdx.BlockElement, physical spi.Physical) *block {
 }
 
 // Answer a new ppint.
-func newPoint(smdx *smdx.PointElement, scaleFactor sunspec.Point, b spi.BlockSPI) *point {
+func newPoint(smdx *smdx.PointElement, scaleFactor sunspec.Point, b *block) *point {
 	return &point{
 		smdx:        smdx,
 		scaleFactor: scaleFactor,

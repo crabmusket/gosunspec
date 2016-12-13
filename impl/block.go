@@ -10,10 +10,10 @@ import (
 
 type block struct {
 	anchored
-	physical spi.Physical
-	smdx     *smdx.BlockElement
-	points   map[string]*point
-	length   uint16
+	driver spi.Driver
+	smdx   *smdx.BlockElement
+	points map[string]*point
+	length uint16
 }
 
 func (b *block) Point(id string) (sunspec.Point, error) {
@@ -39,17 +39,11 @@ func (b *block) Do(f func(p sunspec.Point)) {
 }
 
 func (b *block) Read(pointIds ...string) error {
-	return b.physical.Read(b, pointIds...)
+	return b.driver.Read(b, pointIds...)
 }
 
 func (b *block) Write(pointIds ...string) error {
-	return b.physical.Write(b, pointIds...)
-}
-
-func (b *block) DoWithSPI(f func(p spi.PointSPI)) {
-	for _, pe := range b.smdx.Points {
-		f(b.points[pe.Id])
-	}
+	return b.driver.Write(b, pointIds...)
 }
 
 func (b *block) Length() uint16 {
@@ -165,7 +159,7 @@ func (b *block) Plan(pointIds ...string) ([]spi.PointSPI, error) {
 
 // Invalidate checks if the specified point is a scale factor. If it is, then
 // any other point that specifies this point as its scale factor is invalidated.
-func (b *block) Invalidate(p spi.PointSPI) {
+func (b *block) invalidate(p spi.PointSPI) {
 	for _, d := range b.points {
 		if sfp := d.scaleFactor; sfp != nil {
 			if sfp.Id() == p.Id() {

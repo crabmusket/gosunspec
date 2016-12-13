@@ -20,10 +20,10 @@ var (
 	eyeCatcher        = []byte{0x53, 0x75, 0x6e, 0x53} // "SunS"
 )
 
-type device struct {
+type memoryDriver struct {
 }
 
-func (d *device) iterator(b spi.BlockSPI, pointIds ...string) func(f func(buffer []byte, p spi.PointSPI) error) error {
+func (d *memoryDriver) iterator(b spi.BlockSPI, pointIds ...string) func(f func(buffer []byte, p spi.PointSPI) error) error {
 	return func(f func(buffer []byte, p spi.PointSPI) error) error {
 		var firstErr error
 
@@ -49,9 +49,9 @@ func (d *device) iterator(b spi.BlockSPI, pointIds ...string) func(f func(buffer
 		}
 
 		if len(points) == 0 {
-			b.DoWithSPI(func(p spi.PointSPI) {
+			b.Do(spi.WithPointSPI(func(p spi.PointSPI) {
 				points = append(points, p.(spi.PointSPI))
-			})
+			}))
 		}
 
 		buffer := b.Anchor().([]byte)
@@ -75,7 +75,7 @@ func (d *device) iterator(b spi.BlockSPI, pointIds ...string) func(f func(buffer
 
 }
 
-func (d *device) Read(b spi.BlockSPI, pointIds ...string) error {
+func (d *memoryDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 	if points, err := b.Plan(pointIds...); err != nil {
 		return err
 	} else {
@@ -102,7 +102,7 @@ func (d *device) Read(b spi.BlockSPI, pointIds ...string) error {
 	}
 }
 
-func (d *device) Write(b spi.BlockSPI, pointIds ...string) error {
+func (d *memoryDriver) Write(b spi.BlockSPI, pointIds ...string) error {
 	return d.iterator(b, pointIds...)(func(buffer []byte, p spi.PointSPI) error {
 		if p.Error() == nil {
 			return p.Marshal(buffer)
@@ -115,7 +115,7 @@ func (d *device) Write(b spi.BlockSPI, pointIds ...string) error {
 // Open a memory mapped Sunspec device from the specified
 // byte slice or return an error if this cannot be done.
 func Open(bytes []byte) (sunspec.Array, error) {
-	d := &device{}
+	d := &memoryDriver{}
 	arr := impl.NewArray()
 	var dev spi.DeviceSPI
 	if len(bytes) < len(eyeCatcher) {
@@ -150,10 +150,10 @@ func Open(bytes []byte) (sunspec.Array, error) {
 			// set anchors on the blocks
 
 			blockOffset := offset + 4
-			m.DoWithSPI(func(b spi.BlockSPI) {
+			m.Do(spi.WithBlockSPI(func(b spi.BlockSPI) {
 				b.SetAnchor(bytes[blockOffset : blockOffset+int(b.Length()*2)])
 				blockOffset += int(b.Length()) * 2
-			})
+			}))
 			dev.AddModel(m)
 		}
 		offset += 4 + int(length)*2
@@ -242,24 +242,24 @@ func (b *builder) Build() ([]byte, error) {
 	// calculate the total size
 
 	total := uint16(4) // eyecatcher + endmarker
-	b.array.DoWithSPI(func(d spi.DeviceSPI) {
-		d.DoWithSPI(func(m spi.ModelSPI) {
+	b.array.Do(spi.WithDeviceSPI(func(d spi.DeviceSPI) {
+		d.Do(spi.WithModelSPI(func(m spi.ModelSPI) {
 			total += 2 + m.Length() // header + model
-		})
-	})
+		}))
+	}))
 	output := make([]byte, total*2)
 
 	// render the eyecatcher and model/length markers
 
 	copy(output, eyeCatcher)
 	offset := 4
-	b.array.DoWithSPI(func(d spi.DeviceSPI) {
-		d.DoWithSPI(func(m spi.ModelSPI) {
+	b.array.Do(spi.WithDeviceSPI(func(d spi.DeviceSPI) {
+		d.Do(spi.WithModelSPI(func(m spi.ModelSPI) {
 			binary.BigEndian.PutUint16(output[offset:], uint16(m.Id()))
 			binary.BigEndian.PutUint16(output[offset+2:], m.Length())
 			offset += 4 + int(m.Length())*2
-		})
-	})
+		}))
+	}))
 
 	// render the end marker
 

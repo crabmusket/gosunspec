@@ -16,12 +16,6 @@ func (a *array) Do(f func(d sunspec.Device)) {
 	}
 }
 
-func (a *array) DoWithSPI(f func(d spi.DeviceSPI)) {
-	for _, d := range a.devices {
-		f(d)
-	}
-}
-
 func (a *array) AddDevice(d spi.DeviceSPI) error {
 	a.devices = append(a.devices, d.(*device))
 	return nil
