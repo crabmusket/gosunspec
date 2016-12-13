@@ -20,10 +20,10 @@ var (
 	eyeCatcher        = []byte{0x53, 0x75, 0x6e, 0x53} // "SunS"
 )
 
-type device struct {
+type memoryDriver struct {
 }
 
-func (d *device) iterator(b spi.BlockSPI, pointIds ...string) func(f func(buffer []byte, p spi.PointSPI) error) error {
+func (d *memoryDriver) iterator(b spi.BlockSPI, pointIds ...string) func(f func(buffer []byte, p spi.PointSPI) error) error {
 	return func(f func(buffer []byte, p spi.PointSPI) error) error {
 		var firstErr error
 
@@ -75,7 +75,7 @@ func (d *device) iterator(b spi.BlockSPI, pointIds ...string) func(f func(buffer
 
 }
 
-func (d *device) Read(b spi.BlockSPI, pointIds ...string) error {
+func (d *memoryDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 	if points, err := b.Plan(pointIds...); err != nil {
 		return err
 	} else {
@@ -102,7 +102,7 @@ func (d *device) Read(b spi.BlockSPI, pointIds ...string) error {
 	}
 }
 
-func (d *device) Write(b spi.BlockSPI, pointIds ...string) error {
+func (d *memoryDriver) Write(b spi.BlockSPI, pointIds ...string) error {
 	return d.iterator(b, pointIds...)(func(buffer []byte, p spi.PointSPI) error {
 		if p.Error() == nil {
 			return p.Marshal(buffer)
@@ -115,7 +115,7 @@ func (d *device) Write(b spi.BlockSPI, pointIds ...string) error {
 // Open a memory mapped Sunspec device from the specified
 // byte slice or return an error if this cannot be done.
 func Open(bytes []byte) (sunspec.Array, error) {
-	d := &device{}
+	d := &memoryDriver{}
 	arr := impl.NewArray()
 	var dev spi.DeviceSPI
 	if len(bytes) < len(eyeCatcher) {
