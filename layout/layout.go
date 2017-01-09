@@ -26,5 +26,5 @@ type AddressSpaceDriver interface {
 // AddressSpaceLayout encapsulates an algorithm for scanning an address space for devices. There are
 // two implementations - layout.SunSpecLayout and layout.RawLayout.
 type AddressSpaceLayout interface {
-	Read(a AddressSpaceDriver) (spi.ArraySPI, error)
+	Open(a AddressSpaceDriver) (spi.ArraySPI, error)
 }

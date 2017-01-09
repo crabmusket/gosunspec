@@ -132,7 +132,7 @@ func Open(bytes []byte) (sunspec.Array, error) {
 // byte slice, using the layout specified to match regions
 // of the slice to particular devices and models.
 func OpenWithLayout(bytes []byte, l layout.AddressSpaceLayout) (sunspec.Array, error) {
-	return l.Read(&memoryDriver{buffer: bytes})
+	return l.Open(&memoryDriver{buffer: bytes})
 }
 
 // SlabBuilder creates a slab of memory (actually a byte slice)

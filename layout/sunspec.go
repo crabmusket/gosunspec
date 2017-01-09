@@ -13,9 +13,9 @@ import (
 type SunSpecLayout struct {
 }
 
-// Read scans the supplied address space and returns an array of the
+// Open scans the supplied address space and returns an array of the
 // devices found.
-func (s *SunSpecLayout) Read(a AddressSpaceDriver) (spi.ArraySPI, error) {
+func (s *SunSpecLayout) Open(a AddressSpaceDriver) (spi.ArraySPI, error) {
 
 	// Attempt to locate SunSpec register within modbus address space.
 

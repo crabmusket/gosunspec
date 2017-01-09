@@ -26,7 +26,7 @@ func Open(client modbus.Client) (sunspec.Array, error) {
 
 // Open a Modbus connection using the client specified and the layout specified. layout specified.
 func OpenWithLayout(client modbus.Client, l layout.AddressSpaceLayout) (sunspec.Array, error) {
-	return l.Read(&modbusDriver{client: client})
+	return l.Open(&modbusDriver{client: client})
 }
 
 type modbusDriver struct {
