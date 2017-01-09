@@ -1,15 +1,11 @@
 package modbus
 
 import (
-	"encoding/binary"
 	"errors"
 	"github.com/crabmusket/gosunspec"
-	"github.com/crabmusket/gosunspec/impl"
-	"github.com/crabmusket/gosunspec/models/model1"
-	"github.com/crabmusket/gosunspec/smdx"
+	"github.com/crabmusket/gosunspec/layout"
 	"github.com/crabmusket/gosunspec/spi"
 	"github.com/goburrow/modbus"
-	"log"
 )
 
 const (
@@ -18,7 +14,6 @@ const (
 
 var (
 	ErrNotSunspecDevice = errors.New("not a SunSpec device") // if the Modbus address space doesn't contain the expected marker bytes
-	ErrShortRead        = errors.New("short read")           // if an attempt to read from the Modbus addess space returns fewer bytes than expected
 )
 
 // Open uses the Modbus connection provided by client to connect
@@ -26,74 +21,28 @@ var (
 // one or more SunSpec devices and a reference to
 // a sunspec.Array that provides access to these devices is returned.
 func Open(client modbus.Client) (sunspec.Array, error) {
+	return OpenWithLayout(client, &layout.SunSpecLayout{})
+}
 
-	// Attempt to locate SunSpec register within modbus address space.
-
-	baseRange := []uint16{40000, 50000, 0}
-	base := uint16(0xffff)
-	for _, b := range baseRange {
-		if id, err := client.ReadHoldingRegisters(b, 2); err != nil {
-			continue
-		} else if binary.BigEndian.Uint32(id) != SunSpec {
-			continue
-		} else {
-			base = b
-			break
-		}
-	}
-	if base == 0xffff {
-		return nil, ErrNotSunspecDevice
-	}
-
-	phys := &modbusDriver{client: client}
-	array := impl.NewArray()
-	dev := impl.NewDevice()
-
-	// Build up model
-
-	offset := uint16(2) // number of 16 bit registers
-	for {
-		if bytes, err := client.ReadHoldingRegisters(base+offset, 2); err != nil {
-			return nil, err
-		} else if len(bytes) < 4 {
-			return nil, ErrShortRead
-		} else {
-			modelId := binary.BigEndian.Uint16(bytes)
-			modelLength := binary.BigEndian.Uint16(bytes[2:])
-
-			if modelId == 0xffff {
-				break
-			}
-
-			me := smdx.GetModel(modelId)
-			if me != nil {
-
-				if modelId == uint16(model1.ModelID) {
-					dev = impl.NewDevice()
-					array.(spi.ArraySPI).AddDevice(dev)
-				}
-
-				m := impl.NewContiguousModel(me, modelLength, phys)
-
-				// set anchors on the blocks
-
-				blockOffset := offset + 2
-				m.Do(spi.WithBlockSPI(func(b spi.BlockSPI) {
-					b.SetAnchor(uint16(base + blockOffset))
-					blockOffset += b.Length()
-				}))
-				dev.AddModel(m)
-			} else {
-				log.Printf("unrecognised model identifier skipped @ offset: %d, %d\n", modelId, offset)
-			}
-			offset += 2 + modelLength
-		}
-	}
-	return array, nil
+// Open a Modbus connection using the client specified and the layout specified. layout specified.
+func OpenWithLayout(client modbus.Client, l layout.AddressSpaceLayout) (sunspec.Array, error) {
+	return l.Read(&modbusDriver{client: client})
 }
 
 type modbusDriver struct {
 	client modbus.Client
+}
+
+func (m *modbusDriver) ReadWords(address uint16, length uint16) ([]byte, error) {
+	return m.client.ReadHoldingRegisters(address, length)
+}
+
+func (m *modbusDriver) Driver() spi.Driver {
+	return m
+}
+
+func (m *modbusDriver) BaseOffsets() []uint16 {
+	return []uint16{40000, 50000, 0}
 }
 
 // Write out the points in exactly the order specified, coalescing

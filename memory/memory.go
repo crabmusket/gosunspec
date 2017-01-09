@@ -8,6 +8,7 @@ import (
 	"errors"
 	"github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/impl"
+	"github.com/crabmusket/gosunspec/layout"
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
@@ -21,6 +22,7 @@ var (
 )
 
 type memoryDriver struct {
+	buffer []byte
 }
 
 func (d *memoryDriver) iterator(b spi.BlockSPI, pointIds ...string) func(f func(buffer []byte, p spi.PointSPI) error) error {
@@ -54,7 +56,7 @@ func (d *memoryDriver) iterator(b spi.BlockSPI, pointIds ...string) func(f func(
 			}))
 		}
 
-		buffer := b.Anchor().([]byte)
+		buffer := d.buffer[b.Anchor().(uint16)*2:]
 
 		for _, p := range points {
 			if p.Offset()+p.Length() > b.Length() {
@@ -80,7 +82,7 @@ func (d *memoryDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 		return err
 	} else {
 		var firstErr error
-		buffer := b.Anchor().([]byte)
+		buffer := d.buffer[b.Anchor().(uint16)*2:]
 		for _, p := range points {
 			if p.Offset()+p.Length() > b.Length() {
 				err := errBufferTooShort
@@ -112,53 +114,25 @@ func (d *memoryDriver) Write(b spi.BlockSPI, pointIds ...string) error {
 	})
 }
 
+func (d *memoryDriver) ReadWords(a uint16, l uint16) ([]byte, error) {
+	return d.buffer[a*2 : (a+l)*2], nil
+}
+
+func (d *memoryDriver) BaseOffsets() []uint16 {
+	return []uint16{0}
+}
+
 // Open a memory mapped Sunspec device from the specified
 // byte slice or return an error if this cannot be done.
 func Open(bytes []byte) (sunspec.Array, error) {
-	d := &memoryDriver{}
-	arr := impl.NewArray()
-	var dev spi.DeviceSPI
-	if len(bytes) < len(eyeCatcher) {
-		return nil, errBadEyeCatcher
-	}
-	for i, b := range eyeCatcher {
-		if bytes[i] != b {
-			return nil, errBadEyeCatcher
-		}
-	}
-	offset := 4
-	for {
-		if offset+4 > len(bytes) {
-			return nil, errBufferTooShort
-		}
-		modelId := binary.BigEndian.Uint16(bytes[offset:])
-		length := binary.BigEndian.Uint16(bytes[offset+2:])
-		if offset+4+int(length)*2 > len(bytes) {
-			return nil, errBufferTooShort
-		}
-		if modelId == 0xffff {
-			break
-		}
-		if modelId == uint16(model1.ModelID) || dev == nil {
-			dev = impl.NewDevice()
-			arr.AddDevice(dev)
-		}
-		me := smdx.GetModel(uint16(modelId))
-		if me != nil {
-			m := impl.NewContiguousModel(me, length, d)
+	return OpenWithLayout(bytes, &layout.SunSpecLayout{})
+}
 
-			// set anchors on the blocks
-
-			blockOffset := offset + 4
-			m.Do(spi.WithBlockSPI(func(b spi.BlockSPI) {
-				b.SetAnchor(bytes[blockOffset : blockOffset+int(b.Length()*2)])
-				blockOffset += int(b.Length()) * 2
-			}))
-			dev.AddModel(m)
-		}
-		offset += 4 + int(length)*2
-	}
-	return arr, nil
+// Open a memory mapped Sunspec device from the specified
+// byte slice, using the layout specified to match regions
+// of the slice to particular devices and models.
+func OpenWithLayout(bytes []byte, l layout.AddressSpaceLayout) (sunspec.Array, error) {
+	return l.Read(&memoryDriver{buffer: bytes})
 }
 
 // SlabBuilder creates a slab of memory (actually a byte slice)
