@@ -10,7 +10,7 @@ import (
 type RawModelLayout struct {
 	XMLName xml.Name        `xml:"model"`
 	ModelId sunspec.ModelId `xml:"modelId,attr"`
-	Address uint16          `xml:"address,attr,omitempty"`
+	Address *uint16         `xml:"address,attr,omitempty"`
 }
 
 // RawDeviceLayout is a slice of RawModelLayouts
