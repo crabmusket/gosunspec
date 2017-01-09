@@ -1,18 +1,21 @@
 package layout
 
 import (
+	"encoding/xml"
 	"github.com/crabmusket/gosunspec"
 )
 
 // RawModel layout specifies the model ID used to describe a block of memory at an Address
 type RawModelLayout struct {
-	Address uint16          `json:"address"`
-	ModelId sunspec.ModelId `json:"modelId"`
+	XMLName xml.Name        `xml:"model"`
+	ModelId sunspec.ModelId `xml:"modelId,attr"`
+	Address uint16          `xml:"address,attr,omitempty"`
 }
 
 // RawDeviceLayout is a slice of RawModelLayouts
 type RawDeviceLayout struct {
-	Models []RawModelLayout `json:"models"`
+	XMLName xml.Name         `xml:"device"`
+	Models  []RawModelLayout `xml:"models"`
 }
 
 // RawLayout is the type of layout used for non-SunSpec address spaces. This means
@@ -22,8 +25,9 @@ type RawDeviceLayout struct {
 //
 // The intent of RawLayout is to allow the sunspec API to be used effectively
 // with non-SunSpec address spaces, assuming the work has been done to
-// markup the address space with SMDX models and a JSON document that maps
-// addresses to models.
+// markup the address space with SMDX models and an XML document that maps
+// addresses to model ids.
 type RawLayout struct {
-	Devices []RawDeviceLayout `json:"devices"`
+	XMLName xml.Name          `xml:"layout"`
+	Devices []RawDeviceLayout `xml:"devices"`
 }
