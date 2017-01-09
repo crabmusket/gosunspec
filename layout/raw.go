@@ -3,6 +3,7 @@ package layout
 import (
 	"encoding/xml"
 	"github.com/crabmusket/gosunspec"
+	"io"
 )
 
 // RawModel layout specifies the model ID used to describe a block of memory at an Address
@@ -30,4 +31,11 @@ type RawDeviceLayout struct {
 type RawLayout struct {
 	XMLName xml.Name          `xml:"layout"`
 	Devices []RawDeviceLayout `xml:"devices"`
+}
+
+// FromLayoutXML reads a layout description from an XML stream.
+func FromLayoutXML(reader io.Reader) (*RawLayout, error) {
+	decoder := xml.NewDecoder(reader)
+	layout := &RawLayout{}
+	return layout, decoder.Decode(layout)
 }
