@@ -169,6 +169,13 @@ type Block interface {
 	// Do iterates over all the points in the block in the specification order.
 	Do(func(p Point))
 
+	// Do iterates over all the scale factor points, then the non-scale factor
+	// points. Both groups are processed in specification order. This method
+	// is useful when multiple points in the block need to be updated and the
+	// set of points to be updated includes both scale factor points and
+	// value points related to the scale factor points.
+	DoScaleFactorsFirst(func(p Point))
+
 	// Read the registers implied by the specified pointIds from the physical
 	// device. If no pointIds are specified, then all the points in the block
 	// are read.
