@@ -48,7 +48,7 @@ func TestComplexSlab(t *testing.T) {
 					})
 				})
 
-				expected := 213
+				expected := 216
 				if count != expected {
 					t.Fatalf("unexpected number of points. actual: %d, expected: %d", count, expected)
 				}
@@ -109,7 +109,7 @@ func TestComplexSlabStaggered(t *testing.T) {
 				})
 
 			})
-			expected := 213
+			expected := 216
 			if count != expected {
 				t.Fatalf("unexpected number of points. actual: %d, expected: %d", count, expected)
 			}
