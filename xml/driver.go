@@ -7,6 +7,7 @@ import (
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
+	_ "log"
 	"strconv"
 )
 
@@ -254,16 +255,20 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 		return err
 	} else {
 		for _, p := range points {
+			recordError := func(e error) {
+				p.SetError(e)
+				errCount++
+				// log.Printf("point error: id=%s: %v", p.Id(), e)
+			}
+
 			pa := p.Anchor().(*pointAnchor)
 			if pa.position < 0 {
-				p.SetError(ErrNoSuchElement)
-				errCount++
+				recordError(ErrNoSuchElement)
 				continue
 			}
 			px := ba.model.Points[pa.position]
 			if len(px.Value) == 0 {
-				p.SetError(ErrEmptyValue)
-				errCount++
+				recordError(ErrEmptyValue)
 				continue
 			}
 			sfp := p.ScaleFactorPoint()
@@ -274,8 +279,7 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 					sfp.SetScaleFactor(vsf)
 				}
 				if vi, err := strconv.Atoi(v); err != nil {
-					p.SetError(err)
-					errCount++
+					recordError(err)
 					continue
 				} else {
 					for vsf > sfp.ScaleFactor() {
@@ -290,8 +294,7 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 				}
 			}
 			if err := p.UnmarshalXML(v); err != nil {
-				p.SetError(err)
-				errCount++
+				recordError(err)
 				continue
 			}
 
