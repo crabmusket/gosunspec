@@ -139,10 +139,11 @@ func newBlock(blockSmdx *smdx.BlockElement, driver spi.Driver) *block {
 
 // Answer a new ppint.
 func newPoint(smdx *smdx.PointElement, scaleFactor sunspec.Point, b *block) *point {
-	return &point{
-		smdx:        smdx,
-		scaleFactor: scaleFactor,
-		block:       b,
-		err:         errNotInitialized,
-	}
+	// return &point{
+	// 	smdx:        smdx,
+	// 	scaleFactor: scaleFactor,
+	// 	block:       b,
+	// 	err:         errNotInitialized,
+	// }
+	return nil
 }
