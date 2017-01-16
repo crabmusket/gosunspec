@@ -181,13 +181,13 @@ func TestComplexSlab(t *testing.T) {
 
 	{
 		actual := d.MustModel(model304.ModelID).Blocks()
-		expected := 2
+		expected := 3
 		if actual != expected {
 			t.Fatalf("wrong number of blocks. actual: %d, expected: %d", actual, expected)
 		}
 	}
 
-	expected := 213
+	expected := 216
 	if count != expected {
 		t.Fatalf("unexpected number of points. actual: %d, expected: %d", count, expected)
 	}
@@ -221,7 +221,7 @@ func TestTwoDeviceSlab(t *testing.T) {
 		})
 	})
 
-	expected := 426
+	expected := 432
 	if count != expected {
 		t.Fatalf("unexpected number of points. actual: %d, expected: %d", count, expected)
 	}

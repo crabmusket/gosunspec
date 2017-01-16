@@ -100,7 +100,11 @@ func OpenDevice(dx *DeviceElement) (sunspec.Device, error) {
 				max = px.Index
 			}
 		}
-		m := impl.NewModel(smdx, int(max), xp)
+		repeats := int(max)
+		if len(smdx.Blocks) == 1 {
+			repeats -= 1
+		}
+		m := impl.NewModel(smdx, repeats, xp)
 		if err := d.AddModel(m); err != nil {
 			return nil, err
 		} else {
@@ -206,12 +210,11 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 	d.Do(func(m sunspec.Model) {
 		smdx := smdx.GetModel(uint16(m.Id()))
 
-		mc := impl.NewModel(smdx, m.Blocks(), xp)
+		repeatOnly := m.Blocks() > 1 && len(smdx.Blocks) == 1
+		mc := impl.NewModel(smdx, m.Blocks()-1, xp)
 		mx := newModelElement(m.Id())
 
 		dx.Models = append(dx.Models, mx)
-
-		repeatOnly := m.Blocks() > 1 && len(smdx.Blocks) == 1
 
 		for i := 0; i < m.Blocks(); i++ {
 			b := m.MustBlock(i).(spi.BlockSPI)
