@@ -85,13 +85,7 @@ func NewContiguousModel(me *smdx.ModelElement, bound uint16, phys spi.Driver) sp
 // determines the number of repeats.
 func NewModel(me *smdx.ModelElement, nr int, driver spi.Driver) spi.ModelSPI {
 
-	blocks := []*block{}
-	for x, _ := range me.Blocks {
-		blocks = append(blocks, newBlock(&me.Blocks[x], driver))
-		if nr == 0 {
-			break // don't put in the first repeat
-		}
-	}
+	blocks := []*block{newBlock(&me.Blocks[0], driver)}
 
 	m := &model{
 		smdx:   me,
@@ -99,7 +93,7 @@ func NewModel(me *smdx.ModelElement, nr int, driver spi.Driver) spi.ModelSPI {
 		blocks: blocks,
 	}
 
-	for nr > 1 {
+	for nr > 0 {
 		nr--
 		m.AddRepeat()
 	}

@@ -38,6 +38,18 @@ func (b *block) Do(f func(p sunspec.Point)) {
 	}
 }
 
+func (b *block) DoScaleFactorsFirst(f func(p sunspec.Point)) {
+	once := func(filter func(pe smdx.PointElement) bool) {
+		for _, pe := range b.smdx.Points {
+			if filter(pe) {
+				f(b.points[pe.Id])
+			}
+		}
+	}
+	once(func(pe smdx.PointElement) bool { return pe.Type == typelabel.ScaleFactor })
+	once(func(pe smdx.PointElement) bool { return pe.Type != typelabel.ScaleFactor })
+}
+
 func (b *block) Read(pointIds ...string) error {
 	return b.driver.Read(b, pointIds...)
 }

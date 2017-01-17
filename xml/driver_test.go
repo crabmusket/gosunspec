@@ -46,7 +46,7 @@ func TestCopyDevice(t *testing.T) {
 		})
 	})
 
-	expected := 426
+	expected := 432
 	if count != expected {
 		t.Fatalf("unexpected number of points. actual: %d, expected: %d", count, expected)
 	}
