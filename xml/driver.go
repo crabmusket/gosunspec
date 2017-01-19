@@ -250,12 +250,16 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 
 func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 	errCount := 0
+	var firstError error
 	ba := b.Anchor().(*blockAnchor)
 	if points, err := b.Plan(pointIds...); err != nil {
 		return err
 	} else {
 		for _, p := range points {
 			recordError := func(e error) {
+				if firstError == nil {
+					firstError = e
+				}
 				p.SetError(e)
 				errCount++
 				// log.Printf("point error: id=%s: %v", p.Id(), e)
@@ -303,7 +307,7 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 		}
 	}
 	if errCount > 0 {
-		return ErrTooManyErrors
+		return firstError
 	} else {
 		return nil
 	}
