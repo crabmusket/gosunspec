@@ -243,6 +243,7 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 				panic(err)
 			}
 		}
+		dc.AddModel(mc)
 	})
 	return dc, dx
 }
