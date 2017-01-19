@@ -188,3 +188,32 @@ func TestImplicitModel1(t *testing.T) {
 	})
 
 }
+
+func TestXmlOpen(t *testing.T) {
+	buffer := bytes.NewBuffer([]byte(example))
+	data, err := parseXML(buffer)
+	if err != nil {
+		t.Fatal("could not parse example", err.Error())
+	}
+	if x, err := Open(data); err != nil {
+		t.Fatal(err)
+	} else {
+		x.Do(func(d sunspec.Device) {
+			d.Do(func(m sunspec.Model) {
+				m.Do(func(b sunspec.Block) {
+					_ = b.Read()
+				})
+			})
+		})
+		c, cx := CopyArray(x)
+		c.Do(func(d sunspec.Device) {
+			_ = d.MustModel(101)
+		})
+		if cx.Devices[0].Models[1].Id != 101 {
+			t.Fatalf("unexpected id found")
+		}
+		if len(cx.Devices[0].Models[1].Points) != 15 {
+			t.Fatalf("not enough points: %d", len(cx.Devices[0].Models[1].Points))
+		}
+	}
+}
