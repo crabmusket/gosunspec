@@ -89,7 +89,10 @@ type ScaleFactor int16
 // marker bytes.
 type Array interface {
 	Do(func(d Device)) // Iterate over all the devices.
+	Collect(func(d Device) bool) []Device
 }
+
+var AllDevices = func(d Device) bool { return true }
 
 // A Device is a collection of Models that provides an uniform abstraction of
 // physical devices of various kinds (Modbus, memory, XML documents)
@@ -110,6 +113,8 @@ type Device interface {
 	//     }
 	Collect(func(m Model) bool) []Model
 }
+
+var AllModels = func(m Model) bool { return true }
 
 // A filter that can be used with Device.Collect to select a subset
 // of the models that have the model id specified.
