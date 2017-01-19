@@ -164,18 +164,14 @@ func CopyArray(a sunspec.Array) (sunspec.Array, *DataElement) {
 		Version: "1",
 	}
 
-	devices := []spi.DeviceSPI{}
 	a.Do(func(d sunspec.Device) {
 		da, dx := CopyDevice(d)
 		x.Devices = append(x.Devices, dx)
-		devices = append(devices, da.(spi.DeviceSPI))
-	})
-	for _, c := range devices {
-		if err := arr.AddDevice(c.(spi.DeviceSPI)); err != nil {
+		if err := arr.AddDevice(da.(spi.DeviceSPI)); err != nil {
 			// we are not expecting this to happen
 			panic(err)
 		}
-	}
+	})
 	return arr, x
 }
 
