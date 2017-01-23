@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/crabmusket/gosunspec/smdx"
 	"io/ioutil"
@@ -95,7 +96,11 @@ import (
 
 func main() {
 
-	smdxDir := "../spec/smdx/"
+	var smdxDir string
+
+	flag.StringVar(&smdxDir, "smdx-dir", "../spec/smdx/", "The location of the SMDX directory")
+	flag.Parse()
+
 	files, err := ioutil.ReadDir(smdxDir)
 	if err != nil {
 		log.Fatal(err)
