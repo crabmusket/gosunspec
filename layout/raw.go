@@ -38,6 +38,7 @@ type RawDeviceLayout struct {
 // addresses to model ids.
 type RawLayout struct {
 	XMLName xml.Name          `xml:"layout"`
+	Name    string            `xml:"name,attr,omitempty"`
 	Devices []RawDeviceLayout `xml:"device"`
 }
 
