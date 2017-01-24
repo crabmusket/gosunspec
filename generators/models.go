@@ -88,8 +88,9 @@ const loader = `
 
 package models
 
+{{$top := .TopPackage}}
 import (
-{{range .Names}}   _ "github.com/crabmusket/gosunspec/models/{{.}}"
+{{range .Names}}   _ "{{$top}}/models/{{.}}"
 {{end}}
 )
 `
@@ -97,8 +98,10 @@ import (
 func main() {
 
 	var smdxDir string
+	var topPackage string
 
 	flag.StringVar(&smdxDir, "smdx-dir", "../spec/smdx/", "The location of the SMDX directory")
+	flag.StringVar(&topPackage, "top-package", "github.com/crabmusket/gosunspec", "The go path to the package containing the models package.")
 	flag.Parse()
 
 	files, err := ioutil.ReadDir(smdxDir)
@@ -238,7 +241,8 @@ func main() {
 	}
 	loaderTemplate := template.Must(t.Parse(loader))
 	loaderTemplate.Execute(outputFile, map[string]interface{}{
-		"Names": names,
+		"Names":      names,
+		"TopPackage": topPackage,
 	})
 	outputFile.Close()
 	cmd := exec.Command("/bin/sh", "-c", "gofmt -w ../models/loader.go")
