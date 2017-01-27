@@ -202,7 +202,7 @@ func (p *point) SetValue(v interface{}) (result error) {
 		case uint64:
 			p.SetUint64(t)
 		default:
-			return fmt.Errorf("bad value type for point: %s: %v", p.Id, v)
+			return fmt.Errorf("bad value type for point: %s: %v", p.Id(), v)
 		}
 	}
 	return nil
