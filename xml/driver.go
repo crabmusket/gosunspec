@@ -164,18 +164,14 @@ func CopyArray(a sunspec.Array) (sunspec.Array, *DataElement) {
 		Version: "1",
 	}
 
-	devices := []spi.DeviceSPI{}
 	a.Do(func(d sunspec.Device) {
 		da, dx := CopyDevice(d)
 		x.Devices = append(x.Devices, dx)
-		devices = append(devices, da.(spi.DeviceSPI))
-	})
-	for _, c := range devices {
-		if err := arr.AddDevice(c.(spi.DeviceSPI)); err != nil {
+		if err := arr.AddDevice(da.(spi.DeviceSPI)); err != nil {
 			// we are not expecting this to happen
 			panic(err)
 		}
-	}
+	})
 	return arr, x
 }
 
@@ -247,18 +243,23 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 				panic(err)
 			}
 		}
+		dc.AddModel(mc)
 	})
 	return dc, dx
 }
 
 func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 	errCount := 0
+	var firstError error
 	ba := b.Anchor().(*blockAnchor)
 	if points, err := b.Plan(pointIds...); err != nil {
 		return err
 	} else {
 		for _, p := range points {
 			recordError := func(e error) {
+				if firstError == nil {
+					firstError = e
+				}
 				p.SetError(e)
 				errCount++
 				// log.Printf("point error: id=%s: %v", p.Id(), e)
@@ -306,7 +307,7 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 		}
 	}
 	if errCount > 0 {
-		return ErrTooManyErrors
+		return firstError
 	} else {
 		return nil
 	}
