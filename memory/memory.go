@@ -56,7 +56,7 @@ func (d *memoryDriver) iterator(b spi.BlockSPI, pointIds ...string) func(f func(
 			}))
 		}
 
-		buffer := d.buffer[b.Anchor().(uint16)*2:]
+		buffer := d.buffer[uint32(b.Anchor().(uint16))*2:]
 
 		for _, p := range points {
 			if p.Offset()+p.Length() > b.Length() {
@@ -82,7 +82,7 @@ func (d *memoryDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 		return err
 	} else {
 		var firstErr error
-		buffer := d.buffer[b.Anchor().(uint16)*2:]
+		buffer := d.buffer[uint32(b.Anchor().(uint16))*2:]
 		for _, p := range points {
 			if p.Offset()+p.Length() > b.Length() {
 				err := errBufferTooShort
