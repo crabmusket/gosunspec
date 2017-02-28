@@ -215,8 +215,8 @@ func TestXmlOpen(t *testing.T) {
 		if cx.Devices[0].Models[1].Id != 101 {
 			t.Fatalf("unexpected id found")
 		}
-		if len(cx.Devices[0].Models[1].Points) != 15 {
-			t.Fatalf("not enough points: %d", len(cx.Devices[0].Models[1].Points))
+		if len(cx.Devices[0].Models[1].Points) != 19 {
+			t.Fatalf("point mismatch points: %d", len(cx.Devices[0].Models[1].Points))
 		}
 	}
 }
