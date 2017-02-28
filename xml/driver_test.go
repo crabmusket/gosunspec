@@ -201,7 +201,10 @@ func TestXmlOpen(t *testing.T) {
 		x.Do(func(d sunspec.Device) {
 			d.Do(func(m sunspec.Model) {
 				m.Do(func(b sunspec.Block) {
-					_ = b.Read()
+					err = b.Read()
+					if err != ErrNoSuchElement {
+						t.Fatal(err)
+					}
 				})
 			})
 		})
