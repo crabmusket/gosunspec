@@ -271,7 +271,7 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 				continue
 			}
 			px := ba.model.Points[pa.position]
-			if len(px.Value) == 0 {
+			if len(px.Value) == 0 && p.Type() != typelabel.String {
 				recordError(ErrEmptyValue)
 				continue
 			}
