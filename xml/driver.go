@@ -257,7 +257,7 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 	} else {
 		for _, p := range points {
 			recordError := func(e error) {
-				if firstError == nil {
+				if firstError == nil || firstError == ErrNoSuchElement {
 					firstError = e
 				}
 				p.SetError(e)
