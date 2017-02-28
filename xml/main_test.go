@@ -20,7 +20,7 @@ const example = `
 			<p id="A" sf="-2">3043</p>
 			<p id="PhVphA">2216</p>
 			<p id="V_SF">-1</p>
-			<p id="W" u="Watts">6701.3</p>
+			<p id="W" u="Watts">6501.3</p>
 			<p id="Hz">60.01</p>
 			<p id="WH">126973</p>
 			<p id="DCA">14.28</p>
