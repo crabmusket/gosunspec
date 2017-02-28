@@ -13,6 +13,9 @@ import (
 const example = `
 <SunSpecData v="1">
 	<d ns="mac" lid="11:22:33:44:55:66" man="gsc" mod="r300" sn="123456" t="2011-05-12T09:21:49Z" cid="2">
+		<m id="1">
+			<p id="Mn"></p> 
+		</m>
 		<m id="101" x="1">
 			<p id="A" sf="-2">3043</p>
 			<p id="PhVphA">2216</p>
@@ -43,22 +46,22 @@ func TestXmlParse(t *testing.T) {
 	if len(data0.Devices) != 1 {
 		t.Fatal("wrong number of devices found")
 	}
-	if len(data0.Devices[0].Models) != 1 {
+	if len(data0.Devices[0].Models) != 2 {
 		t.Fatal("wrong number of models found")
 	}
-	if len(data0.Devices[0].Models[0].Points) != 11 {
+	if len(data0.Devices[0].Models[1].Points) != 11 {
 		t.Fatal("wrong number of points found")
 	}
-	if id := data0.Devices[0].Models[0].Points[0].Id; id != "A" {
+	if id := data0.Devices[0].Models[1].Points[0].Id; id != "A" {
 		t.Error("wrong id in first point:", id)
 	}
-	if value := data0.Devices[0].Models[0].Points[0].Value; value != "3043" {
+	if value := data0.Devices[0].Models[1].Points[0].Value; value != "3043" {
 		t.Error("wrong value in first point:", value)
 	}
-	if scale := data0.Devices[0].Models[0].Points[0].ScaleFactor; scale != -2 {
+	if scale := data0.Devices[0].Models[1].Points[0].ScaleFactor; scale != -2 {
 		t.Error("wrong scale factor in first point:", scale)
 	}
-	if units := data0.Devices[0].Models[0].Points[3].Unit; units != "Watts" {
+	if units := data0.Devices[0].Models[1].Points[3].Unit; units != "Watts" {
 		t.Error("wrong units in third point:", units)
 	}
 }
