@@ -23,6 +23,11 @@ func (s *SunSpecLayout) Open(a AddressSpaceDriver) (spi.ArraySPI, error) {
 	base := uint16(0xffff)
 	for _, b := range baseRange {
 		if id, err := a.ReadWords(b, 2); err != nil {
+			if err == ErrTimeout {
+				// if one query fails with a timeout, then assume
+				// they all will.
+				return nil, err
+			}
 			continue
 		} else if binary.BigEndian.Uint32(id) != SunSpec {
 			continue

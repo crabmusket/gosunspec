@@ -6,6 +6,7 @@ import (
 	"github.com/crabmusket/gosunspec/layout"
 	"github.com/crabmusket/gosunspec/spi"
 	"github.com/goburrow/modbus"
+	"github.com/goburrow/serial"
 )
 
 const (
@@ -33,8 +34,17 @@ type modbusDriver struct {
 	client modbus.Client
 }
 
+func mapError(err error) error {
+	if err == serial.ErrTimeout {
+		return layout.ErrTimeout
+	} else {
+		return err
+	}
+}
+
 func (m *modbusDriver) ReadWords(address uint16, length uint16) ([]byte, error) {
-	return m.client.ReadHoldingRegisters(address, length)
+	b, err := m.client.ReadHoldingRegisters(address, length)
+	return b, mapError(err)
 }
 
 func (m *modbusDriver) BaseOffsets() []uint16 {
