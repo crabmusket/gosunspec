@@ -201,7 +201,10 @@ func TestXmlOpen(t *testing.T) {
 		x.Do(func(d sunspec.Device) {
 			d.Do(func(m sunspec.Model) {
 				m.Do(func(b sunspec.Block) {
-					_ = b.Read()
+					err = b.Read()
+					if err != ErrNoSuchElement {
+						t.Fatal(err)
+					}
 				})
 			})
 		})
@@ -212,8 +215,8 @@ func TestXmlOpen(t *testing.T) {
 		if cx.Devices[0].Models[1].Id != 101 {
 			t.Fatalf("unexpected id found")
 		}
-		if len(cx.Devices[0].Models[1].Points) != 15 {
-			t.Fatalf("not enough points: %d", len(cx.Devices[0].Models[1].Points))
+		if len(cx.Devices[0].Models[1].Points) != 19 {
+			t.Fatalf("point mismatch points: %d", len(cx.Devices[0].Models[1].Points))
 		}
 	}
 }

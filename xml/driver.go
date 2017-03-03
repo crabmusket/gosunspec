@@ -7,8 +7,10 @@ import (
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
+	"github.com/crabmusket/gosunspec/typelabel"
 	_ "log"
 	"strconv"
+	"strings"
 )
 
 type blockAnchor struct {
@@ -248,6 +250,16 @@ func CopyDevice(d sunspec.Device) (sunspec.Device, *DeviceElement) {
 	return dc, dx
 }
 
+func deriveScaleFactor(v string, sf int16) (string, sunspec.ScaleFactor) {
+	pos := strings.Index(v, ".")
+	if pos < 0 {
+		return v, sunspec.ScaleFactor(sf)
+	} else {
+		// "1.3", pos=1, len=3 -> 1-3+1 -> 2-3 -> -1
+		return strings.Replace(v, ".", "", 1), sunspec.ScaleFactor(pos - len(v) + 1)
+	}
+}
+
 func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 	errCount := 0
 	var firstError error
@@ -257,7 +269,7 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 	} else {
 		for _, p := range points {
 			recordError := func(e error) {
-				if firstError == nil {
+				if firstError == nil || firstError == ErrNoSuchElement {
 					firstError = e
 				}
 				p.SetError(e)
@@ -271,14 +283,15 @@ func (phys *xmlDriver) Read(b spi.BlockSPI, pointIds ...string) error {
 				continue
 			}
 			px := ba.model.Points[pa.position]
-			if len(px.Value) == 0 {
+			if len(px.Value) == 0 && p.Type() != typelabel.String {
 				recordError(ErrEmptyValue)
 				continue
 			}
 			sfp := p.ScaleFactorPoint()
 			v := px.Value
 			if sfp != nil {
-				vsf := sunspec.ScaleFactor(px.ScaleFactor)
+				var vsf sunspec.ScaleFactor
+				v, vsf = deriveScaleFactor(v, px.ScaleFactor)
 				if sfp.Error() != nil {
 					sfp.SetScaleFactor(vsf)
 				}
