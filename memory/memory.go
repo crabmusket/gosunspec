@@ -147,10 +147,16 @@ type SlabBuilder interface {
 	Build() ([]byte, error) // generates a byte slice containing the memory mapped device.
 }
 
-// Create a new device map builder.
+// Create a slab builder.
 func NewSlabBuilder() SlabBuilder {
+	return NewSlabBuilder1(false)
+}
+
+// Create a new slab builder for cases where model1 is 1 word short.
+func NewSlabBuilder1(shortModel1 bool) SlabBuilder {
 	b := &builder{
-		array: impl.NewArray(),
+		array:       impl.NewArray(),
+		shortModel1: shortModel1,
 	}
 	b.device = impl.NewDevice()
 	b.AddModel(model1.ModelID) // all maps include the common model
@@ -159,9 +165,10 @@ func NewSlabBuilder() SlabBuilder {
 }
 
 type builder struct {
-	array  spi.ArraySPI
-	device spi.DeviceSPI
-	err    error
+	array       spi.ArraySPI
+	device      spi.DeviceSPI
+	shortModel1 bool
+	err         error
 }
 
 func (b *builder) record(err error) {
@@ -175,6 +182,18 @@ func (b *builder) AddModel(id sunspec.ModelId) SlabBuilder {
 	me := smdx.GetModel(uint16(id))
 	if me != nil {
 		m := impl.NewModel(me, 0, nil)
+		if id == model1.ModelID && b.shortModel1 {
+			// Cope with a somewhat unusual special case in the Sunspec specification.
+			//
+			// Model 1 blocks are allowed to have a length which does not include
+			// the last point which is one word of padding.
+			//
+			// In order to faithfully reproduce address spaces which take advantage
+			// of this exception, it is necessary to adjust the length of the
+			// model 1 block accordingly.
+			b := m.MustBlock(0).(spi.BlockSPI)
+			b.SetLength(b.Length() - 1)
+		}
 		b.record(b.device.AddModel(m))
 	} else {
 		b.record(errNoModel)
