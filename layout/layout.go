@@ -12,6 +12,7 @@ const (
 var (
 	ErrNotSunspecDevice = errors.New("not a SunSpec device") // if the Modbus address space doesn't contain the expected marker bytes
 	ErrShortRead        = errors.New("short read")           // if an attempt to read from the Modbus addess space returns fewer bytes than expected
+	ErrTimeout          = errors.New("timeout")              // if a timeout occurred
 )
 
 // AddressSpaceDriver abstracts the behaviour of drivers that are mapped onto a linear address space,
