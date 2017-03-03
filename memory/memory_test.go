@@ -7,6 +7,7 @@ import (
 	"github.com/crabmusket/gosunspec/models/model101"
 	"github.com/crabmusket/gosunspec/models/model304"
 	"github.com/crabmusket/gosunspec/models/model502"
+	"github.com/crabmusket/gosunspec/spi"
 	"testing"
 )
 
@@ -245,5 +246,26 @@ func TestMustModelFailsWithManyModels(t *testing.T) {
 	}
 	if err == nil {
 		t.Fatalf("error expected")
+	}
+}
+
+// We expect the short slab to be shorter
+func TestShortSlab(t *testing.T) {
+	long, _ := NewSlabBuilder1(false).Build()
+	short, _ := NewSlabBuilder1(true).Build()
+	actual := len(short)
+	expected := len(long) - 2
+	if actual != expected {
+		t.Fatalf("short length is too long: actual=%d, expected=%d", actual, expected)
+	}
+
+	array, _ := Open(short)
+
+	devices := array.Collect(sunspec.AllDevices)
+	models := devices[0].Collect(sunspec.AllModels)
+	actual = int(models[0].MustBlock(0).(spi.BlockSPI).Length())
+	expected = 65
+	if actual != expected {
+		t.Fatalf("short length is too long: actual=%d, expected=%d", actual, expected)
 	}
 }
