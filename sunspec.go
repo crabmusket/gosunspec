@@ -124,6 +124,19 @@ func SameModelId(id ModelId) func(m Model) bool {
 	}
 }
 
+// Returns a function that matches a number of possible ModelIds
+func OneOfSeveralModelIds(candidates []ModelId) func(m Model) bool {
+	return func(m Model) bool {
+		id := m.Id()
+		for _, c := range candidates {
+			if c == id {
+				return true
+			}
+		}
+		return false
+	}
+}
+
 // ExactlyOneModel returns a model iff the slice contains
 // exactly one model or an error otherwise.
 func ExactlyOneModel(models []Model) (Model, error) {
