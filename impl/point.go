@@ -487,7 +487,7 @@ func (p *point) Unmarshal(bytes []byte) error {
 	case typelabel.String:
 		var b = make([]byte, p.Length(), p.Length())
 		copy(b[0:], bytes)
-		for i, y := range bytes {
+		for i, y := range b {
 			if y == 0 {
 				b = b[0:i]
 				break
