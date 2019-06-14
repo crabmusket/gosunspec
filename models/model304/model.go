@@ -10,7 +10,7 @@ import (
 	"github.com/crabmusket/gosunspec/typelabel"
 )
 
-// Block304 - Inclinometer Model - Include to support orienation measurements
+// Block304 - Inclinometer Model - Include to support orientation measurements
 
 const (
 	ModelID = 304

@@ -86,7 +86,7 @@ func init() {
 	smdx.RegisterModel(&smdx.ModelElement{
 		Id:     ModelID,
 		Name:   "string_combiner",
-		Length: 33,
+		Length: 34,
 		Blocks: []smdx.BlockElement{
 			smdx.BlockElement{
 				Length: 20,

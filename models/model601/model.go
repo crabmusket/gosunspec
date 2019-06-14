@@ -42,7 +42,7 @@ const (
 type Block601Repeat struct {
 	Id     string             `sunspec:"offset=0,len=8"`
 	ElTrgt int32              `sunspec:"offset=8,sf=Dgr_SF"`
-	AzTrgt int32              `sunspec:"offset=10,sf=SF"`
+	AzTrgt int32              `sunspec:"offset=10,sf=Dgr_SF"`
 	ElPos  int32              `sunspec:"offset=12,sf=Dgr_SF"`
 	AzPos  int32              `sunspec:"offset=14,sf=Dgr_SF"`
 	ElCtl  int32              `sunspec:"offset=16,sf=Dgr_SF,access=rw"`
@@ -100,7 +100,7 @@ func init() {
 				Points: []smdx.PointElement{
 					smdx.PointElement{Id: Id, Offset: 0, Type: typelabel.String, Length: 8},
 					smdx.PointElement{Id: ElTrgt, Offset: 8, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
-					smdx.PointElement{Id: AzTrgt, Offset: 10, Type: typelabel.Int32, ScaleFactor: "SF", Units: "Degrees"},
+					smdx.PointElement{Id: AzTrgt, Offset: 10, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
 					smdx.PointElement{Id: ElPos, Offset: 12, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
 					smdx.PointElement{Id: AzPos, Offset: 14, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
 					smdx.PointElement{Id: ElCtl, Offset: 16, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},

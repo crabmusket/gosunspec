@@ -10,7 +10,7 @@ import (
 	"github.com/crabmusket/gosunspec/typelabel"
 )
 
-// Block502 - Solar Module - A solar module model supporing DC-DC converter
+// Block502 - Solar Module - A solar module model supporting DC-DC converter
 
 const (
 	ModelID = 502

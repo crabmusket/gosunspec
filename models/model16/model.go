@@ -39,7 +39,7 @@ type Block16 struct {
 	Gw     string             `sunspec:"offset=22,len=8,access=rw"`
 	DNS1   string             `sunspec:"offset=30,len=8,access=rw"`
 	DNS2   string             `sunspec:"offset=38,len=8,access=rw"`
-	MAC    uint64             `sunspec:"offset=46,access=r"`
+	MAC    sunspec.Eui48      `sunspec:"offset=46,access=r"`
 	LnkCtl sunspec.Bitfield16 `sunspec:"offset=50,access=rw"`
 	Pad    sunspec.Pad        `sunspec:"offset=51"`
 }
@@ -66,7 +66,7 @@ func init() {
 					smdx.PointElement{Id: Gw, Offset: 22, Type: typelabel.String, Access: "rw", Length: 8},
 					smdx.PointElement{Id: DNS1, Offset: 30, Type: typelabel.String, Access: "rw", Length: 8},
 					smdx.PointElement{Id: DNS2, Offset: 38, Type: typelabel.String, Access: "rw", Length: 8},
-					smdx.PointElement{Id: MAC, Offset: 46, Type: typelabel.Uint64, Access: "r"},
+					smdx.PointElement{Id: MAC, Offset: 46, Type: typelabel.Eui48, Access: "r"},
 					smdx.PointElement{Id: LnkCtl, Offset: 50, Type: typelabel.Bitfield16, Access: "rw"},
 					smdx.PointElement{Id: Pad, Offset: 51, Type: typelabel.Pad},
 				},

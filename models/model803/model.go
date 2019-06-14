@@ -32,9 +32,7 @@ const (
 	NStrCon         = "NStrCon"
 	Pad1            = "Pad1"
 	Pad2            = "Pad2"
-	Pad3            = "Pad3"
-	Pad4            = "Pad4"
-	Pad5            = "Pad5"
+	SoC_SF          = "SoC_SF"
 	SoH_SF          = "SoH_SF"
 	StrA            = "StrA"
 	StrAAvg         = "StrAAvg"
@@ -49,6 +47,7 @@ const (
 	StrCellVMinMod  = "StrCellVMinMod"
 	StrConFail      = "StrConFail"
 	StrConSt        = "StrConSt"
+	StrDisRsn       = "StrDisRsn"
 	StrEvt1         = "StrEvt1"
 	StrEvt2         = "StrEvt2"
 	StrEvtVnd1      = "StrEvtVnd1"
@@ -69,13 +68,14 @@ const (
 	StrVMaxStr      = "StrVMaxStr"
 	StrVMin         = "StrVMin"
 	StrVMinStr      = "StrVMinStr"
+	V_SF            = "V_SF"
 )
 
 type Block803Repeat struct {
 	StrNMod         uint16             `sunspec:"offset=0"`
 	StrSt           sunspec.Bitfield32 `sunspec:"offset=1"`
 	StrConFail      sunspec.Enum16     `sunspec:"offset=3"`
-	StrSoC          uint16             `sunspec:"offset=4"`
+	StrSoC          uint16             `sunspec:"offset=4,sf=SoC_SF"`
 	StrSoH          uint16             `sunspec:"offset=5,sf=SoH_SF"`
 	StrA            int16              `sunspec:"offset=6,sf=A_SF"`
 	StrCellVMax     uint16             `sunspec:"offset=7,sf=CellV_SF"`
@@ -88,7 +88,7 @@ type Block803Repeat struct {
 	StrModTmpMin    int16              `sunspec:"offset=14,sf=ModTmp_SF"`
 	StrModTmpMinMod uint16             `sunspec:"offset=15"`
 	StrModTmpAvg    int16              `sunspec:"offset=16,sf=ModTmp_SF"`
-	Pad3            sunspec.Pad        `sunspec:"offset=17"`
+	StrDisRsn       sunspec.Enum16     `sunspec:"offset=17"`
 	StrConSt        sunspec.Bitfield32 `sunspec:"offset=18"`
 	StrEvt1         sunspec.Bitfield32 `sunspec:"offset=20"`
 	StrEvt2         sunspec.Bitfield32 `sunspec:"offset=22"`
@@ -96,8 +96,8 @@ type Block803Repeat struct {
 	StrEvtVnd2      sunspec.Bitfield32 `sunspec:"offset=26"`
 	StrSetEna       sunspec.Enum16     `sunspec:"offset=28,access=rw"`
 	StrSetCon       sunspec.Enum16     `sunspec:"offset=29,access=rw"`
-	Pad4            sunspec.Pad        `sunspec:"offset=30"`
-	Pad5            sunspec.Pad        `sunspec:"offset=31"`
+	Pad1            sunspec.Pad        `sunspec:"offset=30"`
+	Pad2            sunspec.Pad        `sunspec:"offset=31"`
 }
 
 type Block803 struct {
@@ -125,8 +125,8 @@ type Block803 struct {
 	ModTmp_SF    sunspec.ScaleFactor `sunspec:"offset=21"`
 	A_SF         sunspec.ScaleFactor `sunspec:"offset=22"`
 	SoH_SF       sunspec.ScaleFactor `sunspec:"offset=23"`
-	Pad1         sunspec.Pad         `sunspec:"offset=24"`
-	Pad2         sunspec.Pad         `sunspec:"offset=25"`
+	SoC_SF       sunspec.ScaleFactor `sunspec:"offset=24"`
+	V_SF         sunspec.ScaleFactor `sunspec:"offset=25"`
 
 	Repeats []Block803Repeat
 }
@@ -139,7 +139,7 @@ func init() {
 	smdx.RegisterModel(&smdx.ModelElement{
 		Id:     ModelID,
 		Name:   "lithium_ion_bank",
-		Length: 33,
+		Length: 58,
 		Blocks: []smdx.BlockElement{
 			smdx.BlockElement{
 				Length: 26,
@@ -169,8 +169,8 @@ func init() {
 					smdx.PointElement{Id: ModTmp_SF, Offset: 21, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: A_SF, Offset: 22, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: SoH_SF, Offset: 23, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: Pad1, Offset: 24, Type: typelabel.Pad, Mandatory: true},
-					smdx.PointElement{Id: Pad2, Offset: 25, Type: typelabel.Pad, Mandatory: true},
+					smdx.PointElement{Id: SoC_SF, Offset: 24, Type: typelabel.ScaleFactor, Mandatory: true},
+					smdx.PointElement{Id: V_SF, Offset: 25, Type: typelabel.ScaleFactor},
 				},
 			},
 			smdx.BlockElement{Name: "string",
@@ -180,7 +180,7 @@ func init() {
 					smdx.PointElement{Id: StrNMod, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
 					smdx.PointElement{Id: StrSt, Offset: 1, Type: typelabel.Bitfield32, Mandatory: true},
 					smdx.PointElement{Id: StrConFail, Offset: 3, Type: typelabel.Enum16},
-					smdx.PointElement{Id: StrSoC, Offset: 4, Type: typelabel.Uint16, Units: "%", Mandatory: true},
+					smdx.PointElement{Id: StrSoC, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "SoC_SF", Units: "%", Mandatory: true},
 					smdx.PointElement{Id: StrSoH, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "SoH_SF", Units: "%"},
 					smdx.PointElement{Id: StrA, Offset: 6, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Mandatory: true},
 					smdx.PointElement{Id: StrCellVMax, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
@@ -193,7 +193,7 @@ func init() {
 					smdx.PointElement{Id: StrModTmpMin, Offset: 14, Type: typelabel.Int16, ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
 					smdx.PointElement{Id: StrModTmpMinMod, Offset: 15, Type: typelabel.Uint16},
 					smdx.PointElement{Id: StrModTmpAvg, Offset: 16, Type: typelabel.Int16, ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true},
-					smdx.PointElement{Id: Pad3, Offset: 17, Type: typelabel.Pad, Mandatory: true},
+					smdx.PointElement{Id: StrDisRsn, Offset: 17, Type: typelabel.Enum16},
 					smdx.PointElement{Id: StrConSt, Offset: 18, Type: typelabel.Bitfield32},
 					smdx.PointElement{Id: StrEvt1, Offset: 20, Type: typelabel.Bitfield32, Mandatory: true},
 					smdx.PointElement{Id: StrEvt2, Offset: 22, Type: typelabel.Bitfield32},
@@ -201,8 +201,8 @@ func init() {
 					smdx.PointElement{Id: StrEvtVnd2, Offset: 26, Type: typelabel.Bitfield32},
 					smdx.PointElement{Id: StrSetEna, Offset: 28, Type: typelabel.Enum16, Access: "rw"},
 					smdx.PointElement{Id: StrSetCon, Offset: 29, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: Pad4, Offset: 30, Type: typelabel.Pad, Mandatory: true},
-					smdx.PointElement{Id: Pad5, Offset: 31, Type: typelabel.Pad, Mandatory: true},
+					smdx.PointElement{Id: Pad1, Offset: 30, Type: typelabel.Pad, Mandatory: true},
+					smdx.PointElement{Id: Pad2, Offset: 31, Type: typelabel.Pad, Mandatory: true},
 				},
 			},
 		}})
