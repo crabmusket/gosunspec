@@ -29,12 +29,12 @@ const (
 
 type Block125 struct {
 	ModEna  sunspec.Bitfield16  `sunspec:"offset=0,len=1,access=rw"`
-	SigType sunspec.Enum16      `sunspec:"offset=1,len=1,sf= ,access=rw"`
+	SigType sunspec.Enum16      `sunspec:"offset=1,len=1,access=rw"`
 	Sig     int16               `sunspec:"offset=2,len=1,sf=Sig_SF,access=rw"`
 	WinTms  uint16              `sunspec:"offset=3,len=1,access=rw"`
 	RvtTms  uint16              `sunspec:"offset=4,len=1,access=rw"`
 	RmpTms  uint16              `sunspec:"offset=5,len=1,access=rw"`
-	Sig_SF  sunspec.ScaleFactor `sunspec:"offset=6,len=1,sf= ,access=r"`
+	Sig_SF  sunspec.ScaleFactor `sunspec:"offset=6,len=1,access=r"`
 	Pad     sunspec.Pad         `sunspec:"offset=7,len=1,access=r"`
 }
 
@@ -53,12 +53,12 @@ func init() {
 				Type:   "fixed",
 				Points: []smdx.PointElement{
 					smdx.PointElement{Id: ModEna, Offset: 0, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: SigType, Offset: 1, Type: typelabel.Enum16, ScaleFactor: " ", Access: "rw", Length: 1},
+					smdx.PointElement{Id: SigType, Offset: 1, Type: typelabel.Enum16, Access: "rw", Length: 1},
 					smdx.PointElement{Id: Sig, Offset: 2, Type: typelabel.Int16, ScaleFactor: "Sig_SF", Access: "rw", Length: 1, Mandatory: true},
 					smdx.PointElement{Id: WinTms, Offset: 3, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
 					smdx.PointElement{Id: RvtTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
 					smdx.PointElement{Id: RmpTms, Offset: 5, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Sig_SF, Offset: 6, Type: typelabel.ScaleFactor, ScaleFactor: " ", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: Sig_SF, Offset: 6, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
 					smdx.PointElement{Id: Pad, Offset: 7, Type: typelabel.Pad, Access: "r", Length: 1},
 				},
 			},

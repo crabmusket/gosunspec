@@ -39,6 +39,7 @@ const (
 	ModCellVMinCell = "ModCellVMinCell"
 	ModConFail      = "ModConFail"
 	ModConSt        = "ModConSt"
+	ModDisRsn       = "ModDisRsn"
 	ModEvt1         = "ModEvt1"
 	ModEvt2         = "ModEvt2"
 	ModIdx          = "ModIdx"
@@ -59,7 +60,6 @@ const (
 	NModCon         = "NModCon"
 	OCV_SF          = "OCV_SF"
 	Pad1            = "Pad1"
-	Pad4            = "Pad4"
 	SoC_SF          = "SoC_SF"
 	TmpAvg          = "TmpAvg"
 	TmpMax          = "TmpMax"
@@ -89,7 +89,7 @@ type Block807Repeat struct {
 	ModConFail      sunspec.Enum16     `sunspec:"offset=20"`
 	ModSetEna       sunspec.Enum16     `sunspec:"offset=21,access=rw"`
 	ModSetCon       sunspec.Enum16     `sunspec:"offset=22,access=rw"`
-	Pad4            sunspec.Pad        `sunspec:"offset=23"`
+	ModDisRsn       sunspec.Enum16     `sunspec:"offset=23"`
 }
 
 type Block807 struct {
@@ -149,13 +149,13 @@ func init() {
 					smdx.PointElement{Id: ModVMin, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
 					smdx.PointElement{Id: ModVMinMod, Offset: 6, Type: typelabel.Uint16},
 					smdx.PointElement{Id: ModVAvg, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: CellVMax, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: CellVMax, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V"},
 					smdx.PointElement{Id: CellVMaxMod, Offset: 9, Type: typelabel.Uint16},
 					smdx.PointElement{Id: CellVMaxStk, Offset: 10, Type: typelabel.Uint16},
-					smdx.PointElement{Id: CellVMin, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: CellVMin, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V"},
 					smdx.PointElement{Id: CellVMinMod, Offset: 12, Type: typelabel.Uint16},
 					smdx.PointElement{Id: CellVMinStk, Offset: 13, Type: typelabel.Uint16},
-					smdx.PointElement{Id: CellVAvg, Offset: 14, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: CellVAvg, Offset: 14, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V"},
 					smdx.PointElement{Id: TmpMax, Offset: 15, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
 					smdx.PointElement{Id: TmpMaxMod, Offset: 16, Type: typelabel.Uint16},
 					smdx.PointElement{Id: TmpMin, Offset: 17, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
@@ -183,11 +183,11 @@ func init() {
 					smdx.PointElement{Id: ModSoC, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "SoC_SF", Units: "%", Mandatory: true},
 					smdx.PointElement{Id: ModOCV, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "OCV_SF", Units: "V", Mandatory: true},
 					smdx.PointElement{Id: ModV, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "ModV_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: ModCellVMax, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: ModCellVMax, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V"},
 					smdx.PointElement{Id: ModCellVMaxCell, Offset: 8, Type: typelabel.Uint16},
-					smdx.PointElement{Id: ModCellVMin, Offset: 9, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: ModCellVMin, Offset: 9, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V"},
 					smdx.PointElement{Id: ModCellVMinCell, Offset: 10, Type: typelabel.Uint16},
-					smdx.PointElement{Id: ModCellVAvg, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: ModCellVAvg, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V"},
 					smdx.PointElement{Id: ModAnoTmp, Offset: 12, Type: typelabel.Uint16, ScaleFactor: "Tmp_SF", Units: "C"},
 					smdx.PointElement{Id: ModCatTmp, Offset: 13, Type: typelabel.Uint16, ScaleFactor: "Tmp_SF", Units: "C"},
 					smdx.PointElement{Id: ModConSt, Offset: 14, Type: typelabel.Bitfield32},
@@ -196,7 +196,7 @@ func init() {
 					smdx.PointElement{Id: ModConFail, Offset: 20, Type: typelabel.Enum16},
 					smdx.PointElement{Id: ModSetEna, Offset: 21, Type: typelabel.Enum16, Access: "rw"},
 					smdx.PointElement{Id: ModSetCon, Offset: 22, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: Pad4, Offset: 23, Type: typelabel.Pad, Mandatory: true},
+					smdx.PointElement{Id: ModDisRsn, Offset: 23, Type: typelabel.Enum16},
 				},
 			},
 		}})

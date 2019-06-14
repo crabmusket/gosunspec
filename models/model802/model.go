@@ -46,7 +46,6 @@ const (
 	Hb               = "Hb"
 	LocRemCtl        = "LocRemCtl"
 	NCyc             = "NCyc"
-	Pad1             = "Pad1"
 	ReqInvState      = "ReqInvState"
 	ReqW             = "ReqW"
 	SetInvState      = "SetInvState"
@@ -60,6 +59,7 @@ const (
 	SoH_SF           = "SoH_SF"
 	SocRsvMax        = "SocRsvMax"
 	State            = "State"
+	StateVnd         = "StateVnd"
 	Typ              = "Typ"
 	V                = "V"
 	VMax             = "VMax"
@@ -96,7 +96,7 @@ type Block802 struct {
 	AlmRst           uint16              `sunspec:"offset=18,access=rw"`
 	Typ              sunspec.Enum16      `sunspec:"offset=19"`
 	State            sunspec.Enum16      `sunspec:"offset=20"`
-	Pad1             sunspec.Pad         `sunspec:"offset=21"`
+	StateVnd         sunspec.Enum16      `sunspec:"offset=21"`
 	WarrDt           uint32              `sunspec:"offset=22"`
 	Evt1             sunspec.Bitfield32  `sunspec:"offset=24"`
 	Evt2             sunspec.Bitfield32  `sunspec:"offset=26"`
@@ -142,7 +142,7 @@ func init() {
 	smdx.RegisterModel(&smdx.ModelElement{
 		Id:     ModelID,
 		Name:   "battery",
-		Length: 54,
+		Length: 62,
 		Blocks: []smdx.BlockElement{
 			smdx.BlockElement{
 				Length: 62,
@@ -168,7 +168,7 @@ func init() {
 					smdx.PointElement{Id: AlmRst, Offset: 18, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Typ, Offset: 19, Type: typelabel.Enum16, Mandatory: true},
 					smdx.PointElement{Id: State, Offset: 20, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: Pad1, Offset: 21, Type: typelabel.Pad, Mandatory: true},
+					smdx.PointElement{Id: StateVnd, Offset: 21, Type: typelabel.Enum16},
 					smdx.PointElement{Id: WarrDt, Offset: 22, Type: typelabel.Uint32},
 					smdx.PointElement{Id: Evt1, Offset: 24, Type: typelabel.Bitfield32, Mandatory: true},
 					smdx.PointElement{Id: Evt2, Offset: 26, Type: typelabel.Bitfield32, Mandatory: true},

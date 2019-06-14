@@ -85,7 +85,7 @@ type Block4Repeat struct {
 
 type Block4 struct {
 	RqSeq uint16         `sunspec:"offset=0,access=r"`
-	Sts   uint16         `sunspec:"offset=1,access=r"`
+	Sts   sunspec.Enum16 `sunspec:"offset=1,access=r"`
 	X     uint16         `sunspec:"offset=2,access=r"`
 	Val1  uint16         `sunspec:"offset=3,access=r"`
 	Val2  uint16         `sunspec:"offset=4,access=r"`
@@ -162,7 +162,7 @@ func init() {
 
 				Points: []smdx.PointElement{
 					smdx.PointElement{Id: RqSeq, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Sts, Offset: 1, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Sts, Offset: 1, Type: typelabel.Enum16, Access: "r", Mandatory: true},
 					smdx.PointElement{Id: X, Offset: 2, Type: typelabel.Uint16, Access: "r", Mandatory: true},
 					smdx.PointElement{Id: Val1, Offset: 3, Type: typelabel.Uint16, Access: "r", Mandatory: true},
 					smdx.PointElement{Id: Val2, Offset: 4, Type: typelabel.Uint16, Access: "r", Mandatory: true},
