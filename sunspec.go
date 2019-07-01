@@ -77,6 +77,9 @@ type Ipv6addr [16]byte
 // A 16-bit pad register. Always 0x8000.
 type Pad uint16
 
+// An unimplemented point's value
+type NotImplemented interface{}
+
 // A 16-bit scaling factor used to scale the value of some other integer register.
 type ScaleFactor int16
 
@@ -309,12 +312,23 @@ type Point interface {
 	SetUint32(v uint32)
 	SetUint64(v uint64)
 
+	// NotImplemented validates if the value is unimplemented according to
+	// the specification. It can be used to check if the results
+	// returned by any of the getter functions is valid.
+	// This function does not- for sake of simplicity- validate Acc16/32/64
+	// and String types. These can be checked via their natural zero value.
+	NotImplemented() bool
+
 	// Answer the scaled value of the point as a float64. This method
 	// will panic if the Error() method of either the point or the
 	// related scaling factor is not nil.
+	// ScaledValue() checks for unimplemented values using NotImplemented()
+	// and returns NaN in this case.
 	ScaledValue() float64
 
 	// Answer the value of the point. This method will panic if Error() is not nil.
+	// Value checks for unimplemented values using NotImplemented()
+	// and returns the NotImplemented type in this case.
 	Value() interface{}
 
 	// Set the value associated with the point. This method will panic if the value

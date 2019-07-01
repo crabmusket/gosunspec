@@ -90,6 +90,80 @@ func (p *point) Length() uint16 {
 	}
 }
 
+// NotImplemented validates if the actual value matches any of the
+// unimplemented values according to the specification. In this case
+// it will return true. NotImplemented can be used to check if the
+// results returned by any of the getter functions is valid.
+func (p *point) NotImplemented() bool {
+	p.checkerror()
+
+	notImplemented := false
+	switch v := p.value.(type) {
+	case float32:
+		if 0x7fc00000 == math.Float32bits(v) {
+			notImplemented = true
+		}
+	case int16:
+		if v == int16(math.MinInt16) {
+			notImplemented = true
+		}
+	case int32:
+		if v == int32(math.MinInt32) {
+			notImplemented = true
+		}
+	case int64:
+		if v == int64(math.MinInt64) {
+			notImplemented = true
+		}
+	case uint16:
+		if v == uint16(math.MaxUint16) {
+			notImplemented = true
+		}
+	case uint32:
+		if v == uint32(math.MaxUint32) {
+			notImplemented = true
+		}
+	case uint64:
+		if v == uint64(math.MaxUint64) {
+			notImplemented = true
+		}
+	case sunspec.Enum16:
+		if uint16(v) == uint16(math.MaxUint16) {
+			notImplemented = true
+		}
+	case sunspec.Enum32:
+		if uint32(v) == uint32(math.MaxUint32) {
+			notImplemented = true
+		}
+	case sunspec.Bitfield16:
+		if uint16(v) == uint16(math.MaxUint16) {
+			notImplemented = true
+		}
+	case sunspec.Bitfield32:
+		if uint32(v) == uint32(math.MaxUint32) {
+			notImplemented = true
+		}
+	case sunspec.Ipaddr:
+		// 4 bytes
+		if binary.BigEndian.Uint32(v[0:]) == 0 {
+			notImplemented = true
+		}
+	case sunspec.Ipv6addr:
+		// 2x8 bytes
+		if binary.BigEndian.Uint64(v[0:]) == 0 && binary.BigEndian.Uint64(v[8:]) == 0 {
+			notImplemented = true
+		}
+	case sunspec.Eui48:
+		// 4+2 bytes
+		if binary.BigEndian.Uint32(v[0:]) == uint32(math.MaxUint32) &&
+			binary.BigEndian.Uint16(v[4:]) == uint16(math.MaxUint16) {
+			notImplemented = true
+		}
+	}
+
+	return notImplemented
+}
+
 // Scales the point value with the associated scaling factor,
 // if any, returning a float64 value.
 func (p *point) ScaledValue() float64 {
@@ -119,6 +193,12 @@ func (p *point) ScaledValue() float64 {
 	default:
 		panic(fmt.Errorf("attempt to use non-numeric value as scaled value: point=%s", p.Id()))
 	}
+
+	// Unimplemented value
+	if p.NotImplemented() {
+		return math.NaN()
+	}
+
 	sf := sunspec.ScaleFactor(0)
 	if p.scaleFactor != nil {
 		sf = p.scaleFactor.ScaleFactor()
@@ -127,12 +207,21 @@ func (p *point) ScaledValue() float64 {
 			sf = sunspec.ScaleFactor(v)
 		}
 	}
+
+	// Unimplemented scale factor value
+	if int16(sf) == int16(math.MinInt16) {
+		return math.NaN()
+	}
+
 	return f * math.Pow(10, float64(sf))
 }
 
 // The value of the point, without regard to its actual type.
 func (p *point) Value() interface{} {
 	p.checkerror()
+	if p.NotImplemented() {
+		return sunspec.NotImplemented(struct{}{})
+	}
 	return p.value
 }
 
