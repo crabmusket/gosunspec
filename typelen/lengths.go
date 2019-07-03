@@ -13,7 +13,7 @@ const (
 	Count       = 1
 	Enum16      = 1
 	Enum32      = 2
-	Eui48       = 3
+	Eui48       = 4
 	Float32     = 2
 	Int16       = 1
 	Int32       = 2

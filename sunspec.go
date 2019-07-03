@@ -66,7 +66,7 @@ type Enum16 uint16
 type Enum32 uint32
 
 // An hardware address (like a MAC address) - see https://standards.ieee.org/develop/regauth/tut/eui48.pdf
-type Eui48 [6]byte
+type Eui48 [8]byte
 
 // A 32bit IPv4 address (binary)
 type Ipaddr [4]byte
