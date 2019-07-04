@@ -1,3 +1,5 @@
+**This project is unmaintained. Please see https://github.com/crabmusket/gosunspec/issues/38**
+
 # SunSpec tools for Go
 
 This package contains Go data types representing the [SunSpec][] information model.
