@@ -159,6 +159,10 @@ func (p *point) NotImplemented() bool {
 			binary.BigEndian.Uint16(v[4:]) == uint16(math.MaxUint16) {
 			notImplemented = true
 		}
+	case sunspec.ScaleFactor:
+		if int16(v) == int16(math.MinInt16) {
+			notImplemented = true
+		}
 	}
 
 	return notImplemented
