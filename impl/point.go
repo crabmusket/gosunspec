@@ -522,43 +522,18 @@ func (p *point) MarshalXML() string {
 		panic(p.err)
 	}
 	switch p.Type() {
-	case typelabel.Bitfield16, typelabel.Pad:
-		return fmt.Sprintf("0x%04x", p.value)
+	case typelabel.Bitfield16:
+		return p.Bitfield16().String()
 	case typelabel.Bitfield32:
-		return fmt.Sprintf("0x%08x", p.value)
+		return p.Bitfield32().String()
+	case typelabel.Pad:
+		return p.Pad().String()
 	case typelabel.Ipaddr:
-		buf := []byte{}
-		for x, b := range p.Ipaddr() {
-			if x != 0 {
-				buf = append(buf, '.')
-			}
-			buf = append(buf, fmt.Sprintf("%d", b)...)
-		}
-		return string(buf)
+		return p.Ipaddr().String()
 	case typelabel.Ipv6addr:
-		buf := []byte{}
-		in := p.Ipv6addr()
-		for x, _ := range in {
-			if x%2 == 1 {
-				continue
-			}
-			if x != 0 {
-				buf = append(buf, ':')
-			}
-			buf = append(buf, fmt.Sprintf("%04x", uint16(in[x])<<8|uint16(in[x+1]))...)
-		}
-		return string(buf)
+		return p.Ipv6addr().String()
 	case typelabel.Eui48:
-		buf := []byte{}
-		eui48 := p.Eui48()
-		// first word is unused - ignore
-		for x, b := range eui48[2:] {
-			if x != 0 {
-				buf = append(buf, ':')
-			}
-			buf = append(buf, fmt.Sprintf("%02x", b)...)
-		}
-		return string(buf)
+		return p.Eui48().String()
 	default:
 		return fmt.Sprintf("%v", p.value)
 	}
