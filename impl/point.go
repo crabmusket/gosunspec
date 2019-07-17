@@ -4,13 +4,14 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/crabmusket/gosunspec"
+	"math"
+	"strconv"
+
+	sunspec "github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
 	"github.com/crabmusket/gosunspec/typelabel"
 	"github.com/crabmusket/gosunspec/typelen"
-	"math"
-	"strconv"
 )
 
 var (
@@ -549,7 +550,9 @@ func (p *point) MarshalXML() string {
 		return string(buf)
 	case typelabel.Eui48:
 		buf := []byte{}
-		for x, b := range p.Eui48() {
+		eui48 := p.Eui48()
+		// first word is unused - ignore
+		for x, b := range eui48[2:] {
 			if x != 0 {
 				buf = append(buf, ':')
 			}
@@ -635,7 +638,8 @@ func (p *point) UnmarshalXML(s string) error {
 		}
 	case typelabel.Eui48:
 		var buf sunspec.Eui48
-		if _, err := fmt.Sscanf(s, "%02x:%02x:%02x:%02x:%02x:%02x", &buf[0], &buf[1], &buf[2], &buf[3], &buf[4], &buf[5]); err != nil {
+		// first word is unused - ignore
+		if _, err := fmt.Sscanf(s, "%02x:%02x:%02x:%02x:%02x:%02x", &buf[2], &buf[3], &buf[4], &buf[5], &buf[6], &buf[7]); err != nil {
 			return err
 		} else {
 			p.SetEui48(buf)
