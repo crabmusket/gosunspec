@@ -1,7 +1,7 @@
 package memory
 
 import (
-	"github.com/crabmusket/gosunspec"
+	sunspec "github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/models/model101"
 	"github.com/crabmusket/gosunspec/models/model11"
 	"github.com/crabmusket/gosunspec/models/model304"
@@ -39,7 +39,7 @@ var (
 	CONST_FLOAT32  = float32(100.02)
 	CONST_IP       = sunspec.Ipaddr{127, 0, 0, 1}
 	CONST_IPV6     = sunspec.Ipv6addr{0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00}
-	CONST_EUI48    = sunspec.Eui48{0, 1, 2, 3, 4, 5}
+	CONST_EUI48    = sunspec.Eui48{0, 0, 2, 3, 4, 5, 6, 7}
 	ExpectedValues = map[string]interface{}{
 		typelabel.Acc16:       CONST_ACC16,
 		typelabel.Acc32:       CONST_ACC32,
