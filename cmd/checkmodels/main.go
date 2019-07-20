@@ -73,7 +73,7 @@ func main() {
 				} else {
 					totalPointLen += int(t.Length)
 					if p.Length != 0 && int(p.Length) != t.Length {
-						fmt.Fprintf(os.Stderr, "%d: %d: %d: inconsistent point length\n", m.Id, bx, p.Id)
+						fmt.Fprintf(os.Stderr, "%d: %d: %s: inconsistent point length\n", m.Id, bx, p.Id)
 					}
 				}
 			}
