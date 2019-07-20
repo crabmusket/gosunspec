@@ -1,7 +1,7 @@
 package impl
 
 import (
-	"encoding/binary"
+	"bytes"
 	"math"
 	"testing"
 
@@ -25,8 +25,8 @@ func TestCompleteArray(t *testing.T) {
 
 func TestNotImplemented(t *testing.T) {
 	cases := []struct {
-		e bool
-		v interface{}
+		expect bool
+		value interface{}
 	}{
 		{false, float32(0)},
 		{true, math.Float32frombits(0x7fc00000)},
@@ -47,7 +47,7 @@ func TestNotImplemented(t *testing.T) {
 		{true, sunspec.Ipaddr{0, 0, 0, 0}},
 		{true, sunspec.Ipv6addr{0, 0, 0, 0, 0, 0}},
 		{false, sunspec.Eui48{0, 0, 0, 0, 0, 0}},
-		{true, sunspec.Eui48{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}},
+		{true, sunspec.Eui48{0x01, 0x02, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}},
 		{false, sunspec.Bitfield16(0)},
 		{false, sunspec.Bitfield32(0)},
 		{true, sunspec.Bitfield16(0xFFFF)},
@@ -61,11 +61,11 @@ func TestNotImplemented(t *testing.T) {
 	for _, c := range cases {
 		p := point{
 			err:   nil,
-			value: c.v,
+			value: c.value,
 		}
 
-		if c.e != p.NotImplemented() {
-			t.Errorf("expected %v, got %v", c.e, c.v)
+		if exp:=p.NotImplemented(); c.expect !=  exp{
+			t.Errorf("expected %v, got %v for %v", c.expect, exp, c.value)
 		}
 
 		if v, ok := p.Value().(sunspec.NotImplemented); !ok {
@@ -85,7 +85,7 @@ func TestMarshalEui48(t *testing.T) {
 	p.Unmarshal([]byte{1, 2, 3, 4, 5, 6, 7, 8})
 
 	v := p.Value().(sunspec.Eui48)
-	if binary.BigEndian.Uint64(v[:]) != 0x0102030405060708 {
+	if !bytes.Equal(v[:], []byte{1, 2, 3, 4, 5, 6, 7, 8}){
 		t.Errorf("unexpected value result, got %v", v)
 	}
 

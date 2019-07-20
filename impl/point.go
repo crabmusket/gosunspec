@@ -1,6 +1,7 @@
 package impl
 
 import (
+	"bytes"
 	"encoding/binary"
 	"errors"
 	"fmt"
@@ -150,17 +151,16 @@ func (p *point) NotImplemented() bool {
 		}
 	case sunspec.Ipv6addr:
 		// 2x8 bytes
-		if binary.BigEndian.Uint64(v[0:]) == 0 && binary.BigEndian.Uint64(v[8:]) == 0 {
+		if bytes.Equal(v[:], []byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}) {
 			notImplemented = true
 		}
 	case sunspec.Eui48:
-		// 4+2 bytes
-		if binary.BigEndian.Uint32(v[0:]) == uint32(math.MaxUint32) &&
-			binary.BigEndian.Uint16(v[4:]) == uint16(math.MaxUint16) {
+		// 6 bytes starting at 2
+		if bytes.Equal(v[2:], []byte{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}) {
 			notImplemented = true
 		}
 	case sunspec.ScaleFactor:
-		if int16(v) == int16(math.MinInt16) {
+		if v == sunspec.ScaleFactor(math.MinInt16) {
 			notImplemented = true
 		}
 	}
