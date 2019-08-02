@@ -2,11 +2,12 @@ package layout
 
 import (
 	"encoding/binary"
+	"log"
+
 	"github.com/crabmusket/gosunspec/impl"
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
-	"log"
 )
 
 // SunspecLayout is the type of layout that understands the SunSpec layout conventions.
@@ -49,6 +50,9 @@ func (s *SunSpecLayout) Open(a AddressSpaceDriver) (spi.ArraySPI, error) {
 	offset := uint16(2) // number of 16 bit registers
 	for {
 		if bytes, err := a.ReadWords(base+offset, 2); err != nil {
+			if offset > 2 { // model chain partially available
+				return array, err
+			}
 			return nil, err
 		} else if len(bytes) < 4 {
 			return nil, ErrShortRead
