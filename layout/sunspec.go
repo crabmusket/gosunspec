@@ -2,11 +2,13 @@ package layout
 
 import (
 	"encoding/binary"
+	"log"
+	"net"
+
 	"github.com/crabmusket/gosunspec/impl"
 	"github.com/crabmusket/gosunspec/models/model1"
 	"github.com/crabmusket/gosunspec/smdx"
 	"github.com/crabmusket/gosunspec/spi"
-	"log"
 )
 
 // SunspecLayout is the type of layout that understands the SunSpec layout conventions.
@@ -23,9 +25,9 @@ func (s *SunSpecLayout) Open(a AddressSpaceDriver) (spi.ArraySPI, error) {
 	base := uint16(0xffff)
 	for _, b := range baseRange {
 		if id, err := a.ReadWords(b, 2); err != nil {
-			if err == ErrTimeout {
-				// if one query fails with a timeout, then assume
-				// they all will.
+			// if one query fails with network error including timeout,
+			// then assume they all will.
+			if err, ok := err.(net.Error); ok && !err.Temporary() {
 				return nil, err
 			}
 			continue
