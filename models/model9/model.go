@@ -13,7 +13,9 @@ import (
 // Block9 - Set Operator Security Certificate - Security model for PKI
 
 const (
-	ModelID = 9
+	ModelID          = 9
+	ModelLabel       = "Set Operator Security Certificate"
+	ModelDescription = "Security model for PKI"
 )
 
 const (
@@ -225,13 +227,13 @@ func init() {
 				Length: 92,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: CertUID, Offset: 0, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: CertRole, Offset: 1, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Fmt, Offset: 2, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Typ, Offset: 3, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: TotLn, Offset: 4, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: FrgLn, Offset: 5, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Frg1, Offset: 6, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: CertUID, Offset: 0, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Cert_UID", Description: "User ID for this certificate"},
+					smdx.PointElement{Id: CertRole, Offset: 1, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Cert_Role", Description: "Role for this certificate"},
+					smdx.PointElement{Id: Fmt, Offset: 2, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Format", Description: "X.509 format of the certificate. DER or PEM."},
+					smdx.PointElement{Id: Typ, Offset: 3, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Type", Description: "Type of this certificate"},
+					smdx.PointElement{Id: TotLn, Offset: 4, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Total Length", Description: "Total Length of the Certificate"},
+					smdx.PointElement{Id: FrgLn, Offset: 5, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Fragment length", Description: "Length of this fragment"},
+					smdx.PointElement{Id: Frg1, Offset: 6, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Frag1", Description: "First word of this fragment"},
 					smdx.PointElement{Id: Frg2, Offset: 7, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Frg3, Offset: 8, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Frg4, Offset: 9, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
@@ -308,14 +310,14 @@ func init() {
 					smdx.PointElement{Id: Frg75, Offset: 80, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Frg78, Offset: 81, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Frg79, Offset: 82, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Frg80, Offset: 83, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Ts, Offset: 84, Type: typelabel.Uint32, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Ms, Offset: 86, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Seq, Offset: 87, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: UID, Offset: 88, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Role, Offset: 89, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Alg, Offset: 90, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 91, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: Frg80, Offset: 83, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Frag80", Description: "Last word of this fragment"},
+					smdx.PointElement{Id: Ts, Offset: 84, Type: typelabel.Uint32, Access: "rw", Mandatory: true, Label: "Timestamp", Description: "Timestamp value is the number of seconds since January 1, 2000"},
+					smdx.PointElement{Id: Ms, Offset: 86, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Milliseconds", Description: "Millisecond counter 0-999"},
+					smdx.PointElement{Id: Seq, Offset: 87, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Sequence", Description: "Sequence number of request"},
+					smdx.PointElement{Id: UID, Offset: 88, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "UID", Description: "User ID for the request signature"},
+					smdx.PointElement{Id: Role, Offset: 89, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Role", Description: "Signing key used 0-5"},
+					smdx.PointElement{Id: Alg, Offset: 90, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Algorithm", Description: "Algorithm used to compute the digital signature"},
+					smdx.PointElement{Id: N, Offset: 91, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "N", Description: "Number of registers to follow for the certificate"},
 				},
 			},
 			smdx.BlockElement{

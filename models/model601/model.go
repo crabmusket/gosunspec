@@ -13,7 +13,9 @@ import (
 // Block601 - Tracker Controller DRAFT 2 - Monitors and controls multiple trackers
 
 const (
-	ModelID = 601
+	ModelID          = 601
+	ModelLabel       = "Tracker Controller DRAFT 2"
+	ModelDescription = "Monitors and controls multiple trackers"
 )
 
 const (
@@ -81,32 +83,32 @@ func init() {
 				Length: 26,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Length: 8},
-					smdx.PointElement{Id: Typ, Offset: 8, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: DtLoc, Offset: 9, Type: typelabel.String, Units: "YYYYMMDD", Length: 5},
-					smdx.PointElement{Id: TmLoc, Offset: 14, Type: typelabel.String, Units: "hhmmss", Length: 3},
-					smdx.PointElement{Id: Day, Offset: 17, Type: typelabel.Uint16},
-					smdx.PointElement{Id: GlblElCtl, Offset: 18, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-					smdx.PointElement{Id: GlblAzCtl, Offset: 20, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-					smdx.PointElement{Id: GlblCtl, Offset: 22, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: GlblAlm, Offset: 23, Type: typelabel.Bitfield16},
-					smdx.PointElement{Id: Dgr_SF, Offset: 24, Type: typelabel.ScaleFactor, Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 25, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Length: 8, Label: "Controller", Description: "Descriptive name for this control unit"},
+					smdx.PointElement{Id: Typ, Offset: 8, Type: typelabel.Enum16, Mandatory: true, Label: "Type", Description: "Type of tracker"},
+					smdx.PointElement{Id: DtLoc, Offset: 9, Type: typelabel.String, Units: "YYYYMMDD", Length: 5, Label: "Date", Description: "Local date in YYYYMMDD format"},
+					smdx.PointElement{Id: TmLoc, Offset: 14, Type: typelabel.String, Units: "hhmmss", Length: 3, Label: "Time", Description: "24 hour local time stamp to second"},
+					smdx.PointElement{Id: Day, Offset: 17, Type: typelabel.Uint16, Label: "Day", Description: "Number of the day in the year (1-366)"},
+					smdx.PointElement{Id: GlblElCtl, Offset: 18, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw", Label: "Manual Elevation", Description: "Global manual override target position of elevation in degreees from horizontal.  Unimplemented for single axis azimuth tracker type"},
+					smdx.PointElement{Id: GlblAzCtl, Offset: 20, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw", Label: "Manual Azimuth", Description: "Global manual override target position of azimuth in degrees from true north towards east.  Unimplemented for single axis azimuth tracker type"},
+					smdx.PointElement{Id: GlblCtl, Offset: 22, Type: typelabel.Enum16, Access: "rw", Label: "Mode", Description: "Global Control register operates on all trackers. Normal operation is automatic.  Operator can override the position by setting the ElCtl, AzCtl and enabling Manual operation. Entering calibration mode will revert to automatic operation after calibration is complete."},
+					smdx.PointElement{Id: GlblAlm, Offset: 23, Type: typelabel.Bitfield16, Label: "Alarm", Description: "Global tracker alarm conditions"},
+					smdx.PointElement{Id: Dgr_SF, Offset: 24, Type: typelabel.ScaleFactor, Mandatory: true, Label: "SF", Description: "Scale Factor for targets and position measurements in degrees"},
+					smdx.PointElement{Id: N, Offset: 25, Type: typelabel.Uint16, Mandatory: true, Label: "Trackers", Description: "Number of trackers being controlled.  Size of repeating block."},
 				},
 			},
 			smdx.BlockElement{Name: "tracker",
 				Length: 22,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Id, Offset: 0, Type: typelabel.String, Length: 8},
-					smdx.PointElement{Id: ElTrgt, Offset: 8, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
-					smdx.PointElement{Id: AzTrgt, Offset: 10, Type: typelabel.Int32, ScaleFactor: "SF", Units: "Degrees"},
-					smdx.PointElement{Id: ElPos, Offset: 12, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
-					smdx.PointElement{Id: AzPos, Offset: 14, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees"},
-					smdx.PointElement{Id: ElCtl, Offset: 16, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-					smdx.PointElement{Id: AzCtl, Offset: 18, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw"},
-					smdx.PointElement{Id: Ctl, Offset: 20, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: Alm, Offset: 21, Type: typelabel.Bitfield16},
+					smdx.PointElement{Id: Id, Offset: 0, Type: typelabel.String, Length: 8, Label: "Tracker", Description: "Descriptive name for this tracker unit"},
+					smdx.PointElement{Id: ElTrgt, Offset: 8, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Label: "Target Elevation", Description: "Auto target elevation in degrees from horizontal.  Unimplemented for single axis azimuth tracker type"},
+					smdx.PointElement{Id: AzTrgt, Offset: 10, Type: typelabel.Int32, ScaleFactor: "SF", Units: "Degrees", Label: "Target Azimuth", Description: "Auto target azimuth  in degrees from true north towards east.  Unimplemented for single axis horizontal tracker type"},
+					smdx.PointElement{Id: ElPos, Offset: 12, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Label: "Elevation", Description: "Actual elevation position  in degrees from horizontal.  Unimplemented for single axis azimuth tracker type"},
+					smdx.PointElement{Id: AzPos, Offset: 14, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Label: "Azimuth", Description: "Actual azimuth position  in degrees from true north towards east.  Unimplemented for single axis horizontal tracker type"},
+					smdx.PointElement{Id: ElCtl, Offset: 16, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw", Label: "Manual Elevation", Description: "Manual override target position of elevation in degreees from horizontal.  Unimplemented for single axis azimuth tracker type"},
+					smdx.PointElement{Id: AzCtl, Offset: 18, Type: typelabel.Int32, ScaleFactor: "Dgr_SF", Units: "Degrees", Access: "rw", Label: "Manual Azimuth", Description: "Manual override target position of azimuth in degrees from true north towards east.  Unimplemented for single axis azimuth tracker type"},
+					smdx.PointElement{Id: Ctl, Offset: 20, Type: typelabel.Enum16, Access: "rw", Label: "Mode", Description: "Control register. Normal operation is automatic.  Operator can override the position by setting the ElCtl, AzCtl and enabling Manual operation. Entering calibration mode will revert to automatic operation after calibration is complete."},
+					smdx.PointElement{Id: Alm, Offset: 21, Type: typelabel.Bitfield16, Label: "Alarm", Description: "Tracker alarm conditions"},
 				},
 			},
 		}})

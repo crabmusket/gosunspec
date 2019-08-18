@@ -13,7 +13,9 @@ import (
 // Block123 - Immediate Controls - Immediate Inverter Controls
 
 const (
-	ModelID = 123
+	ModelID          = 123
+	ModelLabel       = "Immediate Controls"
+	ModelDescription = "Immediate Inverter Controls "
 )
 
 const (
@@ -84,30 +86,30 @@ func init() {
 				Length: 24,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Conn_WinTms, Offset: 0, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Conn_RvrtTms, Offset: 1, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Conn, Offset: 2, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WMaxLimPct, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "WMaxLimPct_SF", Units: "% WMax", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WMaxLimPct_WinTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: WMaxLimPct_RvrtTms, Offset: 5, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: WMaxLimPct_RmpTms, Offset: 6, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: WMaxLim_Ena, Offset: 7, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: OutPFSet, Offset: 8, Type: typelabel.Int16, ScaleFactor: "OutPFSet_SF", Units: "cos()", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: OutPFSet_WinTms, Offset: 9, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: OutPFSet_RvrtTms, Offset: 10, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: OutPFSet_RmpTms, Offset: 11, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: OutPFSet_Ena, Offset: 12, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VArWMaxPct, Offset: 13, Type: typelabel.Int16, ScaleFactor: "VArPct_SF", Units: "% WMax", Access: "rw", Length: 1},
-					smdx.PointElement{Id: VArMaxPct, Offset: 14, Type: typelabel.Int16, ScaleFactor: "VArPct_SF", Units: "% VArMax", Access: "rw", Length: 1},
-					smdx.PointElement{Id: VArAvalPct, Offset: 15, Type: typelabel.Int16, ScaleFactor: "VArPct_SF", Units: "% VArAval", Access: "rw", Length: 1},
-					smdx.PointElement{Id: VArPct_WinTms, Offset: 16, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: VArPct_RvrtTms, Offset: 17, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: VArPct_RmpTms, Offset: 18, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: VArPct_Mod, Offset: 19, Type: typelabel.Enum16, Access: "rw", Length: 1},
-					smdx.PointElement{Id: VArPct_Ena, Offset: 20, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WMaxLimPct_SF, Offset: 21, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: OutPFSet_SF, Offset: 22, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VArPct_SF, Offset: 23, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
+					smdx.PointElement{Id: Conn_WinTms, Offset: 0, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "Conn_WinTms", Description: "Time window for connect/disconnect."},
+					smdx.PointElement{Id: Conn_RvrtTms, Offset: 1, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "Conn_RvrtTms", Description: "Timeout period for connect/disconnect."},
+					smdx.PointElement{Id: Conn, Offset: 2, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true, Label: "Conn", Description: "Enumerated valued.  Connection control."},
+					smdx.PointElement{Id: WMaxLimPct, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "WMaxLimPct_SF", Units: "% WMax", Access: "rw", Length: 1, Mandatory: true, Label: "WMaxLimPct", Description: "Set power output to specified level."},
+					smdx.PointElement{Id: WMaxLimPct_WinTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "WMaxLimPct_WinTms", Description: "Time window for power limit change."},
+					smdx.PointElement{Id: WMaxLimPct_RvrtTms, Offset: 5, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "WMaxLimPct_RvrtTms", Description: "Timeout period for power limit."},
+					smdx.PointElement{Id: WMaxLimPct_RmpTms, Offset: 6, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "WMaxLimPct_RmpTms", Description: "Ramp time for moving from current setpoint to new setpoint."},
+					smdx.PointElement{Id: WMaxLim_Ena, Offset: 7, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true, Label: "WMaxLim_Ena", Description: "Enumerated valued.  Throttle enable/disable control."},
+					smdx.PointElement{Id: OutPFSet, Offset: 8, Type: typelabel.Int16, ScaleFactor: "OutPFSet_SF", Units: "cos()", Access: "rw", Length: 1, Mandatory: true, Label: "OutPFSet", Description: "Set power factor to specific value - cosine of angle."},
+					smdx.PointElement{Id: OutPFSet_WinTms, Offset: 9, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "OutPFSet_WinTms", Description: "Time window for power factor change."},
+					smdx.PointElement{Id: OutPFSet_RvrtTms, Offset: 10, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "OutPFSet_RvrtTms", Description: "Timeout period for power factor."},
+					smdx.PointElement{Id: OutPFSet_RmpTms, Offset: 11, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "OutPFSet_RmpTms", Description: "Ramp time for moving from current setpoint to new setpoint."},
+					smdx.PointElement{Id: OutPFSet_Ena, Offset: 12, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true, Label: "OutPFSet_Ena", Description: "Enumerated valued.  Fixed power factor enable/disable control."},
+					smdx.PointElement{Id: VArWMaxPct, Offset: 13, Type: typelabel.Int16, ScaleFactor: "VArPct_SF", Units: "% WMax", Access: "rw", Length: 1, Label: "VArWMaxPct", Description: "Reactive power in percent of WMax."},
+					smdx.PointElement{Id: VArMaxPct, Offset: 14, Type: typelabel.Int16, ScaleFactor: "VArPct_SF", Units: "% VArMax", Access: "rw", Length: 1, Label: "VArMaxPct", Description: "Reactive power in percent of VArMax."},
+					smdx.PointElement{Id: VArAvalPct, Offset: 15, Type: typelabel.Int16, ScaleFactor: "VArPct_SF", Units: "% VArAval", Access: "rw", Length: 1, Label: "VArAvalPct", Description: "Reactive power in percent of VArAval."},
+					smdx.PointElement{Id: VArPct_WinTms, Offset: 16, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "VArPct_WinTms", Description: "Time window for VAR limit change."},
+					smdx.PointElement{Id: VArPct_RvrtTms, Offset: 17, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "VArPct_RvrtTms", Description: "Timeout period for VAR limit."},
+					smdx.PointElement{Id: VArPct_RmpTms, Offset: 18, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "VArPct_RmpTms", Description: "Ramp time for moving from current setpoint to new setpoint."},
+					smdx.PointElement{Id: VArPct_Mod, Offset: 19, Type: typelabel.Enum16, Access: "rw", Length: 1, Label: "VArPct_Mod", Description: "Enumerated value. VAR percent limit mode."},
+					smdx.PointElement{Id: VArPct_Ena, Offset: 20, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true, Label: "VArPct_Ena", Description: "Enumerated valued.  Percent limit VAr enable/disable control."},
+					smdx.PointElement{Id: WMaxLimPct_SF, Offset: 21, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "WMaxLimPct_SF", Description: "Scale factor for power output percent."},
+					smdx.PointElement{Id: OutPFSet_SF, Offset: 22, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "OutPFSet_SF", Description: "Scale factor for power factor."},
+					smdx.PointElement{Id: VArPct_SF, Offset: 23, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "VArPct_SF", Description: "Scale factor for reactive power percent."},
 				},
 			},
 		}})

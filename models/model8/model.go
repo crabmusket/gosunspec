@@ -13,7 +13,9 @@ import (
 // Block8 - Get Device Security Certificate - Security model for PKI
 
 const (
-	ModelID = 8
+	ModelID          = 8
+	ModelLabel       = "Get Device Security Certificate"
+	ModelDescription = "Security model for PKI"
 )
 
 const (
@@ -47,15 +49,15 @@ func init() {
 				Length: 2,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Fmt, Offset: 0, Type: typelabel.Enum16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 1, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Fmt, Offset: 0, Type: typelabel.Enum16, Access: "r", Mandatory: true, Label: "Format", Description: "X.509 format of the certificate. DER or PEM."},
+					smdx.PointElement{Id: N, Offset: 1, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "N", Description: "Number of registers to follow for the certificate"},
 				},
 			},
 			smdx.BlockElement{
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Cert, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Cert, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "Cert", Description: "X.509 Certificate of the device"},
 				},
 			},
 		}})

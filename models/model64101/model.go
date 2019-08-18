@@ -13,7 +13,9 @@ import (
 // Block64101 - Eltek Inverter Extension -
 
 const (
-	ModelID = 64101
+	ModelID          = 64101
+	ModelLabel       = "Eltek Inverter Extension"
+	ModelDescription = ""
 )
 
 const (

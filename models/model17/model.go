@@ -13,7 +13,9 @@ import (
 // Block17 - Serial Interface - Include this model for serial interface configuration support
 
 const (
-	ModelID = 17
+	ModelID          = 17
+	ModelLabel       = "Serial Interface"
+	ModelDescription = "Include this model for serial interface configuration support"
 )
 
 const (
@@ -52,14 +54,14 @@ func init() {
 				Length: 12,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
-					smdx.PointElement{Id: Rte, Offset: 4, Type: typelabel.Uint32, Units: "bps", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Bits, Offset: 6, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Pty, Offset: 7, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Dup, Offset: 8, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: Flw, Offset: 9, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: Typ, Offset: 10, Type: typelabel.Enum16},
-					smdx.PointElement{Id: Pcol, Offset: 11, Type: typelabel.Enum16},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4, Label: "Name", Description: "Interface name (8 chars)"},
+					smdx.PointElement{Id: Rte, Offset: 4, Type: typelabel.Uint32, Units: "bps", Access: "rw", Mandatory: true, Label: "Rate", Description: "Interface baud rate in bits per second"},
+					smdx.PointElement{Id: Bits, Offset: 6, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Bits", Description: "Number of data bits per character"},
+					smdx.PointElement{Id: Pty, Offset: 7, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Parity", Description: "Bitmask value.  Parity setting"},
+					smdx.PointElement{Id: Dup, Offset: 8, Type: typelabel.Enum16, Access: "rw", Label: "Duplex", Description: "Enumerated value.  Duplex mode"},
+					smdx.PointElement{Id: Flw, Offset: 9, Type: typelabel.Enum16, Access: "rw", Label: "Flow Control", Description: "Flow Control Method"},
+					smdx.PointElement{Id: Typ, Offset: 10, Type: typelabel.Enum16, Label: "Interface Type", Description: "Enumerated value.  Interface type"},
+					smdx.PointElement{Id: Pcol, Offset: 11, Type: typelabel.Enum16, Label: "Protocol", Description: "Enumerated value. Serial protocol selection"},
 				},
 			},
 		}})

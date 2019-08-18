@@ -13,7 +13,9 @@ import (
 // Block302 - Irradiance Model - Include to support various irradiance measurements
 
 const (
-	ModelID = 302
+	ModelID          = 302
+	ModelLabel       = "Irradiance Model"
+	ModelDescription = "Include to support various irradiance measurements"
 )
 
 const (
@@ -46,11 +48,11 @@ func init() {
 				Length: 5,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2"},
-					smdx.PointElement{Id: POAI, Offset: 1, Type: typelabel.Uint16, Units: "W/m2"},
-					smdx.PointElement{Id: DFI, Offset: 2, Type: typelabel.Uint16, Units: "W/m2"},
-					smdx.PointElement{Id: DNI, Offset: 3, Type: typelabel.Uint16, Units: "W/m2"},
-					smdx.PointElement{Id: OTI, Offset: 4, Type: typelabel.Uint16, Units: "W/m2"},
+					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2", Label: "GHI", Description: "Global Horizontal Irradiance"},
+					smdx.PointElement{Id: POAI, Offset: 1, Type: typelabel.Uint16, Units: "W/m2", Label: "POAI", Description: "Plane-of-Array Irradiance"},
+					smdx.PointElement{Id: DFI, Offset: 2, Type: typelabel.Uint16, Units: "W/m2", Label: "DFI", Description: "Diffuse Irradiance"},
+					smdx.PointElement{Id: DNI, Offset: 3, Type: typelabel.Uint16, Units: "W/m2", Label: "DNI", Description: "Direct Normal Irradiance"},
+					smdx.PointElement{Id: OTI, Offset: 4, Type: typelabel.Uint16, Units: "W/m2", Label: "OTI", Description: "Other Irradiance"},
 				},
 			},
 		}})

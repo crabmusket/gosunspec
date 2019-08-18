@@ -13,7 +13,9 @@ import (
 // Block220 - Secure AC Meter Selected Readings - Include this model for secure metering
 
 const (
-	ModelID = 220
+	ModelID          = 220
+	ModelLabel       = "Secure AC Meter Selected Readings"
+	ModelDescription = "Include this model for secure metering"
 )
 
 const (
@@ -107,38 +109,38 @@ func init() {
 				Length: 42,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: A, Offset: 0, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Mandatory: true},
+					smdx.PointElement{Id: A, Offset: 0, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Mandatory: true, Label: "Amps", Description: "Total AC Current"},
 					smdx.PointElement{Id: A_SF, Offset: 1, Type: typelabel.ScaleFactor, Mandatory: true},
-					smdx.PointElement{Id: PhV, Offset: 2, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V"},
+					smdx.PointElement{Id: PhV, Offset: 2, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V", Label: "Voltage", Description: "Average phase or line voltage"},
 					smdx.PointElement{Id: V_SF, Offset: 3, Type: typelabel.ScaleFactor, Mandatory: true},
-					smdx.PointElement{Id: Hz, Offset: 4, Type: typelabel.Int16, ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true},
+					smdx.PointElement{Id: Hz, Offset: 4, Type: typelabel.Int16, ScaleFactor: "Hz_SF", Units: "Hz", Mandatory: true, Label: "Hz", Description: "Frequency"},
 					smdx.PointElement{Id: Hz_SF, Offset: 5, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: W, Offset: 6, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W", Mandatory: true},
+					smdx.PointElement{Id: W, Offset: 6, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W", Mandatory: true, Label: "Watts", Description: "Total Real Power"},
 					smdx.PointElement{Id: W_SF, Offset: 7, Type: typelabel.ScaleFactor, Mandatory: true},
-					smdx.PointElement{Id: VA, Offset: 8, Type: typelabel.Int16, ScaleFactor: "VA_SF", Units: "VA"},
+					smdx.PointElement{Id: VA, Offset: 8, Type: typelabel.Int16, ScaleFactor: "VA_SF", Units: "VA", Label: "VA", Description: "AC Apparent Power"},
 					smdx.PointElement{Id: VA_SF, Offset: 9, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: VAR, Offset: 10, Type: typelabel.Int16, ScaleFactor: "VAR_SF", Units: "var"},
+					smdx.PointElement{Id: VAR, Offset: 10, Type: typelabel.Int16, ScaleFactor: "VAR_SF", Units: "var", Label: "VAR", Description: "Reactive Power"},
 					smdx.PointElement{Id: VAR_SF, Offset: 11, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: PF, Offset: 12, Type: typelabel.Int16, ScaleFactor: "PF_SF", Units: "Pct"},
+					smdx.PointElement{Id: PF, Offset: 12, Type: typelabel.Int16, ScaleFactor: "PF_SF", Units: "Pct", Label: "PF", Description: "Power Factor"},
 					smdx.PointElement{Id: PF_SF, Offset: 13, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: TotWhExp, Offset: 14, Type: typelabel.Acc32, ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
-					smdx.PointElement{Id: TotWhImp, Offset: 16, Type: typelabel.Acc32, ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true},
+					smdx.PointElement{Id: TotWhExp, Offset: 14, Type: typelabel.Acc32, ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true, Label: "Total Watt-hours Exported", Description: "Total Real Energy Exported"},
+					smdx.PointElement{Id: TotWhImp, Offset: 16, Type: typelabel.Acc32, ScaleFactor: "TotWh_SF", Units: "Wh", Mandatory: true, Label: "Total Watt-hours Imported", Description: "Total Real Energy Imported"},
 					smdx.PointElement{Id: TotWh_SF, Offset: 18, Type: typelabel.ScaleFactor, Mandatory: true},
-					smdx.PointElement{Id: TotVAhExp, Offset: 19, Type: typelabel.Acc32, ScaleFactor: "TotVAh_SF", Units: "VAh"},
-					smdx.PointElement{Id: TotVAhImp, Offset: 21, Type: typelabel.Acc32, ScaleFactor: "TotVAh_SF", Units: "VAh"},
+					smdx.PointElement{Id: TotVAhExp, Offset: 19, Type: typelabel.Acc32, ScaleFactor: "TotVAh_SF", Units: "VAh", Label: "Total VA-hours Exported", Description: "Total Apparent Energy Exported"},
+					smdx.PointElement{Id: TotVAhImp, Offset: 21, Type: typelabel.Acc32, ScaleFactor: "TotVAh_SF", Units: "VAh", Label: "Total VA-hours Imported", Description: "Total Apparent Energy Imported"},
 					smdx.PointElement{Id: TotVAh_SF, Offset: 23, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: TotVArhImpQ1, Offset: 24, Type: typelabel.Acc32, ScaleFactor: "TotVArh_SF", Units: "varh"},
-					smdx.PointElement{Id: TotVArhImpQ2, Offset: 26, Type: typelabel.Acc32, ScaleFactor: "TotVArh_SF", Units: "varh"},
-					smdx.PointElement{Id: TotVArhExpQ3, Offset: 28, Type: typelabel.Acc32, ScaleFactor: "TotVArh_SF", Units: "varh"},
-					smdx.PointElement{Id: TotVArhExpQ4, Offset: 30, Type: typelabel.Acc32, ScaleFactor: "TotVArh_SF", Units: "varh"},
+					smdx.PointElement{Id: TotVArhImpQ1, Offset: 24, Type: typelabel.Acc32, ScaleFactor: "TotVArh_SF", Units: "varh", Label: "Total VAR-hours Imported Q1", Description: "Total Reactive Energy Imported Quadrant 1"},
+					smdx.PointElement{Id: TotVArhImpQ2, Offset: 26, Type: typelabel.Acc32, ScaleFactor: "TotVArh_SF", Units: "varh", Label: "Total VAr-hours Imported Q2", Description: "Total Reactive Power Imported Quadrant 2"},
+					smdx.PointElement{Id: TotVArhExpQ3, Offset: 28, Type: typelabel.Acc32, ScaleFactor: "TotVArh_SF", Units: "varh", Label: "Total VAr-hours Exported Q3", Description: "Total Reactive Power Exported Quadrant 3"},
+					smdx.PointElement{Id: TotVArhExpQ4, Offset: 30, Type: typelabel.Acc32, ScaleFactor: "TotVArh_SF", Units: "varh", Label: "Total VAr-hours Exported Q4", Description: "Total Reactive Power Exported Quadrant 4"},
 					smdx.PointElement{Id: TotVArh_SF, Offset: 32, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: Evt, Offset: 33, Type: typelabel.Bitfield32, Mandatory: true},
+					smdx.PointElement{Id: Evt, Offset: 33, Type: typelabel.Bitfield32, Mandatory: true, Label: "Events", Description: "Meter Event Flags"},
 					smdx.PointElement{Id: Rsrvd, Offset: 35, Type: typelabel.Pad, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Ts, Offset: 36, Type: typelabel.Uint32, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Ms, Offset: 38, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Seq, Offset: 39, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Alg, Offset: 40, Type: typelabel.Enum16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 41, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Ts, Offset: 36, Type: typelabel.Uint32, Access: "r", Mandatory: true, Label: "Timestamp", Description: "Timestamp value is the number of seconds since January 1, 2000"},
+					smdx.PointElement{Id: Ms, Offset: 38, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "Milliseconds", Description: "Millisecond counter 0-999"},
+					smdx.PointElement{Id: Seq, Offset: 39, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "Sequence", Description: "Sequence number of request"},
+					smdx.PointElement{Id: Alg, Offset: 40, Type: typelabel.Enum16, Access: "r", Mandatory: true, Label: "Algorithm", Description: "Algorithm used to compute the digital signature"},
+					smdx.PointElement{Id: N, Offset: 41, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "N", Description: "Number of registers comprising the digital signature."},
 				},
 			},
 			smdx.BlockElement{

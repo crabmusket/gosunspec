@@ -13,7 +13,9 @@ import (
 // Block808 - Flow Battery Module Model -
 
 const (
-	ModelID = 808
+	ModelID          = 808
+	ModelLabel       = "Flow Battery Module Model"
+	ModelDescription = ""
 )
 
 const (
@@ -45,14 +47,14 @@ func init() {
 				Length: 1,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: ModuleTBD, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: ModuleTBD, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "Module Points To Be Determined", Description: ""},
 				},
 			},
 			smdx.BlockElement{Name: "stack",
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: StackTBD, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: StackTBD, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "Stack Points To Be Determined", Description: ""},
 				},
 			},
 		}})

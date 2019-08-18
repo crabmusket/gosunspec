@@ -13,7 +13,9 @@ import (
 // Block125 - Pricing - Pricing Signal
 
 const (
-	ModelID = 125
+	ModelID          = 125
+	ModelLabel       = "Pricing"
+	ModelDescription = "Pricing Signal  "
 )
 
 const (
@@ -52,13 +54,13 @@ func init() {
 				Length: 8,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: ModEna, Offset: 0, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: SigType, Offset: 1, Type: typelabel.Enum16, ScaleFactor: " ", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Sig, Offset: 2, Type: typelabel.Int16, ScaleFactor: "Sig_SF", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WinTms, Offset: 3, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: RvtTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: RmpTms, Offset: 5, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Sig_SF, Offset: 6, Type: typelabel.ScaleFactor, ScaleFactor: " ", Access: "r", Length: 1, Mandatory: true},
+					smdx.PointElement{Id: ModEna, Offset: 0, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true, Label: "ModEna", Description: "Is price-based charge/dischage mode active?"},
+					smdx.PointElement{Id: SigType, Offset: 1, Type: typelabel.Enum16, ScaleFactor: " ", Access: "rw", Length: 1, Label: "SigType", Description: "Meaning of the pricing signal. When a Price schedule is used, type must match the schedule range variable description."},
+					smdx.PointElement{Id: Sig, Offset: 2, Type: typelabel.Int16, ScaleFactor: "Sig_SF", Access: "rw", Length: 1, Mandatory: true, Label: "Sig", Description: "Utility/ESP specific pricing signal. Content depends on pricing signal type. When H/M/L type is specified. Low=0; Med=1; High=2."},
+					smdx.PointElement{Id: WinTms, Offset: 3, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "WinTms", Description: "Time window for charge/discharge pricing change."},
+					smdx.PointElement{Id: RvtTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "RvtTms", Description: "Timeout period for charge/discharge pricing change."},
+					smdx.PointElement{Id: RmpTms, Offset: 5, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "RmpTms", Description: "Ramp time for moving from current charge or discharge level to new level."},
+					smdx.PointElement{Id: Sig_SF, Offset: 6, Type: typelabel.ScaleFactor, ScaleFactor: " ", Access: "r", Length: 1, Mandatory: true, Label: "Sig_SF", Description: "Pricing signal scale factor."},
 					smdx.PointElement{Id: Pad, Offset: 7, Type: typelabel.Pad, Access: "r", Length: 1},
 				},
 			},

@@ -13,7 +13,9 @@ import (
 // Block502 - Solar Module - A solar module model supporing DC-DC converter
 
 const (
-	ModelID = 502
+	ModelID          = 502
+	ModelLabel       = "Solar Module"
+	ModelDescription = "A solar module model supporing DC-DC converter"
 )
 
 const (
@@ -82,23 +84,23 @@ func init() {
 					smdx.PointElement{Id: V_SF, Offset: 1, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: W_SF, Offset: 2, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: Wh_SF, Offset: 3, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: Stat, Offset: 4, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: StatVend, Offset: 5, Type: typelabel.Enum16},
-					smdx.PointElement{Id: Evt, Offset: 6, Type: typelabel.Bitfield32, Mandatory: true},
-					smdx.PointElement{Id: EvtVend, Offset: 8, Type: typelabel.Bitfield32},
-					smdx.PointElement{Id: Ctl, Offset: 10, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: CtlVend, Offset: 11, Type: typelabel.Enum32, Access: "rw"},
-					smdx.PointElement{Id: CtlVal, Offset: 13, Type: typelabel.Int32, Access: "rw"},
-					smdx.PointElement{Id: Tms, Offset: 15, Type: typelabel.Uint32, Units: "Secs"},
-					smdx.PointElement{Id: OutA, Offset: 17, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A"},
-					smdx.PointElement{Id: OutV, Offset: 18, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V"},
-					smdx.PointElement{Id: OutWh, Offset: 19, Type: typelabel.Acc32, ScaleFactor: "Wh_SF", Units: "Wh"},
+					smdx.PointElement{Id: Stat, Offset: 4, Type: typelabel.Enum16, Mandatory: true, Label: "Status", Description: "Enumerated value.  Module Status Code"},
+					smdx.PointElement{Id: StatVend, Offset: 5, Type: typelabel.Enum16, Label: "Vendor Status", Description: "Module Vendor Status Code"},
+					smdx.PointElement{Id: Evt, Offset: 6, Type: typelabel.Bitfield32, Mandatory: true, Label: "Events", Description: "Bitmask value.  Module Event Flags"},
+					smdx.PointElement{Id: EvtVend, Offset: 8, Type: typelabel.Bitfield32, Label: "Vendor Module Event Flags", Description: "Vendor specific flags"},
+					smdx.PointElement{Id: Ctl, Offset: 10, Type: typelabel.Enum16, Access: "rw", Label: "Control", Description: "Module Control"},
+					smdx.PointElement{Id: CtlVend, Offset: 11, Type: typelabel.Enum32, Access: "rw", Label: "Vendor Control", Description: "Vendor Module Control"},
+					smdx.PointElement{Id: CtlVal, Offset: 13, Type: typelabel.Int32, Access: "rw", Label: "Control Value", Description: "Module Control Value"},
+					smdx.PointElement{Id: Tms, Offset: 15, Type: typelabel.Uint32, Units: "Secs", Label: "Timestamp", Description: "Time in seconds since 2000 epoch"},
+					smdx.PointElement{Id: OutA, Offset: 17, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Label: "Output Current", Description: "Output Current"},
+					smdx.PointElement{Id: OutV, Offset: 18, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V", Label: "Output Voltage", Description: "Output Voltage"},
+					smdx.PointElement{Id: OutWh, Offset: 19, Type: typelabel.Acc32, ScaleFactor: "Wh_SF", Units: "Wh", Label: "Output Energy", Description: "Output Energy"},
 					smdx.PointElement{Id: OutPw, Offset: 21, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W"},
-					smdx.PointElement{Id: Tmp, Offset: 22, Type: typelabel.Int16, Units: "C"},
-					smdx.PointElement{Id: InA, Offset: 23, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A"},
-					smdx.PointElement{Id: InV, Offset: 24, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V"},
-					smdx.PointElement{Id: InWh, Offset: 25, Type: typelabel.Acc32, ScaleFactor: "Wh_SF", Units: "Wh"},
-					smdx.PointElement{Id: InW, Offset: 27, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: Tmp, Offset: 22, Type: typelabel.Int16, Units: "C", Label: "Temp", Description: "Module Temperature"},
+					smdx.PointElement{Id: InA, Offset: 23, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Label: "Input Current", Description: "Input Current"},
+					smdx.PointElement{Id: InV, Offset: 24, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V", Label: "Input Voltage", Description: "Input Voltage"},
+					smdx.PointElement{Id: InWh, Offset: 25, Type: typelabel.Acc32, ScaleFactor: "Wh_SF", Units: "Wh", Label: "Input Energy", Description: "Input Energy"},
+					smdx.PointElement{Id: InW, Offset: 27, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W", Label: "Input Power", Description: "Input Power"},
 				},
 			},
 		}})

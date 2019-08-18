@@ -23,6 +23,8 @@ const file = `
 
 const (
 	ModelID = {{$model.Id}}
+	ModelLabel = "{{$strings.ModelStrings.Label}}"
+	ModelDescription = "{{$strings.ModelStrings.Description}}"
 )
 
 const (
@@ -60,8 +62,8 @@ func init() {
 			smdx.BlockElement{ {{if gt (len .Name) 0 }}Name: "{{.Name}}",{{end}}
 				Length: {{.Length}},
 				{{if gt (len .Type) 0 }}Type: "{{.Type}}",{{end}}
-				Points: []smdx.PointElement{ {{range .Points}}
-					smdx.PointElement{Id: {{.Id|title}},Offset: {{.Offset}},Type: typelabel.{{.Type|title}}{{optF "ScaleFactor" .ScaleFactor}}{{optF "Units" .Units}}{{optF "Access" .Access}}{{if gt (.Length) 0}},Length: {{.Length}}{{end}}{{if .Mandatory}},Mandatory: {{.Mandatory}}{{end}},}, {{end}}
+				Points: []smdx.PointElement{ {{range .Points}}{{$ps := (pointString .Id $strings.PointStrings)}}
+					smdx.PointElement{Id: {{.Id|title}},Offset: {{.Offset}},Type: typelabel.{{.Type|title}}{{optF "ScaleFactor" .ScaleFactor}}{{optF "Units" .Units}}{{optF "Access" .Access}}{{if gt (.Length) 0}},Length: {{.Length}}{{end}}{{if .Mandatory}},Mandatory: {{.Mandatory}}{{end}},{{if $ps.Label}}Label: "{{$ps.Label}}", Description: "{{$ps.Description}}",{{end}}}, {{end}}
 				},
 			}, {{end}}
 	}})
@@ -117,6 +119,8 @@ func main() {
 				log.Fatal(err)
 			}
 
+			println(file.Name())
+
 			def, err := smdx.FromXML(smdxFile)
 			if err != nil {
 				smdxFile.Close()
@@ -170,6 +174,16 @@ func main() {
 			} else {
 				return ""
 			}
+		},
+		"pointString": func(id string, pointStrings []smdx.PointStringsElement) smdx.PointStringsElement {
+			for _, ps := range pointStrings {
+				if ps.Id == id {
+					ps.Label = strings.ReplaceAll(ps.Label, "\"", "")
+					ps.Description = strings.ReplaceAll(ps.Description, "\"", "")
+					return ps
+				}
+			}
+			return smdx.PointStringsElement{}
 		},
 		"title": func(in string) string {
 			switch in {
@@ -240,10 +254,12 @@ func main() {
 		log.Fatal(err)
 	}
 	loaderTemplate := template.Must(t.Parse(loader))
-	loaderTemplate.Execute(outputFile, map[string]interface{}{
+	if err := loaderTemplate.Execute(outputFile, map[string]interface{}{
 		"Names":      names,
 		"TopPackage": topPackage,
-	})
+	}); err != nil {
+		log.Fatal(err)
+	}
 	outputFile.Close()
 	cmd := exec.Command("/bin/sh", "-c", "gofmt -w ../models/loader.go")
 	if err := cmd.Run(); err != nil {

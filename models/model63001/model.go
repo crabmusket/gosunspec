@@ -13,7 +13,9 @@ import (
 // Block63001 - SunSpec Test Model 1 -
 
 const (
-	ModelID = 63001
+	ModelID          = 63001
+	ModelLabel       = "SunSpec Test Model 1"
+	ModelDescription = ""
 )
 
 const (

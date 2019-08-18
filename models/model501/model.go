@@ -13,7 +13,9 @@ import (
 // Block501 - Solar Module - A solar module model supporing DC-DC converter
 
 const (
-	ModelID = 501
+	ModelID          = 501
+	ModelLabel       = "Solar Module"
+	ModelDescription = "A solar module model supporing DC-DC converter"
 )
 
 const (
@@ -70,23 +72,23 @@ func init() {
 				Length: 31,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Stat, Offset: 0, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: StatVend, Offset: 1, Type: typelabel.Enum16},
-					smdx.PointElement{Id: Evt, Offset: 2, Type: typelabel.Bitfield32, Mandatory: true},
-					smdx.PointElement{Id: EvtVend, Offset: 4, Type: typelabel.Bitfield32},
-					smdx.PointElement{Id: Ctl, Offset: 6, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: CtlVend, Offset: 7, Type: typelabel.Enum32, Access: "rw"},
-					smdx.PointElement{Id: CtlVal, Offset: 9, Type: typelabel.Int32, Access: "rw"},
-					smdx.PointElement{Id: Tms, Offset: 11, Type: typelabel.Uint32, Units: "Secs"},
-					smdx.PointElement{Id: OutA, Offset: 13, Type: typelabel.Float32, Units: "A"},
-					smdx.PointElement{Id: OutV, Offset: 15, Type: typelabel.Float32, Units: "V"},
-					smdx.PointElement{Id: OutWh, Offset: 17, Type: typelabel.Float32, Units: "Wh"},
-					smdx.PointElement{Id: OutW, Offset: 19, Type: typelabel.Float32, Units: "W"},
-					smdx.PointElement{Id: Tmp, Offset: 21, Type: typelabel.Float32, Units: "C"},
-					smdx.PointElement{Id: InA, Offset: 23, Type: typelabel.Float32, Units: "A"},
-					smdx.PointElement{Id: InV, Offset: 25, Type: typelabel.Float32, Units: "V"},
-					smdx.PointElement{Id: InWh, Offset: 27, Type: typelabel.Float32, Units: "Wh"},
-					smdx.PointElement{Id: InW, Offset: 29, Type: typelabel.Float32, Units: "W"},
+					smdx.PointElement{Id: Stat, Offset: 0, Type: typelabel.Enum16, Mandatory: true, Label: "Status", Description: "Enumerated value.  Module Status Code"},
+					smdx.PointElement{Id: StatVend, Offset: 1, Type: typelabel.Enum16, Label: "Vendor Status", Description: "Module Vendor Status Code"},
+					smdx.PointElement{Id: Evt, Offset: 2, Type: typelabel.Bitfield32, Mandatory: true, Label: "Events", Description: "Bitmask value.  Module Event Flags"},
+					smdx.PointElement{Id: EvtVend, Offset: 4, Type: typelabel.Bitfield32, Label: "Vendor Module Event Flags", Description: "Vendor specific flags"},
+					smdx.PointElement{Id: Ctl, Offset: 6, Type: typelabel.Enum16, Access: "rw", Label: "Control", Description: "Module Control"},
+					smdx.PointElement{Id: CtlVend, Offset: 7, Type: typelabel.Enum32, Access: "rw", Label: "Vendor Control", Description: "Vendor Module Control"},
+					smdx.PointElement{Id: CtlVal, Offset: 9, Type: typelabel.Int32, Access: "rw", Label: "Control Value", Description: "Module Control Value"},
+					smdx.PointElement{Id: Tms, Offset: 11, Type: typelabel.Uint32, Units: "Secs", Label: "Timestamp", Description: "Time in seconds since 2000 epoch"},
+					smdx.PointElement{Id: OutA, Offset: 13, Type: typelabel.Float32, Units: "A", Label: "Output Current", Description: "Output Current"},
+					smdx.PointElement{Id: OutV, Offset: 15, Type: typelabel.Float32, Units: "V", Label: "Output Voltage", Description: "Output Voltage"},
+					smdx.PointElement{Id: OutWh, Offset: 17, Type: typelabel.Float32, Units: "Wh", Label: "Output Energy", Description: "Output Energy"},
+					smdx.PointElement{Id: OutW, Offset: 19, Type: typelabel.Float32, Units: "W", Label: "Output Power", Description: "Output Power"},
+					smdx.PointElement{Id: Tmp, Offset: 21, Type: typelabel.Float32, Units: "C", Label: "Temp", Description: "Module Temperature"},
+					smdx.PointElement{Id: InA, Offset: 23, Type: typelabel.Float32, Units: "A", Label: "Input Current", Description: "Input Current"},
+					smdx.PointElement{Id: InV, Offset: 25, Type: typelabel.Float32, Units: "V", Label: "Input Voltage", Description: "Input Voltage"},
+					smdx.PointElement{Id: InWh, Offset: 27, Type: typelabel.Float32, Units: "Wh", Label: "Input Energy", Description: "Input Energy"},
+					smdx.PointElement{Id: InW, Offset: 29, Type: typelabel.Float32, Units: "W", Label: "Input Power", Description: "Input Power"},
 				},
 			},
 		}})

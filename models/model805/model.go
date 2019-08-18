@@ -13,7 +13,9 @@ import (
 // Block805 - Lithium-Ion Module Model -
 
 const (
-	ModelID = 805
+	ModelID          = 805
+	ModelLabel       = "Lithium-Ion Module Model"
+	ModelDescription = ""
 )
 
 const (
@@ -99,41 +101,41 @@ func init() {
 				Length: 42,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Idx, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
-					smdx.PointElement{Id: NCell, Offset: 1, Type: typelabel.Uint16, Mandatory: true},
-					smdx.PointElement{Id: SoC, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "SoC_SF", Units: "%"},
-					smdx.PointElement{Id: DoD, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "DoD_SF", Units: "%"},
-					smdx.PointElement{Id: NCyc, Offset: 4, Type: typelabel.Uint32},
-					smdx.PointElement{Id: SoH, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "SoH_SF", Units: "%"},
-					smdx.PointElement{Id: V, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: CellVMax, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: CellVMaxCell, Offset: 9, Type: typelabel.Uint16},
-					smdx.PointElement{Id: CellVMin, Offset: 10, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: CellVMinCell, Offset: 11, Type: typelabel.Uint16},
-					smdx.PointElement{Id: CellVAvg, Offset: 12, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: CellTmpMax, Offset: 13, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-					smdx.PointElement{Id: CellTmpMaxCell, Offset: 14, Type: typelabel.Uint16},
-					smdx.PointElement{Id: CellTmpMin, Offset: 15, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-					smdx.PointElement{Id: CellTmpMinCell, Offset: 16, Type: typelabel.Uint16},
-					smdx.PointElement{Id: CellTmpAvg, Offset: 17, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-					smdx.PointElement{Id: SN, Offset: 18, Type: typelabel.String, Length: 16},
-					smdx.PointElement{Id: NCellBal, Offset: 34, Type: typelabel.Uint16},
+					smdx.PointElement{Id: Idx, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "Module Index", Description: "Index of the module within the string."},
+					smdx.PointElement{Id: NCell, Offset: 1, Type: typelabel.Uint16, Mandatory: true, Label: "Module Cell Count", Description: "Count of all cells in the module."},
+					smdx.PointElement{Id: SoC, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "SoC_SF", Units: "%", Label: "Module SoC", Description: "Module state of charge, expressed as a percentage."},
+					smdx.PointElement{Id: DoD, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "DoD_SF", Units: "%", Label: "Depth of Discharge", Description: "Depth ofdischarge for the module."},
+					smdx.PointElement{Id: NCyc, Offset: 4, Type: typelabel.Uint32, Label: "Cycle Count", Description: "Count of cycles executed."},
+					smdx.PointElement{Id: SoH, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "SoH_SF", Units: "%", Label: "Module SoH", Description: "Module state of health, expressed as a percentage."},
+					smdx.PointElement{Id: V, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "Module Voltage", Description: "Voltage of the module."},
+					smdx.PointElement{Id: CellVMax, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Max Cell Voltage", Description: "Maximum voltage for all cells in the module."},
+					smdx.PointElement{Id: CellVMaxCell, Offset: 9, Type: typelabel.Uint16, Label: "Max Cell Voltage Cell", Description: "Cell with the maximum voltage."},
+					smdx.PointElement{Id: CellVMin, Offset: 10, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Min Cell Voltage", Description: "Minimum voltage for all cells in the module."},
+					smdx.PointElement{Id: CellVMinCell, Offset: 11, Type: typelabel.Uint16, Label: "Min Cell Voltage Cell", Description: "Cell with the minimum voltage."},
+					smdx.PointElement{Id: CellVAvg, Offset: 12, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Average Cell Voltage", Description: "Average voltage for all cells in the module."},
+					smdx.PointElement{Id: CellTmpMax, Offset: 13, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true, Label: "Max Cell Temperature", Description: "Maximum temperature for all cells in the module."},
+					smdx.PointElement{Id: CellTmpMaxCell, Offset: 14, Type: typelabel.Uint16, Label: "Max Cell Temperature Cell", Description: "Cell with the maximum cell temperature."},
+					smdx.PointElement{Id: CellTmpMin, Offset: 15, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true, Label: "Min Cell Temperature", Description: "Minimum temperature for all cells in the module."},
+					smdx.PointElement{Id: CellTmpMinCell, Offset: 16, Type: typelabel.Uint16, Label: "Max Cell Temperature Cell", Description: "Cell with the maximum cell temperature."},
+					smdx.PointElement{Id: CellTmpAvg, Offset: 17, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true, Label: "Average Cell Temperature", Description: "Average temperature for all cells in the module."},
+					smdx.PointElement{Id: SN, Offset: 18, Type: typelabel.String, Length: 16, Label: "Serial Number", Description: "Serial number for the module."},
+					smdx.PointElement{Id: NCellBal, Offset: 34, Type: typelabel.Uint16, Label: "Balanced Cell Count", Description: "Number of cells currently being balanced in the module."},
 					smdx.PointElement{Id: SoC_SF, Offset: 35, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: SoH_SF, Offset: 36, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: DoD_SF, Offset: 37, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: V_SF, Offset: 38, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: CellV_SF, Offset: 39, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: Tmp_SF, Offset: 40, Type: typelabel.ScaleFactor, Mandatory: true},
-					smdx.PointElement{Id: Pad1, Offset: 41, Type: typelabel.Pad, Mandatory: true},
+					smdx.PointElement{Id: Pad1, Offset: 41, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
 				},
 			},
 			smdx.BlockElement{Name: "lithium-ion-module-cell",
 				Length: 4,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: CellV, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: CellTmp, Offset: 1, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true},
-					smdx.PointElement{Id: CellSt, Offset: 2, Type: typelabel.Bitfield32},
+					smdx.PointElement{Id: CellV, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Cell Voltage", Description: "Cell terminal voltage."},
+					smdx.PointElement{Id: CellTmp, Offset: 1, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true, Label: "Cell Temperature", Description: "Cell temperature."},
+					smdx.PointElement{Id: CellSt, Offset: 2, Type: typelabel.Bitfield32, Label: "Cell Status", Description: "Status of the cell."},
 				},
 			},
 		}})

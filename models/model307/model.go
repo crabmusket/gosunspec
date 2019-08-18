@@ -13,7 +13,9 @@ import (
 // Block307 - Base Met - Base Meteorolgical Model
 
 const (
-	ModelID = 307
+	ModelID          = 307
+	ModelLabel       = "Base Met"
+	ModelDescription = "Base Meteorolgical Model"
 )
 
 const (
@@ -58,17 +60,17 @@ func init() {
 				Length: 11,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: TmpAmb, Offset: 0, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C"},
-					smdx.PointElement{Id: RH, Offset: 1, Type: typelabel.Int16, Units: "Pct"},
-					smdx.PointElement{Id: Pres, Offset: 2, Type: typelabel.Int16, Units: "HPa"},
-					smdx.PointElement{Id: WndSpd, Offset: 3, Type: typelabel.Int16, Units: "mps"},
-					smdx.PointElement{Id: WndDir, Offset: 4, Type: typelabel.Int16, Units: "deg"},
-					smdx.PointElement{Id: Rain, Offset: 5, Type: typelabel.Int16, Units: "mm"},
-					smdx.PointElement{Id: Snw, Offset: 6, Type: typelabel.Int16, Units: "mm"},
-					smdx.PointElement{Id: PPT, Offset: 7, Type: typelabel.Int16},
-					smdx.PointElement{Id: ElecFld, Offset: 8, Type: typelabel.Int16, Units: "Vm"},
-					smdx.PointElement{Id: SurWet, Offset: 9, Type: typelabel.Int16, Units: "kO"},
-					smdx.PointElement{Id: SoilWet, Offset: 10, Type: typelabel.Int16, Units: "Pct"},
+					smdx.PointElement{Id: TmpAmb, Offset: 0, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C", Label: "Ambient Temperature", Description: ""},
+					smdx.PointElement{Id: RH, Offset: 1, Type: typelabel.Int16, Units: "Pct", Label: "Relative Humidity", Description: ""},
+					smdx.PointElement{Id: Pres, Offset: 2, Type: typelabel.Int16, Units: "HPa", Label: "Barometric Pressure", Description: ""},
+					smdx.PointElement{Id: WndSpd, Offset: 3, Type: typelabel.Int16, Units: "mps", Label: "Wind Speed", Description: ""},
+					smdx.PointElement{Id: WndDir, Offset: 4, Type: typelabel.Int16, Units: "deg", Label: "Wind Direction", Description: ""},
+					smdx.PointElement{Id: Rain, Offset: 5, Type: typelabel.Int16, Units: "mm", Label: "Rainfall", Description: ""},
+					smdx.PointElement{Id: Snw, Offset: 6, Type: typelabel.Int16, Units: "mm", Label: "Snow Depth", Description: ""},
+					smdx.PointElement{Id: PPT, Offset: 7, Type: typelabel.Int16, Label: "Precipitation Type", Description: " Precipitation Type (WMO 4680 SYNOP code reference)"},
+					smdx.PointElement{Id: ElecFld, Offset: 8, Type: typelabel.Int16, Units: "Vm", Label: "Electric Field", Description: ""},
+					smdx.PointElement{Id: SurWet, Offset: 9, Type: typelabel.Int16, Units: "kO", Label: "Surface Wetness", Description: ""},
+					smdx.PointElement{Id: SoilWet, Offset: 10, Type: typelabel.Int16, Units: "Pct", Label: "Soil Wetness", Description: ""},
 				},
 			},
 		}})

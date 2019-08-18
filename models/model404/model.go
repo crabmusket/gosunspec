@@ -13,7 +13,9 @@ import (
 // Block404 - String Combiner (Advanced) - An advanced string combiner including voltage and energy measurements
 
 const (
-	ModelID = 404
+	ModelID          = 404
+	ModelLabel       = "String Combiner (Advanced)"
+	ModelDescription = "An advanced string combiner including voltage and energy measurements"
 )
 
 const (
@@ -108,17 +110,17 @@ func init() {
 					smdx.PointElement{Id: DCV_SF, Offset: 2, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: DCW_SF, Offset: 3, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: DCWh_SF, Offset: 4, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: DCAMax, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 6, Type: typelabel.Count, Mandatory: true},
-					smdx.PointElement{Id: Evt, Offset: 7, Type: typelabel.Bitfield32, Mandatory: true},
-					smdx.PointElement{Id: EvtVnd, Offset: 9, Type: typelabel.Bitfield32},
-					smdx.PointElement{Id: DCA, Offset: 11, Type: typelabel.Int16, ScaleFactor: "DCA_SF", Units: "A", Mandatory: true},
-					smdx.PointElement{Id: DCAhr, Offset: 12, Type: typelabel.Acc32, ScaleFactor: "DCAhr_SF", Units: "Ah"},
-					smdx.PointElement{Id: DCV, Offset: 14, Type: typelabel.Int16, ScaleFactor: "DCV_SF", Units: "V"},
-					smdx.PointElement{Id: Tmp, Offset: 15, Type: typelabel.Int16, Units: "C"},
-					smdx.PointElement{Id: DCW, Offset: 16, Type: typelabel.Int16, ScaleFactor: "DCW_SF", Units: "W"},
-					smdx.PointElement{Id: DCPR, Offset: 17, Type: typelabel.Int16, Units: "Pct"},
-					smdx.PointElement{Id: DCWh, Offset: 18, Type: typelabel.Acc32, ScaleFactor: "DCWh_SF", Units: "Wh"},
+					smdx.PointElement{Id: DCAMax, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "DCA_SF", Units: "A", Mandatory: true, Label: "Rating", Description: "Maximum DC Current Rating"},
+					smdx.PointElement{Id: N, Offset: 6, Type: typelabel.Count, Mandatory: true, Label: "N", Description: "Number of Inputs"},
+					smdx.PointElement{Id: Evt, Offset: 7, Type: typelabel.Bitfield32, Mandatory: true, Label: "Event", Description: "Bitmask value.  Events"},
+					smdx.PointElement{Id: EvtVnd, Offset: 9, Type: typelabel.Bitfield32, Label: "Vendor Event", Description: "Bitmask value.  Vendor defnied events"},
+					smdx.PointElement{Id: DCA, Offset: 11, Type: typelabel.Int16, ScaleFactor: "DCA_SF", Units: "A", Mandatory: true, Label: "Amps", Description: "Total measured current"},
+					smdx.PointElement{Id: DCAhr, Offset: 12, Type: typelabel.Acc32, ScaleFactor: "DCAhr_SF", Units: "Ah", Label: "Amp-hours", Description: "Total metered Amp-hours"},
+					smdx.PointElement{Id: DCV, Offset: 14, Type: typelabel.Int16, ScaleFactor: "DCV_SF", Units: "V", Label: "Voltage", Description: "Output Voltage"},
+					smdx.PointElement{Id: Tmp, Offset: 15, Type: typelabel.Int16, Units: "C", Label: "Temp", Description: "Internal operating temperature"},
+					smdx.PointElement{Id: DCW, Offset: 16, Type: typelabel.Int16, ScaleFactor: "DCW_SF", Units: "W", Label: "Watts", Description: "Output power"},
+					smdx.PointElement{Id: DCPR, Offset: 17, Type: typelabel.Int16, Units: "Pct", Label: "PR", Description: "DC Performance ratio value"},
+					smdx.PointElement{Id: DCWh, Offset: 18, Type: typelabel.Acc32, ScaleFactor: "DCWh_SF", Units: "Wh", Label: "Watt-hours", Description: "Output energy"},
 					smdx.PointElement{Id: InDCA_SF, Offset: 20, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: InDCAhr_SF, Offset: 21, Type: typelabel.ScaleFactor},
 					smdx.PointElement{Id: InDCV_SF, Offset: 22, Type: typelabel.ScaleFactor},
@@ -130,16 +132,16 @@ func init() {
 				Length: 14,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: InID, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
-					smdx.PointElement{Id: InEvt, Offset: 1, Type: typelabel.Bitfield32, Mandatory: true},
-					smdx.PointElement{Id: InEvtVnd, Offset: 3, Type: typelabel.Bitfield32},
-					smdx.PointElement{Id: InDCA, Offset: 5, Type: typelabel.Int16, ScaleFactor: "InDCA_SF", Units: "A", Mandatory: true},
-					smdx.PointElement{Id: InDCAhr, Offset: 6, Type: typelabel.Acc32, ScaleFactor: "InDCAhr_SF", Units: "Ah"},
-					smdx.PointElement{Id: InDCV, Offset: 8, Type: typelabel.Int16, ScaleFactor: "InDCV_SF", Units: "V"},
-					smdx.PointElement{Id: InDCW, Offset: 9, Type: typelabel.Int16, ScaleFactor: "InDCW_SF", Units: "W"},
-					smdx.PointElement{Id: InDCWh, Offset: 10, Type: typelabel.Acc32, ScaleFactor: "InDCWh_SF", Units: "Wh"},
-					smdx.PointElement{Id: InDCPR, Offset: 12, Type: typelabel.Uint16, Units: "Pct"},
-					smdx.PointElement{Id: InN, Offset: 13, Type: typelabel.Uint16},
+					smdx.PointElement{Id: InID, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "ID", Description: "Uniquely identifies this input set"},
+					smdx.PointElement{Id: InEvt, Offset: 1, Type: typelabel.Bitfield32, Mandatory: true, Label: "Event", Description: "String Input Event Flags"},
+					smdx.PointElement{Id: InEvtVnd, Offset: 3, Type: typelabel.Bitfield32, Label: "Vendor Event", Description: "String Input Vendor Event Flags"},
+					smdx.PointElement{Id: InDCA, Offset: 5, Type: typelabel.Int16, ScaleFactor: "InDCA_SF", Units: "A", Mandatory: true, Label: "Amps", Description: "String Input Current"},
+					smdx.PointElement{Id: InDCAhr, Offset: 6, Type: typelabel.Acc32, ScaleFactor: "InDCAhr_SF", Units: "Ah", Label: "Amp-hours", Description: "String Input Amp-Hours"},
+					smdx.PointElement{Id: InDCV, Offset: 8, Type: typelabel.Int16, ScaleFactor: "InDCV_SF", Units: "V", Label: "Voltage", Description: "String Input Voltage"},
+					smdx.PointElement{Id: InDCW, Offset: 9, Type: typelabel.Int16, ScaleFactor: "InDCW_SF", Units: "W", Label: "Watts", Description: "String Input Power"},
+					smdx.PointElement{Id: InDCWh, Offset: 10, Type: typelabel.Acc32, ScaleFactor: "InDCWh_SF", Units: "Wh", Label: "Watt-hours", Description: "String Input Energy"},
+					smdx.PointElement{Id: InDCPR, Offset: 12, Type: typelabel.Uint16, Units: "Pct", Label: "PR", Description: "String Performance Ratio"},
+					smdx.PointElement{Id: InN, Offset: 13, Type: typelabel.Uint16, Label: "N", Description: "Number of modules in this input string"},
 				},
 			},
 		}})

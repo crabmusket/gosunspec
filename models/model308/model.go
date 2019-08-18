@@ -13,7 +13,9 @@ import (
 // Block308 - Mini Met Model - Include to support a few basic measurements
 
 const (
-	ModelID = 308
+	ModelID          = 308
+	ModelLabel       = "Mini Met Model"
+	ModelDescription = "Include to support a few basic measurements"
 )
 
 const (
@@ -44,10 +46,10 @@ func init() {
 				Length: 4,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2"},
-					smdx.PointElement{Id: TmpBOM, Offset: 1, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C"},
-					smdx.PointElement{Id: TmpAmb, Offset: 2, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C"},
-					smdx.PointElement{Id: WndSpd, Offset: 3, Type: typelabel.Uint16, Units: "m/s"},
+					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2", Label: "GHI", Description: "Global Horizontal Irradiance"},
+					smdx.PointElement{Id: TmpBOM, Offset: 1, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C", Label: "Temp", Description: "Back of module temperature measurement"},
+					smdx.PointElement{Id: TmpAmb, Offset: 2, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C", Label: "Ambient Temperature", Description: ""},
+					smdx.PointElement{Id: WndSpd, Offset: 3, Type: typelabel.Uint16, Units: "m/s", Label: "Wind Speed", Description: ""},
 				},
 			},
 		}})

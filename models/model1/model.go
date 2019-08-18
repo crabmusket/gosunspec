@@ -13,7 +13,9 @@ import (
 // Block1 - Common - All SunSpec compliant devices must include this as the first model
 
 const (
-	ModelID = 1
+	ModelID          = 1
+	ModelLabel       = "Common"
+	ModelDescription = "All SunSpec compliant devices must include this as the first model"
 )
 
 const (
@@ -50,12 +52,12 @@ func init() {
 				Length: 66,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Mn, Offset: 0, Type: typelabel.String, Length: 16, Mandatory: true},
-					smdx.PointElement{Id: Md, Offset: 16, Type: typelabel.String, Length: 16, Mandatory: true},
-					smdx.PointElement{Id: Opt, Offset: 32, Type: typelabel.String, Length: 8},
-					smdx.PointElement{Id: Vr, Offset: 40, Type: typelabel.String, Length: 8},
-					smdx.PointElement{Id: SN, Offset: 48, Type: typelabel.String, Length: 16, Mandatory: true},
-					smdx.PointElement{Id: DA, Offset: 64, Type: typelabel.Uint16, Access: "rw"},
+					smdx.PointElement{Id: Mn, Offset: 0, Type: typelabel.String, Length: 16, Mandatory: true, Label: "Manufacturer", Description: "Well known value registered with SunSpec for compliance"},
+					smdx.PointElement{Id: Md, Offset: 16, Type: typelabel.String, Length: 16, Mandatory: true, Label: "Model", Description: "Manufacturer specific value (32 chars)"},
+					smdx.PointElement{Id: Opt, Offset: 32, Type: typelabel.String, Length: 8, Label: "Options", Description: "Manufacturer specific value (16 chars)"},
+					smdx.PointElement{Id: Vr, Offset: 40, Type: typelabel.String, Length: 8, Label: "Version", Description: "Manufacturer specific value (16 chars)"},
+					smdx.PointElement{Id: SN, Offset: 48, Type: typelabel.String, Length: 16, Mandatory: true, Label: "Serial Number", Description: "Manufacturer specific value (32 chars)"},
+					smdx.PointElement{Id: DA, Offset: 64, Type: typelabel.Uint16, Access: "rw", Label: "Device Address", Description: "Modbus device address"},
 					smdx.PointElement{Id: Pad, Offset: 65, Type: typelabel.Pad, Access: "r"},
 				},
 			},

@@ -13,7 +13,9 @@ import (
 // Block10 - Communication Interface Header - To be included first for a complete interface description
 
 const (
-	ModelID = 10
+	ModelID          = 10
+	ModelLabel       = "Communication Interface Header"
+	ModelDescription = "To be included first for a complete interface description"
 )
 
 const (
@@ -44,9 +46,9 @@ func init() {
 				Length: 4,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: St, Offset: 0, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: Ctl, Offset: 1, Type: typelabel.Uint16, Access: "rw"},
-					smdx.PointElement{Id: Typ, Offset: 2, Type: typelabel.Enum16},
+					smdx.PointElement{Id: St, Offset: 0, Type: typelabel.Enum16, Mandatory: true, Label: "Interface Status", Description: "Overall interface status"},
+					smdx.PointElement{Id: Ctl, Offset: 1, Type: typelabel.Uint16, Access: "rw", Label: "Interface Control", Description: "Overall interface control (TBD)"},
+					smdx.PointElement{Id: Typ, Offset: 2, Type: typelabel.Enum16, Label: "Physical Access Type", Description: "Enumerated value.  Type of physical media"},
 					smdx.PointElement{Id: Pad, Offset: 3, Type: typelabel.Pad},
 				},
 			},

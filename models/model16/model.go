@@ -13,7 +13,9 @@ import (
 // Block16 - Simple IP Network - Include this model for a simple IPv4 network stack
 
 const (
-	ModelID = 16
+	ModelID          = 16
+	ModelLabel       = "Simple IP Network"
+	ModelDescription = "Include this model for a simple IPv4 network stack"
 )
 
 const (
@@ -58,16 +60,16 @@ func init() {
 				Length: 52,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
-					smdx.PointElement{Id: Cfg, Offset: 4, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: Ctl, Offset: 5, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Addr, Offset: 6, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true},
-					smdx.PointElement{Id: Msk, Offset: 14, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true},
-					smdx.PointElement{Id: Gw, Offset: 22, Type: typelabel.String, Access: "rw", Length: 8},
-					smdx.PointElement{Id: DNS1, Offset: 30, Type: typelabel.String, Access: "rw", Length: 8},
-					smdx.PointElement{Id: DNS2, Offset: 38, Type: typelabel.String, Access: "rw", Length: 8},
-					smdx.PointElement{Id: MAC, Offset: 46, Type: typelabel.Uint64, Access: "r"},
-					smdx.PointElement{Id: LnkCtl, Offset: 50, Type: typelabel.Bitfield16, Access: "rw"},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4, Label: "Name", Description: "Interface name.  (8 chars)"},
+					smdx.PointElement{Id: Cfg, Offset: 4, Type: typelabel.Enum16, Mandatory: true, Label: "Config", Description: "Enumerated value.  Force IPv4 configuration method"},
+					smdx.PointElement{Id: Ctl, Offset: 5, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Control", Description: "Bitmask value Configure use of services"},
+					smdx.PointElement{Id: Addr, Offset: 6, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true, Label: "Address", Description: "IP addreess"},
+					smdx.PointElement{Id: Msk, Offset: 14, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true, Label: "Netmask", Description: "Netmask"},
+					smdx.PointElement{Id: Gw, Offset: 22, Type: typelabel.String, Access: "rw", Length: 8, Label: "Gateway", Description: "Gateway IP address"},
+					smdx.PointElement{Id: DNS1, Offset: 30, Type: typelabel.String, Access: "rw", Length: 8, Label: "DNS1", Description: "32 bit IP address of DNS server"},
+					smdx.PointElement{Id: DNS2, Offset: 38, Type: typelabel.String, Access: "rw", Length: 8, Label: "DNS2", Description: "32 bit IP address of DNS server"},
+					smdx.PointElement{Id: MAC, Offset: 46, Type: typelabel.Uint64, Access: "r", Label: "MAC", Description: "IEEE MAC address of this interface"},
+					smdx.PointElement{Id: LnkCtl, Offset: 50, Type: typelabel.Bitfield16, Access: "rw", Label: "Link Control", Description: "Bitmask value.  Link control flags"},
 					smdx.PointElement{Id: Pad, Offset: 51, Type: typelabel.Pad},
 				},
 			},

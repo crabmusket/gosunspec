@@ -13,7 +13,9 @@ import (
 // Block304 - Inclinometer Model - Include to support orienation measurements
 
 const (
-	ModelID = 304
+	ModelID          = 304
+	ModelLabel       = "Inclinometer Model"
+	ModelDescription = "Include to support orienation measurements"
 )
 
 const (
@@ -46,9 +48,9 @@ func init() {
 				Length: 6,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Inclx, Offset: 0, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees", Mandatory: true},
-					smdx.PointElement{Id: Incly, Offset: 2, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees"},
-					smdx.PointElement{Id: Inclz, Offset: 4, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees"},
+					smdx.PointElement{Id: Inclx, Offset: 0, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees", Mandatory: true, Label: "X", Description: "X-Axis inclination"},
+					smdx.PointElement{Id: Incly, Offset: 2, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees", Label: "Y", Description: "Y-Axis inclination"},
+					smdx.PointElement{Id: Inclz, Offset: 4, Type: typelabel.Int32, ScaleFactor: "-2", Units: "Degrees", Label: "Z", Description: "Z-Axis inclination"},
 				},
 			},
 		}})

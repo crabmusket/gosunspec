@@ -13,7 +13,9 @@ import (
 // Block64111 - Basic Charge Controller -
 
 const (
-	ModelID = 64111
+	ModelID          = 64111
+	ModelLabel       = "Basic Charge Controller"
+	ModelDescription = ""
 )
 
 const (
@@ -82,29 +84,29 @@ func init() {
 				Length: 23,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Port, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: Port, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "Port Number", Description: ""},
 					smdx.PointElement{Id: V_SF, Offset: 1, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: A_SF, Offset: 2, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: P_SF, Offset: 3, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: AH_SF, Offset: 4, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: KWH_SF, Offset: 5, Type: typelabel.ScaleFactor, Mandatory: true},
-					smdx.PointElement{Id: BattV, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: ArrayV, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: OutputA, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "A_SF", Units: "A", Mandatory: true},
-					smdx.PointElement{Id: InputA, Offset: 9, Type: typelabel.Uint16, ScaleFactor: "P_SF", Units: "A", Mandatory: true},
-					smdx.PointElement{Id: ChargerSt, Offset: 10, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: OutputW, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "P_SF", Units: "W", Mandatory: true},
-					smdx.PointElement{Id: TodayMinBatV, Offset: 12, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: TodayMaxBatV, Offset: 13, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: VOCV, Offset: 14, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: TodayMaxVOC, Offset: 15, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: TodaykWhOutput, Offset: 16, Type: typelabel.Uint16, ScaleFactor: "KWH_SF", Units: "kWh", Mandatory: true},
-					smdx.PointElement{Id: TodayAHOutput, Offset: 17, Type: typelabel.Uint16, ScaleFactor: "AH_SF", Units: "AH", Mandatory: true},
-					smdx.PointElement{Id: LifeTimeKWHOut, Offset: 18, Type: typelabel.Uint16, ScaleFactor: "P_SF", Units: "kWh", Mandatory: true},
-					smdx.PointElement{Id: LifeTimeAHOut, Offset: 19, Type: typelabel.Uint16, ScaleFactor: "KWH_SF", Units: "kAH", Mandatory: true},
-					smdx.PointElement{Id: LifeTimeMaxOut, Offset: 20, Type: typelabel.Uint16, ScaleFactor: "P_SF", Units: "W", Mandatory: true},
-					smdx.PointElement{Id: LifeTimeMaxBatt, Offset: 21, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
-					smdx.PointElement{Id: LifeTimeMaxVOC, Offset: 22, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true},
+					smdx.PointElement{Id: BattV, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "Battery Voltage", Description: ""},
+					smdx.PointElement{Id: ArrayV, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "Array Voltage", Description: ""},
+					smdx.PointElement{Id: OutputA, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "A_SF", Units: "A", Mandatory: true, Label: "Output Current", Description: ""},
+					smdx.PointElement{Id: InputA, Offset: 9, Type: typelabel.Uint16, ScaleFactor: "P_SF", Units: "A", Mandatory: true, Label: "Array Current", Description: ""},
+					smdx.PointElement{Id: ChargerSt, Offset: 10, Type: typelabel.Enum16, Mandatory: true, Label: "Operating State", Description: ""},
+					smdx.PointElement{Id: OutputW, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "P_SF", Units: "W", Mandatory: true, Label: "Output Wattage", Description: ""},
+					smdx.PointElement{Id: TodayMinBatV, Offset: 12, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "Todays Minimum Battery Voltage", Description: ""},
+					smdx.PointElement{Id: TodayMaxBatV, Offset: 13, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "Todays Maximum Battery Voltage", Description: ""},
+					smdx.PointElement{Id: VOCV, Offset: 14, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "VOC", Description: ""},
+					smdx.PointElement{Id: TodayMaxVOC, Offset: 15, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "Todays Maximum VOC", Description: ""},
+					smdx.PointElement{Id: TodaykWhOutput, Offset: 16, Type: typelabel.Uint16, ScaleFactor: "KWH_SF", Units: "kWh", Mandatory: true, Label: "Todays kWh", Description: ""},
+					smdx.PointElement{Id: TodayAHOutput, Offset: 17, Type: typelabel.Uint16, ScaleFactor: "AH_SF", Units: "AH", Mandatory: true, Label: "Todays AH", Description: ""},
+					smdx.PointElement{Id: LifeTimeKWHOut, Offset: 18, Type: typelabel.Uint16, ScaleFactor: "P_SF", Units: "kWh", Mandatory: true, Label: "Lifetime kWh", Description: ""},
+					smdx.PointElement{Id: LifeTimeAHOut, Offset: 19, Type: typelabel.Uint16, ScaleFactor: "KWH_SF", Units: "kAH", Mandatory: true, Label: "Lifetime kAH", Description: ""},
+					smdx.PointElement{Id: LifeTimeMaxOut, Offset: 20, Type: typelabel.Uint16, ScaleFactor: "P_SF", Units: "W", Mandatory: true, Label: "Lifetime Maximum Output Wattage", Description: ""},
+					smdx.PointElement{Id: LifeTimeMaxBatt, Offset: 21, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "Lifetime Maximum Battery Voltage", Description: ""},
+					smdx.PointElement{Id: LifeTimeMaxVOC, Offset: 22, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Mandatory: true, Label: "Lifetime Maximum VOC Voltage", Description: ""},
 				},
 			},
 		}})

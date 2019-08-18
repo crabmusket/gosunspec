@@ -13,7 +13,9 @@ import (
 // Block11 - Ethernet Link Layer - Include to support a wired ethernet port
 
 const (
-	ModelID = 11
+	ModelID          = 11
+	ModelLabel       = "Ethernet Link Layer"
+	ModelDescription = "Include to support a wired ethernet port"
 )
 
 const (
@@ -50,13 +52,13 @@ func init() {
 				Length: 13,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Spd, Offset: 0, Type: typelabel.Uint16, Units: "Mbps", Mandatory: true},
-					smdx.PointElement{Id: CfgSt, Offset: 1, Type: typelabel.Bitfield16, Mandatory: true},
-					smdx.PointElement{Id: St, Offset: 2, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: MAC, Offset: 3, Type: typelabel.Eui48},
-					smdx.PointElement{Id: Nam, Offset: 7, Type: typelabel.String, Access: "rw", Length: 4},
-					smdx.PointElement{Id: Ctl, Offset: 11, Type: typelabel.Bitfield16, Access: "rw"},
-					smdx.PointElement{Id: FrcSpd, Offset: 12, Type: typelabel.Uint16, Units: "Mbps", Access: "rw"},
+					smdx.PointElement{Id: Spd, Offset: 0, Type: typelabel.Uint16, Units: "Mbps", Mandatory: true, Label: "Ethernet Link Speed", Description: "Interface speed in Mb/s"},
+					smdx.PointElement{Id: CfgSt, Offset: 1, Type: typelabel.Bitfield16, Mandatory: true, Label: "Interface Status Flags", Description: "Bitmask values Interface flags."},
+					smdx.PointElement{Id: St, Offset: 2, Type: typelabel.Enum16, Mandatory: true, Label: "Link State", Description: "Enumerated value. State information for this interface"},
+					smdx.PointElement{Id: MAC, Offset: 3, Type: typelabel.Eui48, Label: "MAC", Description: "IEEE MAC address of this interface"},
+					smdx.PointElement{Id: Nam, Offset: 7, Type: typelabel.String, Access: "rw", Length: 4, Label: "Name", Description: "Interface name (8 chars)"},
+					smdx.PointElement{Id: Ctl, Offset: 11, Type: typelabel.Bitfield16, Access: "rw", Label: "Control", Description: "Control flags"},
+					smdx.PointElement{Id: FrcSpd, Offset: 12, Type: typelabel.Uint16, Units: "Mbps", Access: "rw", Label: "Forced Speed", Description: "Forced interface speed in Mb/s when AUTO is disabled"},
 				},
 			},
 		}})

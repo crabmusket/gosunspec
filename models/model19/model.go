@@ -13,7 +13,9 @@ import (
 // Block19 - PPP Link - Include this model to configure a Point-to-Point Protocol link
 
 const (
-	ModelID = 19
+	ModelID          = 19
+	ModelLabel       = "PPP Link"
+	ModelDescription = "Include this model to configure a Point-to-Point Protocol link"
 )
 
 const (
@@ -56,15 +58,15 @@ func init() {
 				Length: 30,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
-					smdx.PointElement{Id: Rte, Offset: 4, Type: typelabel.Uint32, Units: "bps", Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Bits, Offset: 6, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Pty, Offset: 7, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Dup, Offset: 8, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: Flw, Offset: 9, Type: typelabel.Enum16, Access: "rw"},
-					smdx.PointElement{Id: Auth, Offset: 10, Type: typelabel.Enum16},
-					smdx.PointElement{Id: UsrNam, Offset: 11, Type: typelabel.String, Length: 12},
-					smdx.PointElement{Id: Pw, Offset: 23, Type: typelabel.String, Length: 6},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4, Label: "Name", Description: "Interface name"},
+					smdx.PointElement{Id: Rte, Offset: 4, Type: typelabel.Uint32, Units: "bps", Access: "rw", Mandatory: true, Label: "Rate", Description: "Interface baud rate in bits per second"},
+					smdx.PointElement{Id: Bits, Offset: 6, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Bits", Description: "Number of data bits per character"},
+					smdx.PointElement{Id: Pty, Offset: 7, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Parity", Description: "Bitmask value.  Parity setting"},
+					smdx.PointElement{Id: Dup, Offset: 8, Type: typelabel.Enum16, Access: "rw", Label: "Duplex", Description: "Enumerated value.  Duplex mode"},
+					smdx.PointElement{Id: Flw, Offset: 9, Type: typelabel.Enum16, Access: "rw", Label: "Flow Control", Description: "Flow Control Method"},
+					smdx.PointElement{Id: Auth, Offset: 10, Type: typelabel.Enum16, Label: "Authentication", Description: "Enumerated value.  Authentication method"},
+					smdx.PointElement{Id: UsrNam, Offset: 11, Type: typelabel.String, Length: 12, Label: "Username", Description: "Username for authentication"},
+					smdx.PointElement{Id: Pw, Offset: 23, Type: typelabel.String, Length: 6, Label: "Password", Description: "Password for authentication"},
 					smdx.PointElement{Id: Pad, Offset: 29, Type: typelabel.Pad},
 				},
 			},

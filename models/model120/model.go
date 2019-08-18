@@ -13,7 +13,9 @@ import (
 // Block120 - Nameplate - Inverter Controls Nameplate Ratings
 
 const (
-	ModelID = 120
+	ModelID          = 120
+	ModelLabel       = "Nameplate"
+	ModelDescription = "Inverter Controls Nameplate Ratings "
 )
 
 const (
@@ -88,32 +90,32 @@ func init() {
 				Length: 26,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DERTyp, Offset: 0, Type: typelabel.Enum16, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WRtg, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "WRtg_SF", Units: "W", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WRtg_SF, Offset: 2, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VARtg, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "VARtg_SF", Units: "VA", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VARtg_SF, Offset: 4, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VArRtgQ1, Offset: 5, Type: typelabel.Int16, ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VArRtgQ2, Offset: 6, Type: typelabel.Int16, ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VArRtgQ3, Offset: 7, Type: typelabel.Int16, ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VArRtgQ4, Offset: 8, Type: typelabel.Int16, ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VArRtg_SF, Offset: 9, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ARtg, Offset: 10, Type: typelabel.Uint16, ScaleFactor: "ARtg_SF", Units: "A", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ARtg_SF, Offset: 11, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: PFRtgQ1, Offset: 12, Type: typelabel.Int16, ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: PFRtgQ2, Offset: 13, Type: typelabel.Int16, ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: PFRtgQ3, Offset: 14, Type: typelabel.Int16, ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: PFRtgQ4, Offset: 15, Type: typelabel.Int16, ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: PFRtg_SF, Offset: 16, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WHRtg, Offset: 17, Type: typelabel.Uint16, ScaleFactor: "WHRtg_SF", Units: "Wh", Access: "r", Length: 1},
-					smdx.PointElement{Id: WHRtg_SF, Offset: 18, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: AhrRtg, Offset: 19, Type: typelabel.Uint16, ScaleFactor: "AhrRtg_SF", Units: "AH", Access: "r", Length: 1},
-					smdx.PointElement{Id: AhrRtg_SF, Offset: 20, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: MaxChaRte, Offset: 21, Type: typelabel.Uint16, ScaleFactor: "MaxChaRte_SF", Units: "W", Access: "r", Length: 1},
-					smdx.PointElement{Id: MaxChaRte_SF, Offset: 22, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: MaxDisChaRte, Offset: 23, Type: typelabel.Uint16, ScaleFactor: "MaxDisChaRte_SF", Units: "W", Access: "r", Length: 1},
-					smdx.PointElement{Id: MaxDisChaRte_SF, Offset: 24, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: Pad, Offset: 25, Type: typelabel.Pad, Access: "r", Length: 1},
+					smdx.PointElement{Id: DERTyp, Offset: 0, Type: typelabel.Enum16, Access: "r", Length: 1, Mandatory: true, Label: "DERTyp", Description: "Type of DER device. Default value is 4 to indicate PV device."},
+					smdx.PointElement{Id: WRtg, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "WRtg_SF", Units: "W", Access: "r", Length: 1, Mandatory: true, Label: "WRtg", Description: "Continuous power output capability of the inverter."},
+					smdx.PointElement{Id: WRtg_SF, Offset: 2, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "WRtg_SF", Description: "Scale factor"},
+					smdx.PointElement{Id: VARtg, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "VARtg_SF", Units: "VA", Access: "r", Length: 1, Mandatory: true, Label: "VARtg", Description: "Continuous Volt-Ampere capability of the inverter."},
+					smdx.PointElement{Id: VARtg_SF, Offset: 4, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "VARtg_SF", Description: "Scale factor"},
+					smdx.PointElement{Id: VArRtgQ1, Offset: 5, Type: typelabel.Int16, ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true, Label: "VArRtgQ1", Description: "Continuous VAR capability of the inverter in quadrant 1."},
+					smdx.PointElement{Id: VArRtgQ2, Offset: 6, Type: typelabel.Int16, ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true, Label: "VArRtgQ2", Description: "Continuous VAR capability of the inverter in quadrant 2."},
+					smdx.PointElement{Id: VArRtgQ3, Offset: 7, Type: typelabel.Int16, ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true, Label: "VArRtgQ3", Description: "Continuous VAR capability of the inverter in quadrant 3."},
+					smdx.PointElement{Id: VArRtgQ4, Offset: 8, Type: typelabel.Int16, ScaleFactor: "VArRtg_SF", Units: "var", Access: "r", Length: 1, Mandatory: true, Label: "VArRtgQ4", Description: "Continuous VAR capability of the inverter in quadrant 4."},
+					smdx.PointElement{Id: VArRtg_SF, Offset: 9, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "VArRtg_SF", Description: "Scale factor"},
+					smdx.PointElement{Id: ARtg, Offset: 10, Type: typelabel.Uint16, ScaleFactor: "ARtg_SF", Units: "A", Access: "r", Length: 1, Mandatory: true, Label: "ARtg", Description: "Maximum RMS AC current level capability of the inverter."},
+					smdx.PointElement{Id: ARtg_SF, Offset: 11, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "ARtg_SF", Description: "Scale factor"},
+					smdx.PointElement{Id: PFRtgQ1, Offset: 12, Type: typelabel.Int16, ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true, Label: "PFRtgQ1", Description: "Minimum power factor capability of the inverter in quadrant 1."},
+					smdx.PointElement{Id: PFRtgQ2, Offset: 13, Type: typelabel.Int16, ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true, Label: "PFRtgQ2", Description: "Minimum power factor capability of the inverter in quadrant 2."},
+					smdx.PointElement{Id: PFRtgQ3, Offset: 14, Type: typelabel.Int16, ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true, Label: "PFRtgQ3", Description: "Minimum power factor capability of the inverter in quadrant 3."},
+					smdx.PointElement{Id: PFRtgQ4, Offset: 15, Type: typelabel.Int16, ScaleFactor: "PFRtg_SF", Units: "cos()", Access: "r", Length: 1, Mandatory: true, Label: "PFRtgQ4", Description: "Minimum power factor capability of the inverter in quadrant 4."},
+					smdx.PointElement{Id: PFRtg_SF, Offset: 16, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "PFRtg_SF", Description: "Scale factor"},
+					smdx.PointElement{Id: WHRtg, Offset: 17, Type: typelabel.Uint16, ScaleFactor: "WHRtg_SF", Units: "Wh", Access: "r", Length: 1, Label: "WHRtg", Description: "Nominal energy rating of storage device."},
+					smdx.PointElement{Id: WHRtg_SF, Offset: 18, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "WHRtg_SF", Description: "Scale factor"},
+					smdx.PointElement{Id: AhrRtg, Offset: 19, Type: typelabel.Uint16, ScaleFactor: "AhrRtg_SF", Units: "AH", Access: "r", Length: 1, Label: "AhrRtg", Description: "The useable capacity of the battery.  Maximum charge minus minimum charge from a technology capability perspective (Amp-hour capacity rating)."},
+					smdx.PointElement{Id: AhrRtg_SF, Offset: 20, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "AhrRtg_SF", Description: "Scale factor for amp-hour rating."},
+					smdx.PointElement{Id: MaxChaRte, Offset: 21, Type: typelabel.Uint16, ScaleFactor: "MaxChaRte_SF", Units: "W", Access: "r", Length: 1, Label: "MaxChaRte", Description: "Maximum rate of energy transfer into the storage device."},
+					smdx.PointElement{Id: MaxChaRte_SF, Offset: 22, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "MaxChaRte_SF", Description: "Scale factor"},
+					smdx.PointElement{Id: MaxDisChaRte, Offset: 23, Type: typelabel.Uint16, ScaleFactor: "MaxDisChaRte_SF", Units: "W", Access: "r", Length: 1, Label: "MaxDisChaRte", Description: "Maximum rate of energy transfer out of the storage device."},
+					smdx.PointElement{Id: MaxDisChaRte_SF, Offset: 24, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "MaxDisChaRte_SF", Description: "Scale factor"},
+					smdx.PointElement{Id: Pad, Offset: 25, Type: typelabel.Pad, Access: "r", Length: 1, Label: "Pad", Description: "Pad register."},
 				},
 			},
 		}})

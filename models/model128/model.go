@@ -13,7 +13,9 @@ import (
 // Block128 - Dynamic Reactive Current - Dynamic Reactive Current
 
 const (
-	ModelID = 128
+	ModelID          = 128
+	ModelLabel       = "Dynamic Reactive Current"
+	ModelDescription = "Dynamic Reactive Current "
 )
 
 const (
@@ -64,19 +66,19 @@ func init() {
 				Length: 14,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: ArGraMod, Offset: 0, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ArGraSag, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ArGraSwell, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ModEna, Offset: 3, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: FilTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: DbVMin, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-					smdx.PointElement{Id: DbVMax, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-					smdx.PointElement{Id: BlkZnV, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-					smdx.PointElement{Id: HysBlkZnV, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1},
-					smdx.PointElement{Id: BlkZnTmms, Offset: 9, Type: typelabel.Uint16, Units: "mSecs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: HoldTmms, Offset: 10, Type: typelabel.Uint16, Units: "mSecs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: ArGra_SF, Offset: 11, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VRefPct_SF, Offset: 12, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
+					smdx.PointElement{Id: ArGraMod, Offset: 0, Type: typelabel.Enum16, Access: "rw", Length: 1, Mandatory: true, Label: "ArGraMod", Description: "Indicates if gradients trend toward zero at the edges of the deadband or trend toward zero at the center of the deadband."},
+					smdx.PointElement{Id: ArGraSag, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true, Label: "ArGraSag", Description: "The gradient used to increase capacitive dynamic current. A value of 0 indicates no additional reactive current support."},
+					smdx.PointElement{Id: ArGraSwell, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "ArGra_SF", Units: "%ARtg/%dV", Access: "rw", Length: 1, Mandatory: true, Label: "ArGraSwell", Description: "The gradient used to increase inductive dynamic current.  A value of 0 indicates no additional reactive current support."},
+					smdx.PointElement{Id: ModEna, Offset: 3, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true, Label: "ModEna", Description: "Activate dynamic reactive current model"},
+					smdx.PointElement{Id: FilTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "FilTms", Description: "The time window used to calculate the moving average voltage."},
+					smdx.PointElement{Id: DbVMin, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1, Label: "DbVMin", Description: "The lower delta voltage limit for which negative voltage deviations less than this value no dynamic vars are produced."},
+					smdx.PointElement{Id: DbVMax, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1, Label: "DbVMax", Description: "The upper delta voltage limit for which positive voltage deviations less than this value no dynamic current produced."},
+					smdx.PointElement{Id: BlkZnV, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1, Label: "BlkZnV", Description: "Block zone voltage which defines a lower voltage boundary below which no dynamic current is produced."},
+					smdx.PointElement{Id: HysBlkZnV, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "VRefPct_SF", Units: "% VRef", Access: "rw", Length: 1, Label: "HysBlkZnV", Description: "Hysteresis voltage used with BlkZnV."},
+					smdx.PointElement{Id: BlkZnTmms, Offset: 9, Type: typelabel.Uint16, Units: "mSecs", Access: "rw", Length: 1, Label: "BlkZnTmms", Description: "Block zone time the time before which reactive current support remains active regardless of how low the voltage drops."},
+					smdx.PointElement{Id: HoldTmms, Offset: 10, Type: typelabel.Uint16, Units: "mSecs", Access: "rw", Length: 1, Label: "HoldTmms", Description: "Hold time during which reactive current support continues after the average voltage has entered the dead zone."},
+					smdx.PointElement{Id: ArGra_SF, Offset: 11, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "ArGra_SF", Description: "Scale factor for the gradients."},
+					smdx.PointElement{Id: VRefPct_SF, Offset: 12, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "VRefPct_SF", Description: "Scale factor for the voltage zone and limit settings."},
 					smdx.PointElement{Id: Pad, Offset: 13, Type: typelabel.Pad, Access: "r", Length: 1},
 				},
 			},

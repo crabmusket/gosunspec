@@ -13,7 +13,9 @@ import (
 // Block4 - Secure Dataset Read Response - Compute a digial signature over a specifed set of data registers
 
 const (
-	ModelID = 4
+	ModelID          = 4
+	ModelLabel       = "Secure Dataset Read Response"
+	ModelDescription = "Compute a digial signature over a specifed set of data registers"
 )
 
 const (
@@ -161,10 +163,10 @@ func init() {
 				Length: 60,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: RqSeq, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Sts, Offset: 1, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: X, Offset: 2, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Val1, Offset: 3, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: RqSeq, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "Request Sequence", Description: "Sequence number from the request"},
+					smdx.PointElement{Id: Sts, Offset: 1, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "Status", Description: "Status of last read operation"},
+					smdx.PointElement{Id: X, Offset: 2, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "X", Description: "Number of values from the request"},
+					smdx.PointElement{Id: Val1, Offset: 3, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "Value1", Description: "Copy of value from register Off1."},
 					smdx.PointElement{Id: Val2, Offset: 4, Type: typelabel.Uint16, Access: "r", Mandatory: true},
 					smdx.PointElement{Id: Val3, Offset: 5, Type: typelabel.Uint16, Access: "r", Mandatory: true},
 					smdx.PointElement{Id: Val4, Offset: 6, Type: typelabel.Uint16, Access: "r", Mandatory: true},
@@ -214,19 +216,19 @@ func init() {
 					smdx.PointElement{Id: Val48, Offset: 50, Type: typelabel.Uint16, Access: "r", Mandatory: true},
 					smdx.PointElement{Id: Val49, Offset: 51, Type: typelabel.Uint16, Access: "r", Mandatory: true},
 					smdx.PointElement{Id: Val50, Offset: 52, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Ts, Offset: 53, Type: typelabel.Uint32, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Ms, Offset: 55, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Seq, Offset: 56, Type: typelabel.Uint16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: Alm, Offset: 57, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: Alg, Offset: 58, Type: typelabel.Enum16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 59, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Ts, Offset: 53, Type: typelabel.Uint32, Access: "r", Mandatory: true, Label: "Timestamp", Description: "Timestamp value is the number of seconds since January 1, 2000"},
+					smdx.PointElement{Id: Ms, Offset: 55, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "Milliseconds", Description: "Millisecond counter 0-999"},
+					smdx.PointElement{Id: Seq, Offset: 56, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "Sequence", Description: "Sequence number of response"},
+					smdx.PointElement{Id: Alm, Offset: 57, Type: typelabel.Enum16, Mandatory: true, Label: "Alarm", Description: "Bitmask alarm code"},
+					smdx.PointElement{Id: Alg, Offset: 58, Type: typelabel.Enum16, Access: "r", Mandatory: true, Label: "Algorithm", Description: "Algorithm used to compute the digital signature"},
+					smdx.PointElement{Id: N, Offset: 59, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "N", Description: "Number of registers comprising the digital signature."},
 				},
 			},
 			smdx.BlockElement{
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "DS", Description: "Digital Signature"},
 				},
 			},
 		}})

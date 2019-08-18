@@ -13,7 +13,9 @@ import (
 // Block3 - Secure Dataset Read Request - Request a digial signature over a specifed set of data registers
 
 const (
-	ModelID = 3
+	ModelID          = 3
+	ModelLabel       = "Secure Dataset Read Request"
+	ModelDescription = "Request a digial signature over a specifed set of data registers"
 )
 
 const (
@@ -157,8 +159,8 @@ func init() {
 				Length: 58,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: X, Offset: 0, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Off1, Offset: 1, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
+					smdx.PointElement{Id: X, Offset: 0, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "X", Description: "Number of registers being requested"},
+					smdx.PointElement{Id: Off1, Offset: 1, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Offset1", Description: "Offset of value to read"},
 					smdx.PointElement{Id: Off2, Offset: 2, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Off3, Offset: 3, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Off4, Offset: 4, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
@@ -208,19 +210,19 @@ func init() {
 					smdx.PointElement{Id: Off48, Offset: 48, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Off49, Offset: 49, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
 					smdx.PointElement{Id: Off50, Offset: 50, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Ts, Offset: 51, Type: typelabel.Uint32, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Ms, Offset: 53, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Seq, Offset: 54, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Role, Offset: 55, Type: typelabel.Uint16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Alg, Offset: 56, Type: typelabel.Enum16, Access: "r", Mandatory: true},
-					smdx.PointElement{Id: N, Offset: 57, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: Ts, Offset: 51, Type: typelabel.Uint32, Access: "rw", Mandatory: true, Label: "Timestamp", Description: "Timestamp value is the number of seconds since January 1, 2000"},
+					smdx.PointElement{Id: Ms, Offset: 53, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Milliseconds", Description: "Millisecond counter 0-999"},
+					smdx.PointElement{Id: Seq, Offset: 54, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Sequence", Description: "Sequence number of request"},
+					smdx.PointElement{Id: Role, Offset: 55, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Role", Description: "Digital Signature ID"},
+					smdx.PointElement{Id: Alg, Offset: 56, Type: typelabel.Enum16, Access: "r", Mandatory: true, Label: "Algorithm", Description: "Algorithm used to compute the digital signature"},
+					smdx.PointElement{Id: N, Offset: 57, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "N", Description: "Number of registers comprising the digital signature."},
 				},
 			},
 			smdx.BlockElement{
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true},
+					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "r", Mandatory: true, Label: "DS", Description: "Digital Signature"},
 				},
 			},
 		}})

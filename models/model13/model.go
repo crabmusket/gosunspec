@@ -13,7 +13,9 @@ import (
 // Block13 - IPv6 - Include to support an IPv6 protocol stack on this interface
 
 const (
-	ModelID = 13
+	ModelID          = 13
+	ModelLabel       = "IPv6"
+	ModelDescription = "Include to support an IPv6 protocol stack on this interface"
 )
 
 const (
@@ -68,21 +70,21 @@ func init() {
 				Length: 174,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4},
-					smdx.PointElement{Id: CfgSt, Offset: 4, Type: typelabel.Enum16, Mandatory: true},
-					smdx.PointElement{Id: ChgSt, Offset: 5, Type: typelabel.Bitfield16, Mandatory: true},
-					smdx.PointElement{Id: Cap, Offset: 6, Type: typelabel.Bitfield16, Mandatory: true},
-					smdx.PointElement{Id: Cfg, Offset: 7, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Ctl, Offset: 8, Type: typelabel.Enum16, Access: "rw", Mandatory: true},
-					smdx.PointElement{Id: Addr, Offset: 9, Type: typelabel.String, Access: "rw", Length: 20, Mandatory: true},
-					smdx.PointElement{Id: CIDR, Offset: 29, Type: typelabel.String, Access: "rw", Length: 20},
-					smdx.PointElement{Id: Gw, Offset: 49, Type: typelabel.String, Access: "rw", Length: 20},
-					smdx.PointElement{Id: DNS1, Offset: 69, Type: typelabel.String, Access: "rw", Length: 20},
-					smdx.PointElement{Id: DNS2, Offset: 89, Type: typelabel.String, Access: "rw", Length: 20},
-					smdx.PointElement{Id: NTP1, Offset: 109, Type: typelabel.String, Access: "rw", Length: 20},
-					smdx.PointElement{Id: NTP2, Offset: 129, Type: typelabel.String, Access: "rw", Length: 20},
-					smdx.PointElement{Id: DomNam, Offset: 149, Type: typelabel.String, Access: "rw", Length: 12},
-					smdx.PointElement{Id: HostNam, Offset: 161, Type: typelabel.String, Access: "rw", Length: 12},
+					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4, Label: "Name", Description: "Interface name"},
+					smdx.PointElement{Id: CfgSt, Offset: 4, Type: typelabel.Enum16, Mandatory: true, Label: "Config Status", Description: "Enumerated value.  Configuration status"},
+					smdx.PointElement{Id: ChgSt, Offset: 5, Type: typelabel.Bitfield16, Mandatory: true, Label: "Change Status", Description: "Bitmask value.  A configuration change is pending"},
+					smdx.PointElement{Id: Cap, Offset: 6, Type: typelabel.Bitfield16, Mandatory: true, Label: "Config Capability", Description: "Bitmask value. Identify capable sources of configuration"},
+					smdx.PointElement{Id: Cfg, Offset: 7, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "IPv6 Config", Description: "Enumerated value.  Configuration method used."},
+					smdx.PointElement{Id: Ctl, Offset: 8, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Control", Description: "Bitmask value.  Configure use of services"},
+					smdx.PointElement{Id: Addr, Offset: 9, Type: typelabel.String, Access: "rw", Length: 20, Mandatory: true, Label: "IP", Description: "IPv6 numeric address as a dotted string xxxx.xxxx.xxxx.xxxx"},
+					smdx.PointElement{Id: CIDR, Offset: 29, Type: typelabel.String, Access: "rw", Length: 20, Label: "CIDR", Description: "Classless Inter-Domain Routing Number"},
+					smdx.PointElement{Id: Gw, Offset: 49, Type: typelabel.String, Access: "rw", Length: 20, Label: "Gateway", Description: "IPv6 numeric address as a dotted string xxxx.xxxx.xxxx.xxxx"},
+					smdx.PointElement{Id: DNS1, Offset: 69, Type: typelabel.String, Access: "rw", Length: 20, Label: "DNS1", Description: "IPv6 numeric DNS address as a dotted string xxxx.xxxx.xxxx.xxxx"},
+					smdx.PointElement{Id: DNS2, Offset: 89, Type: typelabel.String, Access: "rw", Length: 20, Label: "DNS2", Description: "IPv6 numeric DNS address as a dotted string xxxx.xxxx.xxxx.xxxx"},
+					smdx.PointElement{Id: NTP1, Offset: 109, Type: typelabel.String, Access: "rw", Length: 20, Label: "NTP1", Description: "IPv6 numeric NTP address as a name or dotted string xxxx.xxxx.xxxx.xxxx"},
+					smdx.PointElement{Id: NTP2, Offset: 129, Type: typelabel.String, Access: "rw", Length: 20, Label: "NTP2", Description: "IPv6 numeric NTP address as a name or dotted string xxxx.xxxx.xxxx.xxxx"},
+					smdx.PointElement{Id: DomNam, Offset: 149, Type: typelabel.String, Access: "rw", Length: 12, Label: "Domain", Description: "Domain name (24 chars max)"},
+					smdx.PointElement{Id: HostNam, Offset: 161, Type: typelabel.String, Access: "rw", Length: 12, Label: "Host Name", Description: "Host name (24 chars max)"},
 					smdx.PointElement{Id: Pad, Offset: 173, Type: typelabel.Pad},
 				},
 			},

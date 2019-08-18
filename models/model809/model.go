@@ -13,7 +13,9 @@ import (
 // Block809 - Flow Battery Stack Model -
 
 const (
-	ModelID = 809
+	ModelID          = 809
+	ModelLabel       = "Flow Battery Stack Model"
+	ModelDescription = ""
 )
 
 const (
@@ -45,14 +47,14 @@ func init() {
 				Length: 1,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: StackTBD, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: StackTBD, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "Stack Points To Be Determined", Description: ""},
 				},
 			},
 			smdx.BlockElement{Name: "cell",
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: CellTBD, Offset: 0, Type: typelabel.Uint16, Mandatory: true},
+					smdx.PointElement{Id: CellTBD, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "Cell Points To Be Determined", Description: ""},
 				},
 			},
 		}})

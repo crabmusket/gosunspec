@@ -13,7 +13,9 @@ import (
 // Block145 - Extended Settings - Inverter controls extended settings
 
 const (
-	ModelID = 145
+	ModelID          = 145
+	ModelLabel       = "Extended Settings"
+	ModelDescription = "Inverter controls extended settings "
 )
 
 const (
@@ -52,14 +54,14 @@ func init() {
 				Length: 8,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: NomRmpUpRte, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: NomRmpDnRte, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: EmgRmpUpRte, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: EmgRmpDnRte, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: ConnRmpUpRte, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: ConnRmpDnRte, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: AGra, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1},
-					smdx.PointElement{Id: Rmp_SF, Offset: 7, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
+					smdx.PointElement{Id: NomRmpUpRte, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1, Label: "Ramp Up Rate", Description: "Ramp up rate as a percentage of max current."},
+					smdx.PointElement{Id: NomRmpDnRte, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1, Label: "NomRmpDnRte", Description: "Ramp down rate as a percentage of max current."},
+					smdx.PointElement{Id: EmgRmpUpRte, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1, Label: "Emergency Ramp Up Rate", Description: "Emergency ramp up rate as a percentage of max current."},
+					smdx.PointElement{Id: EmgRmpDnRte, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1, Label: "Emergency Ramp Down Rate", Description: "Emergency ramp down rate as a percentage of max current."},
+					smdx.PointElement{Id: ConnRmpUpRte, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1, Label: "Connect Ramp Up Rate", Description: "Connect ramp up rate as a percentage of max current."},
+					smdx.PointElement{Id: ConnRmpDnRte, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1, Label: "Connect Ramp Down Rate", Description: "Connect ramp down rate as a percentage of max current."},
+					smdx.PointElement{Id: AGra, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "Rmp_SF", Units: "Pct", Access: "rw", Length: 1, Label: "Default Ramp Rate", Description: "Ramp rate specified in percent of max current."},
+					smdx.PointElement{Id: Rmp_SF, Offset: 7, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "Ramp Rate Scale Factor", Description: "Ramp Rate Scale Factor"},
 				},
 			},
 		}})

@@ -13,7 +13,9 @@ import (
 // Block801 - Energy Storage Base Model (DEPRECATED) - This model has been deprecated.
 
 const (
-	ModelID = 801
+	ModelID          = 801
+	ModelLabel       = "Energy Storage Base Model (DEPRECATED)"
+	ModelDescription = "This model has been deprecated."
 )
 
 const (
@@ -38,7 +40,7 @@ func init() {
 				Length: 1,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DEPRECATED, Offset: 0, Type: typelabel.Enum16, Mandatory: true},
+					smdx.PointElement{Id: DEPRECATED, Offset: 0, Type: typelabel.Enum16, Mandatory: true, Label: "Deprecated Model", Description: "This model has been deprecated."},
 				},
 			},
 		}})

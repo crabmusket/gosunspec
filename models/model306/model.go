@@ -13,7 +13,9 @@ import (
 // Block306 - Reference Point Model - Include to support a standard reference point
 
 const (
-	ModelID = 306
+	ModelID          = 306
+	ModelLabel       = "Reference Point Model"
+	ModelDescription = "Include to support a standard reference point"
 )
 
 const (
@@ -44,10 +46,10 @@ func init() {
 				Length: 4,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2"},
-					smdx.PointElement{Id: A, Offset: 1, Type: typelabel.Uint16, Units: "W/m2"},
-					smdx.PointElement{Id: V, Offset: 2, Type: typelabel.Uint16, Units: "W/m2"},
-					smdx.PointElement{Id: Tmp, Offset: 3, Type: typelabel.Uint16, Units: "W/m2"},
+					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2", Label: "GHI", Description: "Global Horizontal Irrandiance"},
+					smdx.PointElement{Id: A, Offset: 1, Type: typelabel.Uint16, Units: "W/m2", Label: "Amps", Description: "Current measurment at reference point"},
+					smdx.PointElement{Id: V, Offset: 2, Type: typelabel.Uint16, Units: "W/m2", Label: "Voltage", Description: "Voltage  measurment at reference point"},
+					smdx.PointElement{Id: Tmp, Offset: 3, Type: typelabel.Uint16, Units: "W/m2", Label: "Temperature", Description: "Temperature measurment at reference point"},
 				},
 			},
 		}})

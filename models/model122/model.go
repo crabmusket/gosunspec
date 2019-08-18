@@ -13,7 +13,9 @@ import (
 // Block122 - Measurements_Status - Inverter Controls Extended Measurements and Status
 
 const (
-	ModelID = 122
+	ModelID          = 122
+	ModelLabel       = "Measurements_Status"
+	ModelDescription = "Inverter Controls Extended Measurements and Status "
 )
 
 const (
@@ -76,26 +78,26 @@ func init() {
 				Length: 44,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: PVConn, Offset: 0, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: StorConn, Offset: 1, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ECPConn, Offset: 2, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: ActWh, Offset: 3, Type: typelabel.Acc64, Units: "Wh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVAh, Offset: 7, Type: typelabel.Acc64, Units: "VAh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVArhQ1, Offset: 11, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVArhQ2, Offset: 15, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVArhQ3, Offset: 19, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4},
-					smdx.PointElement{Id: ActVArhQ4, Offset: 23, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4},
-					smdx.PointElement{Id: VArAval, Offset: 27, Type: typelabel.Int16, ScaleFactor: "VArAval_SF", Units: "var", Access: "r", Length: 1},
-					smdx.PointElement{Id: VArAval_SF, Offset: 28, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: WAval, Offset: 29, Type: typelabel.Uint16, ScaleFactor: "WAval_SF", Units: "var", Access: "r", Length: 1},
-					smdx.PointElement{Id: WAval_SF, Offset: 30, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: StSetLimMsk, Offset: 31, Type: typelabel.Bitfield32, Access: "r", Length: 2},
-					smdx.PointElement{Id: StActCtl, Offset: 33, Type: typelabel.Bitfield32, Access: "r", Length: 2},
-					smdx.PointElement{Id: TmSrc, Offset: 35, Type: typelabel.String, Access: "r", Length: 4},
-					smdx.PointElement{Id: Tms, Offset: 39, Type: typelabel.Uint32, Units: "Secs", Access: "r", Length: 2},
-					smdx.PointElement{Id: RtSt, Offset: 41, Type: typelabel.Bitfield16, Access: "r", Length: 1},
-					smdx.PointElement{Id: Ris, Offset: 42, Type: typelabel.Uint16, ScaleFactor: "Ris_SF", Units: "ohms", Access: "r", Length: 1},
-					smdx.PointElement{Id: Ris_SF, Offset: 43, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
+					smdx.PointElement{Id: PVConn, Offset: 0, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true, Label: "PVConn", Description: "PV inverter present/available status. Enumerated value."},
+					smdx.PointElement{Id: StorConn, Offset: 1, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true, Label: "StorConn", Description: "Storage inverter present/available status. Enumerated value."},
+					smdx.PointElement{Id: ECPConn, Offset: 2, Type: typelabel.Bitfield16, Access: "r", Length: 1, Mandatory: true, Label: "ECPConn", Description: "ECP connection status: disconnected=0  connected=1."},
+					smdx.PointElement{Id: ActWh, Offset: 3, Type: typelabel.Acc64, Units: "Wh", Access: "r", Length: 4, Label: "ActWh", Description: "AC lifetime active (real) energy output."},
+					smdx.PointElement{Id: ActVAh, Offset: 7, Type: typelabel.Acc64, Units: "VAh", Access: "r", Length: 4, Label: "ActVAh", Description: "AC lifetime apparent energy output."},
+					smdx.PointElement{Id: ActVArhQ1, Offset: 11, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4, Label: "ActVArhQ1", Description: "AC lifetime reactive energy output in quadrant 1."},
+					smdx.PointElement{Id: ActVArhQ2, Offset: 15, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4, Label: "ActVArhQ2", Description: "AC lifetime reactive energy output in quadrant 2."},
+					smdx.PointElement{Id: ActVArhQ3, Offset: 19, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4, Label: "ActVArhQ3", Description: "AC lifetime negative energy output  in quadrant 3."},
+					smdx.PointElement{Id: ActVArhQ4, Offset: 23, Type: typelabel.Acc64, Units: "varh", Access: "r", Length: 4, Label: "ActVArhQ4", Description: "AC lifetime reactive energy output  in quadrant 4."},
+					smdx.PointElement{Id: VArAval, Offset: 27, Type: typelabel.Int16, ScaleFactor: "VArAval_SF", Units: "var", Access: "r", Length: 1, Label: "VArAval", Description: "Amount of VARs available without impacting watts output."},
+					smdx.PointElement{Id: VArAval_SF, Offset: 28, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "VArAval_SF", Description: "Scale factor for available VARs."},
+					smdx.PointElement{Id: WAval, Offset: 29, Type: typelabel.Uint16, ScaleFactor: "WAval_SF", Units: "var", Access: "r", Length: 1, Label: "WAval", Description: "Amount of Watts available."},
+					smdx.PointElement{Id: WAval_SF, Offset: 30, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "WAval_SF", Description: "Scale factor for available Watts."},
+					smdx.PointElement{Id: StSetLimMsk, Offset: 31, Type: typelabel.Bitfield32, Access: "r", Length: 2, Label: "StSetLimMsk", Description: "Bit Mask indicating setpoint limit(s) reached."},
+					smdx.PointElement{Id: StActCtl, Offset: 33, Type: typelabel.Bitfield32, Access: "r", Length: 2, Label: "StActCtl", Description: "Bit Mask indicating which inverter controls are currently active."},
+					smdx.PointElement{Id: TmSrc, Offset: 35, Type: typelabel.String, Access: "r", Length: 4, Label: "TmSrc", Description: "Source of time synchronization."},
+					smdx.PointElement{Id: Tms, Offset: 39, Type: typelabel.Uint32, Units: "Secs", Access: "r", Length: 2, Label: "Tms", Description: "Seconds since 01-01-2000 00:00 UTC"},
+					smdx.PointElement{Id: RtSt, Offset: 41, Type: typelabel.Bitfield16, Access: "r", Length: 1, Label: "RtSt", Description: "Bit Mask indicating active ride-through status."},
+					smdx.PointElement{Id: Ris, Offset: 42, Type: typelabel.Uint16, ScaleFactor: "Ris_SF", Units: "ohms", Access: "r", Length: 1, Label: "Ris", Description: "Isolation resistance."},
+					smdx.PointElement{Id: Ris_SF, Offset: 43, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "Ris_SF", Description: "Scale factor for isolation resistance."},
 				},
 			},
 		}})

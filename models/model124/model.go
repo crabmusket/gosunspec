@@ -13,7 +13,9 @@ import (
 // Block124 - Storage - Basic Storage Controls
 
 const (
-	ModelID = 124
+	ModelID          = 124
+	ModelLabel       = "Storage"
+	ModelDescription = "Basic Storage Controls "
 )
 
 const (
@@ -84,30 +86,30 @@ func init() {
 				Length: 24,
 				Type:   "fixed",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: WChaMax, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "WChaMax_SF", Units: "W", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WChaGra, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "WChaDisChaGra_SF", Units: "% WChaMax/sec", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WDisChaGra, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "WChaDisChaGra_SF", Units: "% WChaMax/sec", Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: StorCtl_Mod, Offset: 3, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VAChaMax, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "VAChaMax_SF", Units: "VA", Access: "rw", Length: 1},
-					smdx.PointElement{Id: MinRsvPct, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "MinRsvPct_SF", Units: "% WChaMax", Access: "rw", Length: 1},
-					smdx.PointElement{Id: ChaState, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "ChaState_SF", Units: "% AhrRtg", Access: "r", Length: 1},
-					smdx.PointElement{Id: StorAval, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "StorAval_SF", Units: "AH", Access: "r", Length: 1},
-					smdx.PointElement{Id: InBatV, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "InBatV_SF", Units: "V", Access: "r", Length: 1},
-					smdx.PointElement{Id: ChaSt, Offset: 9, Type: typelabel.Enum16, Access: "r", Length: 1},
-					smdx.PointElement{Id: OutWRte, Offset: 10, Type: typelabel.Int16, ScaleFactor: "InOutWRte_SF", Units: "% WDisChaMax", Access: "rw", Length: 1},
-					smdx.PointElement{Id: InWRte, Offset: 11, Type: typelabel.Int16, ScaleFactor: "InOutWRte_SF", Units: " % WChaMax", Access: "rw", Length: 1},
-					smdx.PointElement{Id: InOutWRte_WinTms, Offset: 12, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: InOutWRte_RvrtTms, Offset: 13, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
-					smdx.PointElement{Id: InOutWRte_RmpTms, Offset: 14, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1},
+					smdx.PointElement{Id: WChaMax, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "WChaMax_SF", Units: "W", Access: "rw", Length: 1, Mandatory: true, Label: "WChaMax", Description: "Setpoint for maximum charge."},
+					smdx.PointElement{Id: WChaGra, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "WChaDisChaGra_SF", Units: "% WChaMax/sec", Access: "rw", Length: 1, Mandatory: true, Label: "WChaGra", Description: "Setpoint for maximum charging rate. Default is MaxChaRte."},
+					smdx.PointElement{Id: WDisChaGra, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "WChaDisChaGra_SF", Units: "% WChaMax/sec", Access: "rw", Length: 1, Mandatory: true, Label: "WDisChaGra", Description: "Setpoint for maximum discharge rate. Default is MaxDisChaRte."},
+					smdx.PointElement{Id: StorCtl_Mod, Offset: 3, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true, Label: "StorCtl_Mod", Description: "Activate hold/discharge/charge storage control mode. Bitfield value."},
+					smdx.PointElement{Id: VAChaMax, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "VAChaMax_SF", Units: "VA", Access: "rw", Length: 1, Label: "VAChaMax", Description: "Setpoint for maximum charging VA."},
+					smdx.PointElement{Id: MinRsvPct, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "MinRsvPct_SF", Units: "% WChaMax", Access: "rw", Length: 1, Label: "MinRsvPct", Description: "Setpoint for minimum reserve for storage as a percentage of the nominal maximum storage."},
+					smdx.PointElement{Id: ChaState, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "ChaState_SF", Units: "% AhrRtg", Access: "r", Length: 1, Label: "ChaState", Description: "Currently available energy as a percent of the capacity rating."},
+					smdx.PointElement{Id: StorAval, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "StorAval_SF", Units: "AH", Access: "r", Length: 1, Label: "StorAval", Description: "State of charge (ChaState) minus storage reserve (MinRsvPct) times capacity rating (AhrRtg)."},
+					smdx.PointElement{Id: InBatV, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "InBatV_SF", Units: "V", Access: "r", Length: 1, Label: "InBatV", Description: "Internal battery voltage."},
+					smdx.PointElement{Id: ChaSt, Offset: 9, Type: typelabel.Enum16, Access: "r", Length: 1, Label: "ChaSt", Description: "Charge status of storage device. Enumerated value."},
+					smdx.PointElement{Id: OutWRte, Offset: 10, Type: typelabel.Int16, ScaleFactor: "InOutWRte_SF", Units: "% WDisChaMax", Access: "rw", Length: 1, Label: "OutWRte", Description: "Percent of max discharge rate."},
+					smdx.PointElement{Id: InWRte, Offset: 11, Type: typelabel.Int16, ScaleFactor: "InOutWRte_SF", Units: " % WChaMax", Access: "rw", Length: 1, Label: "InWRte", Description: "Percent of max charging rate."},
+					smdx.PointElement{Id: InOutWRte_WinTms, Offset: 12, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "InOutWRte_WinTms", Description: "Time window for charge/discharge rate change."},
+					smdx.PointElement{Id: InOutWRte_RvrtTms, Offset: 13, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "InOutWRte_RvrtTms", Description: "Timeout period for charge/discharge rate."},
+					smdx.PointElement{Id: InOutWRte_RmpTms, Offset: 14, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "InOutWRte_RmpTms", Description: "Ramp time for moving from current setpoint to new setpoint."},
 					smdx.PointElement{Id: ChaGriSet, Offset: 15, Type: typelabel.Enum16, Access: "rw", Length: 1},
-					smdx.PointElement{Id: WChaMax_SF, Offset: 16, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: WChaDisChaGra_SF, Offset: 17, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true},
-					smdx.PointElement{Id: VAChaMax_SF, Offset: 18, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: MinRsvPct_SF, Offset: 19, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: ChaState_SF, Offset: 20, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: StorAval_SF, Offset: 21, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: InBatV_SF, Offset: 22, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
-					smdx.PointElement{Id: InOutWRte_SF, Offset: 23, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
+					smdx.PointElement{Id: WChaMax_SF, Offset: 16, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "WChaMax_SF", Description: "Scale factor for maximum charge."},
+					smdx.PointElement{Id: WChaDisChaGra_SF, Offset: 17, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "WChaDisChaGra_SF", Description: "Scale factor for maximum charge and discharge rate."},
+					smdx.PointElement{Id: VAChaMax_SF, Offset: 18, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "VAChaMax_SF", Description: "Scale factor for maximum charging VA."},
+					smdx.PointElement{Id: MinRsvPct_SF, Offset: 19, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "MinRsvPct_SF", Description: "Scale factor for minimum reserve percentage."},
+					smdx.PointElement{Id: ChaState_SF, Offset: 20, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "ChaState_SF", Description: "Scale factor for available energy percent."},
+					smdx.PointElement{Id: StorAval_SF, Offset: 21, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "StorAval_SF", Description: "Scale factor for state of charge."},
+					smdx.PointElement{Id: InBatV_SF, Offset: 22, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "InBatV_SF", Description: "Scale factor for battery voltage."},
+					smdx.PointElement{Id: InOutWRte_SF, Offset: 23, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "InOutWRte_SF", Description: "Scale factor for percent charge/discharge rate."},
 				},
 			},
 		}})

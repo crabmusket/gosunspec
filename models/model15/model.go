@@ -13,7 +13,9 @@ import (
 // Block15 - Interface Counters Model - Interface counters
 
 const (
-	ModelID = 15
+	ModelID          = 15
+	ModelLabel       = "Interface Counters Model"
+	ModelDescription = "Interface counters"
 )
 
 const (
@@ -62,18 +64,18 @@ func init() {
 				Length: 24,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: Clr, Offset: 0, Type: typelabel.Uint16, Access: "rw"},
-					smdx.PointElement{Id: InCnt, Offset: 1, Type: typelabel.Acc32},
-					smdx.PointElement{Id: InUcCnt, Offset: 3, Type: typelabel.Acc32},
-					smdx.PointElement{Id: InNUcCnt, Offset: 5, Type: typelabel.Acc32},
-					smdx.PointElement{Id: InDscCnt, Offset: 7, Type: typelabel.Acc32},
-					smdx.PointElement{Id: InErrCnt, Offset: 9, Type: typelabel.Acc32},
-					smdx.PointElement{Id: InUnkCnt, Offset: 11, Type: typelabel.Acc32},
-					smdx.PointElement{Id: OutCnt, Offset: 13, Type: typelabel.Acc32},
-					smdx.PointElement{Id: OutUcCnt, Offset: 15, Type: typelabel.Acc32},
-					smdx.PointElement{Id: OutNUcCnt, Offset: 17, Type: typelabel.Acc32},
-					smdx.PointElement{Id: OutDscCnt, Offset: 19, Type: typelabel.Acc32},
-					smdx.PointElement{Id: OutErrCnt, Offset: 21, Type: typelabel.Acc32},
+					smdx.PointElement{Id: Clr, Offset: 0, Type: typelabel.Uint16, Access: "rw", Label: "Clear", Description: "Write a 1 to clear all counters"},
+					smdx.PointElement{Id: InCnt, Offset: 1, Type: typelabel.Acc32, Label: "Input Count", Description: "Number of bytes received"},
+					smdx.PointElement{Id: InUcCnt, Offset: 3, Type: typelabel.Acc32, Label: "Input Unicast Count", Description: "Number of Unicast packets received"},
+					smdx.PointElement{Id: InNUcCnt, Offset: 5, Type: typelabel.Acc32, Label: "Input Non-Unicast Count", Description: "Number of non-Unicast packets received"},
+					smdx.PointElement{Id: InDscCnt, Offset: 7, Type: typelabel.Acc32, Label: "Input Discarded Count", Description: "Number of inbound packets received on the interface but discarded"},
+					smdx.PointElement{Id: InErrCnt, Offset: 9, Type: typelabel.Acc32, Label: "Input Error Count", Description: "Number of inbound packets that contain errors (excluding discards)"},
+					smdx.PointElement{Id: InUnkCnt, Offset: 11, Type: typelabel.Acc32, Label: "Input Unknown Count", Description: "Number of inbound packets with unknown protocol"},
+					smdx.PointElement{Id: OutCnt, Offset: 13, Type: typelabel.Acc32, Label: "Output Count", Description: "Total number of bytes transmitted on this interface"},
+					smdx.PointElement{Id: OutUcCnt, Offset: 15, Type: typelabel.Acc32, Label: "Output Unicast Count", Description: "Number of Unicast packets transmitted"},
+					smdx.PointElement{Id: OutNUcCnt, Offset: 17, Type: typelabel.Acc32, Label: "Output Non-Unicast Count", Description: "Number of Non-Unicast packets transmitted"},
+					smdx.PointElement{Id: OutDscCnt, Offset: 19, Type: typelabel.Acc32, Label: "Output Discarded Count", Description: "Number of Discarded output packets"},
+					smdx.PointElement{Id: OutErrCnt, Offset: 21, Type: typelabel.Acc32, Label: "Output Error Count", Description: "Number of outbound error packets"},
 					smdx.PointElement{Id: Pad, Offset: 23, Type: typelabel.Pad},
 				},
 			},

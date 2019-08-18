@@ -13,7 +13,9 @@ import (
 // Block303 - Back of Module Temperature Model - Include to support variable number of  back of module temperature measurements
 
 const (
-	ModelID = 303
+	ModelID          = 303
+	ModelLabel       = "Back of Module Temperature Model"
+	ModelDescription = "Include to support variable number of  back of module temperature measurements"
 )
 
 const (
@@ -42,7 +44,7 @@ func init() {
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: TmpBOM, Offset: 0, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C", Mandatory: true},
+					smdx.PointElement{Id: TmpBOM, Offset: 0, Type: typelabel.Int16, ScaleFactor: "-1", Units: "C", Mandatory: true, Label: "Temp", Description: "Back of module temperature measurement"},
 				},
 			},
 		}})
