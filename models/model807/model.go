@@ -41,6 +41,7 @@ const (
 	ModCellVMinCell = "ModCellVMinCell"
 	ModConFail      = "ModConFail"
 	ModConSt        = "ModConSt"
+	ModDisRsn       = "ModDisRsn"
 	ModEvt1         = "ModEvt1"
 	ModEvt2         = "ModEvt2"
 	ModIdx          = "ModIdx"
@@ -61,7 +62,6 @@ const (
 	NModCon         = "NModCon"
 	OCV_SF          = "OCV_SF"
 	Pad1            = "Pad1"
-	Pad4            = "Pad4"
 	SoC_SF          = "SoC_SF"
 	TmpAvg          = "TmpAvg"
 	TmpMax          = "TmpMax"
@@ -91,7 +91,7 @@ type Block807Repeat struct {
 	ModConFail      sunspec.Enum16     `sunspec:"offset=20"`
 	ModSetEna       sunspec.Enum16     `sunspec:"offset=21,access=rw"`
 	ModSetCon       sunspec.Enum16     `sunspec:"offset=22,access=rw"`
-	Pad4            sunspec.Pad        `sunspec:"offset=23"`
+	ModDisRsn       sunspec.Enum16     `sunspec:"offset=23"`
 }
 
 type Block807 struct {
@@ -137,7 +137,7 @@ func init() {
 	smdx.RegisterModel(&smdx.ModelElement{
 		Id:     ModelID,
 		Name:   "flow_battery_string",
-		Length: 36,
+		Length: 58,
 		Blocks: []smdx.BlockElement{
 			smdx.BlockElement{
 				Length: 34,
@@ -151,13 +151,13 @@ func init() {
 					smdx.PointElement{Id: ModVMin, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "ModV_SF", Units: "V", Mandatory: true, Label: "Min Module Voltage", Description: "Minimum voltage for all modules in the string."},
 					smdx.PointElement{Id: ModVMinMod, Offset: 6, Type: typelabel.Uint16, Label: "Min Module Voltage Module", Description: "Module with the minimum voltage."},
 					smdx.PointElement{Id: ModVAvg, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "ModV_SF", Units: "V", Mandatory: true, Label: "Average Module Voltage", Description: "Average voltage for all modules in the string."},
-					smdx.PointElement{Id: CellVMax, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Max Cell Voltage", Description: "Maximum voltage for all cells in the string."},
+					smdx.PointElement{Id: CellVMax, Offset: 8, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Label: "Max Cell Voltage", Description: "Maximum voltage for all cells in the string."},
 					smdx.PointElement{Id: CellVMaxMod, Offset: 9, Type: typelabel.Uint16, Label: "Max Cell Voltage Module", Description: "Module containing the cell with the maximum voltage."},
 					smdx.PointElement{Id: CellVMaxStk, Offset: 10, Type: typelabel.Uint16, Label: "Max Cell Voltage Stack", Description: "Stack containing the cell with the maximum voltage."},
-					smdx.PointElement{Id: CellVMin, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Min Cell Voltage", Description: "Minimum voltage for all cells in the string."},
+					smdx.PointElement{Id: CellVMin, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Label: "Min Cell Voltage", Description: "Minimum voltage for all cells in the string."},
 					smdx.PointElement{Id: CellVMinMod, Offset: 12, Type: typelabel.Uint16, Label: "Min Cell Voltage Module", Description: "Module containing the cell with the minimum voltage."},
 					smdx.PointElement{Id: CellVMinStk, Offset: 13, Type: typelabel.Uint16, Label: "Min Cell Voltage Stack", Description: "Stack containing the cell with the minimum voltage."},
-					smdx.PointElement{Id: CellVAvg, Offset: 14, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Average Cell Voltage", Description: "Average voltage for all cells in the string."},
+					smdx.PointElement{Id: CellVAvg, Offset: 14, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Label: "Average Cell Voltage", Description: "Average voltage for all cells in the string."},
 					smdx.PointElement{Id: TmpMax, Offset: 15, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true, Label: "Max Temperature", Description: "Maximum electrolyte temperature for all modules in the string."},
 					smdx.PointElement{Id: TmpMaxMod, Offset: 16, Type: typelabel.Uint16, Label: "Max Temperature Module", Description: "Module with the maximum temperature."},
 					smdx.PointElement{Id: TmpMin, Offset: 17, Type: typelabel.Int16, ScaleFactor: "Tmp_SF", Units: "C", Mandatory: true, Label: "Min Temperature", Description: "Minimum electrolyte temperature for all modules in the string."},
@@ -166,7 +166,7 @@ func init() {
 					smdx.PointElement{Id: Evt1, Offset: 20, Type: typelabel.Bitfield32, Mandatory: true, Label: "String Event 1", Description: "Alarms, warnings and status values.  Bit flags."},
 					smdx.PointElement{Id: Evt2, Offset: 22, Type: typelabel.Bitfield32, Mandatory: true, Label: "String Event 2", Description: "Alarms, warnings and status values.  Bit flags."},
 					smdx.PointElement{Id: EvtVnd1, Offset: 24, Type: typelabel.Bitfield32, Mandatory: true, Label: "Vendor Event Bitfield 1", Description: "Vendor defined events."},
-					smdx.PointElement{Id: EvtVnd2, Offset: 26, Type: typelabel.Bitfield32, Mandatory: true, Label: "Vendor Event Bitfield 1", Description: "Vendor defined events."},
+					smdx.PointElement{Id: EvtVnd2, Offset: 26, Type: typelabel.Bitfield32, Mandatory: true, Label: "Vendor Event Bitfield 2", Description: "Vendor defined events."},
 					smdx.PointElement{Id: ModV_SF, Offset: 28, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: CellV_SF, Offset: 29, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: Tmp_SF, Offset: 30, Type: typelabel.ScaleFactor, Mandatory: true},
@@ -185,11 +185,11 @@ func init() {
 					smdx.PointElement{Id: ModSoC, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "SoC_SF", Units: "%", Mandatory: true, Label: "Module State of Charge", Description: "State of charge for this module."},
 					smdx.PointElement{Id: ModOCV, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "OCV_SF", Units: "V", Mandatory: true, Label: "Open Circuit Voltage", Description: "Open circuit voltage for this module."},
 					smdx.PointElement{Id: ModV, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "ModV_SF", Units: "V", Mandatory: true, Label: "External Voltage", Description: "External voltage fo this module."},
-					smdx.PointElement{Id: ModCellVMax, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Maximum Cell Voltage", Description: "Maximum voltage for all cells in this module."},
+					smdx.PointElement{Id: ModCellVMax, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Label: "Maximum Cell Voltage", Description: "Maximum voltage for all cells in this module."},
 					smdx.PointElement{Id: ModCellVMaxCell, Offset: 8, Type: typelabel.Uint16, Label: "Max Cell Voltage Cell", Description: "Cell with the maximum cell voltage."},
-					smdx.PointElement{Id: ModCellVMin, Offset: 9, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Minimum Cell Voltage", Description: "Minimum voltage for all cells in this module."},
+					smdx.PointElement{Id: ModCellVMin, Offset: 9, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Label: "Minimum Cell Voltage", Description: "Minimum voltage for all cells in this module."},
 					smdx.PointElement{Id: ModCellVMinCell, Offset: 10, Type: typelabel.Uint16, Label: "Min Cell Voltage Cell", Description: "Cell with the minimum cell voltage."},
-					smdx.PointElement{Id: ModCellVAvg, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Average Cell Voltage", Description: "Average voltage for all cells in this module."},
+					smdx.PointElement{Id: ModCellVAvg, Offset: 11, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Label: "Average Cell Voltage", Description: "Average voltage for all cells in this module."},
 					smdx.PointElement{Id: ModAnoTmp, Offset: 12, Type: typelabel.Uint16, ScaleFactor: "Tmp_SF", Units: "C", Label: "Anolyte Temperature", Description: ""},
 					smdx.PointElement{Id: ModCatTmp, Offset: 13, Type: typelabel.Uint16, ScaleFactor: "Tmp_SF", Units: "C", Label: "Catholyte Temperature", Description: ""},
 					smdx.PointElement{Id: ModConSt, Offset: 14, Type: typelabel.Bitfield32, Label: "Contactor Status", Description: ""},
@@ -198,7 +198,7 @@ func init() {
 					smdx.PointElement{Id: ModConFail, Offset: 20, Type: typelabel.Enum16, Label: "Connection Failure Reason", Description: ""},
 					smdx.PointElement{Id: ModSetEna, Offset: 21, Type: typelabel.Enum16, Access: "rw", Label: "Enable/Disable Module", Description: "Enables and disables the module."},
 					smdx.PointElement{Id: ModSetCon, Offset: 22, Type: typelabel.Enum16, Access: "rw", Label: "Connect/Disconnect Module ", Description: "Connects and disconnects the module."},
-					smdx.PointElement{Id: Pad4, Offset: 23, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
+					smdx.PointElement{Id: ModDisRsn, Offset: 23, Type: typelabel.Enum16, Label: "Disabled Reason", Description: "Reason why the module is currently disabled."},
 				},
 			},
 		}})

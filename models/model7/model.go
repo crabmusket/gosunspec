@@ -78,7 +78,7 @@ func init() {
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "rw", Label: "DS", Description: "Digital Signature"},
+					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "DS", Description: "Digital Signature"},
 				},
 			},
 		}})

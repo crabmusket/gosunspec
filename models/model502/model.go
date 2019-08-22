@@ -10,12 +10,12 @@ import (
 	"github.com/crabmusket/gosunspec/typelabel"
 )
 
-// Block502 - Solar Module - A solar module model supporing DC-DC converter
+// Block502 - Solar Module - A solar module model supporting DC-DC converter
 
 const (
 	ModelID          = 502
 	ModelLabel       = "Solar Module"
-	ModelDescription = "A solar module model supporing DC-DC converter"
+	ModelDescription = "A solar module model supporting DC-DC converter"
 )
 
 const (
@@ -95,7 +95,7 @@ func init() {
 					smdx.PointElement{Id: OutA, Offset: 17, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Label: "Output Current", Description: "Output Current"},
 					smdx.PointElement{Id: OutV, Offset: 18, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V", Label: "Output Voltage", Description: "Output Voltage"},
 					smdx.PointElement{Id: OutWh, Offset: 19, Type: typelabel.Acc32, ScaleFactor: "Wh_SF", Units: "Wh", Label: "Output Energy", Description: "Output Energy"},
-					smdx.PointElement{Id: OutPw, Offset: 21, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W"},
+					smdx.PointElement{Id: OutPw, Offset: 21, Type: typelabel.Int16, ScaleFactor: "W_SF", Units: "W", Label: "Output Power", Description: "Output Power"},
 					smdx.PointElement{Id: Tmp, Offset: 22, Type: typelabel.Int16, Units: "C", Label: "Temp", Description: "Module Temperature"},
 					smdx.PointElement{Id: InA, Offset: 23, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Label: "Input Current", Description: "Input Current"},
 					smdx.PointElement{Id: InV, Offset: 24, Type: typelabel.Int16, ScaleFactor: "V_SF", Units: "V", Label: "Input Voltage", Description: "Input Voltage"},

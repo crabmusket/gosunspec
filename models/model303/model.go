@@ -38,7 +38,7 @@ func init() {
 	smdx.RegisterModel(&smdx.ModelElement{
 		Id:     ModelID,
 		Name:   "bom_temp",
-		Length: 2,
+		Length: 1,
 		Blocks: []smdx.BlockElement{
 			smdx.BlockElement{Name: "temp",
 				Length: 1,

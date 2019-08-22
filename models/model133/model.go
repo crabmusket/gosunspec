@@ -120,7 +120,7 @@ func init() {
 					smdx.PointElement{Id: ActSchd, Offset: 0, Type: typelabel.Bitfield32, Access: "rw", Length: 2, Mandatory: true, Label: "ActSchd", Description: "Bitfield of active schedules"},
 					smdx.PointElement{Id: ModEna, Offset: 2, Type: typelabel.Bitfield16, Access: "rw", Length: 1, Mandatory: true, Label: "ModEna", Description: "Is basic scheduling active."},
 					smdx.PointElement{Id: NSchd, Offset: 3, Type: typelabel.Uint16, Access: "r", Length: 1, Mandatory: true, Label: "NSchd", Description: "Number of schedules supported (recommend min. 4, max 32)"},
-					smdx.PointElement{Id: NPts, Offset: 4, Type: typelabel.Uint16, Access: "r", Length: 1, Mandatory: true, Label: "NPts", Description: "Number of schedule entries supuported (maximum of 10)."},
+					smdx.PointElement{Id: NPts, Offset: 4, Type: typelabel.Uint16, Access: "r", Length: 1, Mandatory: true, Label: "NPts", Description: "Number of schedule entries supported (maximum of 10)."},
 					smdx.PointElement{Id: Pad, Offset: 5, Type: typelabel.Pad, Access: "r", Length: 1, Label: "Pad", Description: "Pad register."},
 				},
 			},

@@ -10,12 +10,12 @@ import (
 	"github.com/crabmusket/gosunspec/typelabel"
 )
 
-// Block5 - Secure Write Request - Include a digial signature along with the control data
+// Block5 - Secure Write Request - Include a digital signature along with the control data
 
 const (
 	ModelID          = 5
 	ModelLabel       = "Secure Write Request"
-	ModelDescription = "Include a digial signature along with the control data"
+	ModelDescription = "Include a digital signature along with the control data"
 )
 
 const (
@@ -312,7 +312,7 @@ func init() {
 				Length: 1,
 				Type:   "repeating",
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "rw", Label: "DS", Description: "Digital Signature"},
+					smdx.PointElement{Id: DS, Offset: 0, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "DS", Description: "Digital Signature"},
 				},
 			},
 		}})

@@ -53,7 +53,7 @@ func init() {
 					smdx.PointElement{Id: Tm, Offset: 0, Type: typelabel.String, Units: "hhmmss.sssZ", Length: 6, Label: "Tm", Description: "UTC 24 hour time stamp to millisecond hhmmss.sssZ format"},
 					smdx.PointElement{Id: Date, Offset: 6, Type: typelabel.String, Units: "YYYYMMDD", Length: 4, Label: "Date", Description: "UTC Date string YYYYMMDD format"},
 					smdx.PointElement{Id: Loc, Offset: 10, Type: typelabel.String, Units: "text", Length: 20, Label: "Location", Description: "Location string (40 chars max)"},
-					smdx.PointElement{Id: Lat, Offset: 30, Type: typelabel.Int32, ScaleFactor: "-7", Units: "Degrees", Label: "Lat", Description: "Lattitude with seven degrees of precision"},
+					smdx.PointElement{Id: Lat, Offset: 30, Type: typelabel.Int32, ScaleFactor: "-7", Units: "Degrees", Label: "Lat", Description: "Latitude with seven degrees of precision"},
 					smdx.PointElement{Id: Long, Offset: 32, Type: typelabel.Int32, ScaleFactor: "-7", Units: "Degrees", Label: "Long", Description: "Longitude with seven degrees of precision"},
 					smdx.PointElement{Id: Alt, Offset: 34, Type: typelabel.Int32, Units: "meters", Label: "Altitude", Description: "Altitude measurement in meters"},
 				},

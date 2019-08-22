@@ -46,10 +46,10 @@ func init() {
 				Length: 4,
 
 				Points: []smdx.PointElement{
-					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2", Label: "GHI", Description: "Global Horizontal Irrandiance"},
-					smdx.PointElement{Id: A, Offset: 1, Type: typelabel.Uint16, Units: "W/m2", Label: "Amps", Description: "Current measurment at reference point"},
-					smdx.PointElement{Id: V, Offset: 2, Type: typelabel.Uint16, Units: "W/m2", Label: "Voltage", Description: "Voltage  measurment at reference point"},
-					smdx.PointElement{Id: Tmp, Offset: 3, Type: typelabel.Uint16, Units: "W/m2", Label: "Temperature", Description: "Temperature measurment at reference point"},
+					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2", Label: "GHI", Description: "Global Horizontal Irradiance"},
+					smdx.PointElement{Id: A, Offset: 1, Type: typelabel.Uint16, Units: "W/m2", Label: "Amps", Description: "Current measurement at reference point"},
+					smdx.PointElement{Id: V, Offset: 2, Type: typelabel.Uint16, Units: "W/m2", Label: "Voltage", Description: "Voltage  measurement at reference point"},
+					smdx.PointElement{Id: Tmp, Offset: 3, Type: typelabel.Uint16, Units: "W/m2", Label: "Temperature", Description: "Temperature measurement at reference point"},
 				},
 			},
 		}})

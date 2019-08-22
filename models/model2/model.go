@@ -60,7 +60,7 @@ func init() {
 				Points: []smdx.PointElement{
 					smdx.PointElement{Id: AID, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "AID", Description: "Aggregated model id"},
 					smdx.PointElement{Id: N, Offset: 1, Type: typelabel.Uint16, Mandatory: true, Label: "N", Description: "Number of aggregated models"},
-					smdx.PointElement{Id: UN, Offset: 2, Type: typelabel.Uint16, Mandatory: true, Label: "UN", Description: "Update Number.  Incrementing nunber each time the mappping is changed.  If the number is not changed from thelast reading the direct access to a specific offset will result in reading the same logical model as before.  Otherwise the entire model must be read to refresh the changes"},
+					smdx.PointElement{Id: UN, Offset: 2, Type: typelabel.Uint16, Mandatory: true, Label: "UN", Description: "Update Number.  Incrementing number each time the mapping is changed.  If the number is not changed from the last reading the direct access to a specific offset will result in reading the same logical model as before.  Otherwise the entire model must be read to refresh the changes"},
 					smdx.PointElement{Id: St, Offset: 3, Type: typelabel.Enum16, Mandatory: true, Label: "Status", Description: "Enumerated status code"},
 					smdx.PointElement{Id: StVnd, Offset: 4, Type: typelabel.Enum16, Label: "Vendor Status", Description: "Vendor specific status code"},
 					smdx.PointElement{Id: Evt, Offset: 5, Type: typelabel.Bitfield32, Mandatory: true, Label: "Event Code", Description: "Bitmask event code"},

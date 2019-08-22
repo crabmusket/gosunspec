@@ -34,9 +34,7 @@ const (
 	NStrCon         = "NStrCon"
 	Pad1            = "Pad1"
 	Pad2            = "Pad2"
-	Pad3            = "Pad3"
-	Pad4            = "Pad4"
-	Pad5            = "Pad5"
+	SoC_SF          = "SoC_SF"
 	SoH_SF          = "SoH_SF"
 	StrA            = "StrA"
 	StrAAvg         = "StrAAvg"
@@ -51,6 +49,7 @@ const (
 	StrCellVMinMod  = "StrCellVMinMod"
 	StrConFail      = "StrConFail"
 	StrConSt        = "StrConSt"
+	StrDisRsn       = "StrDisRsn"
 	StrEvt1         = "StrEvt1"
 	StrEvt2         = "StrEvt2"
 	StrEvtVnd1      = "StrEvtVnd1"
@@ -71,13 +70,14 @@ const (
 	StrVMaxStr      = "StrVMaxStr"
 	StrVMin         = "StrVMin"
 	StrVMinStr      = "StrVMinStr"
+	V_SF            = "V_SF"
 )
 
 type Block803Repeat struct {
 	StrNMod         uint16             `sunspec:"offset=0"`
 	StrSt           sunspec.Bitfield32 `sunspec:"offset=1"`
 	StrConFail      sunspec.Enum16     `sunspec:"offset=3"`
-	StrSoC          uint16             `sunspec:"offset=4"`
+	StrSoC          uint16             `sunspec:"offset=4,sf=SoC_SF"`
 	StrSoH          uint16             `sunspec:"offset=5,sf=SoH_SF"`
 	StrA            int16              `sunspec:"offset=6,sf=A_SF"`
 	StrCellVMax     uint16             `sunspec:"offset=7,sf=CellV_SF"`
@@ -90,7 +90,7 @@ type Block803Repeat struct {
 	StrModTmpMin    int16              `sunspec:"offset=14,sf=ModTmp_SF"`
 	StrModTmpMinMod uint16             `sunspec:"offset=15"`
 	StrModTmpAvg    int16              `sunspec:"offset=16,sf=ModTmp_SF"`
-	Pad3            sunspec.Pad        `sunspec:"offset=17"`
+	StrDisRsn       sunspec.Enum16     `sunspec:"offset=17"`
 	StrConSt        sunspec.Bitfield32 `sunspec:"offset=18"`
 	StrEvt1         sunspec.Bitfield32 `sunspec:"offset=20"`
 	StrEvt2         sunspec.Bitfield32 `sunspec:"offset=22"`
@@ -98,8 +98,8 @@ type Block803Repeat struct {
 	StrEvtVnd2      sunspec.Bitfield32 `sunspec:"offset=26"`
 	StrSetEna       sunspec.Enum16     `sunspec:"offset=28,access=rw"`
 	StrSetCon       sunspec.Enum16     `sunspec:"offset=29,access=rw"`
-	Pad4            sunspec.Pad        `sunspec:"offset=30"`
-	Pad5            sunspec.Pad        `sunspec:"offset=31"`
+	Pad1            sunspec.Pad        `sunspec:"offset=30"`
+	Pad2            sunspec.Pad        `sunspec:"offset=31"`
 }
 
 type Block803 struct {
@@ -127,8 +127,8 @@ type Block803 struct {
 	ModTmp_SF    sunspec.ScaleFactor `sunspec:"offset=21"`
 	A_SF         sunspec.ScaleFactor `sunspec:"offset=22"`
 	SoH_SF       sunspec.ScaleFactor `sunspec:"offset=23"`
-	Pad1         sunspec.Pad         `sunspec:"offset=24"`
-	Pad2         sunspec.Pad         `sunspec:"offset=25"`
+	SoC_SF       sunspec.ScaleFactor `sunspec:"offset=24"`
+	V_SF         sunspec.ScaleFactor `sunspec:"offset=25"`
 
 	Repeats []Block803Repeat
 }
@@ -141,7 +141,7 @@ func init() {
 	smdx.RegisterModel(&smdx.ModelElement{
 		Id:     ModelID,
 		Name:   "lithium_ion_bank",
-		Length: 33,
+		Length: 58,
 		Blocks: []smdx.BlockElement{
 			smdx.BlockElement{
 				Length: 26,
@@ -163,7 +163,7 @@ func init() {
 					smdx.PointElement{Id: StrVAvg, Offset: 13, Type: typelabel.Uint16, ScaleFactor: "V_SF", Units: "V", Label: "Average String Voltage", Description: "Average string voltage for all strings in the bank."},
 					smdx.PointElement{Id: StrAMax, Offset: 14, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Label: "Max String Current", Description: "Maximum current of any string in the bank."},
 					smdx.PointElement{Id: StrAMaxStr, Offset: 15, Type: typelabel.Uint16, Label: "Max String Current String", Description: "String with the maximum current."},
-					smdx.PointElement{Id: StrAMin, Offset: 16, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Label: "Min String Current", Description: "Minimm current of any string in the bank."},
+					smdx.PointElement{Id: StrAMin, Offset: 16, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Label: "Min String Current", Description: "Minimum current of any string in the bank."},
 					smdx.PointElement{Id: StrAMinStr, Offset: 17, Type: typelabel.Uint16, Label: "Min String Current String", Description: "String with the minimum current."},
 					smdx.PointElement{Id: StrAAvg, Offset: 18, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Label: "Average String Current", Description: "Average string current for all strings in the bank."},
 					smdx.PointElement{Id: NCellBal, Offset: 19, Type: typelabel.Uint16, Label: "Battery Cell Balancing Count", Description: "Total number of cells that are currently being balanced."},
@@ -171,8 +171,8 @@ func init() {
 					smdx.PointElement{Id: ModTmp_SF, Offset: 21, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: A_SF, Offset: 22, Type: typelabel.ScaleFactor, Mandatory: true},
 					smdx.PointElement{Id: SoH_SF, Offset: 23, Type: typelabel.ScaleFactor},
-					smdx.PointElement{Id: Pad1, Offset: 24, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
-					smdx.PointElement{Id: Pad2, Offset: 25, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
+					smdx.PointElement{Id: SoC_SF, Offset: 24, Type: typelabel.ScaleFactor, Mandatory: true},
+					smdx.PointElement{Id: V_SF, Offset: 25, Type: typelabel.ScaleFactor},
 				},
 			},
 			smdx.BlockElement{Name: "string",
@@ -182,7 +182,7 @@ func init() {
 					smdx.PointElement{Id: StrNMod, Offset: 0, Type: typelabel.Uint16, Mandatory: true, Label: "Module Count", Description: "Count of modules in the string."},
 					smdx.PointElement{Id: StrSt, Offset: 1, Type: typelabel.Bitfield32, Mandatory: true, Label: "String Status", Description: "Current status of the string."},
 					smdx.PointElement{Id: StrConFail, Offset: 3, Type: typelabel.Enum16, Label: "Connection Failure Reason", Description: ""},
-					smdx.PointElement{Id: StrSoC, Offset: 4, Type: typelabel.Uint16, Units: "%", Mandatory: true, Label: "String State of Charge", Description: "Battery string state of charge, expressed as a percentage."},
+					smdx.PointElement{Id: StrSoC, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "SoC_SF", Units: "%", Mandatory: true, Label: "String State of Charge", Description: "Battery string state of charge, expressed as a percentage."},
 					smdx.PointElement{Id: StrSoH, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "SoH_SF", Units: "%", Label: "String State of Health", Description: "Battery string state of health, expressed as a percentage."},
 					smdx.PointElement{Id: StrA, Offset: 6, Type: typelabel.Int16, ScaleFactor: "A_SF", Units: "A", Mandatory: true, Label: "String Current", Description: "String current measurement."},
 					smdx.PointElement{Id: StrCellVMax, Offset: 7, Type: typelabel.Uint16, ScaleFactor: "CellV_SF", Units: "V", Mandatory: true, Label: "Max Cell Voltage", Description: "Maximum voltage for all cells in the string."},
@@ -193,18 +193,18 @@ func init() {
 					smdx.PointElement{Id: StrModTmpMax, Offset: 12, Type: typelabel.Int16, ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true, Label: "Max Module Temperature", Description: "Maximum temperature for all modules in the bank."},
 					smdx.PointElement{Id: StrModTmpMaxMod, Offset: 13, Type: typelabel.Uint16, Label: "Max Module Temperature Module", Description: "Module with the maximum temperature."},
 					smdx.PointElement{Id: StrModTmpMin, Offset: 14, Type: typelabel.Int16, ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true, Label: "Min Module Temperature", Description: "Minimum temperature for all modules in the bank."},
-					smdx.PointElement{Id: StrModTmpMinMod, Offset: 15, Type: typelabel.Uint16, Label: "Min Module Temperature Module", Description: "Module with the miniumum temperature."},
+					smdx.PointElement{Id: StrModTmpMinMod, Offset: 15, Type: typelabel.Uint16, Label: "Min Module Temperature Module", Description: "Module with the minimum temperature."},
 					smdx.PointElement{Id: StrModTmpAvg, Offset: 16, Type: typelabel.Int16, ScaleFactor: "ModTmp_SF", Units: "C", Mandatory: true, Label: "Average Module Temperature", Description: "Average temperature for all modules in the bank."},
-					smdx.PointElement{Id: Pad3, Offset: 17, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
-					smdx.PointElement{Id: StrConSt, Offset: 18, Type: typelabel.Bitfield32, Label: "Contactor Status", Description: ""},
+					smdx.PointElement{Id: StrDisRsn, Offset: 17, Type: typelabel.Enum16, Label: "Disabled Reason", Description: "Reason why the string is currently disabled."},
+					smdx.PointElement{Id: StrConSt, Offset: 18, Type: typelabel.Bitfield32, Label: "Contactor Status", Description: "Status of the contactor(s) for the string."},
 					smdx.PointElement{Id: StrEvt1, Offset: 20, Type: typelabel.Bitfield32, Mandatory: true, Label: "String Event 1", Description: "Alarms, warnings and status values.  Bit flags."},
 					smdx.PointElement{Id: StrEvt2, Offset: 22, Type: typelabel.Bitfield32, Label: "String Event 2", Description: "Alarms, warnings and status values.  Bit flags."},
 					smdx.PointElement{Id: StrEvtVnd1, Offset: 24, Type: typelabel.Bitfield32, Label: "Vendor String Event Bitfield 1", Description: "Vendor defined events."},
 					smdx.PointElement{Id: StrEvtVnd2, Offset: 26, Type: typelabel.Bitfield32, Label: "Vendor String Event Bitfield 2", Description: "Vendor defined events."},
 					smdx.PointElement{Id: StrSetEna, Offset: 28, Type: typelabel.Enum16, Access: "rw", Label: "Enable/Disable String", Description: "Enables and disables the string."},
 					smdx.PointElement{Id: StrSetCon, Offset: 29, Type: typelabel.Enum16, Access: "rw", Label: "Connect/Disconnect String", Description: "Connects and disconnects the string."},
-					smdx.PointElement{Id: Pad4, Offset: 30, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
-					smdx.PointElement{Id: Pad5, Offset: 31, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
+					smdx.PointElement{Id: Pad1, Offset: 30, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
+					smdx.PointElement{Id: Pad2, Offset: 31, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
 				},
 			},
 		}})

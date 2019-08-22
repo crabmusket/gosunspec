@@ -10,12 +10,12 @@ import (
 	"github.com/crabmusket/gosunspec/typelabel"
 )
 
-// Block307 - Base Met - Base Meteorolgical Model
+// Block307 - Base Met - Base Meteorological Model
 
 const (
 	ModelID          = 307
 	ModelLabel       = "Base Met"
-	ModelDescription = "Base Meteorolgical Model"
+	ModelDescription = "Base Meteorological Model"
 )
 
 const (

@@ -155,7 +155,7 @@ func init() {
 					smdx.PointElement{Id: RvrtTms, Offset: 3, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "RvrtTms", Description: "Timeout period for HFRT curve selection."},
 					smdx.PointElement{Id: RmpTms, Offset: 4, Type: typelabel.Uint16, Units: "Secs", Access: "rw", Length: 1, Label: "RmpTms", Description: "Ramp time for moving from current mode to new mode."},
 					smdx.PointElement{Id: NCrv, Offset: 5, Type: typelabel.Uint16, Access: "r", Length: 1, Mandatory: true, Label: "NCrv", Description: "Number of curves supported (recommend 4)."},
-					smdx.PointElement{Id: NPt, Offset: 6, Type: typelabel.Uint16, Access: "r", Length: 1, Mandatory: true, Label: "NPt", Description: "Number of curve points supported (maximumn of 20)."},
+					smdx.PointElement{Id: NPt, Offset: 6, Type: typelabel.Uint16, Access: "r", Length: 1, Mandatory: true, Label: "NPt", Description: "Number of curve points supported (maximum of 20)."},
 					smdx.PointElement{Id: Tms_SF, Offset: 7, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "Tms_SF", Description: "Scale factor for duration."},
 					smdx.PointElement{Id: Hz_SF, Offset: 8, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "Hz_SF", Description: "Scale factor for frequency."},
 					smdx.PointElement{Id: Pad, Offset: 9, Type: typelabel.Pad, Access: "r", Length: 1},

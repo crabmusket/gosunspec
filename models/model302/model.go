@@ -26,12 +26,16 @@ const (
 	POAI = "POAI"
 )
 
-type Block302 struct {
+type Block302Repeat struct {
 	GHI  uint16 `sunspec:"offset=0"`
 	POAI uint16 `sunspec:"offset=1"`
 	DFI  uint16 `sunspec:"offset=2"`
 	DNI  uint16 `sunspec:"offset=3"`
 	OTI  uint16 `sunspec:"offset=4"`
+}
+
+type Block302 struct {
+	Repeats []Block302Repeat
 }
 
 func (self *Block302) GetId() sunspec.ModelId {
@@ -46,7 +50,7 @@ func init() {
 		Blocks: []smdx.BlockElement{
 			smdx.BlockElement{
 				Length: 5,
-
+				Type:   "repeating",
 				Points: []smdx.PointElement{
 					smdx.PointElement{Id: GHI, Offset: 0, Type: typelabel.Uint16, Units: "W/m2", Label: "GHI", Description: "Global Horizontal Irradiance"},
 					smdx.PointElement{Id: POAI, Offset: 1, Type: typelabel.Uint16, Units: "W/m2", Label: "POAI", Description: "Plane-of-Array Irradiance"},

@@ -63,7 +63,7 @@ func init() {
 					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4, Label: "Name", Description: "Interface name.  (8 chars)"},
 					smdx.PointElement{Id: Cfg, Offset: 4, Type: typelabel.Enum16, Mandatory: true, Label: "Config", Description: "Enumerated value.  Force IPv4 configuration method"},
 					smdx.PointElement{Id: Ctl, Offset: 5, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Control", Description: "Bitmask value Configure use of services"},
-					smdx.PointElement{Id: Addr, Offset: 6, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true, Label: "Address", Description: "IP addreess"},
+					smdx.PointElement{Id: Addr, Offset: 6, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true, Label: "Address", Description: "IP address"},
 					smdx.PointElement{Id: Msk, Offset: 14, Type: typelabel.String, Access: "rw", Length: 8, Mandatory: true, Label: "Netmask", Description: "Netmask"},
 					smdx.PointElement{Id: Gw, Offset: 22, Type: typelabel.String, Access: "rw", Length: 8, Label: "Gateway", Description: "Gateway IP address"},
 					smdx.PointElement{Id: DNS1, Offset: 30, Type: typelabel.String, Access: "rw", Length: 8, Label: "DNS1", Description: "32 bit IP address of DNS server"},

@@ -10,12 +10,12 @@ import (
 	"github.com/crabmusket/gosunspec/typelabel"
 )
 
-// Block3 - Secure Dataset Read Request - Request a digial signature over a specifed set of data registers
+// Block3 - Secure Dataset Read Request - Request a digital signature over a specified set of data registers
 
 const (
 	ModelID          = 3
 	ModelLabel       = "Secure Dataset Read Request"
-	ModelDescription = "Request a digial signature over a specifed set of data registers"
+	ModelDescription = "Request a digital signature over a specified set of data registers"
 )
 
 const (

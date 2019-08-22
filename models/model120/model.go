@@ -109,7 +109,7 @@ func init() {
 					smdx.PointElement{Id: PFRtg_SF, Offset: 16, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "PFRtg_SF", Description: "Scale factor"},
 					smdx.PointElement{Id: WHRtg, Offset: 17, Type: typelabel.Uint16, ScaleFactor: "WHRtg_SF", Units: "Wh", Access: "r", Length: 1, Label: "WHRtg", Description: "Nominal energy rating of storage device."},
 					smdx.PointElement{Id: WHRtg_SF, Offset: 18, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "WHRtg_SF", Description: "Scale factor"},
-					smdx.PointElement{Id: AhrRtg, Offset: 19, Type: typelabel.Uint16, ScaleFactor: "AhrRtg_SF", Units: "AH", Access: "r", Length: 1, Label: "AhrRtg", Description: "The useable capacity of the battery.  Maximum charge minus minimum charge from a technology capability perspective (Amp-hour capacity rating)."},
+					smdx.PointElement{Id: AhrRtg, Offset: 19, Type: typelabel.Uint16, ScaleFactor: "AhrRtg_SF", Units: "AH", Access: "r", Length: 1, Label: "AhrRtg", Description: "The usable capacity of the battery.  Maximum charge minus minimum charge from a technology capability perspective (Amp-hour capacity rating)."},
 					smdx.PointElement{Id: AhrRtg_SF, Offset: 20, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "AhrRtg_SF", Description: "Scale factor for amp-hour rating."},
 					smdx.PointElement{Id: MaxChaRte, Offset: 21, Type: typelabel.Uint16, ScaleFactor: "MaxChaRte_SF", Units: "W", Access: "r", Length: 1, Label: "MaxChaRte", Description: "Maximum rate of energy transfer into the storage device."},
 					smdx.PointElement{Id: MaxChaRte_SF, Offset: 22, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "MaxChaRte_SF", Description: "Scale factor"},

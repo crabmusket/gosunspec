@@ -165,7 +165,7 @@ func init() {
 					smdx.PointElement{Id: NPt, Offset: 6, Type: typelabel.Uint16, Access: "r", Length: 1, Mandatory: true, Label: "NPt", Description: "Number of curve points supported (maximum of 20)."},
 					smdx.PointElement{Id: V_SF, Offset: 7, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "V_SF", Description: "Scale factor for percent VRef."},
 					smdx.PointElement{Id: DeptRef_SF, Offset: 8, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Mandatory: true, Label: "DeptRef_SF", Description: "scale factor for dependent variable."},
-					smdx.PointElement{Id: RmpIncDec_SF, Offset: 9, Type: typelabel.ScaleFactor, Access: "r", Length: 1, Label: "RmpIncDec_SF", Description: "Scale factor for increment and decrement ramps."},
+					smdx.PointElement{Id: RmpIncDec_SF, Offset: 9, Type: typelabel.ScaleFactor, Access: "r", Length: 1},
 				},
 			},
 			smdx.BlockElement{Name: "curve",

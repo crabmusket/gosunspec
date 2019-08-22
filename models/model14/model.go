@@ -55,10 +55,10 @@ func init() {
 
 				Points: []smdx.PointElement{
 					smdx.PointElement{Id: Nam, Offset: 0, Type: typelabel.String, Access: "rw", Length: 4, Label: "name", Description: "Interface name (8 chars)"},
-					smdx.PointElement{Id: Cap, Offset: 4, Type: typelabel.Bitfield16, Access: "rw", Mandatory: true, Label: "Capabilities", Description: "Bitmask value.  Proxy configuration capabilites"},
+					smdx.PointElement{Id: Cap, Offset: 4, Type: typelabel.Bitfield16, Access: "rw", Mandatory: true, Label: "Capabilities", Description: "Bitmask value.  Proxy configuration capabilities"},
 					smdx.PointElement{Id: Cfg, Offset: 5, Type: typelabel.Enum16, Access: "rw", Mandatory: true, Label: "Config", Description: "Enumerated value.  Set proxy address type"},
 					smdx.PointElement{Id: Typ, Offset: 6, Type: typelabel.Bitfield16, Access: "rw", Mandatory: true, Label: "Type", Description: "Enumerate value.  Proxy server type"},
-					smdx.PointElement{Id: Addr, Offset: 7, Type: typelabel.String, Access: "rw", Length: 20, Mandatory: true, Label: "Address", Description: "IPv4 or IPv6 proxy hostname or dotteed address (40 chars)"},
+					smdx.PointElement{Id: Addr, Offset: 7, Type: typelabel.String, Access: "rw", Length: 20, Mandatory: true, Label: "Address", Description: "IPv4 or IPv6 proxy hostname or dotted address (40 chars)"},
 					smdx.PointElement{Id: Port, Offset: 27, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Port", Description: "Proxy port number"},
 					smdx.PointElement{Id: User, Offset: 28, Type: typelabel.String, Access: "rw", Length: 12, Label: "Username", Description: "Proxy user name"},
 					smdx.PointElement{Id: Pw, Offset: 40, Type: typelabel.String, Access: "rw", Length: 12, Label: "Password", Description: "Proxy password"},

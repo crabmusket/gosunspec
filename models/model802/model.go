@@ -48,7 +48,6 @@ const (
 	Hb               = "Hb"
 	LocRemCtl        = "LocRemCtl"
 	NCyc             = "NCyc"
-	Pad1             = "Pad1"
 	ReqInvState      = "ReqInvState"
 	ReqW             = "ReqW"
 	SetInvState      = "SetInvState"
@@ -62,6 +61,7 @@ const (
 	SoH_SF           = "SoH_SF"
 	SocRsvMax        = "SocRsvMax"
 	State            = "State"
+	StateVnd         = "StateVnd"
 	Typ              = "Typ"
 	V                = "V"
 	VMax             = "VMax"
@@ -98,7 +98,7 @@ type Block802 struct {
 	AlmRst           uint16              `sunspec:"offset=18,access=rw"`
 	Typ              sunspec.Enum16      `sunspec:"offset=19"`
 	State            sunspec.Enum16      `sunspec:"offset=20"`
-	Pad1             sunspec.Pad         `sunspec:"offset=21"`
+	StateVnd         sunspec.Enum16      `sunspec:"offset=21"`
 	WarrDt           uint32              `sunspec:"offset=22"`
 	Evt1             sunspec.Bitfield32  `sunspec:"offset=24"`
 	Evt2             sunspec.Bitfield32  `sunspec:"offset=26"`
@@ -144,7 +144,7 @@ func init() {
 	smdx.RegisterModel(&smdx.ModelElement{
 		Id:     ModelID,
 		Name:   "battery",
-		Length: 54,
+		Length: 62,
 		Blocks: []smdx.BlockElement{
 			smdx.BlockElement{
 				Length: 62,
@@ -153,7 +153,7 @@ func init() {
 					smdx.PointElement{Id: AHRtg, Offset: 0, Type: typelabel.Uint16, ScaleFactor: "AHRtg_SF", Units: "Ah", Mandatory: true, Label: "Nameplate Charge Capacity", Description: "Nameplate charge capacity in amp-hours."},
 					smdx.PointElement{Id: WHRtg, Offset: 1, Type: typelabel.Uint16, ScaleFactor: "WHRtg_SF", Units: "Wh", Mandatory: true, Label: "Nameplate Energy Capacity", Description: "Nameplate energy capacity in DC watt-hours."},
 					smdx.PointElement{Id: WChaRteMax, Offset: 2, Type: typelabel.Uint16, ScaleFactor: "WChaDisChaMax_SF", Units: "W", Mandatory: true, Label: "Nameplate Max Charge Rate", Description: "Maximum rate of energy transfer into the storage device in DC watts."},
-					smdx.PointElement{Id: WDisChaRteMax, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "WChaDisChaMax_SF", Units: "W", Mandatory: true, Label: "Namplate Max Discharge Rate", Description: "Maximum rate of energy transfer out of the storage device in DC watts."},
+					smdx.PointElement{Id: WDisChaRteMax, Offset: 3, Type: typelabel.Uint16, ScaleFactor: "WChaDisChaMax_SF", Units: "W", Mandatory: true, Label: "Nameplate Max Discharge Rate", Description: "Maximum rate of energy transfer out of the storage device in DC watts."},
 					smdx.PointElement{Id: DisChaRte, Offset: 4, Type: typelabel.Uint16, ScaleFactor: "DisChaRte_SF", Units: "%WHRtg", Label: "Self Discharge Rate", Description: "Self discharge rate.  Percentage of capacity (WHRtg) discharged per day."},
 					smdx.PointElement{Id: SoCMax, Offset: 5, Type: typelabel.Uint16, ScaleFactor: "SoC_SF", Units: "%WHRtg", Label: "Nameplate Max SoC", Description: "Manufacturer maximum state of charge, expressed as a percentage."},
 					smdx.PointElement{Id: SoCMin, Offset: 6, Type: typelabel.Uint16, ScaleFactor: "SoC_SF", Units: "%WHRtg", Label: "Nameplate Min SoC", Description: "Manufacturer minimum state of charge, expressed as a percentage."},
@@ -170,7 +170,7 @@ func init() {
 					smdx.PointElement{Id: AlmRst, Offset: 18, Type: typelabel.Uint16, Access: "rw", Mandatory: true, Label: "Alarm Reset", Description: "Used to reset any latched alarms.  1 = Reset."},
 					smdx.PointElement{Id: Typ, Offset: 19, Type: typelabel.Enum16, Mandatory: true, Label: "Battery Type", Description: "Type of battery. Enumeration."},
 					smdx.PointElement{Id: State, Offset: 20, Type: typelabel.Enum16, Mandatory: true, Label: "State of the Battery Bank", Description: "State of the battery bank.  Enumeration."},
-					smdx.PointElement{Id: Pad1, Offset: 21, Type: typelabel.Pad, Mandatory: true, Label: "Pad", Description: "Pad register."},
+					smdx.PointElement{Id: StateVnd, Offset: 21, Type: typelabel.Enum16, Label: "Vendor Battery Bank State", Description: "Vendor specific battery bank state.  Enumeration."},
 					smdx.PointElement{Id: WarrDt, Offset: 22, Type: typelabel.Uint32, Label: "Warranty Date", Description: "Date the device warranty expires."},
 					smdx.PointElement{Id: Evt1, Offset: 24, Type: typelabel.Bitfield32, Mandatory: true, Label: "Battery Event 1 Bitfield", Description: "Alarms and warnings.  Bit flags."},
 					smdx.PointElement{Id: Evt2, Offset: 26, Type: typelabel.Bitfield32, Mandatory: true, Label: "Battery Event 2 Bitfield", Description: "Alarms and warnings.  Bit flags."},
