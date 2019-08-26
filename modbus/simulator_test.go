@@ -2,6 +2,7 @@ package modbus
 
 import (
 	"errors"
+
 	"github.com/goburrow/modbus"
 )
 
@@ -25,9 +26,8 @@ func OpenSimulator(memorymap []byte, baseAddress uint16) (modbus.Client, error) 
 func (s *simulator) checkbounds(address uint16, quantity uint16) error {
 	if address < s.baseAddress || (address+quantity > s.baseAddress+uint16(len(s.memorymap))/2) {
 		return ErrBadAddress
-	} else {
-		return nil
 	}
+	return nil
 }
 
 func (s *simulator) ReadHoldingRegisters(address, quantity uint16) (results []byte, err error) {

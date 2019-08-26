@@ -31,10 +31,9 @@ func (r *runBuilder) spawn(p spi.PointSPI) {
 func (r *runBuilder) adjacent(p spi.PointSPI) bool {
 	if len(r.run) == 0 {
 		return true
-	} else {
-		last := r.run[len(r.run)-1]
-		return last.Offset()+last.Length() == p.Offset()
 	}
+	last := r.run[len(r.run)-1]
+	return last.Offset()+last.Length() == p.Offset()
 }
 
 func (r *runBuilder) extend(p spi.PointSPI) {

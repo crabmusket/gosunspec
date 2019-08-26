@@ -45,9 +45,8 @@ type modbusDriver struct {
 func mapError(err error) error {
 	if err == serial.ErrTimeout {
 		return layout.ErrTimeout
-	} else {
-		return err
 	}
+	return err
 }
 
 func (m *modbusDriver) ReadWords(address uint16, length uint16) ([]byte, error) {
@@ -62,7 +61,6 @@ func (m *modbusDriver) BaseOffsets() []uint16 {
 // Write out the points in exactly the order specified, coalescing
 // adjacent points if they are adjacent in the specified order.
 func (m *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
-
 	if len(pointIds) == 0 {
 		block.Do(func(p sunspec.Point) {
 			pointIds = append(pointIds, p.Id())
@@ -70,7 +68,6 @@ func (m *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
 	}
 
 	// identify runs of adajacent points
-
 	runs := newRunBuilder()
 
 	// note: we preserve the programmer specified order
@@ -79,11 +76,11 @@ func (m *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
 	// register is used to activate values previously
 	// written into other registers.
 	for _, pid := range pointIds {
-		if p, err := block.Point(pid); err != nil {
+		p, err := block.Point(pid)
+		if err != nil {
 			return err
-		} else {
-			runs.add(p.(spi.PointSPI))
 		}
+		runs.add(p.(spi.PointSPI))
 	}
 
 	// marshal each group of adjacent points into byte slices and then
@@ -105,6 +102,7 @@ func (m *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
 			return err
 		}
 	}
+
 	return nil
 }
 
@@ -112,59 +110,61 @@ func (m *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
 // runs of points that can be read together. The points are read and then
 // unmarshaled into the model in the order determined by slice returned by Block.Plan()
 func (m *modbusDriver) Read(block spi.BlockSPI, pointIds ...string) error {
-	if applicationOrder, err := block.Plan(pointIds...); err != nil {
+	applicationOrder, err := block.Plan(pointIds...)
+	if err != nil {
 		return err
-	} else {
-		runs := newRunBuilder()
-		offsets := map[string]uint16{} // offsets into read buffer, by point
-		off := uint16(0)               // the current offset
-		toRead := map[string]bool{}    // the set of ponts to read
+	}
 
-		// initialise the toRead set
-		for _, p := range applicationOrder {
-			toRead[p.Id()] = true
+	runs := newRunBuilder()
+	offsets := map[string]uint16{} // offsets into read buffer, by point
+	off := uint16(0)               // the current offset
+	toRead := map[string]bool{}    // the set of ponts to read
+
+	// initialise the toRead set
+	for _, p := range applicationOrder {
+		toRead[p.Id()] = true
+	}
+
+	// break the list of points to be retrieved
+	// into runs of strictly adjacent points and
+	// record for each point the offset into a buffer
+	// in which the marshaled point value will be read
+	block.Do(spi.WithPointSPI(func(pt spi.PointSPI) {
+		if !toRead[pt.Id()] {
+			return
 		}
 
-		// break the list of points to be retrieved
-		// into runs of strictly adjacent points and
-		// record for each point the offset into a buffer
-		// in which the marshaled point value will be read
-		block.Do(spi.WithPointSPI(func(pt spi.PointSPI) {
-			if !toRead[pt.Id()] {
-				return
-			}
+		runs.add(pt)
+		offsets[pt.Id()] = off
+		off += pt.Length() * 2
+	}))
 
-			runs.add(pt)
-			offsets[pt.Id()] = off
-			off += pt.Length() * 2
-		}))
+	// allocate a buffer that can contain all the read points
+	buffer := make([]byte, off, off)
 
-		// allocate a buffer that can contain all the read points
-		buffer := make([]byte, off, off)
-
-		// read runs of points into the buffer
-		off = 0
-		for _, run := range runs.runs {
-			l := uint16(0)
-			for _, pt := range run {
-				l += pt.Length()
-			}
-			if bytes, err := m.client.ReadHoldingRegisters(block.Anchor().(uint16)+run[0].Offset(), l); err != nil {
-				return err
-			} else {
-				copy(buffer[off:off+l*2], bytes)
-				off += (l * 2)
-			}
+	// read runs of points into the buffer
+	off = 0
+	for _, run := range runs.runs {
+		l := uint16(0)
+		for _, pt := range run {
+			l += pt.Length()
 		}
+		bytes, err := m.client.ReadHoldingRegisters(block.Anchor().(uint16)+run[0].Offset(), l)
+		if err != nil {
+			return err
+		}
+		copy(buffer[off:off+l*2], bytes)
+		off += (l * 2)
+	}
 
-		// finally, unmarshal the buffer into points in the order determined by the plan
-		for _, a := range applicationOrder {
-			lbound := offsets[a.Id()]
-			rbound := lbound + a.Length()*2
-			if err := a.Unmarshal(buffer[lbound:rbound]); err != nil {
-				return err
-			}
+	// finally, unmarshal the buffer into points in the order determined by the plan
+	for _, a := range applicationOrder {
+		lbound := offsets[a.Id()]
+		rbound := lbound + a.Length()*2
+		if err := a.Unmarshal(buffer[lbound:rbound]); err != nil {
+			return err
 		}
 	}
+
 	return nil
 }
