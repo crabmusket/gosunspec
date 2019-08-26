@@ -10,11 +10,13 @@ import (
 )
 
 const (
-	SunSpec = 0x53756e53 // "SunS" - marker bytes used to confirm that a region of Modbus address space is laid out according to SunSpec standards
+	// SunSpec "SunS" marker bytes used to confirm that a region of Modbus address space is laid out according to SunSpec standards
+	SunSpec = 0x53756e53
 )
 
 var (
-	ErrNotSunspecDevice = errors.New("not a SunSpec device") // if the Modbus address space doesn't contain the expected marker bytes
+	// ErrNotSunspecDevice is signaled if the Modbus address space doesn't contain the expected marker bytes
+	ErrNotSunspecDevice = errors.New("not a SunSpec device")
 )
 
 // modbusClient is the minimal interface that implements modbus.Client
@@ -59,7 +61,7 @@ func (m *modbusDriver) BaseOffsets() []uint16 {
 
 // Write out the points in exactly the order specified, coalescing
 // adjacent points if they are adjacent in the specified order.
-func (p *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
+func (m *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
 
 	if len(pointIds) == 0 {
 		block.Do(func(p sunspec.Point) {
@@ -99,7 +101,7 @@ func (p *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
 			}
 			woff += pt.Length() * 2
 		}
-		if _, err := p.client.WriteMultipleRegisters(block.Anchor().(uint16)+run[0].Offset(), l, buffer); err != nil {
+		if _, err := m.client.WriteMultipleRegisters(block.Anchor().(uint16)+run[0].Offset(), l, buffer); err != nil {
 			return err
 		}
 	}
@@ -109,7 +111,7 @@ func (p *modbusDriver) Write(block spi.BlockSPI, pointIds ...string) error {
 // Read extends the specified set of points with Block.Plan() then determines
 // runs of points that can be read together. The points are read and then
 // unmarshaled into the model in the order determined by slice returned by Block.Plan()
-func (p *modbusDriver) Read(block spi.BlockSPI, pointIds ...string) error {
+func (m *modbusDriver) Read(block spi.BlockSPI, pointIds ...string) error {
 	if applicationOrder, err := block.Plan(pointIds...); err != nil {
 		return err
 	} else {
@@ -147,7 +149,7 @@ func (p *modbusDriver) Read(block spi.BlockSPI, pointIds ...string) error {
 			for _, pt := range run {
 				l += pt.Length()
 			}
-			if bytes, err := p.client.ReadHoldingRegisters(block.Anchor().(uint16)+run[0].Offset(), l); err != nil {
+			if bytes, err := m.client.ReadHoldingRegisters(block.Anchor().(uint16)+run[0].Offset(), l); err != nil {
 				return err
 			} else {
 				copy(buffer[off:off+l*2], bytes)
