@@ -2,10 +2,10 @@ package modbus
 
 import (
 	"errors"
-	"github.com/crabmusket/gosunspec"
+
+	sunspec "github.com/crabmusket/gosunspec"
 	"github.com/crabmusket/gosunspec/layout"
 	"github.com/crabmusket/gosunspec/spi"
-	"github.com/goburrow/modbus"
 	"github.com/goburrow/serial"
 )
 
@@ -17,21 +17,27 @@ var (
 	ErrNotSunspecDevice = errors.New("not a SunSpec device") // if the Modbus address space doesn't contain the expected marker bytes
 )
 
+// modbusClient is the minimal interface that implements modbus.Client
+type modbusClient interface {
+	ReadHoldingRegisters(address, quantity uint16) (results []byte, err error)
+	WriteMultipleRegisters(address, quantity uint16, value []byte) (results []byte, err error)
+}
+
 // Open uses the Modbus connection provided by client to connect
 // to a Modbus address space. The address space is scanned for
 // one or more SunSpec devices and a reference to
 // a sunspec.Array that provides access to these devices is returned.
-func Open(client modbus.Client) (sunspec.Array, error) {
+func Open(client modbusClient) (sunspec.Array, error) {
 	return OpenWithLayout(client, &layout.SunSpecLayout{})
 }
 
-// Open a Modbus connection using the client specified and the layout specified. layout specified.
-func OpenWithLayout(client modbus.Client, l layout.AddressSpaceLayout) (sunspec.Array, error) {
+// OpenWithLayout opens a Modbus connection using the client specified and the layout specified. layout specified.
+func OpenWithLayout(client modbusClient, l layout.AddressSpaceLayout) (sunspec.Array, error) {
 	return l.Open(&modbusDriver{client: client})
 }
 
 type modbusDriver struct {
-	client modbus.Client
+	client modbusClient
 }
 
 func mapError(err error) error {
